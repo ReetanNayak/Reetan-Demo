@@ -1,0 +1,88 @@
+<apex:page id="pg" controller="SelectFieldsController" sidebar="false">
+<apex:form id="fm">  
+
+    <apex:pageBlock id="pb" >
+        <apex:pageBlockButtons location="Top">
+            <apex:commandButton value="Save" action="{!saveFields}" status="fetchStatus" reRender="showMessage" />
+            <apex:commandButton value="Cancel" action="{!doCancel}" status="fetchStatus" />
+        </apex:pageBlockButtons>
+         
+        <div style="height:20px"> <span style="font-weight:bold;">View Name : {!strViewName}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <apex:actionStatus id="fetchStatus">
+                <apex:facet name="start">
+                    <img src="/img/loading.gif" class="waitingImage" title="Please Wait..."/>Please_wait
+                </apex:facet>
+            </apex:actionStatus> 
+        </div>
+          
+        <div style="background:#ADD8E6;font-weight:bold;height:20px">Select_Fields_to_display</div>
+        
+        <apex:outputPanel id="showMessage">
+            <span style="color:red;"> {!strMsg}</span>
+        </apex:outputPanel>  
+          
+        <apex:panelGrid columns="6" >  
+            <apex:panelGroup >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bold">Available_Fields</span> <br/>  
+                <apex:selectList value="{!leftSelectedValues}"  multiselect="true" size="10" style="width:200px">
+                    <apex:selectOptions value="{!LeftListValues}" />
+                </apex:selectList>
+            </apex:panelGroup>
+                  
+            <apex:panelGroup ><br/>   
+                <apex:outputLabel value="Add" /> <br/>
+                <apex:commandLink action="{!assignRight}" reRender="pb" status="ftStatus">
+                    <img src="/s.gif" alt="Add"  class="rightArrowIcon" title="Add"/>
+                </apex:commandLink><br/><br/>
+                
+                <apex:commandLink action="{!assignLeft}" reRender="pb" status="ftStatus">
+                    <img src="/s.gif" alt="Remove"  class="leftArrowIcon" title="Remove"/>
+                </apex:commandLink><br/>
+                <apex:outputLabel value="Remove" />
+            </apex:panelGroup>
+                    
+            <apex:panelGroup >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bold">Selected_Fields</span> <br/>  
+                <apex:selectList id="rselect" value="{!rightSelectedValues}"  multiselect="true" size="10" style="width:200px" > 
+                    <apex:selectOptions value="{!RightListValues}" >                
+                    </apex:selectOptions>
+                </apex:selectList>
+            </apex:panelGroup>
+                   
+            <apex:panelGroup >  
+                Top<br/>
+                <apex:commandLink action="{!moveToTop}" reRender="pb" status="ftStatus">
+                    <img class="doubleArrowUp" title="Top" alt="Top" src="/s.gif"/>
+                </apex:commandLink><br/>
+
+                Up<br/> 
+                <apex:commandLink action="{!moveOneUp}" reRender="pb" status="ftStatus">
+                    <img class="upArrowIcon" title="Up" alt="Up" src="/s.gif"/>
+                </apex:commandLink><br/><br/>
+                
+                <apex:commandLink action="{!moveOneBottom}" reRender="pb" status="ftStatus">
+                    <img class="downArrowIcon" title="Down" alt="Down" src="/s.gif"/>
+                </apex:commandLink><br/> 
+                Down<br/>
+                
+                <apex:commandLink action="{!moveToBottom}" reRender="pb" status="ftStatus">
+                   <img class="doubleArrowDwn" title="Bottom" alt="Bottom" src="/s.gif"/>
+                </apex:commandLink><br/> 
+                Bottom
+            </apex:panelGroup>  
+                    
+            <apex:panelGroup >
+                 <apex:actionStatus id="ftStatus">
+                    <apex:facet name="start">
+                        <img src="/img/loading.gif" class="waitingImage" title="Please Wait..."/>Processing
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:panelGroup>     
+        </apex:panelGrid>
+            
+        <!-- <apex:commandButton value="Save"/>  -->      
+            
+    </apex:pageBlock> 
+     
+</apex:form>
+</apex:page>

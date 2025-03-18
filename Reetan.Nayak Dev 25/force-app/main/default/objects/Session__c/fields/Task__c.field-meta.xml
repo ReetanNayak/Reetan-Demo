@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Task__c</fullName>
+    <label>Task</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Apex Class And Testmethod</fullName>
+                <default>false</default>
+                <label>Apex Class And Testmethod</label>
+            </value>
+            <value>
+                <fullName>Apex trigger</fullName>
+                <default>false</default>
+                <label>Apex trigger</label>
+            </value>
+            <value>
+                <fullName>WebServices</fullName>
+                <default>false</default>
+                <label>WebServices</label>
+            </value>
+            <value>
+                <fullName>Standard And Custom Object</fullName>
+                <default>false</default>
+                <label>Standard And Custom Object</label>
+            </value>
+            <value>
+                <fullName>Visualforce Page</fullName>
+                <default>false</default>
+                <label>Visualforce Page</label>
+            </value>
+            <value>
+                <fullName>Action Class</fullName>
+                <default>false</default>
+                <label>Action Class</label>
+            </value>
+            <value>
+                <fullName>Struts Tile frmework</fullName>
+                <default>false</default>
+                <label>Struts Tile frmework</label>
+            </value>
+            <value>
+                <fullName>JSF</fullName>
+                <default>false</default>
+                <label>JSF</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

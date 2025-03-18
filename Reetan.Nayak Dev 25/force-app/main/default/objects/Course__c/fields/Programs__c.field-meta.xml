@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Programs__c</fullName>
+    <label>Programs</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Core Java</fullName>
+                <default>false</default>
+                <label>Core Java</label>
+            </value>
+            <value>
+                <fullName>JSP</fullName>
+                <default>false</default>
+                <label>JSP</label>
+            </value>
+            <value>
+                <fullName>Servlets</fullName>
+                <default>false</default>
+                <label>Servlets</label>
+            </value>
+            <value>
+                <fullName>SOQL</fullName>
+                <default>false</default>
+                <label>SOQL</label>
+            </value>
+            <value>
+                <fullName>Struts</fullName>
+                <default>false</default>
+                <label>Struts</label>
+            </value>
+            <value>
+                <fullName>VisualForce</fullName>
+                <default>false</default>
+                <label>VisualForce</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,30 @@
+<apex:page controller="ObjectFetch_CLS"  showHeader="true" sidebar="false" >
+<apex:form >
+    <apex:pageBlock id="pb">
+        <apex:outputLabel ><b>Objects :</b></apex:outputLabel>&nbsp;&nbsp;&nbsp;
+        <apex:selectList value="{!ObjValues}" size="1" >
+            <apex:selectOptions value="{!ObjItems}"  />
+            <apex:actionSupport event="onchange" action="{!fieldDescribe}" reRender="pb" status="fetchStatus" />
+        </apex:selectList>&nbsp;&nbsp;    
+        <apex:actionStatus id="fetchStatus" >
+            <apex:facet name="start" >
+             <!--   <img src="/img/loading.gif" class="waitingImage" title="Please Wait..."/> -->
+                <apex:image value="{!$Resource.Loading1}" /> 
+
+            </apex:facet>
+        </apex:actionStatus>
+<br/><br/>
+
+        
+        <apex:pageBlockTable value="{!filedDet}" var="fld" rendered="{!showTable}" >
+            <apex:column headerValue="Field Label" value="{!fld.label}"/>
+            <apex:column headerValue="Field Name" value="{!fld.name}"/>
+            <apex:column headerValue="Field Type" value="{!fld.type}"/>
+        </apex:pageBlockTable>       <br/><br/>
+        
+        <apex:commandButton value="Export" action="{!showExport}" rendered="{!showButton}" />
+    </apex:pageBlock>
+    
+
+</apex:form>
+</apex:page>

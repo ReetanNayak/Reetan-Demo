@@ -1,0 +1,10 @@
+<apex:page controller="ObjectFectch6_CLS" contentType="application/vnd.ms-excel#{!$CurrentPage.Parameters.objVal}.xls" cache="true" standardStylesheets="false"  sidebar="false" showHeader="false" >
+    <apex:pageBlock >
+        <apex:dataTable value="{!InrField}" var="fls"  >
+            <apex:column headerValue="Field Label" value="{!fls.label}" />
+            <apex:column headerValue="API Name" value="{!fls.name}" />
+            <apex:column headerValue="Data Type" value="{!fls.type}" />        
+            <apex:column headerValue="Custom" value="{!fls.cust}" style="color: {!IF(fls.cust == 'true', 'red', 'green')}" />               
+        </apex:dataTable>     
+    </apex:pageBlock>
+</apex:page>

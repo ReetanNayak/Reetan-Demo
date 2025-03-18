@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>If the term field isn&apos;t relevant (check record type ) to the child opportunity, then the term field on that child record never gets updated. ** important note active record types should be checked from the Custom setting and not hard coded. So create a custom setting &quot;Parent Opportunity Settings&quot; .</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <label>Parent Opportunity Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

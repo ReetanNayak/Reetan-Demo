@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prod_Pic__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Name =&apos;McDowells Whiskey&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328611913000/mcdowell&apos;, &apos;&apos;) ,
+ IF(Name =&apos;White Mischief Vodka&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328612928000/whitemischief&apos;, &apos;&apos;) ,
+ IF(Name =&apos;Black Dog Whiskey&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328615503000/blackdog&apos;, &apos;&apos;) ,
+ IF(Name =&apos;McDowells Rum&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328617246000/mcdowellrum&apos;,&apos;&apos;),
+ IF(Name=&apos;Vladivar Vodka&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328617577000/vladivar&apos;, &apos;&apos;),
+ IF(Name=&apos;Wine&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328618463000/Wine&apos;,&apos;&apos;),
+ IF(Name =&apos;Bagpiper Whiskey&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328618653000/bagpiper&apos;, &apos;&apos;),
+ IF(Name =&apos;Royal Challenge Whiskey&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328619084000/royalchallenge&apos;, &apos;&apos;),
+ IF(Name =&apos;Signature Whiskey&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328619291000/signaturewhis&apos;, &apos;&apos;),
+ IF(Name =&apos;Romanov Vodka&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328626355000/romanov&apos;, &apos;&apos;),
+ IF(Name =&apos;Antiquity&apos;, IMAGE(&apos;https://na1.salesforce.com/resource/1328627773000/Antiquity&apos;, &apos;&apos;), &apos;&apos;) )
+ ) ) ) ) ) ) ) ) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Product Image</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

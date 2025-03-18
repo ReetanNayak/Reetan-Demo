@@ -1,0 +1,12 @@
+<apex:page controller="IBAssetSearchNewController" sidebar="false" showHeader="true" docType="html-5.0">
+
+    <apex:stylesheet value="{!URLFOR($Resource.extjs_4_2_2, 'extjs_4_2_2/resources/css/ext-all.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.extjs_4_2_2, 'extjs_4_2_2/ext-all-debug.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.extjs_4_2_2, 'extjs_4_2_2/src/ux/grid/css/GridFilters.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.extjs_4_2_2, 'extjs_4_2_2/src/ux/grid/css/RangeMenu.css')}" /> 
+    
+     
+    
+    <c:IBAssetSearchNewComp rows="20" />    
+
+</apex:page>

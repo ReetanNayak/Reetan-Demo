@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Region__c</fullName>
+    <description>Geographic segmentation of sales territories within a Zone.</description>
+    <inlineHelpText>Geographic alignment of sales territories.</inlineHelpText>
+    <label>Region</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>AU - Australia</fullName>
+                <default>false</default>
+                <label>AU - Australia</label>
+            </value>
+            <value>
+                <fullName>AU - NSW-ACT</fullName>
+                <default>false</default>
+                <label>AU - NSW-ACT</label>
+            </value>
+            <value>
+                <fullName>AU - QLD</fullName>
+                <default>false</default>
+                <label>AU - QLD</label>
+            </value>
+            <value>
+                <fullName>AU - SA-NT</fullName>
+                <default>false</default>
+                <label>AU - SA-NT</label>
+            </value>
+            <value>
+                <fullName>AU - VIC-TAS</fullName>
+                <default>false</default>
+                <label>AU - VIC-TAS</label>
+            </value>
+            <value>
+                <fullName>AU - WA</fullName>
+                <default>false</default>
+                <label>AU - WA</label>
+            </value>
+            <value>
+                <fullName>BN - Brunei Darussalam</fullName>
+                <default>false</default>
+                <label>BN - Brunei Darussalam</label>
+            </value>
+            <value>
+                <fullName>BT - Bhutan</fullName>
+                <default>false</default>
+                <label>BT - Bhutan</label>
+            </value>
+            <value>
+                <fullName>CA - Central</fullName>
+                <default>false</default>
+                <label>CA - Central</label>
+            </value>
+            <value>
+                <fullName>CA - East</fullName>
+                <default>false</default>
+                <label>CA - East</label>
+            </value>
+            <value>
+                <fullName>CA - West</fullName>
+                <default>false</default>
+                <label>CA - West</label>
+            </value>
+            <value>
+                <fullName>Central_Europe</fullName>
+                <default>false</default>
+                <label>Central_Europe</label>
+            </value>
+            <value>
+                <fullName>France</fullName>
+                <default>false</default>
+                <label>France</label>
+            </value>
+            <value>
+                <fullName>Germany</fullName>
+                <default>false</default>
+                <label>Germany</label>
+            </value>
+            <value>
+                <fullName>ID - Indonesia</fullName>
+                <default>false</default>
+                <label>ID - Indonesia</label>
+            </value>
+            <value>
+                <fullName>IN - Ahmedabad</fullName>
+                <default>false</default>
+                <label>IN - Ahmedabad</label>
+            </value>
+            <value>
+                <fullName>IN - Bangalore</fullName>
+                <default>false</default>
+                <label>IN - Bangalore</label>
+            </value>
+            <value>
+                <fullName>IN - Bhopal</fullName>
+                <default>false</default>
+                <label>IN - Bhopal</label>
+            </value>
+            <value>
+                <fullName>IN - Bhubaneshwar</fullName>
+                <default>false</default>
+                <label>IN - Bhubaneshwar</label>
+            </value>
+            <value>
+                <fullName>IN - Chandigarh</fullName>
+                <default>false</default>
+                <label>IN - Chandigarh</label>
+            </value>
+            <value>
+                <fullName>IN - Chennai</fullName>
+                <default>false</default>
+                <label>IN - Chennai</label>
+            </value>
+            <value>
+                <fullName>IN - Cochin</fullName>
+                <default>false</default>
+                <label>IN - Cochin</label>
+            </value>
+            <value>
+                <fullName>IN - Colombo</fullName>
+                <default>false</default>
+                <label>IN - Colombo</label>
+            </value>
+            <value>
+                <fullName>IN - Delhi</fullName>
+                <default>false</default>
+                <label>IN - Delhi</label>
+            </value>
+            <value>
+                <fullName>IN - Dhaka</fullName>
+                <default>false</default>
+                <label>IN - Dhaka</label>
+            </value>
+            <value>
+                <fullName>IN - Goa</fullName>
+                <default>false</default>
+                <label>IN - Goa</label>
+            </value>
+            <value>
+                <fullName>IN - Guwahati</fullName>
+                <default>false</default>
+                <label>IN - Guwahati</label>
+            </value>
+            <value>
+                <fullName>IN - Hyderabad</fullName>
+                <default>false</default>
+                <label>IN - Hyderabad</label>
+            </value>
+            <value>
+                <fullName>IN - Jaipur</fullName>
+                <default>false</default>
+                <label>IN - Jaipur</label>
+            </value>
+            <value>
+                <fullName>IN - Kandy</fullName>
+                <default>false</default>
+                <label>IN - Kandy</label>
+            </value>
+            <value>
+                <fullName>IN - Kathmandu</fullName>
+                <default>false</default>
+                <label>IN - Kathmandu</label>
+            </value>
+            <value>
+                <fullName>IN - Kolkata</fullName>
+                <default>false</default>
+                <label>IN - Kolkata</label>
+            </value>
+            <value>
+                <fullName>IN - Lucknow</fullName>
+                <default>false</default>
+                <label>IN - Lucknow</label>
+            </value>
+            <value>
+                <fullName>IN - Mumbai</fullName>
+                <default>false</default>
+                <label>IN - Mumbai</label>
+            </value>
+            <value>
+                <fullName>IN - Patna</fullName>
+                <default>false</default>
+                <label>IN - Patna</label>
+            </value>
+            <value>
+                <fullName>IN - Pune</fullName>
+                <default>false</default>
+                <label>IN - Pune</label>
+            </value>
+            <value>
+                <fullName>IN - Raipur</fullName>
+                <default>false</default>
+                <label>IN - Raipur</label>
+            </value>
+            <value>
+                <fullName>IN - Ranchi</fullName>
+                <default>false</default>
+                <label>IN - Ranchi</label>
+            </value>
+            <value>
+                <fullName>IN - Rest of BD</fullName>
+                <default>false</default>
+                <label>IN - Rest of BD</label>
+            </value>
+            <value>
+                <fullName>IN - Rest of Nepal</fullName>
+                <default>false</default>
+                <label>IN - Rest of Nepal</label>
+            </value>
+            <value>
+                <fullName>IN - Rest of West Bengal</fullName>
+                <default>false</default>
+                <label>IN - Rest of West Bengal</label>
+            </value>
+            <value>
+                <fullName>KH - Cambodia</fullName>
+                <default>false</default>
+                <label>KH - Cambodia</label>
+            </value>
+            <value>
+                <fullName>KR - Channel</fullName>
+                <default>false</default>
+                <label>KR - Channel</label>
+            </value>
+            <value>
+                <fullName>KR - KAM</fullName>
+                <default>false</default>
+                <label>KR - KAM</label>
+            </value>
+            <value>
+                <fullName>KR - MDx Busan</fullName>
+                <default>false</default>
+                <label>KR - MDx Busan</label>
+            </value>
+            <value>
+                <fullName>KR - MDx Daegu</fullName>
+                <default>false</default>
+                <label>KR - MDx Daegu</label>
+            </value>
+            <value>
+                <fullName>KR - MDx Daejeon</fullName>
+                <default>false</default>
+                <label>KR - MDx Daejeon</label>
+            </value>
+            <value>
+                <fullName>KR - MDx Kwangju</fullName>
+                <default>false</default>
+                <label>KR - MDx Kwangju</label>
+            </value>
+            <value>
+                <fullName>KR - MDx MI</fullName>
+                <default>false</default>
+                <label>KR - MDx MI</label>
+            </value>
+            <value>
+                <fullName>KR - MDx S1</fullName>
+                <default>false</default>
+                <label>KR - MDx S1</label>
+            </value>
+            <value>
+                <fullName>KR - MDx S2</fullName>
+                <default>false</default>
+                <label>KR - MDx S2</label>
+            </value>
+            <value>
+                <fullName>KR - MDx S3</fullName>
+                <default>false</default>
+                <label>KR - MDx S3</label>
+            </value>
+            <value>
+                <fullName>KR - MDx S5</fullName>
+                <default>false</default>
+                <label>KR - MDx S5</label>
+            </value>
+            <value>
+                <fullName>KR - MidWest</fullName>
+                <default>false</default>
+                <label>KR - MidWest</label>
+            </value>
+            <value>
+                <fullName>KR - Seoul</fullName>
+                <default>false</default>
+                <label>KR - Seoul</label>
+            </value>
+            <value>
+                <fullName>KR - YoungNam</fullName>
+                <default>false</default>
+                <label>KR - YoungNam</label>
+            </value>
+            <value>
+                <fullName>LA - Laos</fullName>
+                <default>false</default>
+                <label>LA - Laos</label>
+            </value>
+            <value>
+                <fullName>LSJ-Aichi</fullName>
+                <default>false</default>
+                <label>LSJ-Aichi</label>
+            </value>
+            <value>
+                <fullName>LSJ-Akita</fullName>
+                <default>false</default>
+                <label>LSJ-Akita</label>
+            </value>
+            <value>
+                <fullName>LSJ-Aomori</fullName>
+                <default>false</default>
+                <label>LSJ-Aomori</label>
+            </value>
+            <value>
+                <fullName>LSJ-Chiba</fullName>
+                <default>false</default>
+                <label>LSJ-Chiba</label>
+            </value>
+            <value>
+                <fullName>LSJ-Ehime</fullName>
+                <default>false</default>
+                <label>LSJ-Ehime</label>
+            </value>
+            <value>
+                <fullName>LSJ-Fukui</fullName>
+                <default>false</default>
+                <label>LSJ-Fukui</label>
+            </value>
+            <value>
+                <fullName>LSJ-Fukuoka</fullName>
+                <default>false</default>
+                <label>LSJ-Fukuoka</label>
+            </value>
+            <value>
+                <fullName>LSJ-Fukushima</fullName>
+                <default>false</default>
+                <label>LSJ-Fukushima</label>
+            </value>
+            <value>
+                <fullName>LSJ-Gifu</fullName>
+                <default>false</default>
+                <label>LSJ-Gifu</label>
+            </value>
+            <value>
+                <fullName>LSJ-Gunma</fullName>
+                <default>false</default>
+                <label>LSJ-Gunma</label>
+            </value>
+            <value>
+                <fullName>LSJ-Hiroshima</fullName>
+                <default>false</default>
+                <label>LSJ-Hiroshima</label>
+            </value>
+            <value>
+                <fullName>LSJ-Hokkaido</fullName>
+                <default>false</default>
+                <label>LSJ-Hokkaido</label>
+            </value>
+            <value>
+                <fullName>LSJ-Hyogo</fullName>
+                <default>false</default>
+                <label>LSJ-Hyogo</label>
+            </value>
+            <value>
+                <fullName>LSJ-Ibaragi</fullName>
+                <default>false</default>
+                <label>LSJ-Ibaragi</label>
+            </value>
+            <value>
+                <fullName>LSJ-Ishikawa</fullName>
+                <default>false</default>
+                <label>LSJ-Ishikawa</label>
+            </value>
+            <value>
+                <fullName>LSJ-Iwate</fullName>
+                <default>false</default>
+                <label>LSJ-Iwate</label>
+            </value>
+            <value>
+                <fullName>LSJ-Kagawa</fullName>
+                <default>false</default>
+                <label>LSJ-Kagawa</label>
+            </value>
+            <value>
+                <fullName>LSJ-Kagoshima</fullName>
+                <default>false</default>
+                <label>LSJ-Kagoshima</label>
+            </value>
+            <value>
+                <fullName>LSJ-Kanagawa</fullName>
+                <default>false</default>
+                <label>LSJ-Kanagawa</label>
+            </value>
+            <value>
+                <fullName>LSJ-Kochi</fullName>
+                <default>false</default>
+                <label>LSJ-Kochi</label>
+            </value>
+            <value>
+                <fullName>LSJ-Kumamoto</fullName>
+                <default>false</default>
+                <label>LSJ-Kumamoto</label>
+            </value>
+            <value>
+                <fullName>LSJ-Kyoto</fullName>
+                <default>false</default>
+                <label>LSJ-Kyoto</label>
+            </value>
+            <value>
+                <fullName>LSJ-Mie</fullName>
+                <default>false</default>
+                <label>LSJ-Mie</label>
+            </value>
+            <value>
+                <fullName>LSJ-Miyagi</fullName>
+                <default>false</default>
+                <label>LSJ-Miyagi</label>
+            </value>
+            <value>
+                <fullName>LSJ-Miyazaki</fullName>
+                <default>false</default>
+                <label>LSJ-Miyazaki</label>
+            </value>
+            <value>
+                <fullName>LSJ-Nagano</fullName>
+                <default>false</default>
+                <label>LSJ-Nagano</label>
+            </value>
+            <value>
+                <fullName>LSJ-Nagasaki</fullName>
+                <default>false</default>
+                <label>LSJ-Nagasaki</label>
+            </value>
+            <value>
+                <fullName>LSJ-Nara</fullName>
+                <default>false</default>
+                <label>LSJ-Nara</label>
+            </value>
+            <value>
+                <fullName>LSJ-Niigata</fullName>
+                <default>false</default>
+                <label>LSJ-Niigata</label>
+            </value>
+            <value>
+                <fullName>LSJ-Oita</fullName>
+                <default>false</default>
+                <label>LSJ-Oita</label>
+            </value>
+            <value>
+                <fullName>LSJ-Okayama</fullName>
+                <default>false</default>
+                <label>LSJ-Okayama</label>
+            </value>
+            <value>
+                <fullName>LSJ-Okinawa</fullName>
+                <default>false</default>
+                <label>LSJ-Okinawa</label>
+            </value>
+            <value>
+                <fullName>LSJ-Osaka</fullName>
+                <default>false</default>
+                <label>LSJ-Osaka</label>
+            </value>
+            <value>
+                <fullName>LSJ-Oversea</fullName>
+                <default>false</default>
+                <label>LSJ-Oversea</label>
+            </value>
+            <value>
+                <fullName>LSJ-Saga</fullName>
+                <default>false</default>
+                <label>LSJ-Saga</label>
+            </value>
+            <value>
+                <fullName>LSJ-Saitama</fullName>
+                <default>false</default>
+                <label>LSJ-Saitama</label>
+            </value>
+            <value>
+                <fullName>LSJ-Shiga</fullName>
+                <default>false</default>
+                <label>LSJ-Shiga</label>
+            </value>
+            <value>
+                <fullName>LSJ-Shimane</fullName>
+                <default>false</default>
+                <label>LSJ-Shimane</label>
+            </value>
+            <value>
+                <fullName>LSJ-Shizuoka</fullName>
+                <default>false</default>
+                <label>LSJ-Shizuoka</label>
+            </value>
+            <value>
+                <fullName>LSJ-Tochigi</fullName>
+                <default>false</default>
+                <label>LSJ-Tochigi</label>
+            </value>
+            <value>
+                <fullName>LSJ-Tokushima</fullName>
+                <default>false</default>
+                <label>LSJ-Tokushima</label>
+            </value>
+            <value>
+                <fullName>LSJ-Tokyo</fullName>
+                <default>false</default>
+                <label>LSJ-Tokyo</label>
+            </value>
+            <value>
+                <fullName>LSJ-Tottori</fullName>
+                <default>false</default>
+                <label>LSJ-Tottori</label>
+            </value>
+            <value>
+                <fullName>LSJ-Toyama</fullName>
+                <default>false</default>
+                <label>LSJ-Toyama</label>
+            </value>
+            <value>
+                <fullName>LSJ-Wakayama</fullName>
+                <default>false</default>
+                <label>LSJ-Wakayama</label>
+            </value>
+            <value>
+                <fullName>LSJ-Yamagata</fullName>
+                <default>false</default>
+                <label>LSJ-Yamagata</label>
+            </value>
+            <value>
+                <fullName>LSJ-Yamaguchi</fullName>
+                <default>false</default>
+                <label>LSJ-Yamaguchi</label>
+            </value>
+            <value>
+                <fullName>LSJ-Yamanashi</fullName>
+                <default>false</default>
+                <label>LSJ-Yamanashi</label>
+            </value>
+            <value>
+                <fullName>MM - Myanmar</fullName>
+                <default>false</default>
+                <label>MM - Myanmar</label>
+            </value>
+            <value>
+                <fullName>MV - Maldives</fullName>
+                <default>false</default>
+                <label>MV - Maldives</label>
+            </value>
+            <value>
+                <fullName>MY - Malaysia</fullName>
+                <default>false</default>
+                <label>MY - Malaysia</label>
+            </value>
+            <value>
+                <fullName>Northern_Europe</fullName>
+                <default>false</default>
+                <label>Northern_Europe</label>
+            </value>
+            <value>
+                <fullName>NZ - CK</fullName>
+                <default>false</default>
+                <label>NZ - CK</label>
+            </value>
+            <value>
+                <fullName>NZ - FJ</fullName>
+                <default>false</default>
+                <label>NZ - FJ</label>
+            </value>
+            <value>
+                <fullName>NZ - New Zealand</fullName>
+                <default>false</default>
+                <label>NZ - New Zealand</label>
+            </value>
+            <value>
+                <fullName>NZ - Samoa</fullName>
+                <default>false</default>
+                <label>NZ - Samoa</label>
+            </value>
+            <value>
+                <fullName>NZ - TO</fullName>
+                <default>false</default>
+                <label>NZ - TO</label>
+            </value>
+            <value>
+                <fullName>NZ - VU</fullName>
+                <default>false</default>
+                <label>NZ - VU</label>
+            </value>
+            <value>
+                <fullName>NZ - WS</fullName>
+                <default>false</default>
+                <label>NZ - WS</label>
+            </value>
+            <value>
+                <fullName>PH - Philippines</fullName>
+                <default>false</default>
+                <label>PH - Philippines</label>
+            </value>
+            <value>
+                <fullName>SG - Singapore</fullName>
+                <default>false</default>
+                <label>SG - Singapore</label>
+            </value>
+            <value>
+                <fullName>Southern_Europe</fullName>
+                <default>false</default>
+                <label>Southern_Europe</label>
+            </value>
+            <value>
+                <fullName>TH - Thailand</fullName>
+                <default>false</default>
+                <label>TH - Thailand</label>
+            </value>
+            <value>
+                <fullName>UKI</fullName>
+                <default>false</default>
+                <label>UKI</label>
+            </value>
+            <value>
+                <fullName>US - Atlanta</fullName>
+                <default>false</default>
+                <label>US - Atlanta</label>
+            </value>
+            <value>
+                <fullName>US - Carolinas</fullName>
+                <default>false</default>
+                <label>US - Carolinas</label>
+            </value>
+            <value>
+                <fullName>US - Chesapeake</fullName>
+                <default>false</default>
+                <label>US - Chesapeake</label>
+            </value>
+            <value>
+                <fullName>US - Chicago</fullName>
+                <default>false</default>
+                <label>US - Chicago</label>
+            </value>
+            <value>
+                <fullName>US - Dallas</fullName>
+                <default>false</default>
+                <label>US - Dallas</label>
+            </value>
+            <value>
+                <fullName>US - Florida</fullName>
+                <default>false</default>
+                <label>US - Florida</label>
+            </value>
+            <value>
+                <fullName>US - Gateway</fullName>
+                <default>false</default>
+                <label>US - Gateway</label>
+            </value>
+            <value>
+                <fullName>US - Gulf Coast</fullName>
+                <default>false</default>
+                <label>US - Gulf Coast</label>
+            </value>
+            <value>
+                <fullName>US - Houston</fullName>
+                <default>false</default>
+                <label>US - Houston</label>
+            </value>
+            <value>
+                <fullName>US - Lake Erie</fullName>
+                <default>false</default>
+                <label>US - Lake Erie</label>
+            </value>
+            <value>
+                <fullName>US - New England</fullName>
+                <default>false</default>
+                <label>US - New England</label>
+            </value>
+            <value>
+                <fullName>US - New York</fullName>
+                <default>false</default>
+                <label>US - New York</label>
+            </value>
+            <value>
+                <fullName>US - Northstar</fullName>
+                <default>false</default>
+                <label>US - Northstar</label>
+            </value>
+            <value>
+                <fullName>US - Ohio Valley</fullName>
+                <default>false</default>
+                <label>US - Ohio Valley</label>
+            </value>
+            <value>
+                <fullName>US - Pacific NW</fullName>
+                <default>false</default>
+                <label>US - Pacific NW</label>
+            </value>
+            <value>
+                <fullName>US - Philadelphia</fullName>
+                <default>false</default>
+                <label>US - Philadelphia</label>
+            </value>
+            <value>
+                <fullName>US - Rocky Mountain</fullName>
+                <default>false</default>
+                <label>US - Rocky Mountain</label>
+            </value>
+            <value>
+                <fullName>US - Southwest</fullName>
+                <default>false</default>
+                <label>US - Southwest</label>
+            </value>
+            <value>
+                <fullName>VN - Vietnam</fullName>
+                <default>false</default>
+                <label>VN - Vietnam</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,7 @@
+<apex:page standardController="Contact" tabstyle="Case" extensions="VFPagePane_CLS" showHeader="false" sidebar="false">
+ 
+ 
+<!-- <flow:interview name="GoldStandDiagnosev2" interview="{!tierOneInterview}" finishLocation="/{!contact.Id}" >
+ </flow:interview>    -->
+    
+</apex:page>

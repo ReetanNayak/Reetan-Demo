@@ -1,0 +1,79 @@
+<apex:page standardController="Account" extensions="SelectAccountField_CLS" >
+
+  <style type="text/css">
+
+    .custPopup{
+        background-color: white;
+        border-width: 0px;
+        border-style: solid;
+        left: 40%;
+        top:20%;
+        align:center;
+      //  padding:10px;
+        position: absolute;
+        width: 300px;
+      //  margin-left: -250px;
+      //  fixedCenter: true;
+        z-index: 9999;            
+    }
+    
+    .popupBackground{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+    }    
+
+     .AccFields{
+        overflow: auto;
+        height: 200px;
+    }
+
+</style>
+
+<apex:form id="theForm">
+<apex:commandButton action="{!openPopUp}" value="Click" reRender="tstpopup"/>
+ <!--Pop Up Block-->
+<apex:outputPanel id="tstpopup">
+    <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+    <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+        <div class="AccFields">
+        <apex:pageBlock tabStyle="Account">
+        <apex:pageBlockTable value="{!AccFields}" var="acc1"  >
+                  <apex:column >
+                  <apex:inputCheckbox value="{!acc1.valChecked}" selected="{!acc1.valChecked}" id="ids" />
+                  <!--<input type="checkbox" />-->
+                  <apex:outputText value="{!acc1.strFieldValue}"></apex:outputText>
+                  </apex:column>
+         </apex:pageBlockTable>
+         <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveFields}"  reRender="listTable,tstpopup"/>
+                <apex:commandButton value="Cancel" action="{!closePopUp}"/>
+            </apex:pageBlockButtons>                    
+        </apex:pageBlock>
+        </div >
+    </apex:outputPanel>
+</apex:outputPanel>
+ <!--Account List Table-->
+<apex:outputPanel id="listTable">
+    <apex:pageBlock title="Viewing Accounts">
+      <apex:pageBlockTable var="a" value="{!accTable}">
+      
+       <apex:repeat value="{!lstAccountFields}" var="str">
+           <apex:column headerValue="{!str.strFieldValue}" width="10%" rendered="{!if(str.strFieldName!='Id',true,false)}">
+         
+                <apex:outputLabel >{!a[str.strFieldName]}</apex:outputLabel>
+              
+           </apex:column>
+        </apex:repeat>
+        
+       </apex:pageBlockTable> 
+    </apex:pageBlock>
+</apex:outputPanel>
+</apex:form> 
+</apex:page>

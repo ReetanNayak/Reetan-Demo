@@ -1,0 +1,87 @@
+<template>
+	<c-content-container>
+		<div class="slds-var-m-left_x-small slds-var-m-bottom_large slds-var-m-top_large">
+		  <br/>
+		  <h1> Request service</h1>
+		</div>
+		<div class="slds-grid slds-gutters">
+		  <div class="slds-col slds-size_5-of-12 slds-var-m-left_medium">
+			<span>
+			  <!-- <c-custom-look-up label-name="Vessel Name"
+								obj-name= {objectName}
+								onlookupselected={handleVesselSelection} >
+				</c-custom-look-up> -->
+			</span>
+		  </div>
+		</div>
+		<br />
+		<div class="slds-grid slds-gutters">
+		  <div class="slds-col slds-size_4-of-12">
+			<lightning-button
+			  variant="brand"
+			  label="Add Equipment Group"
+			  title="Add Equipment Group"
+			  onclick={openModal}
+			  class="slds-var-m-left_x-small">
+			</lightning-button>
+		  </div>
+		</div>
+		<br />
+
+		<template if:true={isModalOpen}>
+			<!-- <c-case-details-model vessel-id={vesselId} is-modal-open={isModalOpen} onselectedcasedetails={handleSelectedCases}> 
+			</c-case-details-model> -->
+		</template>
+		
+		<template if:true={isCases}>
+			<div class="slds-grid slds-gutters">
+				<div class="slds-col slds-size_8-of-12">
+				  <div class="slds-box slds-theme_default">
+					<!-- <c-display-cases-details case-details={caseArray} is-cases={isCases} onselectedequipmentservices={handleSelectedEquipmentservices}>
+					</c-display-cases-details> -->
+				  </div>
+				</div>
+			</div>
+		</template>
+		<br /> 
+
+		<div class="slds-grid slds-gutters">
+			<div class="slds-col slds-size_6-of-12 ButtonStretch">
+				<button class="slds-button slds-button_brand slds-var-m-left_x-small" style="width:150px" onclick={openPortDetailsModal}>Add Port Details</button>
+			</div>
+		</div>
+
+		<template if:true={isPortModalOpen}>
+			<!-- <c-get-port-names is-modal-open={isPortModalOpen} label-name="Port Name" onselectedportdetails={displayPortDetails}>
+			</c-get-port-names> -->
+		</template>
+		<br />
+		
+		<template if:true={isPort}>
+			<div class="slds-grid slds-gutters">
+				<div class="slds-col slds-size_8-of-12">
+				  <div class="slds-box slds-theme_default">
+					<!-- <c-display-selected-port-details port-details={portArray} is-port={isPort} onfinalportdetails={selectedPorts}>
+					</c-display-selected-port-details> -->
+				  </div>
+				</div>
+			</div>
+		</template>
+		<br />
+
+
+		<div class="slds-grid slds-wrap">
+			<div class="slds-col slds-size_6-of-12">
+				<lightning-textarea type="text" value={customerServiceComment} label="Comment for Customer Service" onchange={handleCustomerserviceComment}></lightning-textarea>
+			</div>
+		</div>
+		<br />
+		
+		<div class="slds-float_right">
+			<lightning-button variant="brand-outline" label="Cancel" onclick={handleCancel} class="slds-var-m-left_large slds-var-p-bottom_xx-large"></lightning-button>
+			<lightning-button variant="brand-outline" label="Send Service Request" onclick={handleCreateServiceRequest} class="slds-var-m-left_large slds-p-right_medium slds-var-p-bottom_xx-large"></lightning-button>
+		</div>
+		<br />
+		<br />
+	</c-content-container>
+</template>

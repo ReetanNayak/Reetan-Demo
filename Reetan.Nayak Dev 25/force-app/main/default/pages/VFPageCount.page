@@ -1,0 +1,5 @@
+<apex:page standardController="Account" extensions="VFPageCount_Class"  action="{!countVF}">
+<apex:form >
+    Total VF Count: {!viewCount}
+</apex:form>
+</apex:page>

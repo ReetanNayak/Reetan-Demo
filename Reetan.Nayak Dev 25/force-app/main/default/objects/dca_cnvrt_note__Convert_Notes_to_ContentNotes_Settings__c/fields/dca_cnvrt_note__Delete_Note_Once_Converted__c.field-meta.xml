@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>dca_cnvrt_note__Delete_Note_Once_Converted__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When checked then conversion process will delete the original Note once successfully converted to ContentNote. You may want to delete them to save storage space in your org.</description>
+    <inlineHelpText>When checked then conversion process will delete the original Note once successfully converted to ContentNote. You may want to delete them to save storage space in your org.</inlineHelpText>
+    <label>Delete Note Once Converted?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

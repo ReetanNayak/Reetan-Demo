@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>dca_cnvrt_note__All</fullName>
+    <columns>NAME</columns>
+    <columns>dca_cnvrt_note__Status__c</columns>
+    <columns>dca_cnvrt_note__Summary__c</columns>
+    <columns>dca_cnvrt_note__Detail__c</columns>
+    <columns>dca_cnvrt_note__Log_Time__c</columns>
+    <columns>dca_cnvrt_note__Old_Note_ID__c</columns>
+    <columns>dca_cnvrt_note__New_Note_ID__c</columns>
+    <columns>dca_cnvrt_note__Job_ID__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CONNECTION_SENT.NAME</columns>
+    <columns>CONNECTION_RECEIVED.NAME</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

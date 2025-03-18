@@ -1,0 +1,132 @@
+<apex:page controller="Coupon_Registration_CLS" showHeader="false" sidebar="false" id="pg" >
+<apex:form id="fm" >
+
+<style type="text/css">
+    #header1{padding-left:20%; padding-right:20%;}
+    div.pbSubheader{font-size:15px;}
+   .color { color:#3A287C; }
+</style>
+
+
+
+    <div id="header1"> <br/>
+    <apex:pageBlock tabStyle="UB_Coupon__c" id="pb" >
+        <div align="center"><apex:image value="{!$Resource.UB_Group}" /> </div> <br/>
+        <apex:pageMessages />
+        <apex:pageBlockSection title="UBSL Information" columns="1" id="pbs"  >
+        <div align="right"><b><font color="red" size="2">*</font></b>&nbsp;Fields are Mandatory </div>
+        <table border="0" width="100%" >
+            <apex:pageBlockSectionItem id="pbsi1" >
+            <apex:outputPanel >
+            <tr>
+                <td align="right"><apex:outputLabel styleclass="color" ><b> Name :</b>&nbsp;&nbsp;&nbsp;</apex:outputLabel></td>
+                <td><apex:inputText size="30" value="{!strName}" /></td>
+            </tr>   
+            </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem id="pbsi2" >
+            <apex:outputPanel >
+            <tr>
+                <td align="right"><apex:outputLabel styleclass="color" ><b><font color="red" size="2">*</font></b><b>&nbsp;Email ID :</b>&nbsp;&nbsp;&nbsp;</apex:outputLabel></td>
+                <td><apex:inputText size="30"  value="{!stremail}" id="EID"  /> </td>
+            </tr>
+            </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+
+            <apex:pageBlockSectionItem id="pbsi3" >
+            <apex:outputPanel >
+            <tr>
+                <td align="right"><apex:outputLabel styleclass="color"> <b><font color="red" size="2">*</font></b><b>&nbsp;Mobile No :</b>&nbsp;&nbsp;&nbsp;</apex:outputLabel></td>
+                <td><apex:inputText size="30" value="{!strPhone}" id="MID" /></td>
+            </tr>   
+            </apex:outputPanel>    
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem id="pbsi4" >
+            <apex:outputPanel >
+            <tr>
+                <td align="right"><apex:outputLabel styleclass="color"  ><b> Address :</b>&nbsp;&nbsp;&nbsp;</apex:outputLabel></td>
+                <td><apex:inputTextarea rows="4" cols="30" value="{!strAddress}"  /></td>
+            </tr>
+            </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        </table>
+        </apex:pageBlockSection>    <br/>
+
+
+
+        <apex:pageBlockSection title="Brand Information" columns="1" >
+        <table border="0" width="100%" >
+            <apex:pageBlockSectionItem >
+            <apex:outputPanel >
+            <tr>
+                <td align="right" width="80"><apex:outputLabel styleclass="color" ><b><font color="red" size="2">*</font></b><b>&nbsp;Brand :</b>&nbsp;&nbsp;&nbsp;</apex:outputLabel></td>            
+                <td><apex:selectList value="{!SelectBrand}" size="1" style="width:200px"  >
+                    <apex:selectOptions value="{!BrandName}"  />
+                    <apex:actionSupport event="onchange" reRender="ChangeBrand" status="LoadingStatus" />
+                </apex:selectList> &nbsp;
+                <apex:actionStatus stopText="" id="LoadingStatus" >
+                    <apex:facet name="start">
+                        <apex:image value="{!$Resource.Loading}" height="15" width="15" />
+                    </apex:facet>    
+                </apex:actionStatus></td>
+                
+            </tr>   
+            </apex:outputPanel>                  
+            </apex:pageBlockSectionItem>
+
+                     
+            <apex:pageBlockSectionItem >
+            <apex:outputPanel >
+            <tr>
+                <td align="right"><apex:outputLabel styleclass="color"  ><b> Product :</b>&nbsp;&nbsp;&nbsp;</apex:outputLabel></td>
+                <td><apex:selectList value="{!SelectProduct}"  id="ChangeBrand" size="1" style="width:200px" >
+                    <apex:selectOptions value="{!ProductName}" />
+                    
+                </apex:selectList> </td>
+            </tr>       
+            </apex:outputPanel>    
+            </apex:pageBlockSectionItem>
+        
+            <apex:pageBlockSectionItem >
+            <apex:outputPanel >
+            <tr> 
+                <td align="right"><apex:outputLabel styleclass="color" ><b><font color="red" size="2">*</font></b><b>&nbsp;Location :</b>&nbsp;&nbsp;&nbsp;</apex:outputLabel></td>
+                <td><apex:selectList value="{!SelectLocation}" size="1" style="width:200px" >
+                    <apex:selectOptions value="{!LocationName}" />
+                    <apex:actionSupport event="onchange" reRender="ChangeLocation" status="LoadingStatus2" />
+                </apex:selectList> &nbsp;
+                <apex:actionStatus stopText="" id="LoadingStatus2" >
+                    <apex:facet name="start">
+                        <apex:image value="{!$Resource.Loading}" height="15" width="15" />
+                    </apex:facet>    
+                </apex:actionStatus></td>
+            </tr>   
+            </apex:outputPanel>
+            </apex:pageBlockSectionItem>
+        
+
+            <apex:pageBlockSectionItem >
+            <apex:outputPanel >
+            <tr>
+                <td align="right"><apex:outputLabel styleclass="color" style="text-align:right" ><b> Outlet :</b>&nbsp;&nbsp;&nbsp;</apex:outputLabel></td>
+                <td><apex:selectList value="{!SelectOutlet}" size="1" id="ChangeLocation" style="width:200px;" >
+                    <apex:selectOptions value="{!OutletName}" />
+                </apex:selectList> </td>
+            </tr>
+            </apex:outputPanel>    
+            </apex:pageBlockSectionItem>
+  
+        </table>
+        </apex:pageBlockSection>   
+                
+        
+        <apex:pageBlockButtons location="bottom" >
+            <apex:commandButton value="Submit" action="{!doSubmit}" />
+        </apex:pageBlockButtons>      
+             
+    </apex:pageBlock>
+    </div>
+</apex:form>
+</apex:page>

@@ -1,0 +1,34 @@
+<apex:page controller="ObjectFetch5_CLS" sidebar="false" >
+<apex:form >
+  
+    <apex:pageBlock id="pb1" >
+            <apex:outputLabel ><b>Objects :</b></apex:outputLabel>&nbsp;
+            <apex:selectList value="{!selectedObject}" size="1">
+                <apex:actionSupport event="onchange"  reRender="detail"/>
+                <apex:selectOption itemLabel="--Select Object--" itemValue="blank" />
+                <apex:selectOptions value="{!objectNames}"/>
+            </apex:selectList>&nbsp;&nbsp;&nbsp;
+
+            <apex:commandButton value="Get Fields" action="{!showFields}"  status="fetchStatus" />&nbsp;
+                    
+            <apex:actionStatus id="fetchStatus" >
+                <apex:facet name="start">
+                    <img src="/img/loading.gif" class="waitingImage" title="Please Wait..."/> 
+                </apex:facet>
+            </apex:actionStatus> 
+        </apex:pageBlock>
+    
+    <apex:pageBlock id="pb2" rendered="{!displayPB2}" >   
+        <apex:commandButton value="Export To Excel" action="{!exportData}" rendered="{!showButton}" style="font-weight:bold; font-size:15px; color:red"  /> <br/><br/>    
+      <!--  <apex:commandLink value="Export To Excel" action="{!exportData}" rendered="{!showButton}" target="_blank" style="font-weight:bold; font-size:15px; color:red" /> <br/><br/>   --> 
+        <apex:pageBlockTable value="{!InrField}" var="fls" rendered="{!showTable}" >
+            <apex:column headerValue="Field Label" value="{!fls.label}" />
+            <apex:column headerValue="API Name" value="{!fls.name}" />
+            <apex:column headerValue="Data Type" value="{!fls.type}" />        
+            <apex:column headerValue="Custom" value="{!fls.cust}" style="color: {!IF(fls.cust == 'true', 'red', 'green')}" />            
+           <!-- <apex:column headerValue="Digit" value="{!fls.digit}" style="color: {!IF(fls.cust == 'true', 'red', 'green')}" />    -->
+        </apex:pageBlockTable>    
+    </apex:pageBlock>   
+
+</apex:form>
+</apex:page>

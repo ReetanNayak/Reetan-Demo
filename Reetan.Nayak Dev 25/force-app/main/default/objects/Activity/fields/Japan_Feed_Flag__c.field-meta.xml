@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Japan_Feed_Flag__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>To controll whether to automatically feed an event to chatter group</description>
+    <label>Feed Flag</label>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,1471 @@
+<apex:page standardController="Account" recordSetVar="Accounts" extensions="AccountContactList_CLS" standardStylesheets="true">
+    <apex:includescript value="{!URLFOR($Resource.JQueryFullCalendarV1, 'fullcalendar_1.5.3_V2.1/src/_loader.js')}"/>    
+    
+    <apex:includescript value="{!URLFOR($Resource.JQueryDatePicker)}"/> 
+    
+<meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+<script type="text/javascript">
+
+    function changeUserfunction() {
+        $('.waitingSearchDivOpacity').css({display: "block",opacity: 0});
+        changeUser();
+    }
+    
+    function getAllDates() {
+        var sd = document.getElementById('datepick').value;
+        var ed = document.getElementById('datepick2').value;
+        saveNewEvent(sd,ed);
+    }
+
+    function stopRKey(evt) {
+        var evt = (evt) ? evt : ((event) ? event : null);
+        var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+        if ((evt.keyCode == 13) && (node.type=="text")) {
+        var txt = document.getElementById('myText').value;
+        changePageNo(txt);
+        return false;}
+    }
+
+    document.onkeypress = stopRKey; 
+
+    /* Passing the event data for current week on load of page*/
+    var evtData;
+    window.document.onload = new function() { 
+        // pasing the data in this format {"events": {data}}
+        evtData = '{"events":'+'{!weekEvents}'+'}';
+        //alert(evtData);
+    }
+
+    function changePageNo(pageNo) {
+        //alert(pageNo);
+        changePageNumberAction(pageNo);
+    }
+
+    function updateList() {
+        resizeLayout(calendar_open);
+    } 
+ 
+    /*On click of event pop up this javascript method will call which will in turn call the apex action function named pop test along with the parameters.*/
+    function openEventPopup(startDate,startTime,endTime) {
+        $('.waitingSearchDiv').css("display", "block");
+        var accountID = document.getElementById('accIdHidden').value;
+        var accountName = document.getElementById('accNameHidden').value;
+        poptest(startDate,startTime,startDate,endTime,accountID,accountName);
+    }
+      
+    /*On click of next previous button on calendar this javascript method will run*/
+    function nextPrevEvents(startDate) {
+         $('.waitingSearchDivOpacity').css({display: "block",opacity: 0});
+        //cal.fullCalendar('removeEventSource', weekEventData.events);
+        cal.fullCalendar('removeEvents');
+        $(".calendarHeader").find(".dateText").html(cal.fullCalendar('getView').title);
+        //$(".calendarHeader").find(".dateText").text(formatDate(cal.fullCalendar('getView').start, "dd/MM/yyyy") + " - " + formatDate(cal.fullCalendar('getView').end, "dd/MM/yyyy"));
+        //Passing values as mm/dd/yyyy and calling the apex action function named 'WeekEvents'
+        WeekEvents(startDate);
+    }
+         
+    /*On click of delete button on calendar pop up this javascript method will run*/
+    function deleteEvent(eventId) {
+        delEvent(eventId);
+    }
+  
+    /*for checking all the checkbox on a single click*/
+    function checkAll(cb) {
+        var inputElem = document.getElementsByTagName("input");
+        for(var i=0; i<inputElem.length; i++) {
+            if(inputElem[i].id.indexOf("checkedone")!=-1)
+            inputElem[i].checked = cb.checked;
+        }
+    }
+
+    var n = 0;
+    
+    /*On click of any checkbox in the account list the control will come here.
+    It will check if the checkbox is clicked or not
+    if it is selected the previous selected one will be deselected
+    and it will set the accunt id hidden field with newly checked value
+    */
+    function check(accCheck) {
+        if(accCheck.checked) {
+            document.getElementById('accIdHidden').value = accCheck.id;
+            document.getElementById('accNameHidden').value = accCheck.name;
+            var inputCheck = document.getElementsByTagName("input");
+            for(var i=0; i<inputCheck.length; i++) {
+                if((inputCheck[i].type == "checkbox")&&(inputCheck[i].id != accCheck.id)) {
+                    inputCheck[i].checked = false;
+                }
+            }   
+        }
+        else{
+            if(document.getElementById('accIdHidden').value == accCheck.id){
+                document.getElementById('accIdHidden').value = '';
+                document.getElementById('accNameHidden').value = '';
+            }
+        }
+    } 
+
+  
+    var cal;
+    var resizeLayout;
+    var calendar_open = false;
+    //var weekEventData;
+    
+    $(document).ready(function() {
+    
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+
+        var id = 10;
+        var containerLayout;
+        //var calendar_open = false;
+        var weekEventData;
+        var $datePickerDialogContent = $("#datepicker_container");
+
+        weekEventData = evtData;
+        //weekEventData ='{"events":[{"title":"Kannan",allDay: false,"type":"Call","toTPM":false,"toTCategory":"null","toTAM":false,"subject":"Call-Scheduled","status":"Scheduled","startDate":"04/24/2012 03:00 PM","relatedToUrl":"https://cs13.salesforce.com/001W0000001weGgIAI","relatedTo":"Westminster house","nameUrl":"https://cs13.salesforce.com/003W0000001Q2WpIAK","name":"Suzanne Greenwood","eventID":"00UW0000001A4TeMAK","endDate":"04/24/2012 05:00 PM","editUrl":"https://cs13.salesforce.com/00UW0000001A4TeMAK/e?retURL=apex/AccList","callType":"Face To Face","callReport":"<a href=/a0XW00000001YriMAE target=_parent>Call Report</a>","checkAv":"<a href=/00U/c?md0=2012&md3=107>Check Availability</a>","assignedTo":"Laxmana Lenka"}]}';
+        
+        $(function(){
+            $(window).resize(function(){
+            resizeLayout(calendar_open);
+            });
+        });
+            
+        var onChanged = function(ev) {
+            var orientation = window.orientation;
+            var orient = (orientation == 90 || orientation == -90) ? "land" : "port";
+            resizeLayout(calendar_open);
+           
+            if(orient == "land") {
+                //document.getElementById('sidebarCell').style.display = "block";
+                document.getElementById('sidebarCell').className = 'sidebarCell sidebarCollapsible';
+            }
+
+            if(orient == "port") {
+                //document.getElementById('sidebarCell').style.display = "none";
+                document.getElementById('sidebarCell').className = 'sidebarCell sidebarCollapsible sidebarCollapsed';
+            } 
+        };
+       
+        $(window).bind('orientationchange', onChanged).bind('load', onChanged);
+        
+        cal = $('#calendar').fullCalendar({
+            defaultView: 'agendaWeek',
+            firstDay: 1,
+            weekends: false,
+            weekMode: 'variable',
+            minTime: '0:00am',
+            maxTime: '11:59pm',
+            contentHeight: 1,
+            //height: 1,
+            
+            windowResize: function(view) {
+                //alert('The calendar has adjusted to a window resize');
+            },
+            
+            titleFormat: {
+                month: 'MMMM yyyy',                             // September 2009
+                week: "dd/MM/yyyy{ '-' dd/MM/yyyy}",            // 23/04/2012 - 27/04/2012
+                day: 'dddd, d MMMM yyyy'                        // Friday, 27 April 2012
+            },
+            
+            axisFormat: 'HH:mm',
+            
+            header: {
+                left: '',
+                center: '',
+                right: ''
+                //  right: 'month,agendaWeek,agendaDay'
+            },
+
+            //    dayNamesShort: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+            
+
+            //   allDayText: 'all-day',
+         
+
+            editable: true,
+            selectable: true,
+            disableDragging: true,
+            disableResizing: true,
+            events: [],
+            
+            select: function(start, end, allDay) {
+                onSelectEvent(start, end, allDay);
+            },
+            
+            touchSelect: function(start, end, allDay) {
+                onSelectEvent(start, end, allDay);
+            },
+            
+            eventClick: function(event, element) {
+                onClickEvent(event);
+            },
+            
+            eventTouch: function(event, element) {
+                onClickEvent(event);
+            }
+        });
+        
+        var calendarHeader = $(".calendarHeader");
+        
+        calendarHeader.find(".dateText").html(cal.fullCalendar('getView').title);
+
+        calendarHeader.find(".datePickerIcon").click(function() {
+            datePickerClick();
+            return false;
+        }); 
+        
+        calendarHeader.find(".dateLinks #thisRange").click(function() {
+            cal.fullCalendar('today');
+            var startDate =formatDate(cal.fullCalendar('getView').start, "MM/dd/yyyy");
+            //alert(startDate);
+            nextPrevEvents(startDate);
+            return false;
+        });
+
+        calendarHeader.find(".arrowIcons .prevCalArrow").click(function() {
+            cal.fullCalendar('prev');
+            var startDate =formatDate(cal.fullCalendar('getView').start, "MM/dd/yyyy");
+            nextPrevEvents(startDate);
+            return false;
+        });
+
+        calendarHeader.find(".arrowIcons .nextCalArrow").click(function() {
+            cal.fullCalendar('next');
+            var startDate =formatDate(cal.fullCalendar('getView').start, "MM/dd/yyyy");
+            nextPrevEvents(startDate);
+            return false;
+        });
+        
+        calendarHeader.find(".wEndCheckBox").click(function() {
+           $("#shWkendsCheckbox").is(':checked')?cal.fullCalendar('setOptions',{'weekends':true}) : cal.fullCalendar('setOptions',{'weekends':false});
+            //return false;
+        }); 
+
+        containerLayout = $('#container').layout({
+            slidable: false,
+            resizable: false,
+            initClosed: true,
+            spacing_open: 0,
+            spacing_closed: 0,
+            togglerLength_open: 0,
+            togglerLength_closed: 0,
+            showErrorMessages: false,
+        }); 
+        
+        resizeLayout = function (calendar_open) {
+            //alert(calendar_open);
+            var windowHeight = $(window).height();
+            var parentHeight = $(parent).outerHeight();
+            var headerHeight = $(".bPageHeader").outerHeight();
+            var footerHeight = 30;
+            var containerWrapperHeight = windowHeight-headerHeight-footerHeight;
+            //var containerWrapperHeight = windowHeight-headerHeight;
+            $('#container-wrapper').height(containerWrapperHeight);
+
+            $('#calendar-panel').height(containerWrapperHeight/2 - 20);
+            var calendarPanelHeight = $("#calendar-panel").outerHeight();
+
+            if(calendar_open) {
+                //alert("h");
+                $('#listview-panel').height(containerWrapperHeight/2 + 20);
+                var listPanelHeight = $("#listview-panel").outerHeight();
+                
+                cal.fullCalendar('option', 'contentHeight', calendarPanelHeight-30);
+                
+                if($('.list').height() < listPanelHeight - 140) {
+                    $('#scrollId').height($('.list').height()+5);
+                }
+                else {
+                    $('#scrollId').height(listPanelHeight - 140);
+                }
+            }
+            
+            if(!calendar_open) {
+                //alert("q");
+                $('#listview-panel').height(containerWrapperHeight);
+                var listPanelHeight = $("#listview-panel").outerHeight();
+                
+                if($('.list').height() < listPanelHeight - 140) {
+                    $('#scrollId').height($('.list').height()+5);
+                }
+                
+                else {
+                    $('#scrollId').height(listPanelHeight - 140);
+                }
+            }
+        }; 
+        
+        var onSelectEvent = function(start, end, allDay) {
+            var startDate =formatDate(start, "MM-dd-yyyy");
+            var startTime = formatDate(start, "hh:mm:ss TT");
+            var endTime = formatDate(end, "hh:mm:ss TT");
+            openEventPopup(startDate,startTime,endTime);
+        };
+        
+        var addEvent = function(event) {
+            cal.fullCalendar('renderEvent', event, false);
+        };
+        
+        var onClickEvent = function(calEvent) {
+            $(".dataCol").each(function(index) {
+                var elementClass = $(this);
+                var elementId = elementClass[0].id;
+                var calEventVal = calEvent[elementId];
+                
+                if(elementId == 'startDate') {
+                    calEventVal = calEventVal + "&nbsp;&nbsp;&nbsp;&nbsp;"+ calEvent['checkAv'];
+                }
+                
+                else if(elementId == 'toTPM' || elementId == 'toTAM') {
+                    if(calEventVal == true) {
+                        calEventVal = '<img width="21" height="16" title="Checked" class="checkImg" alt="Checked" src="/img/checkbox_checked.gif">'
+                    }
+                    else {
+                        calEventVal = '<img width="21" height="16" title="Not Checked" class="checkImg" alt="Not Checked" src="/img/checkbox_unchecked.gif">'
+                    }
+                }
+                elementClass.html(calEventVal);
+            });
+            
+            var $dialogContent = $("#event_edit_container");
+            $dialogContent.dialog({
+                modal: true,
+                //title: "Edit - " + calEvent.subject,
+                title: "Event Details",
+                 
+                
+                close: function() {
+                    $dialogContent.dialog("destroy");
+                    $dialogContent.hide();
+                },
+                
+                buttons: {
+                    Edit : function() {
+                    
+                        window.location = calEvent.editUrl;
+                    },
+
+                    "Delete" : function() {
+                    
+                        var answer = confirm ("Are you sure?")
+                        if (answer) {
+                            deleteEvent(calEvent.eventID);
+                            cal.fullCalendar('removeEvents', calEvent.id);
+                            $dialogContent.dialog("close");
+                        }
+                        else
+                            $dialogContent.dialog("close");
+                    },
+
+                    Cancel : function() {
+                    
+                        $dialogContent.dialog("close");
+                    }
+                }
+            }).show();
+        };
+        
+        $eventsLoadData = function (JSONString) {
+            //alert("ss: "+JSONString);
+            var jsonVal = (new Function("return " + JSONString))() ;
+
+            $.each(jsonVal.events, function(i, val) {
+                val["id"] = id;
+                id++;
+                //val["title"] = val.subject;
+                val["start"] = new Date(val.startDate);
+                val["end"] = new Date(val.endDate);
+            });
+
+            weekEventData = jsonVal;
+            cal.fullCalendar('removeEvents');
+            cal.fullCalendar('addEventSource', weekEventData.events);
+        } 
+        
+        $eventCreationSuccess = function (msg) {
+           // alert(msg);
+            if(msg == "Failure" || msg == "Cancel" || msg == "") {
+                //$calendar.weekCalendar("removeUnsavedEvents");
+            }
+            else {
+                var calEvent = (new Function("return " + msg))() ;
+                calEvent["id"] = id;
+                id++;
+                calEvent["start"] = new Date(calEvent.startDate);
+                calEvent["end"] = new Date(calEvent.endDate);
+                addEvent(calEvent);
+            }
+        };
+        
+        function datePickerClick() {
+            $datePickerDialogContent.dialog({
+                modal: true,
+                close: function() {
+                    $datePickerDialogContent.dialog("destroy");
+                    $datePickerDialogContent.hide();
+                },
+                buttons: {
+                    Close : function() {
+                        $datePickerDialogContent.dialog("close");
+                    }
+                }
+            }).show();
+        }
+        
+        $(function() {
+            $( "#datepicker" ).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                onSelect: function(dateText, inst){ 
+                    //alert(new Date(dateText));
+                    $datePickerDialogContent.dialog("close");
+                    cal.fullCalendar('gotoDate', new Date(dateText));
+                    if(cal.fullCalendar('getView').name == "agendaWeek") {
+                        var weekStartDate = getFirstDayOfWeek(new Date(dateText),cal.fullCalendar('option', 'firstDay'));
+                        nextPrevEvents(formatDate(weekStartDate, "MM/dd/yyyy"));
+                    }
+                    else if(cal.fullCalendar('getView').name == "agendaDay") {
+                        nextPrevEvents(dateText);
+                    }
+                }
+            });
+            $( "#datepicker" ).datepicker('option',$.datepicker.regional['']);
+        });
+        
+        $("#toggleCalDiv").toggle(
+            function() {
+                containerLayout.open('south');
+                             
+                $("#toggleText").text("Close Calendar");
+                calendar_open = true;
+                resizeLayout(calendar_open);
+            },
+            
+            function() {
+                containerLayout.close('south');
+                            
+                $("#toggleText").text("Open Calendar");                
+                calendar_open = false;
+                resizeLayout(calendar_open);
+            }
+        ); 
+        
+        $(function() {
+            $eventsLoadData(weekEventData);
+        });
+        
+        $('#calendar').resize(function() {
+            cal.fullCalendar('render');
+        });
+
+    });
+
+</script>
+    
+    
+<style type="text/css">
+    
+    .data2Col input[type='text'] {
+        width: 100px;
+    }
+
+    .pbTitle {
+        width:100% !important;
+    }
+    
+    .btnSummary {
+        width:10%;
+        font-weight:bold;
+        font-size :22;
+    }
+    
+    .listRowSizeSelect{
+        border:0;
+        background:#F8F8F8;
+        width:23px;
+    }
+    
+    .ui-layout-pane { /* all 'panes' */ 
+        background: #FFF; 
+        /*border: 1px solid #BBB; 
+        padding: 10px; */
+        overflow: auto;
+    } 
+
+    .ui-layout-resizer { /* all 'resizer-bars' */ 
+        background: #DDD; 
+        /*background-image: url("images/white-top-bottom.gif");
+        background-repeat: repeat-x;
+        border: 1px solid #99BBE8;
+        color: #15428B;
+        padding: 0px 0px 0px 0px;
+        line-height: 15px;
+        z-index: 2 !important;*/
+    } 
+
+    .ui-layout-toggler { /* all 'toggler-buttons' */ 
+        /* background: #FF0000; */
+    } 
+    
+    #container-wrapper {
+        position:relative;
+        width:auto;
+        /* height:490px;*/
+    }
+
+    .pbBody {
+        margin: 5px 12px !important;
+    }
+     
+    #container {
+        overflow: hidden;
+        background: #fff;
+        position: absolute;
+        top:        0px;   /* margins in pixels */
+        bottom:     0px;   /* could also use a percent */
+        left:0px;
+        right: 0px;
+    }
+
+    .dateText, .userText {
+        float: left;
+        padding-left: 5px;
+        font-size: 1em !important;
+        margin: 7px 0px !important;
+        font-weight:normal !important;
+        /*font-weight: bold;*/
+    }
+
+    #footer-panel {
+        position:   relative;
+        bottom:     0px;   
+        left:       0px;
+        right:      20px;
+    }
+    
+    #listview-panel {
+        margin: 0;
+        overflow-y:hidden;
+        position:   absolute;
+        width:100% !important;
+    }
+    
+    #calendar-panel {
+        margin: 0;
+        overflow:hidden;
+    }
+    
+    .wc-scrollable-grid {
+        background-color: #FFFFFF;
+        overflow-x: auto;
+        overflow-y: auto !important;
+        position: relative;
+        width: 100%;
+    }
+    
+    #event_edit_container {
+        display: none;
+    }
+    
+    #datepicker_container {
+        display: none;
+        overflow:hidden;
+    }
+    
+    .ui-dialog {
+        /*width: auto !important;*/
+    }
+    
+    .detailList {
+        width: 100%;
+        overflow: auto;
+    }
+    
+    .detailList .labelCol {
+        width: 30%;
+    }
+    
+    .detailList tr th {
+        border-color: #ECECEC;
+    }
+    
+    .detailList td {
+        vertical-align: top;
+    }
+    
+    .labelCol {
+        color: #333333;
+        font-size: 91%;
+        font-weight: bold;
+        padding: 2px 10px 2px 2px;
+        text-align: right;
+    }
+    
+    .detailList .dataCol {
+        width: 82%;
+    }
+    
+    .custEventPopup {
+        background-color: white;
+        border-width: 0px;
+        border-style: solid;
+        left: 30%;
+        top:20%;
+        align:center;
+        padding:0px;
+        position: absolute;
+        width: 500px;
+        /* margin-left: -250px;
+        fixedCenter: true;*/
+        z-index: 9999;          
+    }
+    
+    .popupEventBackground {
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+    }  
+    
+    A.onmouseover{ 
+        text-decoration: None;color: #015BA7;font-weight:normal;
+        font-size:91%;white-space: nowrap;font-family: Arial,Helvetica,sans-serif;
+    }
+   
+    .custPopup {
+        background-color: white;
+        border-width: 0px;
+        border-style: solid;
+        left: 40%;
+        top:30%;
+        align:center;
+        padding:0px;
+        position: absolute;
+        width: 350px;
+        /* margin-left: -250px;
+        fixedCenter: true;*/
+        z-index: 9999;  
+    }
+
+    .popupBackground{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+    }   
+    
+    .popUpDiv {
+        overflow: auto;
+        height: 250px;
+    } 
+    
+    .custUserPopup{
+        background-color: white;
+        border-width: 0px;
+        border-style: solid;
+        left: 20%;
+        top:25%;
+        align:center;
+        padding:10px;
+        position: absolute;
+        width: 600px;
+        /* margin-left: -250px;
+        fixedCenter: true;*/
+        z-index: 9999;  
+    }
+
+    .popupUserBackground{
+        background-color:black;
+        opacity: 0.20;
+        filter: alpha(opacity = 20);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 9998;
+    }    
+
+    .popUpUserDiv{
+        overflow: auto;
+        height: 350px;
+    }
+    
+    .scroll-pane{
+        width: 98%;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .horizontal-only{
+        height: auto;
+    }
+    
+    .calendar {
+        font-family: 'Trebuchet MS', Tahoma, Verdana, Arial, sans-serif;
+        font-size: 0.9em;
+        background-color: #EEE;
+        color: #333;
+        border: 1px solid #DDD;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        padding: 0.2em;
+        width: 14em;
+    }
+
+    .calendar a {
+        outline: none;
+    }
+
+    .calendar .months {
+        background-color: #F6AF3A;
+        border: 1px solid #E78F08;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        color: #FFF;
+        padding: 0.2em;
+        text-align: center;
+    }
+
+    .calendar .prev-month,
+    .calendar .next-month {
+        padding: 0;
+    }
+
+    .calendar .prev-month {
+        float: left;
+    }
+
+    .calendar .next-month {
+        float: right;
+    }
+            
+    .calendar .current-month {
+        margin: 0 auto;
+    }
+
+    .calendar .months a {
+        color: #FFF;
+        text-decoration: none;
+        padding: 0 0.4em;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+    .calendar .months a:hover {
+        background-color: #FDF5CE;
+        color: #C77405;
+    }
+
+    .calendar table {
+        border-collapse: collapse;
+        padding: 0;
+        font-size: 0.8em;
+        width: 100%;
+    }
+
+    .calendar th {
+        text-align: center;
+    }
+
+    .calendar td {
+        text-align: right;
+        padding: 1px;
+        width: 14.3%;
+    }
+            
+    .calendar td a {
+        display: block;
+        color: #1C94C4;
+        background-color: #F6F6F6;
+        border: 1px solid #CCC;
+        text-decoration: none;
+        padding: 0.2em;
+    }
+
+    .calendar td a:hover {
+        color: #C77405;
+        background-color: #FDF5CE;
+        border: 1px solid #FBCB09;
+    }
+
+    .calendar td.today a {
+        background-color: #FFF0A5;
+        border: 1px solid #FED22F;
+        color: #363636;
+    }
+    
+    .btn {
+        margin: 1px;
+        padding: 0 3px;
+    }
+    
+</style>
+
+
+    <div  id="container-wrapper" >
+        <div id="container" class="ui-layout-container" style="">
+             
+            <div id="listview-panel" class="ui-layout-center x-panel-noborder x-border-panel" style=" left: 0px; top: 0px">
+                <div id="listview">
+                    <!-- Custom Account List-->
+                    <apex:form >
+                        <!-- To delete a particular account in list-->
+                        <apex:actionFunction action="{!DeleteAccount}" name="DeleteAccount" reRender="AccountList,delStatus" status="fetchStatus">     
+                            <apex:param name="accountid" value="" assignTo="{!SelAccIdToDelete}"/>
+                        </apex:actionFunction>
+
+                        <!-- To jump to a specific page-->
+                        <apex:actionFunction action="{!changePageNumber}" name="changePageNumberAction" oncomplete="javascript:updateList();" reRender="pb" status="fetchStatus">     
+                            <apex:param name="pageNo" value="" assignTo="{!intPageNumber}"/>
+                        </apex:actionFunction> 
+
+                        <table style="width:95%" border="0" >
+                        <tr>
+                            <td width="2%" ><apex:sectionHeader /></td>
+                            <td><br/>
+                                <!-- select a  particular list view from dropdown--> 
+                                <apex:selectList value="{!strSelectedFilterId}" size="1" style="font-weight:bold;font-size:12;width:200px" >
+                                    <apex:actionSupport event="onchange" action="{!assignFilter}" oncomplete="javascript:updateList();" rerender="AccountList,listViewPanel" status="fetchStatus"/>
+                                    <apex:selectOptions value="{!lstIpadListViewOptions}"/>
+                                </apex:selectList>
+                                &nbsp;&nbsp;
+
+                                <apex:outputPanel id="listViewPanel"> 
+                                    <!-- edit a particular list view--named as Edit Filter--> 
+                                    <apex:outputLink style="color:#015BA7; text-decoration:none" value="/ui/list/FilterEditPage?id={!strSelectedFilterId}&retURL={!$CurrentPage.URL}" id="editlink" >Edit Filter</apex:outputLink>&nbsp;| &nbsp;
+
+                                    <!-- edit a list view--named as Edit Fields--> 
+                                    <apex:outputLink style="color:#015BA7; text-decoration:none" value="/apex/selectfields?id={!strSelectedFilterId}&name={!strFilterName}">Edit Fields</apex:outputLink>&nbsp;| &nbsp;
+
+                                    <!-- delete a particular list view--> 
+                                    <apex:outputLink style="color:#015BA7; text-decoration:none" value="/ui/list/FilterEditPage?id={!strSelectedFilterId}&retURL={!$CurrentPage.URL}" id="deletelink" >Delete</apex:outputLink>&nbsp;| 
+
+                                    <!-- create a new  list view 'Create New View'--> 
+                                    <apex:outputLink style="color:#015BA7; text-decoration:none" value="/ui/list/FilterEditPage?ftype=a&retURL={!$CurrentPage.URL}"> Create New View </apex:outputLink> 
+                                </apex:outputPanel>
+                        
+                                <apex:outputPanel style="color:#4AA02C">
+                                    <apex:actionStatus id="fetchStatus" >
+                                        <apex:facet name="start">
+                                            <img src="/img/loading.gif" class="waitingImage" title="Please Wait..."/> 
+                                        </apex:facet>
+                                    </apex:actionStatus>
+                                </apex:outputPanel>
+                        
+                                <apex:outputPanel id="delStatus" style="color:red">
+                                    <apex:outputText value="{!strAccDelMsg}"></apex:outputText>
+                                </apex:outputPanel>
+
+                            </td>
+                            
+                            <td align="right" ><br/>
+                                <!-- Click to show popup-->  
+                                <!--<apex:commandButton action="{!openPopUp}" value="Select Fields" reRender="selectFieldsPopUp" status="fetchStatus"/>&nbsp;&nbsp; -->                  
+                                <!-- Click to show Print
+                                <apex:image value="{!$Resource.Print}" /> &nbsp;--> 
+                                <!-- Click to show Help
+                                <apex:image value="{!$Resource.Help}" height="18" />--> 
+                            </td>
+                        </tr> 
+                        </table> 
+
+
+                        <!-- List Of Accounts--> 
+                        <apex:pageBlock id="pb">
+                            <table width="98%" border="0" >
+                                <tr>
+                                    <td width="40%">
+                                        <!-- Click to create new account--> 
+                                        <apex:commandButton value="New Account Contact" onClick="window.open('/setup/ui/recordtypeselect.jsp?ent=Account&retURL={!$CurrentPage.URL}');"/>&nbsp;|&nbsp;
+                                        <!-- Click to open a vf page--> 
+                                        <apex:commandButton value="Open Mass Calendar Update" onClick="window.open('/apex/Calendar');"/>&nbsp;|&nbsp;
+                                        <!-- Click to refresh the list--> 
+                                        <apex:commandButton status="fetchStatus" reRender="pb" value="Refresh" action="{!refresh}" oncomplete="javascript:updateList();" title="Refresh Page"/>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td align="center" width="50%"  >
+                                        <!-- to sort the list alphabetically--> 
+                                        <apex:commandLink styleClass="onmouseover" value="A" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="A" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="B" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="B" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="C" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="C" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="D" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="D" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="E" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="E" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                    
+                                        <apex:commandLink styleClass="onmouseover" value="F" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="F" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="G" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="G" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="H" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="H" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="I" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="I" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="J" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="J" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="K" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="K" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="L" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="L" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                    
+                                        <apex:commandLink styleClass="onmouseover" value="M" action="{!filterRecords}" rerender="pb" oncomplete="javascript:update();" status="fetchStatus">
+                                            <apex:param value="M" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="N" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="N" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="O" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="O" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="P" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="P" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="Q" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="Q" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="R" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="R" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="S" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="S" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="T" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="T" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                    
+                                        <apex:commandLink styleClass="onmouseover" value="U" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="U" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="V" action="{!filterRecords}" rerender="pb"    oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="V" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="W" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="W" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="X" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="X" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="Y" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="Y" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="Z" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="Z" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="Other" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="Other" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>&nbsp;|&nbsp;
+                                        
+                                        <apex:commandLink styleClass="onmouseover" value="All" action="{!filterRecords}" rerender="pb" oncomplete="javascript:updateList();" status="fetchStatus">
+                                            <apex:param value="All" assignTo="{!filterKey}"/> 
+                                        </apex:commandLink>                                     
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <apex:outputPanel id="AccountList">
+                                <!-- Scroll Bar will start from here-->
+                                <script type="text/javascript"></script>
+                                    <div id="scrollId"    class="wc-scrollable-grid">
+                                        <input type="hidden" name="accountID" value="{!selectedAccountID}" id="accIdHidden"/>
+                                        <input type="hidden" name="accountName" value="{!selectedAccountName}" id="accNameHidden"/>
+
+                                        <apex:pageBlockTable value="{!AccountsWrp}" var="a" >
+                                            <apex:column width="1%">
+                                                <apex:facet name="header">
+                                                    <apex:inputCheckbox onclick="checkAll(this)"/>
+                                                </apex:facet>
+                                                <!-- <apex:inputCheckbox id="checkedone" value="{!a.checked}"/>-->
+                                                <input type="checkbox" value="{!a.checked}" id="{!a.acc.id}" name="name" onclick="check(this)"/>
+                                            </apex:column> 
+                                            
+                                            <apex:column headerValue="Action" width="10%">
+                                                <!-- edit a particular record--> 
+                                                <apex:outputLink title="" value="/{!a.acc.id}/e?retURL={!$CurrentPage.URL}" style="color:#015BA7; text-decoration:none">Edit</apex:outputLink>&nbsp;|&nbsp;                    
+                                                <!-- delete a particular record--> 
+                                                <a href="javascript:if (window.confirm('Are you sure?')) DeleteAccount('{!a.acc.id}');"  style="color:#015BA7; text-decoration:none">DeleteAccount</a>&nbsp;
+                                            </apex:column>
+                                            
+                                            <apex:repeat value="{!lstAccountFields}" var="str">
+                                                <apex:column rendered="{!if(((str.strFieldName!='Id')&&(str.strFieldName!='RecordTypeId')),true,false)}">
+                                                    <!-- <apex:facet name="header">{!str.strFieldValue}</apex:facet> -->
+                                                    <apex:facet name="header" >
+                                                        <apex:commandLink value="{!str.strFieldValue}  {!if(str.strFieldName==SortColName,if(strAscDesc=='asc','?',' ?'),'')}" rendered="{!if(str.strFieldName!='Id',true,false)}" rerender="pb" action="{!sortRecords}" oncomplete="javascript:updateList();" status="fetchStatus">
+                                                            <apex:param value="{!str.strFieldName}" name="a.{!str.strFieldName}" assignTo="{!SortColName}"/> 
+                                                        </apex:commandLink>
+                                                    </apex:facet>
+                                                    <apex:outputLink rendered="{!if((str.strFieldName='Name'),true,false)}" value="/{!a.acc.id}">{!a.acc[str.strFieldName]}</apex:outputLink>
+                                                    <apex:outputLabel rendered="{!if((str.strFieldName!='Name'),true,false)}">{!a.acc[str.strFieldName]}</apex:outputLabel>
+                                                </apex:column>
+                                            </apex:repeat>
+                                        </apex:pageBlockTable>
+                                    </div>
+
+                                    <table width="100%" border="0"  >
+                                        <tr>
+                                            <td width="30%">
+                                                <apex:outputText rendered="{!if((totalRecords!= 0),true,false)}">
+                                                    {!nextRecord}&nbsp;-&nbsp;{!lastRecord}&nbsp;Of&nbsp;{!totalRecords}
+                                                </apex:outputText>
+                                                <span id="log"></span>
+
+                                                <apex:selectlist value="{!listRowSize}" multiselect="false" size="1" styleClass="listRowSizeSelect" rendered="{!if((totalRecords!= 0),true,false)}">
+                                                    <apex:actionSupport event="onchange" action="{!changeRowSize}" oncomplete="javascript:updateList();" reRender="pb" status="fetchStatus"/>
+                                                    <apex:selectOption itemValue="10" itemLabel="Display 10 records per page"/>
+                                                    <apex:selectOption itemValue="25" itemLabel="Display 25 records per page"/>
+                                                    <apex:selectOption itemValue="50" itemLabel="Display 50 records per page"/>
+                                                    <apex:selectOption itemValue="100" itemLabel="Display 100 records per page"/>
+                                                    <apex:selectOption itemValue="200" itemLabel="Display 200 records per page"/>
+                                                </apex:selectlist>
+                                            </td>
+                                            
+                                            <td align="center"  width="30%">
+                                                <apex:commandButton status="fetchStatus" reRender="pb" value="|<" action="{!first}" disabled="{!!hasPrevious}" oncomplete="javascript:updateList();" title="First Page" styleClass="btnSummary"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!previous}" disabled="{!!hasPrevious}" oncomplete="javascript:updateList();" title="Previous Page" styleClass="btnSummary"/>&nbsp;&nbsp;
+                                                <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!next}" disabled="{!!hasNext}" oncomplete="javascript:updateList();" title="Next Page" styleClass="btnSummary"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <apex:commandButton status="fetchStatus" reRender="pb" value=">|" action="{!last}" disabled="{!!hasNext}" oncomplete="javascript:updateList();" title="Last Page" styleClass="btnSummary"/>
+                                            </td>
+                                        
+                                            <td align="right" width="30%">
+                                                <apex:outputText rendered="{!if((totalPageNumber!= 0),true,false)}">Page
+                                                    <input type="text" id="myText" value="{!pageNumber}" style="width:18px" onkeypress="stopRKey(Event);" onchange="changePageNo(this.value);"/>Of {!totalPageNumber}   
+                                                </apex:outputText>
+                                            </td>
+                                        </tr>
+                                    </table>  
+                            </apex:outputPanel>
+                        </apex:pageBlock>
+                    </apex:form>
+            <!-- End of Custom Account List-->
+                </div>
+            </div>
+             
+            <div id="calendar-panel" class="ui-layout-south x-panel calendarPanel x-panel-noborder x-border-panel" style=" left: 0px;">
+                <!--<div class="x-panel-header x-panel-header-noborder" id="ext-gen11" >
+                <div class="x-tool x-tool-toggle x-tool-collapse-south x-tool-toggle-over x-tool-collapse-south-over" id="ext-gen14">&nbsp;</div>
+                <span class="x-panel-header-text">
+                </span>
+                </div>-->
+                <div class="x-panel-bwrap" id="ext-gen10">
+                    <div class="x-panel-body x-panel-body-noborder" id="ext-gen11" >
+                    <div class="calendarHeaderBG calendarHeader">
+                    <span class="userText">
+                        <span>Calendar for &nbsp;
+                        <apex:outputPanel id="calendarUserPanel">{!calendarUserName}</apex:outputPanel></span>
+                        <a href="javascript:changeUserfunction();">Change </a>
+                    </span> 
+                    
+                    <span class="dateText">&nbsp;12/03/2012 - 16/03/2012</span> 
+                    
+                    <span class="arrowIcons">
+                        <a href="#" id="prev" name="prev" title="Previous Week"><img src=""  title="Previous Week" class="prevCalArrow"/></a>
+                        <a href="#" id="next" name="next" title="Next Week"><img src="" title="Next Week" class="nextCalArrow"/></a>
+                    </span> 
+                    
+                    <span class="dateLinks">
+                        <span id="j_id30"><input id="datePickerValue" type="text" name="datePickerValue" value="12/03/2012" onchange="pickedDateActionFunction()" style="display:none"/> <img  class="datePickerIcon" onclick="" src="" title="Pick A Date"/>
+                        </span>
+                        <a href="#" id="thisRange" name="thisRange">This Week</a>
+                    </span> 
+                
+                    <span class="wEndCheckBox">
+                        <input id="shWkendsCheckbox" type="checkbox" name="shWkendsCheckbox"/> 
+                        <label class="checkboxLabel" for="shWkendsCheckbox">Show Weekends</label>
+                    </span> 
+
+                    <!-- <div class="legend"><img id="inlineCalendarX" src="images/cal_closex_mouseOut.gif" onclick="closeCalendar();" onmouseout="mouseOut()" onmouseover="mouseOver()"/>
+                    </div> -->
+                    <!-- <div class="legend">
+                    <div class="busy">&nbsp;</div><span>Busy</span> 
+                    <div class="outOfOffice">&nbsp;</div><span>Out of Office</span>
+                    </div>-->
+                    <div class="legend">
+                        <apex:actionStatus id="changeUserStatus" >
+                            <apex:facet name="start">
+                                <img src="/img/loading.gif" class="waitingImage" title="Please Wait..." style="height:15px;width:15px"/> Please Wait...
+                            </apex:facet>
+                        </apex:actionStatus> 
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div id='calendar'></div>
+            </div>
+            
+        </div>
+    </div>  
+              
+    </div>  
+    </div>
+
+    <div id="footer-panel">
+        <div class="inlineSchedulerFooter toggleCalFooterLeft" id="footer">
+            <div class="toggleCalFooterRight">
+                <div class="toggleCalFooterMiddle">
+                    <div class="toggleCalendarClose" id="toggleCalDiv">
+                        <a href="#" id="toggleCal"><img id="toggleImg" class="toggleImg" src="/img/cal/footer/inline_sched_cal.gif"/>
+                            <span id="toggleText">Open Calendar</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="event_edit_container">
+        <table cellspacing="0" cellpadding="0" border="0" class="detailList">
+        <tbody>
+            <tr><td class="labelCol">{!$ObjectType.Event.fields.Type.label}</td><td id="type" class="dataCol"></td></tr>
+            <tr><td class="labelCol">{!$ObjectType.Event.fields.Call_Type__c.label}</td><td id="callType" class="dataCol"></td></tr>
+            <tr><td class="labelCol">{!$ObjectType.Event.fields.Subject.label}</td><td id="subject" class="dataCol"></td></tr>
+            <tr><td class="labelCol">{!$ObjectType.Event.fields.Status__c.label}</td><td id="status" class="dataCol"></td></tr>
+            <tr><td class="labelCol">Start</td><td id="startDate" class="dataCol"></td></tr>
+            <tr><td class="labelCol">End</td><td id="endDate" class="dataCol"></td></tr>
+            <tr><td class="labelCol">Name</td><td id="name" class="dataCol"></td></tr>
+            <tr><td class="labelCol">Related To</td><td id="relatedTo" class="dataCol"></td></tr>
+            <tr><td class="labelCol">{!$ObjectType.Event.fields.Call_Report__c.label}</td><td id="callReport" class="dataCol"></td></tr>
+            <tr><td class="labelCol">Assigned To</td><td id="assignedTo" class="dataCol"></td></tr>
+            <tr><td class="labelCol">{!$ObjectType.Event.fields.Time_off_Territory_AM__c.label}</td><td id="toTAM" class="dataCol"></td></tr>
+            <tr><td class="labelCol">{!$ObjectType.Event.fields.Time_off_Territory_PM__c.label}</td><td id="toTPM" class="dataCol"><img width="21" height="16" title="Not Checked" id="00N20000002jFu2_chkbox" class="checkImg" alt="Not Checked" src="/img/checkbox_unchecked.gif"/></td></tr>
+            <tr><td class="labelCol last">{!$ObjectType.Event.fields.Category__c.label}</td><td id="toTCategory" class="dataCol last"></td></tr>
+        </tbody>
+        </table>
+    </div>  
+
+    <div id="datepicker_container">
+        <div id="datepicker"></div>
+    </div>
+
+    <div style="width: 100%; height: 100%; display: none;" class="waitingSearchDiv waitingSearchDivOpacity"></div>
+    <div style="width: 100%; height: 100%; display: none;" class="waitingSearchDiv" id="editNewEventDialog_Loading">
+        <div class="waitingHolder" style="width: 90px; top: 100px;">
+        <img src="/img/loading.gif" class="waitingImage" title="Please Wait..."/>
+            <span class="waitingDescription">Loading...</span>
+        </div>
+    </div>
+
+    <apex:form id="frm"> 
+       <input type="hidden" name="accountID" value="{!selectedAccountID}" id="accIdHidden"/>
+       <input type="hidden" name="accountName" value="{!selectedAccountName}" id="accNameHidden"/>
+                                       
+            <!-- Action function To delete a event in pop up-->
+            <apex:actionFunction action="{!DeleteEvent}" name="delEvent" oncomplete="eventDeleteMsg();" reRender="refreshOnEventDel">
+                <apex:param name="EventDelete" assignTo="{!SelEventIdToDelete}" value=""/>
+            </apex:actionFunction>
+            
+            <!--Action function  Change Calendar for a particular user in a pop up -->
+             <apex:actionFunction action="{!changeUserShowLookUp}" name="changeUser" reRender="changeUserPopUp" status="changeUserStatus" oncomplete="javascript: $('.waitingSearchDivOpacity').css({display: 'none',opacity: 1});">
+            </apex:actionFunction>
+            
+            <!--Action function  to Pass User ID on Calendar user change-->
+            <apex:actionFunction action="{!setCalendarUser}" name="passUserID" reRender="changeUserPopUp,calendarUserPanel,getCurrentEventPanel" oncomplete="getCurrentEvents();">
+                <apex:param name="calendarUserId" assignTo="{!calendarUserId}" value=""/>
+               
+            </apex:actionFunction>
+            
+            <!--Action function  To go to next and previous week and load events-->
+            <apex:actionFunction action="{!getWkEvents}" name="WeekEvents" reRender="eventpanel" oncomplete="getEvents();" status="changeUserStatus">
+                <apex:param name="DatePass" assignTo="{!strDatePass}" value=""/>
+            </apex:actionFunction>
+        
+            <!--Action function  To open event pop up-->
+            <apex:actionFunction action="{!doPopUp}" name="poptest" reRender="eventPopUp" oncomplete="javascript: $('.waitingSearchDiv').css('display', 'none');">
+                <apex:param name="startDate" assignTo="{!StartDate}" value=""/>
+                <apex:param name="startTime" assignTo="{!StartTime}" value=""/>
+                <apex:param name="startDate" assignTo="{!EndDate}" value=""/>
+                <apex:param name="endTime" assignTo="{!EndTime}" value=""/>
+                <apex:param name="accId" assignTo="{!selectedAccountID}" value=""/>
+                <apex:param name="accName" assignTo="{!selectedAccountName}" value=""/>
+            </apex:actionFunction>
+        
+            <apex:actionFunction action="{!doSave}" name="saveNewEvent" reRender="eventPopUp,showMsgAftrEvtSavePanel,showErrorMsg" oncomplete="onControllerReturn()" status="eventStatus">
+                <apex:param name="startDate" assignTo="{!StartDate}" value=""/>
+                <apex:param name="endDate" assignTo="{!EndDate}" value=""/>
+            </apex:actionFunction>   
+            &nbsp;
+    
+            <!-- The section is rerendered on click of next previous button in Calendar and the javascript method is called  and the value is passed in JQuery-->
+            <apex:outputPanel id="eventpanel">
+                <input type="hidden" value="{!weekEvents}"/>
+                <script>
+                    function getEvents() {
+                        $('.waitingSearchDivOpacity').css({display: "none",opacity: 1});
+                        var evtData = '{"events":'+'{!weekEvents}'+'}';
+                        $eventsLoadData(evtData);
+                    }
+                </script> 
+            </apex:outputPanel>
+            
+            <!-- The section is rerendered on click of change User link in Calendar and the javascript method is called  and the value is passed in JQuery-->
+            <apex:outputPanel id="getCurrentEventPanel">
+                <input type="hidden" value="{!weekEvents}"/>
+                <script>
+                    function getCurrentEvents() {
+                        var evtData = '{"events":'+'{!weekEvents}'+'}';
+                        $eventsLoadData(evtData);
+                    }
+                </script> 
+            </apex:outputPanel>
+            
+            <!-- The section is rerendered on click of Save button in event Pop Up and the javascript method is called  and the value is passed in JQuery-->
+            <apex:outputPanel id="showMsgAftrEvtSavePanel">
+                <input type="hidden" value="{!strMsg}"/>
+                <script>  
+                    function onControllerReturn() {
+                        //alert('{!strMsg}');
+                        $eventCreationSuccess('{!strMsg}');
+                    }
+                </script>
+            </apex:outputPanel>
+      
+            <!-- The section is rerendered on click of delete  button in a already existing event in pop Up and the javascript method is called  and the value is passed in JQuery-->
+            <apex:outputPanel id="refreshOnEventDel">
+                <apex:inputHidden value="{!strEvntDelMsg}"/>
+                <script>
+                    function eventDeleteMsg(){
+                        //alert('{!strEvntDelMsg}');
+                        $eventDeleteAction('{!strEvntDelMsg}');
+                    }
+                </script>                  
+            </apex:outputPanel> 
+            <!-- Select Fields Pop UP-->
+
+            <!-- End ofSelect Fields Pop UP-->
+            <!-- Change User Pop UP-->
+         
+            <apex:outputPanel id="changeUserPopUp">
+                <apex:outputPanel styleClass="popupUserBackground" layout="block" rendered="{!displayUserPopUp}"/>
+                <apex:outputPanel styleClass="custUserPopup" layout="block" rendered="{!displayUserPopUp}">
+
+                    <apex:pageBlock >
+                        <table align="right">
+                            <tr>
+                                <td>
+                                    <apex:commandButton action="{!closeUserShowLookUp}" reRender="changeUserPopUp"  />
+                                <!--    <apex:commandButton action="{!closeUserShowLookUp}" reRender="changeUserPopUp" image="{!$Resource.close}"/> -->
+                                </td>
+                            </tr>
+                        </table>
+                    
+                        <div class="popUpUserDiv">
+                            <table>
+                                <tr>
+                                    <td><!--<apex:image value="{!$Resource.lookup}" />--> &nbsp;</td>
+                                    <td><h1 style="font-weight:Bold;font-size:large;">Lookup</h1></td>
+                                </tr>
+                            </table>
+                            
+                            <apex:actionRegion >  
+                                <apex:outputPanel id="top" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+                                    <apex:outputLabel value="Search" style="font-weight:Bold;padding-right:10px;" for="txtSearch"/>
+                                    <apex:inputText id="txtSearch" value="{!searchString}" />
+                                    <span style="padding-left:5px">
+                                        <apex:commandButton id="btnGo" value="Go!" action="{!Search}" rerender="searchResults" status="fetchUserStatus"></apex:commandButton>
+                                    </span>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <apex:outputPanel style="color:#66CCFF">
+                                        <apex:actionStatus id="fetchUserStatus" >
+                                            <apex:facet name="start">
+                                                <img src="/img/loading.gif" class="waitingImage" title="Please Wait..."/> Searching...
+                                            </apex:facet>
+                                        </apex:actionStatus>
+                                    </apex:outputPanel>
+                                    <br/>You can use "*" as a wildcard next to other characters to improve your search results.
+                                </apex:outputPanel>
+
+                                <apex:outputPanel id="pnlSearchResults" style="margin:10px;height:200px;overflow-Y:auto;" layout="block">
+                                    <span style="font-weight:Bold;font-size:large;"> User Calendar</span>
+                                    <apex:pageBlock id="searchResults"> 
+                                        <apex:pageBlockTable value="{!results}" var="a" id="tblResults">
+                                            <apex:column >
+                                                <apex:facet name="header">
+                                                    <apex:outputPanel >Full Name</apex:outputPanel>
+                                                </apex:facet>
+                                                <a href="javascript:passUserID('{!a.id}');">{!a.Name} </a>    
+                                            </apex:column>
+                                        </apex:pageBlockTable>
+                                    </apex:pageBlock>
+                                </apex:outputPanel>
+                            </apex:actionRegion>
+                        </div>
+                    </apex:pageBlock>                             
+
+                </apex:outputPanel>
+            </apex:outputPanel> 
+         <!-- End ofChange User Pop UP-->
+         
+          <!--Event pop up--> 
+            <apex:outputPanel id="eventPopUp">
+                <apex:outputPanel styleClass="popupEventBackground" layout="block" rendered="{!displayEventPopUp}"/>
+                <apex:outputPanel styleClass="custEventPopup" layout="block" rendered="{!displayEventPopUp }">        
+            
+                <apex:pageBlock mode="edit">
+                    <table border="0" ><tr><td><b><font size="3">Calendar:&nbsp;New Event</font></b></td></tr></table>
+                    <apex:pageBlockSection columns="1">  
+                        <apex:pageMessages ></apex:pageMessages> 
+                        <apex:pageBlockSectionItem >
+                           <apex:outputLabel value="Assigned To" />
+                            <apex:inputField id="owner_id"  value="{!Events.OwnerId}"  /> 
+                        </apex:pageBlockSectionItem>
+                            
+                       <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$ObjectType.Event.fields.Subject.label}" />
+                            <apex:inputField id="event_sub" value="{!Events.Subject}"/>
+                        </apex:pageBlockSectionItem>
+                    
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$ObjectType.Event.fields.Type__c.label}" />
+                            <apex:inputField required="true" value="{!Events.Type__c}" />
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Name" />
+                            <apex:inputField value="{!Events.WhoId}" required="true" />
+                        </apex:pageBlockSectionItem>        
+                    
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$ObjectType.Event.fields.Call_Type__c.label}" />
+                            <apex:inputField value="{!Events.Call_Type__c}" />
+                        </apex:pageBlockSectionItem>  
+                        
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$ObjectType.Event.fields.Status__c.label}" />
+                            <apex:inputField value="{!Events.Status__c}"/>
+                        </apex:pageBlockSectionItem>   
+                                
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Related To" /> 
+                            <apex:inputField value="{!Events.WhatId}" />
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Start"  />
+                            <apex:panelGroup >
+                                <!-- <apex:inputText id="StartDate" value="{!StartDate}" size="5" disabled="true"/>-->
+                                <input id="datepick" class="date-pick" value="{!StartDate}"/>
+                                
+                                <script type="text/javascript">
+                                    new datepickr('datepick', { dateFormat: 'm-d-Y' });
+                                </script>
+                                <!--<apex:inputText id="StartTime" value="{!StartTime}" size="5" disabled="true"/>-->
+                                <apex:selectList id="StartTimeInput" size="1" value="{!StartTime}">
+                                    <apex:selectOptions value="{!Time}"/>
+                                </apex:selectList>
+                            </apex:panelGroup>  
+                        </apex:pageBlockSectionItem>
+                       
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="End" />
+                            <apex:panelGroup >
+                                <!--<apex:inputText id="EndDate" value="{!EndDate}" size="5" disabled="true"/>-->
+                                <input id="datepick2" class="date-pick" value="{!EndDate}"/>
+                                
+                                <script type="text/javascript">
+                                    new datepickr('datepick2', { dateFormat: 'm-d-Y' });
+                                </script>
+                                <!-- <apex:inputText id="EndTime" value="{!EndTime}" size="5" disabled="true"/>-->
+                                <apex:selectList value="{!EndTime}" size="1">
+                                    <apex:selectOptions value="{!Time}"/>
+                                </apex:selectList>
+                            </apex:panelGroup>  
+                        </apex:pageBlockSectionItem> 
+                        
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$ObjectType.Event.fields.Time_off_Territory_AM__c.label}"   />
+                            <apex:inputField value="{!Events.Time_off_Territory_AM__c}" />
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$ObjectType.Event.fields.Time_off_Territory_PM__c.label}"   />
+                            <apex:inputField value="{!Events.Time_off_Territory_PM__c}" />
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$ObjectType.Event.fields.Category__c.label}"   />
+                            <apex:inputField value="{!Events.Category__c}" />
+                        </apex:pageBlockSectionItem>  
+                        <!--  <input type="text" class="myInput2" value="abc"/> <a class="myLink2" onclick="return false;" href="#" >toggler</a>-->
+                        
+                    </apex:pageBlockSection>   <br/>
+                    
+                    <table border="0" width="80%" align="center" >
+                        <tr>
+                            <td>
+                                <apex:commandLink value="Edit More Event Fields" action="/00U/e?retURL={!$CurrentPage.URL}" style="color:rgb(58,91,197); text-decoration:none" />
+                            </td>
+                            <td align="right">
+                                <!--<apex:commandButton value="{!$Label.Save}" action="{!doSave}" reRender="eventPopUp,showMsgAftrEvtSavePanel,showErrorMsg" oncomplete="onControllerReturn()" status="eventStatus"/>&nbsp;-->
+                                <input type="button" value="Save" onclick="getAllDates();" class="btn"/>&nbsp;
+                                <apex:commandButton value="Cancel" action="{!doCancel}" immediate="true" reRender="eventPopUp,showMsgAftrEvtSavePanel" oncomplete="onControllerReturn()" status="eventStatus"/>
+                                <apex:actionStatus id="eventStatus" >
+                                    <apex:facet name="start">
+                                        <img src="/img/loading.gif" class="waitingImage" title="Please Wait..."/> 
+                                    </apex:facet>
+                                </apex:actionStatus>
+                            </td>    
+                        </tr>   
+                    </table>
+
+                </apex:pageBlock>
+            </apex:outputPanel>    
+        </apex:outputPanel> 
+         <!--End of Event pop up--> 
+         
+    </apex:form>
+
+</apex:page>

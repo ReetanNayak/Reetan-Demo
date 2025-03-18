@@ -1,0 +1,18 @@
+<apex:page controller="DatePage_CTRL">
+  <apex:form >
+  <apex:pageBlock >
+      
+      <apex:pageBlockSection columns="1">
+          <apex:pageBlockSectionItem >
+              <apex:outputLabel value="Enter Date"></apex:outputLabel>
+              <apex:inputField value="{!acc.SLAExpirationDate__c}"/>
+          </apex:pageBlockSectionItem>
+          <apex:pageBlockSectionItem >
+              <apex:outputLabel value="Day is : {!dayValue}"></apex:outputLabel>
+          </apex:pageBlockSectionItem>
+          <apex:commandButton action="{!calculateDayOfDate}" value="Find Day"/>
+          
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  </apex:form> 
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page controller="ObjectFetch1_CLS" contentType="application/vnd.ms-excel#FILENAME.xls" cache="true"  sidebar="false" >
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!filedDet}" var="fld" >
+            <apex:column headerValue="Field Label" value="{!fld.label}"/>
+            <apex:column headerValue="Field Name" value="{!fld.name}"/>
+            <apex:column headerValue="Field Type" value="{!fld.type}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

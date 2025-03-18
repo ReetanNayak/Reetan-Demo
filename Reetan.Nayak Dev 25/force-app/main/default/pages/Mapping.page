@@ -1,0 +1,12 @@
+<apex:page controller="Mapping_CTRL" standardStylesheets="true" sidebar="false" showHeader="false">
+ <apex:pageblock title="Map Usage On VF">
+ <apex:pageBlockTable value="{!data}" var="d">
+     <apex:column headerValue="Account Name">
+         {!d}
+     </apex:column>
+     <apex:column headerValue="Duplicate Count">
+         {!data[d]}
+     </apex:column>
+ </apex:pageBlockTable>
+ </apex:pageblock>
+</apex:page>

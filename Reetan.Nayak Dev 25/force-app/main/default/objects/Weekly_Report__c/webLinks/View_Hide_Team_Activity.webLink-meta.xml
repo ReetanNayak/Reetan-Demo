@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View_Hide_Team_Activity</fullName>
+    <availability>online</availability>
+    <description>To enable team report information for Manager.</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>View/Hide Team Report</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/10.0/apex.js&quot;)} 
+var r = confirm(&quot;{!$Label.Weekly_Report_Confirm_Message}&quot;); 
+if (r == true){ 
+sforce.apex.execute(&quot;WeeklyReportDateFormat&quot;,&quot;enableAndDisableTeamReport&quot;, {id:&quot;{!Weekly_Report__c.Id}&quot;}); 
+//refresh the page 
+window.location.reload(); 
+}</url>
+</WebLink>

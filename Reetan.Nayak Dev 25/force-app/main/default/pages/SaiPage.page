@@ -1,0 +1,142 @@
+<apex:page sidebar="false" >
+<apex:form >
+
+<style type="text/css">
+    #maindiv {
+        width:100%;
+        height:100%;
+        padding-left:1%;
+        float:left;
+        }
+    
+    #leftPanel {
+        padding-left:8%;
+        font-size:15px;
+       // font-weight:bold;
+        font-family:GE inspira;
+        color:#33CCFF;
+        text-decoration:none;
+        margin-bottom: 10px;
+    }
+    
+    #content {
+        float: left;
+        margin-left: 25px;
+        width: 785px;
+        /* background-color: #f1f1f1; */
+    }
+    
+    ul.mainitems li {
+        float: left;
+      //  margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    ul.mainitems li a {
+        font-size: 12px;
+        display: table-cell;
+        vertical-align: middle;
+        position: relative;
+        text-align: center;
+        width: 110px;
+        padding: 5px;
+        height: 120px;
+        border: 1px solid #e4e4e4;
+        border-radius: 3px;
+    }
+
+    ul.mainitems li a:hover {
+    border-color: #08a5e1;
+    }
+
+    ul.mainitems li:nth-child(6) {
+        margin-right: 0px;
+    }
+
+    ul.mainitems li a span {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        color: #fff;
+        background: rgb(8, 165, 225); /* The Fallback */
+        background: rgba(8, 165, 225, 0.75); 
+    }
+
+    ul.mainitems li.all a  {
+      //  background-color: #08a5e1;
+    }
+
+    ul.mainitems li.all a span  {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 60px;
+        font-size: 26px;
+        color: #fff;
+      //  background-color: #08a5e1;
+        opacity: 1;
+    }    
+    
+    
+</style>
+        
+    <div id="maindiv" >
+
+            <table width="100%" border="0" >
+                <tr>
+                    <td width="25%"><apex:image value="{!$Resource.close}" width="110" height="120" /></td>
+                    <td valign="center" ><b><font face="GE inspira" size="10" color="#33CCFF">Salesforce</font></b></td>
+                </tr>
+            </table>    <br/>
+            
+        <apex:pageBlock >
+            <table width="100%" border="0" >
+                <tr>
+                    <td width="25%" valign="top" >
+                    <div id="leftPanel">
+                        <br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" >aaa</apex:outputLink><br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" >bbb Mfg</apex:outputLink><br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" >ccc</apex:outputLink><br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" >ddd</apex:outputLink><br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" >eee</apex:outputLink><br/>
+                        <a href="#" style="text-decoration:none; color:#33CCFF;"><span>Technology Environment</span></a>
+                    </div>    
+                    </td>
+                    
+                    <td align="left" valign="top" ><br/>
+                    
+                        <div id="content">
+                            <ul class="mainitems">
+                                <li class="all"><a href="#"><span>All</span></a></li>
+                                <li><a href="#"><img src="{!$Resource.activity}" alt="" /><span>CF34</span></a></li>
+                                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-cf6.jpg')}" alt="" /><span>CFM</span></a></li>
+                                <li><a href="#"><img src="{!$Resource.activity}" alt="" /><span>CF6</span></a></li>
+                                <li><a href="#"><img src="{!$Resource.activity}" alt="" /><span>CT7</span></a></li>
+                                <li><a href="#"><img src="{!$Resource.activity}" alt="" /><span>GE90</span></a></li>
+                                <li><a href="#"><img src="{!$Resource.activity}" alt="" /><span>GEnx</span></a></li>
+                                <li><a href="#"><img src="{!$Resource.activity}" alt="" /><span>GP7000</span></a></li>
+                                <li><a href="#"><img src="{!$Resource.activity}" alt="" /><span>HF120</span></a></li>
+                                <li><a href="#"><img src="{!$Resource.activity}" alt="" /><span>Leap-X</span></a></li>
+                            </ul>
+                        </div>                    
+                    
+                    
+                    
+                    <!--    <apex:outputLink ><apex:image value="{!$Resource.activity}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.activity}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.activity}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.activity}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.activity}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.activity}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.activity}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.activity}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;        -->
+                    </td>
+                </tr>
+            </table>            
+        </apex:pageBlock>
+    </div>    
+</apex:form>
+</apex:page>

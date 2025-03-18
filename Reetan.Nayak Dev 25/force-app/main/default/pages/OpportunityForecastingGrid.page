@@ -1,0 +1,20 @@
+<!-- 
+/**
+* @Author Original: Narayana Gaddam(502253742)Birlasoft/GEHC, Last Modified: TJ Madsen(212064919)GEHC.
+* @Date Original: 21 Oct 2013  
+* @Description: This page is used display opportunities and related products & searching the opportunities based on search criteria.
+*/
+-->
+
+<apex:page controller="OpportunityForecastingGridController" sidebar="false" showHeader="true" docType="html-5.0">
+<html>
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <apex:stylesheet value="{!URLFOR($Resource.extjs_4_2_2, 'extjs_4_2_2/resources/css/ext-all.css')}" />
+   <!-- <apex:includeScript value="{!URLFOR($Resource.ExtJS422ExtAllDebug)}"/> -->
+    <apex:includeScript value="{!URLFOR($Resource.extjs_4_2_2, 'extjs_4_2_2/ext-all-debug.js')}"/> 
+    <apex:stylesheet value="{!URLFOR($Resource.extjs_4_2_2, 'extjs_4_2_2/src/ux/grid/css/GridFilters.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.extjs_4_2_2, 'extjs_4_2_2/src/ux/grid/css/RangeMenu.css')}" />
+    
+    <c:OpportunityForecastingGridComponent rows="100" />
+</html>
+</apex:page>

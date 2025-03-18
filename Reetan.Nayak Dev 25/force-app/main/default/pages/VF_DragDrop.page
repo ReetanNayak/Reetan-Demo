@@ -1,0 +1,148 @@
+<apex:page >
+<html>
+<head>
+ <title>Drag Drop</title>
+  <script src="http://script.aculo.us/prototype.js" type="text/javascript"></script>
+  <script src="http://script.aculo.us/scriptaculous.js" type="text/javascript"></script>
+  
+
+ <script language="JavaScript">
+ sections = ['group1','group2','group3'];
+
+ function createNewSection(name) {
+  var name = $F('sectionName');
+  if (name != '') {
+   var newDiv = Builder.node('div', {id: 'group' + (sections.length + 1), className: 'section', style: 'display:none;' }, [
+    Builder.node('h3', {className: 'handle'}, name)
+   ]);
+
+   sections.push(newDiv.id);
+   $('page').appendChild(newDiv);
+   Effect.Appear(newDiv.id);
+   destroyLineItemSortables();
+   createLineItemSortables();
+   createGroupSortable();
+  }
+ }
+
+ function createLineItemSortables() {
+  for(var i = 0; i < sections.length; i++) {
+   Sortable.create(sections[i],{tag:'div',dropOnEmpty: true, containment: sections,only:'lineitem'});
+  }
+ }
+
+ function destroyLineItemSortables() {
+  for(var i = 0; i < sections.length; i++) {
+   Sortable.destroy(sections[i]);
+  }
+ }
+
+ function createGroupSortable() {
+  Sortable.create('page',{tag:'div',only:'section',handle:'handle'});
+ }
+
+ /*
+ Debug Functions for checking the group and item order
+ */
+ function getGroupOrder() {
+  var sections = document.getElementsByClassName('section');
+  var alerttext = '';
+  sections.each(function(section) {
+   var sectionID = section.id;
+   var order = Sortable.serialize(sectionID);
+   alerttext += sectionID + ': ' + Sortable.sequence(section) + '\n';
+  });
+  alert(alerttext);
+  return false;
+ }
+ </script>
+
+<style>
+ body, div {
+  font-family: Arial, Helvetica;
+  font-size: 11px;
+ }
+
+ div.section,div#createNew {
+  border: 1px solid #CCCCCC;
+  margin: 30px 5px;
+  padding: 0px 0px 10px 0px;
+  background-color: #EFEFEF;
+ }
+
+ div#createNew input { margin-left: 5px; }
+
+ div#createNew h3, div.section h3{
+  font-size: 14px;
+  padding: 2px 5px;
+  margin: 0 0 10px 0;
+  background-color: #CCCCCC;
+  display: block;
+ }
+
+ div.section h3 {
+  cursor: move;
+ }
+
+ div.lineitem {
+  margin: 3px 10px;
+  padding: 2px;
+  background-color: #FFFFFF;
+  cursor: move;
+ }
+
+ h1 {
+  margin-bottom: 0;
+  font-size: 18px;
+ }
+</style>
+</head>
+<body>
+<div id="page">
+
+ <div id="createNew">
+
+  <h3>Add New Sales Contact</h3>
+  <input type="text" id="sectionName" size="25"/>
+  <input type="button" onClick="createNewSection();" value="Create Sales Contact"/>
+ </div>
+
+ <div id="group1" class="section">
+  <h3 class="handle">Tickets</h3>
+  <div id="item_1" class="lineitem">DWD2008 VIP</div>
+
+  <div id="item_2" class="lineitem">DWD2008 GOLD</div>
+  <div id="item_3" class="lineitem">DWD2008 SILVER</div>
+  <div id="item_4" class="lineitem">DWD2008 BRONZE</div>
+ </div>
+
+ <div id="group2" class="section">
+  <h3 class="handle">Sales Contact 1</h3>
+
+ </div>
+
+ <div id="group3" class="section">
+  <h3 class="handle">Sales Contact 2</h3>
+ </div>
+
+</div>
+
+<fieldset>
+ <legend>group order debug</legend>
+
+ <input type="button" onClick="getGroupOrder()" value="output group order"/>
+ <br/> 
+</fieldset>
+
+<script type="text/javascript">
+ // <![CDATA[
+ Sortable.create('group1',{tag:'div',dropOnEmpty: true, containment: sections,only:'lineitem'});
+ Sortable.create('group2',{tag:'div',dropOnEmpty: true, containment: sections,only:'lineitem'});
+ Sortable.create('group3',{tag:'div',dropOnEmpty: true, containment: sections,only:'lineitem'});
+ Sortable.create('page',{tag:'div',only:'section',handle:'handle'});
+ // ]]>
+ </script>
+</body>
+</html>
+
+</apex:page>

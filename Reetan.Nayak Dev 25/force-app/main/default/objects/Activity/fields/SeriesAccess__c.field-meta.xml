@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SeriesAccess__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF ( IsRecurring__c , IMAGE(&quot;/img/recurring_activity.gif&quot;, &quot;Recurring&quot;) &amp; &quot; &quot; &amp; HYPERLINK(&quot;/servlet/servlet.Integration?lid=00b30000001v6rv&amp;eid=&quot;&amp; TaskRecurrenceId__c , &quot;Delete Series&quot;,&quot;_top&quot;) &amp; &quot; &quot; &amp; HYPERLINK(&quot;/servlet/servlet.Integration?lid=00b30000001v6rw&amp;eid=&quot;&amp; TaskRecurrenceId__c , &quot;Change Series Owner&quot;,&quot;_top&quot;), &quot;Individual Task&quot; )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Task Series</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

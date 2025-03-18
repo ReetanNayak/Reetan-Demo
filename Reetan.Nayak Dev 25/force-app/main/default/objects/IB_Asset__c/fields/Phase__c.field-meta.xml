@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Phase__c</fullName>
+    <description>Phase is Calculated based on Renewal Date</description>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(Status__c,&apos;Active&apos;),
+(IF((TODAY()&gt;=DATE(YEAR(Renewal_Date__c)- (IB_Products_Country_Attributes__r.Phase_1_End_Date_Months__c/12) ,MONTH(Renewal_Date__c),DAY(Renewal_Date__c)) &amp;&amp; (TODAY()&lt;=Renewal_Date__c)),&apos;Late Stage - Phase 3&apos;,
+IF(TODAY()&lt;=DATE(YEAR(Install_Date__c) + (IB_Products_Country_Attributes__r.Phase_3_Start_Date_Months__c/12),MONTH(Install_Date__c),DAY(Install_Date__c)),&apos;Early Stage - Phase 1&apos;,
+IF((Today()&gt; Renewal_Date__c) || (ISBLANK(Renewal_Date__c)),&apos;Past Replacement Date - Phase 99&apos;,
+&apos;Mid Stage - Phase 2&apos;)))),&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Phase 3-Current Date &gt;= (RenewalDate-2 years) and &lt;= RenewalDate
+
+Phase 1 - Current Date &lt; (IntalledDate + 1.5 years)
+
+Phase 99 - Current Date &gt; RenewalDate OR RenewalDate is Blank
+
+Phase 2 - For all others</inlineHelpText>
+    <label>Phase</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

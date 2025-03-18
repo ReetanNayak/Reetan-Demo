@@ -1,0 +1,141 @@
+<apex:page controller="Day_CAL_CLS" sidebar="false" >
+
+<apex:form id="fm">
+    
+    <div style="width:60%">
+        <div style="width:100%;" >
+            <table  width="100%" height="40px" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td width="20%" align="center">
+                        <img src="{!$Resource.iPrevious}" onclick="return backDate()" width="10px" height="15px"/>&nbsp;
+                        <img src="{!$Resource.iNext}" width="10px" height="15px"/>&nbsp;&nbsp;
+                        <button onclick="return currentDate();">Today</button>
+                    </td>
+                    <td id="reqDate1" width="80%" align="center"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width:100%;overflow:auto;height:600px" >
+            <table width="100%" height="20px" bgcolor="#ECF1EF" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse">
+                <tr>
+                    <td></td>
+                    <td id="reqDate2" width="80%" align="center"></td>
+                </tr>
+            </table>
+            <apex:repeat value="{!calTiming}" var="cal">
+                <table width="100%" border="1" cellpadding="2" style="border-collapse: collapse"  >
+                    <tr onclick="displayEvent();">
+                        <td width="10%">
+                            <table  width="100%" rules="rows"   bgcolor="#ECF1EF">
+                                <tr height="20px">
+                                     <td align="center">{!cal}</td>
+                                </tr>
+                                <tr height="20px"><td></td></tr>
+                            </table>   
+                        </td>
+                        <td width="90%" bgcolor="">
+                             <table  width="100%" rules="rows"  bgcolor="#F5F5DC">
+                                <tr height="20px" id="rows1"><td ></td></tr>
+                                <tr height="20px" id="rows2"><td></td></tr>
+                             </table> 
+                         </td>
+                     </tr> 
+                  </table>  
+            </apex:repeat>
+        </div>
+        <div style="width:70%;display:none;" id="evebttable" >
+                <apex:outputPanel id="pop" >
+                <apex:outputPanel styleClass="popupEventBackground" layout="block" />
+                <apex:outputPanel styleClass="custEventPopup" layout="block" id="pop1">        
+            
+                <apex:pageBlock title="Calendar: New Event" mode="edit" id="pop2"  >
+                    <apex:pageBlockSection columns="1" id="pop3"  >   
+                        <apex:pageBlockSectionItem id="pop4" >
+                            <apex:outputLabel value="Assigned To" />
+                            <apex:inputField id="owner_id"  value="{!Events.OwnerId}"  /> 
+                        </apex:pageBlockSectionItem>
+                            
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Subject" />
+                            <apex:inputField id="event_sub" value="{!Events.Subject}" required="true"/>
+                        </apex:pageBlockSectionItem>
+                    
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Name" />
+                            <apex:inputField value="{!Events.WhoId}" />
+                        </apex:pageBlockSectionItem>        
+                    
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Related To" />
+                            <apex:inputField value="{!Events.WhatId}" />
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Start" /> 
+                            <apex:outputPanel >                        
+                            <table width="50%"><tr><td id="reqDateSt" width="50px" ></td>
+                            <td>
+                            <apex:selectList size="1" value="{!starttime}">
+                            <apex:selectOptions value="{!timeFormatHour}"/>
+                            </apex:selectList>
+                            </td>     
+                            </tr></table>
+                            </apex:outputPanel> 
+                        </apex:pageBlockSectionItem>                       
+                       
+                        <apex:pageBlockSectionItem >
+                           <apex:outputLabel value="End" /> 
+                           <apex:outputPanel >                          
+                            <table width="50%"><tr><td id="reqDateEnd" width="50px" ></td>
+                            <td>
+                            <apex:selectList size="1" value="{!endtime}">
+                            <apex:selectOptions value="{!timeFormatHour}"/>
+                            </apex:selectList>
+                            </td>     
+                            </tr></table>
+                            </apex:outputPanel> 
+                        </apex:pageBlockSectionItem> 
+                    </apex:pageBlockSection>  
+                   
+                   
+                   <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="Save"  action="{!createEvent}" reRender="pop2" />&nbsp;&nbsp;
+                        <apex:commandButton value="Cancel" />                   
+                   </apex:pageBlockButtons> 
+                   
+            </apex:pageBlock>
+        </apex:outputPanel>    
+        </apex:outputPanel>    
+        </div>    
+    </div>
+    
+    <script >
+        window.onload=testSp;
+        function testSp(){
+            var nowDt = new Date();                       
+            var currdate=nowDt.getMonth()+1+'/'+nowDt.getDate() + '/'+nowDt.getFullYear();
+         //   var currdate = nowDt.toString('dddd, MMMM ,yyyy');
+            document.getElementById("reqDate1").innerHTML=currdate;
+            document.getElementById("reqDate2").innerHTML=currdate;
+            document.getElementById("reqDateSt").innerHTML=currdate;
+            document.getElementById("reqDateEnd").innerHTML=currdate;
+        }
+        function currentDate(){
+             testSp();
+             return false;
+        }
+        
+        function backDate(){
+            var currdate='10/12/2012';
+            document.getElementById("reqDate1").innerHTML=currdate;
+            document.getElementById("reqDate2").innerHTML=currdate;
+            return false;
+        }
+        
+        function displayEvent(){
+            document.getElementById("evebttable").style.display="block";
+        }
+    </script>    
+    
+    </apex:form> 
+</apex:page>

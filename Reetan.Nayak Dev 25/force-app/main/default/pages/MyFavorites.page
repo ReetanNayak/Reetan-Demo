@@ -1,0 +1,491 @@
+<!-- 
+/**
+* @author Original: Jesfer Baculod (502068421) Cloud Sherpas/GEHC, Last Modified: Robby Angeles (502068424) Cloud Sherpas/GEHC
+* @date Original: 28 Mar 2012, Last Modified: 3 Jul 2012
+* @description Page for displaying all the favorites of the User
+*/
+-->
+<apex:page id="pgmyfav" controller="MyFavoritesController" tabstyle="Favorites__c">
+    <apex:stylesheet value="{!URLFOR($Resource.MyFavoritesStyles)}"  />
+    <apex:sectionheader title="{!$User.FirstName} {!$User.LastName}'s" subtitle="{!$Label.MyFavorites_Subtitle}" />
+    <apex:form id="mainForm">
+    <apex:outputpanel id="scripts">
+    
+        <apex:actionFunction name="ACCpageFunction" status="accloading" action="{!accSetPageNumber}" oncomplete="colheader(accsimg,accpg);" rerender="scripts,opAcc,pbtfAcc" >
+            <apex:param name="accpagenum" value="{!selectedpage}" assignTo="{!selectedpage}" />
+        </apex:actionFunction>
+        <apex:actionFunction name="CONpageFunction" status="conloading" action="{!conSetPageNumber}" oncomplete="colheader(consimg,conpg);" rerender="scripts,opCon,pbtfCon" >
+            <apex:param name="conpagenum" value="{!selectedpage}" assignTo="{!selectedpage}" />
+        </apex:actionFunction>
+        <apex:actionFunction name="OPPpageFunction" status="opploading" action="{!oppSetPageNumber}" oncomplete="colheader(oppsimg,opppg);"  rerender="scripts,opOpp,pbtfOpp" >
+            <apex:param name="opppagenum" value="{!selectedpage}" assignTo="{!selectedpage}" />
+        </apex:actionFunction>
+        <apex:actionFunction name="LEADpageFunction" status="leadloading" action="{!leadSetPageNumber}" oncomplete="colheader(leadsimg,leadpg);"  rerender="scripts,opLead,pbtfLead" >
+            <apex:param name="leadpagenum" value="{!selectedpage}" assignTo="{!selectedpage}" />
+        </apex:actionFunction>      
+        
+        <apex:actionFunction name="deleteFavorites" status="loading" action="{!DeleteFavorite}" rerender="mainForm"/>
+        
+        <apex:actionFunction name="ACCsort" status="accloading" action="{!dosort}" oncomplete="javascript: colheader(simgId,compId);" rerender="scripts,opAcc,pbtfAcc">
+            <apex:param name="sort_acc_fields" value="{!accsortField}" assignTo="{!accsortField}" />
+            <apex:param name="sort_acc" value="{!sortObject}" assignTo="{!sortObject}" />
+        </apex:actionFunction>
+        <apex:actionFunction name="CONsort" status="conloading" action="{!dosort}" oncomplete="javascript: colheader(simgId,compId);" rerender="scripts,opCon,pbtfCon">
+            <apex:param name="sort_con_fields" value="{!consortField}" assignTo="{!consortField}" />
+            <apex:param name="sort_con" value="{!sortObject}" assignTo="{!sortObject}" />
+        </apex:actionFunction>
+        <apex:actionFunction name="OPPsort" status="opploading" action="{!dosort}" oncomplete="javascript: colheader(simgId,compId);" rerender="scripts,opOpp,pbtfOpp">
+            <apex:param name="sort_opp_fields" value="{!oppsortField}" assignTo="{!oppsortField}" />
+            <apex:param name="sort_opp" value="{!sortObject}" assignTo="{!sortObject}" />
+        </apex:actionFunction>
+        <apex:actionFunction name="LEADsort" status="leadloading" action="{!dosort}" oncomplete="javascript: colheader(simgId,compId);" rerender="scripts,opLead,pbtfLead">
+            <apex:param name="sort_lead_fields" value="{!leadsortField}" assignTo="{!leadsortField}" />
+            <apex:param name="sort_lead" value="{!sortObject}" assignTo="{!sortObject}" />
+        </apex:actionFunction>      
+
+        <script type="text/javascript">
+        /**
+        * @author Original: Jesfer Baculod - GlobalOne/GEHC,  Last Modified: Jesfer Baculod - GlobalOne/GEHC
+        * @date Original: 17 Apr 2012, Last Modified: 17 Apr 2012 
+        * @description Javascript functions used for handling mass delete, sorting of favorites on MyFavorites
+        */
+        
+            //When Checkbox on the column header is checked this function will run
+            function selectAll(tblElem, inpId, chkId) {
+                var isChecked = document.getElementById(inpId).checked;
+                var tblInputs = document.getElementById(tblElem).getElementsByTagName('input');
+                var curIndex  = 0;
+                for(x=0;(x<(tblInputs.length));x++){
+                    if(tblInputs[x].id.indexOf (chkId) != -1){
+                        var elemPrefix = tblElem+':'+curIndex+':';
+                        document.getElementById(elemPrefix+chkId).checked = isChecked;
+                        curIndex++;
+                    }
+                }
+            }
+        
+            //When Remove Favorite button is clicked this function will run
+            function deletefav(){
+                var conf = confirm('{!$Label.MyFavorites_Confirm_Message}');
+                if (conf == true){
+                    deleteFavorites();   
+                }
+            }
+        
+            //Sorting - csort, colheader
+        
+            var compId;
+            var simgId;
+            var accpg, accsimg;
+            var conpg, consimg;
+            var opppg, oppsimg;
+            var leadpg, leadsimg;
+            
+            function csort(field,obj,elem,simg){
+                if (obj == 'Account'){
+                    accsimg = simg;
+                    accpg = elem;
+                    ACCsort(field,obj);
+                }
+                else if (obj == 'Contact'){
+                    consimg = simg;
+                    conpg = elem;
+                    CONsort(field,obj);
+                }
+                else if (obj == 'Opportunity'){
+                    oppsimg = simg;    
+                    opppg = elem;           
+                    OPPsort(field,obj);
+                }
+                else if (obj == 'Lead'){
+                    leadsimg = simg;    
+                    leadpg = elem;           
+                    LEADsort(field,obj);
+                }
+                compId = elem;
+                simgId = simg;
+            }
+        
+            function colheader(simgId,compId){
+                document.getElementById(compId+'header').style.background = '#c4e7f2 URL(none)';
+                document.getElementById(simgId).style.visibility = 'visible';
+                document.getElementById(simgId).src = '{!sortimg}';
+            }
+        </script>
+        
+    </apex:outputpanel>
+    <apex:outputpanel id="opMain">
+        <apex:pageblock id="pbMain" title="{!$Label.MyFavorites_Header}">
+        
+                <apex:actionstatus id="loading">
+                    <apex:facet name="start">
+                        <img src="/img/loading.gif" /> <b>{!$Label.actionstatus_loading}</b>
+                    </apex:facet>
+                </apex:actionstatus>
+            
+            <apex:pageBlockButtons >    
+                <apex:commandbutton id="cmddel" value="{!$Label.MyFavorites_RemoveFavorites_Button}" onclick="javascript: deletefav();" rendered="{!showdelete}" rerender="null"/>
+            </apex:pageBlockButtons>
+                    
+            <!--DISPLAY MESSAGE -->
+            <apex:pagemessages />
+            <apex:pagemessage severity="info" summary="{!favmsg}" rendered="{!showmsg}" />
+            
+            <!-- DISPLAY ACCOUNT FAVORITES -->
+            <apex:outputpanel id="opAcc" rendered="{!accrend}">
+            <apex:pageblocksection id="pbsAcc" collapsible="true" title="{!$Label.obj_ACC_label} ({!accsize})" columns="1">
+            
+                <apex:actionstatus id="accloading" onstart="document.getElementById('{!$Component.pbtfAcc}').style.display = 'none';" onstop="document.getElementById('{!$Component.pbtfAcc}').style.display = 'inline-table';" >
+                    <apex:facet name="start">
+                        <center><img src="/img/loading.gif" /> <b>{!$Label.actionstatus_loading}</b></center>
+                    </apex:facet>
+                </apex:actionstatus>
+                
+                <apex:pageblocktable id="pbtfAcc" value="{!sobjwrAccList}" var="sfacc" width="100%">
+                        
+                    <apex:column width="10">
+                        <apex:facet name="header">
+                            <input type="checkbox" id="checkallAccs" onclick="selectAll('{!$Component.pbtfAcc}','checkallAccs','chkAcc');" />
+                        </apex:facet>
+                        <apex:inputcheckbox id="chkAcc" value="{!sfacc.isSelected}" />
+                    </apex:column>
+                    
+                    <!-- ACCOUNT FIELD SET -->
+                    <apex:repeat id="colArep" value="{!$ObjectType.Account.FieldSets.myFavorites_ACC}" var="fa">
+                          <apex:column id="colA1" rendered="{!NOT(CONTAINS(fa.label,$ObjectType.account.fields.name.label))}" >
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputLabel title="{!fa.label}" onclick="csort('{!fa.fieldpath}','Account','{!$Component.colA1}','{!$Component.SimgA1}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';" >
+                                        {!fa.label} &nbsp; <apex:image style="visibility:hidden;" id="SimgA1" width="11" height="11" /> 
+                                    </apex:outputLabel> 
+                                </apex:facet>
+                                <apex:outputField value="{!sfacc.acc[fa]}"/>
+                          </apex:column>
+                          <apex:column id="colA2" rendered="{!CONTAINS(fa.label,$ObjectType.account.fields.name.label)}" >
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!fa.label}" onclick="csort('{!fa.fieldpath}','Account','{!$Component.colA2}','{!$Component.SimgA2}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';" >
+                                        {!fa.label} &nbsp; <apex:image style="visibility:hidden;" id="SimgA2" width="11" height="11" /> 
+                                    </apex:outputlabel> 
+                                </apex:facet>
+                                <apex:outputlink value="/{!sfacc.acc.Id}">{!sfacc.acc[fa]}</apex:outputlink>
+                          </apex:column>
+                    </apex:repeat>
+                    
+                </apex:pageblocktable>
+            
+                <apex:outputpanel id="naviAcc" rendered="{!showAccPagi}">
+                    <table width="100%">
+                        <tr><td align="right">
+                            <!-- NAVIGATION CONTROLS FOR ACCOUNT PAGINATION -->
+                            <apex:PanelGrid columns="7" styleclass="navipag">
+                                <apex:commandLink action="{!accfirst}" status="accloading" oncomplete="colheader(accsimg,accpg);" rerender="scripts,opAcc,pbtfAcc">{!$Label.Pagi_First}</apex:commandlink> 
+                                <apex:commandLink action="{!accprevious}" status="accloading" oncomplete="colheader(accsimg,accpg);" rerender="scripts,opAcc,pbtfAcc">{!$Label.Pagi_Previous}</apex:commandlink> 
+                                <apex:commandLink action="{!accnext}" status="accloading" oncomplete="colheader(accsimg,accpg);" rerender="scripts,opAcc,pbtfAcc">{!$Label.Pagi_Next}</apex:commandlink> 
+                                <apex:commandLink action="{!acclast}" status="accloading" oncomplete="colheader(accsimg,accpg);" rerender="scripts,opAcc,pbtfAcc">{!$Label.Pagi_Last}</apex:commandlink>
+                                &nbsp; {!$Label.Pagi_GoTo}
+                                <apex:PanelGroup >
+                                    <apex:selectList styleclass="sellist" id="AccselPageList" size="1" value="{!accPageNumber}" onchange="ACCpageFunction(this.options[this.selectedIndex].value)" >
+                                        <apex:selectOptions value="{!AccPageSelect}" />
+                                    </apex:selectList>
+                                </apex:PanelGroup>
+                                <apex:PanelGroup >
+                                        &nbsp; {!$Label.Pagi_Page} {!accPageNumber} / {!AccMaxPageNumber}
+                                </apex:PanelGroup>
+                            </apex:PanelGrid>
+                    </td></tr>
+                    </table>
+                </apex:outputpanel>
+                
+            </apex:pageblocksection>
+            </apex:outputpanel>
+            
+            
+            <!-- DISPLAY CONTACT FAVORITES -->
+            <apex:outputpanel id="opCon" rendered="{!conrend}">
+            <apex:pageblocksection id="pbsCon" collapsible="true" title="{!$Label.obj_CON_label} ({!consize})" columns="1">
+                
+                <apex:actionstatus id="conloading" onstart="document.getElementById('{!$Component.pbtfCon}').style.display = 'none';" onstop="document.getElementById('{!$Component.pbtfCon}').style.display = 'inline-table';" >
+                    <apex:facet name="start">
+                        <center><img src="/img/loading.gif" /> <b>{!$Label.actionstatus_loading}</b></center>
+                    </apex:facet>
+                </apex:actionstatus>
+                
+                <apex:pageblocktable id="pbtfCon" value="{!sobjwrConList}" var="sfcon" width="100%">
+                        
+                    <apex:column width="10">
+                        <apex:facet name="header">
+                            <input type="checkbox" id="checkallCons" onclick="selectAll('{!$Component.pbtfCon}','checkallCons','chkCon');" />
+                        </apex:facet>
+                        <apex:inputcheckbox id="chkCon" value="{!sfcon.isSelected}" />
+                    </apex:column>
+                    
+                    <!-- CONTACT FIELD SET -->
+                    <apex:repeat id="colCrep" value="{!$ObjectType.Contact.FieldSets.myFavorites_CON}" var="fc">
+                        <apex:column id="colC1" rendered="{!CONTAINS(fc.label,$ObjectType.contact.fields.AccountId.label)}">
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!$Label.MyFavorites_AccountName_Column}" onclick="csort('{!fc.fieldpath}','Contact','{!$Component.colC1}','{!$Component.SimgC1}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!$Label.MyFavorites_AccountName_Column} &nbsp; <apex:image style="visibility:hidden;" id="SimgC1" width="11" height="11" /> 
+                                    </apex:outputlabel>
+                                </apex:facet>
+                                <apex:outputField value="{!sfcon.con[fc]}"/>
+                        </apex:column>
+                        <apex:column id="colC2" rendered="{!NOT(OR(CONTAINS(fc.label,$ObjectType.contact.fields.name.label),CONTAINS(fc.label,$ObjectType.contact.fields.AccountId.label)))}">
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!fc.label}" onclick="csort('{!fc.fieldpath}','Contact','{!$Component.colC2}','{!$Component.SimgC2}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!fc.label} &nbsp; <apex:image style="visibility:hidden;" id="SimgC2" width="11" height="11" /> 
+                                    </apex:outputlabel>
+                                </apex:facet>
+                                <apex:outputField value="{!sfcon.con[fc]}"/>
+                        </apex:column>
+                        <apex:column id="colC3" rendered="{!CONTAINS(fc.label,$ObjectType.contact.fields.name.label)}" >
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!fc.label}" onclick="csort('{!fc.fieldpath}','Contact','{!$Component.colC3}','{!$Component.SimgC3}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!fc.label} &nbsp; <apex:image style="visibility:hidden;" id="SimgC3" width="11" height="11" /> 
+                                    </apex:outputlabel>
+                                </apex:facet>
+                                <apex:outputlink value="/{!sfcon.con.Id}">{!sfcon.con[fc]}</apex:outputlink>
+                        </apex:column>
+                    </apex:repeat>
+                    
+                </apex:pageblocktable>
+                
+                <apex:outputPanel id="naviCon" rendered="{!showConPagi}">
+                    <table width="100%">
+                        <tr><td align="right">
+                            <!-- NAVIGATION CONTROLS FOR CONTACT PAGINATION -->
+                            <apex:panelgrid columns="7" styleclass="navipag">
+                                <apex:commandLink action="{!confirst}" status="conloading" oncomplete="colheader(consimg,conpg);"  rerender="scripts,opCon,pbtfCon" >{!$Label.Pagi_First}</apex:commandlink> 
+                                <apex:commandLink action="{!conprevious}" status="conloading" oncomplete="colheader(consimg,conpg);" rerender="scripts,opCon,pbtfCon">{!$Label.Pagi_Previous}</apex:commandlink> 
+                                <apex:commandLink action="{!connext}" status="conloading" oncomplete="colheader(consimg,conpg);" rerender="scripts,opCon,pbtfCon">{!$Label.Pagi_Next}</apex:commandlink> 
+                                <apex:commandLink action="{!conlast}" status="conloading" oncomplete="colheader(consimg,conpg);" rerender="scripts,opCon,pbtfCon">{!$Label.Pagi_Last}</apex:commandlink>
+                                &nbsp; {!$Label.Pagi_GoTo}
+                                <apex:panelgroup >
+                                    <apex:selectList styleclass="sellist" id="ConselPageList" size="1" value="{!conPageNumber}" onchange="CONpageFunction(this.options[this.selectedIndex].value)" >
+                                        <apex:selectOptions value="{!ConPageSelect}" />
+                                    </apex:selectList>
+                                </apex:panelgroup>
+                                <apex:panelgroup >
+                                    &nbsp; {!$Label.Pagi_Page} {!conPageNumber} / {!ConMaxPageNumber}
+                                </apex:panelgroup>
+                            </apex:panelgrid>
+                        </td></tr>
+                    </table>
+                </apex:outputPanel>
+                
+            </apex:pageblocksection> 
+            </apex:outputPanel>
+            
+            
+            <!-- DISPLAY OPPORTUNITY FAVORITES -->
+            <apex:outputpanel id="opOpp" rendered="{!opprend}">
+            <apex:pageblocksection id="pbsOpp" collapsible="true" title="{!$Label.obj_OPP_label} ({!oppsize})" columns="1">
+                
+                <apex:actionstatus id="opploading" onstart="document.getElementById('{!$Component.pbtfOpp}').style.display = 'none';" onstop="document.getElementById('{!$Component.pbtfOpp}').style.display = 'inline-table';" >
+                    <apex:facet name="start">
+                        <center><img src="/img/loading.gif" /> <b>{!$Label.actionstatus_loading}</b></center>
+                    </apex:facet>
+                </apex:actionstatus>
+                
+                <apex:pageblocktable id="pbtfOpp" value="{!sobjwrOppList}" var="sfopp">
+                    
+                    <apex:column width="10">
+                        <apex:facet name="header">
+                            <input type="checkbox" id="checkallOpps" onclick="selectAll('{!$Component.pbtfOpp}','checkallOpps','chkOpp');"/>
+                        </apex:facet>
+                        <apex:inputcheckbox id="chkOpp" value="{!sfopp.isSelected}" />
+                    </apex:column>
+                    <apex:repeat id="colOrep" value="{!$ObjectType.Opportunity.FieldSets.myFavorites_OPP}" var="fo">
+                        <apex:column id="colO1" rendered="{!CONTAINS(fo.label,$ObjectType.opportunity.fields.AccountId.label)}">
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!$Label.MyFavorites_AccountName_Column}" onclick="csort('{!fo.fieldpath}','Opportunity','{!$Component.colO1}','{!$Component.SimgO1}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!$Label.MyFavorites_AccountName_Column}  &nbsp; <apex:image style="visibility:hidden;" id="SimgO1" width="11" height="11" /> 
+                                    </apex:outputlabel>
+                                </apex:facet>
+                                <apex:outputField value="{!sfopp.opp[fo]}"/>
+                        </apex:column>
+                        <apex:column id="colO2" rendered="{!NOT(OR(CONTAINS(fo.label,$ObjectType.opportunity.fields.name.label),CONTAINS(fo.label,$ObjectType.opportunity.fields.AccountId.label),CONTAINS(fo.label,$ObjectType.opportunity.fields.OwnerId.label)))}">
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!fo.label}" onclick="csort('{!fo.fieldpath}','Opportunity','{!$Component.colO2}','{!$Component.SimgO2}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!fo.label} &nbsp; <apex:image style="visibility:hidden;" id="SimgO2" width="11" height="11" /> 
+                                    </apex:outputlabel>  
+                                </apex:facet>
+                                <apex:outputField value="{!sfopp.opp[fo]}"/>
+                        </apex:column>  
+                        <apex:column id="colO3" rendered="{!CONTAINS(fo.label,$ObjectType.opportunity.fields.name.label)}" >
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!fo.label}" onclick="csort('{!fo.fieldpath}','Opportunity','{!$Component.colO3}','{!$Component.SimgO3}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!fo.label} &nbsp; <apex:image style="visibility:hidden;" id="SimgO3" width="11" height="11" /> 
+                                    </apex:outputlabel>
+                                </apex:facet>
+                                <apex:outputlink value="/{!sfopp.opp.Id}">{!sfopp.opp[fo]}</apex:outputlink>
+                        </apex:column>
+                        <apex:column id="colO4" rendered="{!CONTAINS(fo.label,$ObjectType.opportunity.fields.OwnerId.label)}">
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!fo.label}" onclick="csort('{!fo.fieldpath}','Opportunity','{!$Component.colO4}','{!$Component.SimgO4}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!$Label.MyFavorites_OwnerId_Column} &nbsp; <apex:image style="visibility:hidden;" id="SimgO4" width="11" height="11" /> 
+                                    </apex:outputlabel>
+                                </apex:facet>
+                                <apex:outputfield value="{!sfopp.opp[fo]}"/>
+                        </apex:column>
+                    </apex:repeat>
+                </apex:pageblocktable>
+            
+                <apex:outputpanel id="naviOpp" rendered="{!showOppPagi}">
+                    <table width="100%">
+                        <tr><td align="right">
+                            <!-- NAVIGATION CONTROLS FOR OPPORTUNITY PAGINATION -->
+                            <apex:panelGrid columns="7" styleclass="navipag">
+                                <apex:commandLink action="{!oppfirst}" status="opploading" oncomplete="colheader(oppsimg,opppg);" rerender="scripts,opOpp,pbtfOpp" >{!$Label.Pagi_First}</apex:commandlink> 
+                                <apex:commandLink action="{!oppprevious}" status="opploading" oncomplete="colheader(oppsimg,opppg);" rerender="scripts,opOpp,pbtfOpp">{!$Label.Pagi_Previous}</apex:commandlink> 
+                                <apex:commandLink action="{!oppnext}" status="opploading" oncomplete="colheader(oppsimg,opppg);" rerender="scripts,opOpp,pbtfOpp">{!$Label.Pagi_Next}</apex:commandlink> 
+                                <apex:commandLink action="{!opplast}" status="opploading" oncomplete="colheader(oppsimg,opppg);" rerender="scripts,opOpp,pbtfOpp">{!$Label.Pagi_Last}</apex:commandlink>
+                                &nbsp; {!$Label.Pagi_GoTo}
+                                <apex:Panelgroup >
+                                    <apex:selectlist styleclass="sellist" id="OppselPagelist" size="1" value="{!oppPageNumber}" onchange="OPPpageFunction(this.options[this.selectedIndex].value)" >
+                                        <apex:selectoptions value="{!OppPageSelect}" />
+                                    </apex:selectlist>
+                                </apex:panelgroup>
+                                <apex:panelgroup >
+                                    &nbsp; {!$Label.Pagi_Page} {!oppPageNumber} / {!OppMaxPageNumber}
+                                </apex:panelgroup>
+                            </apex:panelgrid>
+                        </td></tr>
+                    </table>
+                </apex:outputpanel>
+                
+            </apex:pageblocksection>
+            </apex:outputpanel> 
+            
+
+            <!-- DISPLAY LEAD FAVORITES -->
+            <apex:outputpanel id="opLead" rendered="{!leadrend}">
+            <apex:pageblocksection id="pbsLead" collapsible="true" title="{!$Label.obj_LEAD_label} ({!leadsize})" columns="1">
+                
+                <apex:actionstatus id="leadloading" onstart="document.getElementById('{!$Component.pbtfLead}').style.display = 'none';" onstop="document.getElementById('{!$Component.pbtfLead}').style.display = 'inline-table';" >
+                    <apex:facet name="start">
+                        <center><img src="/img/loading.gif" /> <b>{!$Label.actionstatus_loading}</b></center>
+                    </apex:facet>
+                </apex:actionstatus>
+                
+                <apex:pageblocktable id="pbtfLead" value="{!sobjwrLeadList}" var="sflead">
+                    
+                    <apex:column width="10">
+                        <apex:facet name="header">
+                            <input type="checkbox" id="checkallLeads" onclick="selectAll('{!$Component.pbtfLead}','checkallLeads','chkLead');"/>
+                        </apex:facet>
+                        <apex:inputcheckbox id="chkLead" value="{!sflead.isSelected}" />
+                    </apex:column>
+                    <apex:repeat id="colLrep" value="{!$ObjectType.Lead.FieldSets.myFavorites_LEAD}" var="fl">
+                       
+                         <apex:column id="colL1" rendered="{!NOT(OR(CONTAINS(fl.label,$ObjectType.Lead.fields.Name.label),CONTAINS(fl.label,$ObjectType.Lead.fields.OwnerId.label)))}">
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!fl.label}" onclick="csort('{!fl.fieldpath}','Lead','{!$Component.colL1}','{!$Component.SimgL1}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!fl.label} &nbsp; <apex:image style="visibility:hidden;" id="SimgL1" width="11" height="11" /> 
+                                    </apex:outputlabel>  
+                                </apex:facet>
+                                <apex:outputField value="{!sflead.led[fl]}"/>
+                        </apex:column>
+                        <apex:column id="colL2" rendered="{!CONTAINS(fl.label,$ObjectType.Lead.fields.Name.label)}" >
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!fl.label}" onclick="csort('{!fl.fieldpath}','Lead','{!$Component.colL2}','{!$Component.SimgL2}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!fl.label} &nbsp; <apex:image style="visibility:hidden;" id="SimgL2" width="11" height="11" /> 
+                                    </apex:outputlabel>
+                                </apex:facet>
+                                <apex:outputlink value="/{!sflead.led.Id}">{!sflead.led[fl]}</apex:outputlink>
+                        </apex:column>
+                        <apex:column id="colL3" rendered="{!CONTAINS(fl.label,$ObjectType.Lead.fields.OwnerId.label)}">
+                                <!-- COLUMN HEADER - click header to sort -->
+                                <apex:facet name="header">
+                                    <apex:outputlabel title="{!fl.label}" onclick="csort('{!fl.fieldpath}','Lead','{!$Component.colL3}','{!$Component.SimgL3}');" onmouseover="this.style.cursor = 'pointer';" onmouseout="this.style.cursor = 'default';">
+                                        {!$Label.MyFavorites_OwnerId_Column} &nbsp; <apex:image style="visibility:hidden;" id="SimgL3" width="11" height="11" /> 
+                                    </apex:outputlabel>
+                                </apex:facet>
+                                <apex:outputfield value="{!sflead.led[fl]}"/>
+                        </apex:column>
+                    </apex:repeat>
+                </apex:pageblocktable>
+            
+                <apex:outputpanel id="naviLead" rendered="{!showLeadPagi}">
+                    <table width="100%">
+                        <tr><td align="right">
+                            <!-- NAVIGATION CONTROLS FOR LEAD PAGINATION -->
+                            <apex:panelGrid columns="7" styleclass="navipag">
+                                <apex:commandLink action="{!leadfirst}" status="leadloading" oncomplete="colheader(leadsimg,leadpg);" rerender="scripts,opLead,pbtfLead" >{!$Label.Pagi_First}</apex:commandlink> 
+                                <apex:commandLink action="{!leadprevious}" status="leadloading" oncomplete="colheader(leadsimg,leadpg);" rerender="scripts,opLead,pbtfLead">{!$Label.Pagi_Previous}</apex:commandlink> 
+                                <apex:commandLink action="{!leadnext}" status="leadloading" oncomplete="colheader(leadsimg,leadpg);" rerender="scripts,opLead,pbtfLead">{!$Label.Pagi_Next}</apex:commandlink> 
+                                <apex:commandLink action="{!leadlast}" status="leadloading" oncomplete="colheader(leadsimg,leadpg);" rerender="scripts,opLead,pbtfLead">{!$Label.Pagi_Last}</apex:commandlink>
+                                &nbsp; {!$Label.Pagi_GoTo}
+                                <apex:Panelgroup >
+                                    <apex:selectlist styleclass="sellist" id="LeadselPagelist" size="1" value="{!leadPageNumber}" onchange="LEADpageFunction(this.options[this.selectedIndex].value)" >
+                                        <apex:selectoptions value="{!LeadPageSelect}" />
+                                    </apex:selectlist>
+                                </apex:panelgroup>
+                                <apex:panelgroup >
+                                    &nbsp; {!$Label.Pagi_Page} {!leadPageNumber} / {!LeadMaxPageNumber}
+                                </apex:panelgroup>
+                            </apex:panelgrid>
+                        </td></tr>
+                    </table>
+                </apex:outputpanel>
+                
+            </apex:pageblocksection>
+            </apex:outputpanel>             
+            
+            
+            
+        </apex:pageBlock>
+    </apex:outputpanel>
+    
+    <script type="text/javascript">
+    /** Onload: display default sorting visual indicators - Order by Name Ascending **/
+        var simgId, compId;
+        var acc = {!accsize}+'';
+        var con = {!consize}+'';
+        var opp = {!oppsize}+'';
+        var led = {!leadsize}+'';
+        
+        if (acc > 0 && acc != null){
+            simgId = 'pgmyfav:mainForm:pbMain:pbsAcc:pbtfAcc:colArep:0:SimgA2';
+            compId = 'pgmyfav:mainForm:pbMain:pbsAcc:pbtfAcc:colArep:0:colA2';
+            document.getElementById(compId+'header').style.background = '#c4e7f2 URL(none)';
+            document.getElementById(simgId).style.visibility = 'visible';
+            document.getElementById(simgId).src = '/resource/sortArrows/sortArrows_ASC.png'; 
+            csort('Name','Account',compId,simgId);
+        }
+        if (con > 0 && con != null){
+            compId = 'pgmyfav:mainForm:pbMain:pbsCon:pbtfCon:colCrep:0:colC2';
+            simgId = 'pgmyfav:mainForm:pbMain:pbsCon:pbtfCon:colCrep:0:SimgC2';
+            document.getElementById(compId+'header').style.background = '#c4e7f2 URL(none)';
+            document.getElementById(simgId).style.visibility = 'visible';
+            document.getElementById(simgId).src = '/resource/sortArrows/sortArrows_ASC.png'; 
+            csort('Name','Contact',compId,simgId);
+        }
+        if (opp > 0 && opp != null){
+            compId = 'pgmyfav:mainForm:pbMain:pbsOpp:pbtfOpp:colOrep:0:colO3';
+            simgId = 'pgmyfav:mainForm:pbMain:pbsOpp:pbtfOpp:colOrep:0:SimgO3';
+            document.getElementById(compId+'header').style.background = '#c4e7f2 URL(none)';
+            document.getElementById(simgId).style.visibility = 'visible';
+            document.getElementById(simgId).src = '/resource/sortArrows/sortArrows_ASC.png'; 
+            csort('Name','Opportunity',compId,simgId); 
+        }
+        if (led > 0 && led != null){
+            compId = 'pgmyfav:mainForm:pbMain:pbsLead:pbtfLead:colLrep:0:colL2';
+            simgId = 'pgmyfav:mainForm:pbMain:pbsLead:pbtfLead:colLrep:0:SimgL2';
+            document.getElementById(compId+'header').style.background = '#c4e7f2 URL(none)';
+            document.getElementById(simgId).style.visibility = 'visible';
+            document.getElementById(simgId).src = '/resource/sortArrows/sortArrows_ASC.png'; 
+            csort('Name','Lead',compId,simgId); 
+        }       
+    </script>
+    </apex:form>
+</apex:page>

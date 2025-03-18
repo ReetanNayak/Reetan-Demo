@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Enable_Pega_Account_Redirect__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Flag field to determine if the new account override page will redirect a USCAN user to the Pega web tab or to the standard edit screen</description>
+    <label>Enable Pega Account Redirect</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,7 @@
+<apex:page >
+    <apex:image url="{!URLFOR($Resource.vfimagetest, 'cats/kitten1.jpg')}" width="500" height="500" alt="Description of image here"/>
+<!-- \\BANPFILER01\t_reetann$\Desktop\DELETE\vfimagetest.zip\cats
+
+<apex:image url="{!URLFOR($Resource.TestZip, 'images/Bluehills.jpg')}" width="50" height="50" alt="Description of image here"/>    -->
+
+</apex:page>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Digit__c</fullName>
+    <externalId>false</externalId>
+    <formula>10 - MOD((VALUE(LEFT(Asset_Number__c,1)) * 1594323) +
+(VALUE(MID(Asset_Number__c,2,1)) * 531441) +
+(VALUE(MID(Asset_Number__c,3,1)) * 177147) +
+(VALUE(MID(Asset_Number__c,4,1)) * 59049) +
+(VALUE(MID(Asset_Number__c,5,1)) * 19683) +
+(VALUE(MID(Asset_Number__c,6,1)) * 6561) +
+(VALUE(LEFT(Asset_Number__c,1)) * 2187) +
+(VALUE(MID(Asset_Number__c,2,1)) * 729) +
+(VALUE(MID(Asset_Number__c,3,1)) * 243) +
+(VALUE(MID(Asset_Number__c,4,1)) * 81) +
+(VALUE(MID(Asset_Number__c,5,1)) * 27) +
+(VALUE(MID(Asset_Number__c,6,1)) * 9) +
+(VALUE(MID(Asset_Number__c,7,1)) * 3),11)</formula>
+    <label>Check Digit</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

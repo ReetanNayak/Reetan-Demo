@@ -1,0 +1,6 @@
+<apex:page Controller="FB_Friend_CTRL">
+<apex:form >
+  <apex:inputtext value="{!UserIddata}"/>
+  <apex:commandButton action="{!getfrnsdata}" value="frnzs"/>
+  </apex:form>
+</apex:page>

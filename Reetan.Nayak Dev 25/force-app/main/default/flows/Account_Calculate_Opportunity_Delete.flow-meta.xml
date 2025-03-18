@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>&gt; Sum of All Oppty Amount for selected Account.
+&gt; Assign into Selected Account (Total_Opportunity_Amount__c).</description>
+        <name>Add_Sum_of_Amount</name>
+        <label>Add Sum of Amount</label>
+        <locationX>264</locationX>
+        <locationY>671</locationY>
+        <assignmentItems>
+            <assignToReference>Var_SumOf_Oppty_Amount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_All_Opptys.Amount</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Count Total Oppty records for selected Account.
+&gt; Assign into Selected Account (Total_Opportunity_Count__c)</description>
+        <name>Count_Total_Oppty</name>
+        <label>Count Total Oppty</label>
+        <locationX>264</locationX>
+        <locationY>551</locationY>
+        <assignmentItems>
+            <assignToReference>Var_Oppty_Count</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Get_All_Oppty</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_Sum_of_Amount</targetReference>
+        </connector>
+    </assignments>
+    <description>1. Calculate Oppty records on Account, once the Oppty is DELETED.
+2. To Count the Total Oppty records on Account --&gt; Update in Account &quot;Total_Opportunity_Count__c&quot;.
+3. To Calculate the Sum of Opportunity Amount on Account --&gt; Update in Account &quot;Total_Opportunity_Amount__c&quot;.</description>
+    <environments>Default</environments>
+    <interviewLabel>Account - Calculate Opportunity - Create/Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - Calculate Opportunity - Delete</label>
+    <loops>
+        <description>Looping thru All Oppty&apos;s Individually.</description>
+        <name>Loop_All_Opptys</name>
+        <label>Loop All Oppty&apos;s</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <collectionReference>Get_All_Oppty</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Count_Total_Oppty</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Oppty_Count_and_Amount_on_Account</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get All Oppty records for Account.</description>
+        <name>Get_All_Oppty</name>
+        <label>Get All Oppty</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_All_Opptys</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Once Oppty is Deleted:
+&gt; Update Total Oppty Count on Account (Total_Opportunity_Count__c)
+&gt; Update Sum of All Oppty Amount on Account (Total_Opportunity_Amount__c)</description>
+        <name>Update_Oppty_Count_and_Amount_on_Account</name>
+        <label>Update Oppty Count and Amount on Account</label>
+        <locationX>176</locationX>
+        <locationY>887</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Total_Opportunity_Amount__c</field>
+            <value>
+                <elementReference>Var_SumOf_Oppty_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Total_Opportunity_Count__c</field>
+            <value>
+                <elementReference>Var_Oppty_Count</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_All_Oppty</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Var_Oppty_Count</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>Var_SumOf_Oppty_Amount</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+</Flow>

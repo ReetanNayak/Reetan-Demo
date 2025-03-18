@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Controls when and how certain notes are converted to enhanced notes.</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Convert Notes to ContentNotes Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

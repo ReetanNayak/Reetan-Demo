@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Org_Weekly_Report_Data__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Weekly Report Data This Week</label>
+    <referenceTo>Weekly_Report_Data_This_Week__c</referenceTo>
+    <relationshipName>Weekly_Report_Data</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

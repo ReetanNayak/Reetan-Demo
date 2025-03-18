@@ -1,0 +1,221 @@
+<apex:page standardController="Weekly_Report__c" extensions="WeeklyReportOnManagerController" showHeader="false" sidebar="false">
+  <!--<chatter:feedWithFollowers entityId="{!$CurrentPage.Parameters.id}" /> -->
+  <apex:form >
+    <script>
+       function refreshParent(){
+         //alert('Record Saved.');
+         window.top.location='/{!myweeklyreport.id}';
+      }
+    </script>
+    <apex:pagemessages id="PageMessage"/>
+         
+    <!-- @@@@@@@@@@@@ Add/Remove Team Task : ENDS @@@@@@@@@@@@ -->
+    <apex:pageBlock id="TeamReportData" rendered="{!AND(isManager,NOT(isManagerTaskAdded),NOT(isSalesRep))}">
+      <apex:pageblockbuttons location="both">
+         <apex:commandButton value="Save My Task" action="{!SaveTeamTask}" rendered="{!OR(teamThisWeeklist.size>0,teamNextWeekList.size>0)}" oncomplete="refreshParent()"/>
+         <!-- <apex:commandButton value="Cancel"/> -->
+      </apex:pageblockbuttons>
+      
+      <apex:pageBlockSection title="{!$Label.Weekly_Report_This_Week}" columns="1">
+        <apex:outputLabel rendered="{!teamThisWeeklist.size==0}"><b><u>{!$Label.Weekly_Report_No_record_This_Week}</u></b></apex:outputLabel>
+        <apex:pageBlockTable value="{!teamThisWeeklist}" var="r" rendered="{!teamThisWeeklist.size>0}">
+            <apex:column headerValue="{!$Label.Weekly_Report_User_Alias}"> 
+                <!-- <apex:outputField value="{!r.wrtw.CreatedBy.Alias}" /> -->
+                <apex:outputLink value="/{!r.wrtw.Created_User__c}" target="__blank">{!r.wrtw.Created_User__r.Alias}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_WorkDate}"> 
+                <apex:outputField value="{!r.wrtw.Report_Date__c}" />
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Account}"> 
+                <apex:outputLink value="/{!r.wrtw.Account__c}" target="__blank">{!r.wrtw.Account__r.Name}</apex:outputLink>
+                <!-- <apex:outputField value="{!r.wrtw.Account__c}" /> -->
+            </apex:column>
+            <!-- 
+            <apex:column headerValue="Contact"> 
+                <apex:outputField value="{!r.wrtw.Contact__c}" />
+            </apex:column>
+             -->
+             <apex:column headerValue="{!$Label.Weekly_Report_Activity}"> 
+                <apex:outputlink value="/{!r.wrtw.Activity_ID__c}" target="__blank">{!r.wrtw.Task_Subject__c}</apex:outputlink>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Work_Information}"> 
+                <apex:outputField value="{!r.wrtw.Work_Information__c}"  style="width:98%"/>
+            </apex:column>
+            
+            <apex:column headerValue="{!$Label.Weekly_Report_Work_Comment}"> 
+                <apex:repeat value="{!r.wrtw.Weekly_Report_Comments__r}" var="rc">
+                    <apex:outputField value="{!rc.Comment_User__r.Name}" style="width:98%"/>
+                    (<apex:outputField value="{!rc.Comment_User__r.Title}" style="width:98%"/>)
+                    <br/>
+                    <apex:outputField value="{!rc.Work_Comment__c}" style="width:98%"/>
+                    <apex:outputText rendered="{!r.wrtw.Weekly_Report_Comments__r.size > 1}">
+                        <br/>-----------------------------------------<br/>
+                    </apex:outputText>
+                </apex:repeat>
+            </apex:column>
+            
+            <apex:column headerValue="{!$Label.Weekly_Report_Report_Check}"> 
+                <apex:inputCheckbox value="{!r.isChecked}"  style="width:98%"/>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Manager_Comment}"> 
+                <apex:inputField value="{!r.wrtw.Manage_Comment__c}"  style="width:98%"/>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection title="{!$Label.Weekly_Report_Next_Week}" columns="1">
+       <apex:outputLabel rendered="{!teamNextWeekList.size==0}"><b><u>{!$Label.Weekly_Report_No_record_Next_Week}</u></b></apex:outputLabel>
+        <apex:pageBlockTable value="{!teamNextWeekList}" var="rn" rendered="{!teamNextWeekList.size>0}">
+            <apex:column headerValue="{!$Label.Weekly_Report_User_Alias}"> 
+                <!-- <apex:outputField value="{!rn.wrnw.CreatedBy.Alias}" />  -->
+                <apex:outputLink value="/{!rn.wrnw.Created_User__c}" target="__blank">{!rn.wrnw.Created_User__r.Alias}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_WorkDate}"> 
+                <apex:outputField value="{!rn.wrnw.Report_Date__c}" />
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Account}"> 
+                <apex:outputLink value="/{!rn.wrnw.Account__c}" target="__blank">{!rn.wrnw.Account__r.Name}</apex:outputLink>
+                <!-- <apex:outputField value="{!rn.wrnw.Account__c}" />  -->
+            </apex:column>
+            <!-- 
+            <apex:column headerValue="Contact"> 
+                <apex:outputField value="{!rn.wrnw.Contact__c}" />
+            </apex:column>
+            --> 
+            <apex:column headerValue="{!$Label.Weekly_Report_Activity}"> 
+                <apex:outputlink value="/{!rn.wrnw.Activity_ID__c}" target="__blank">{!rn.wrnw.Task_Subject__c}</apex:outputlink>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Work_Information}"> 
+                <apex:outputField value="{!rn.wrnw.Work_Information__c}"  style="width:98%"/>
+            </apex:column>
+            
+            <apex:column headerValue="{!$Label.Weekly_Report_Work_Comment}"> 
+                <apex:repeat value="{!rn.wrnw.Weekly_Report_Comments__r}" var="rc">
+                    <apex:outputField value="{!rc.Comment_User__r.Name}" style="width:98%"/>
+                    (<apex:outputField value="{!rc.Comment_User__r.Title}" style="width:98%"/>)
+                    <br/>
+                    <apex:outputField value="{!rc.Work_Comment__c}" style="width:98%"/>
+                    <apex:outputText rendered="{!rn.wrnw.Weekly_Report_Comments__r.size > 1}">
+                        <br/>-----------------------------------------<br/>
+                    </apex:outputText>
+                </apex:repeat>
+            </apex:column>
+            
+           <apex:column headerValue="{!$Label.Weekly_Report_Report_Check}"> 
+                <apex:inputCheckbox value="{!rn.isChecked}"  style="width:98%"/>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Manager_Comment}"> 
+                <apex:inputField value="{!rn.wrnw.Manage_Comment__c}"  style="width:98%"/>
+            </apex:column>
+        </apex:pageBlockTable>
+ </apex:pageBlockSection>
+ </apex:pageBlock>
+  <!-- @@@@@@@@@@@@ Add/Remove Team Task : ENDS @@@@@@@@@@@@ -->
+  
+ <!-- @@@@@@@@@@@@ Edit Comment Code: STARTS @@@@@@@@@@@@ -->
+ <apex:pageBlock title="Group Select" rendered="{!AND(isManager,isManagerTaskAdded,NOT(isSalesRep),isEnableTeamComment)}">
+   <apex:Pageblockbuttons location="top" >
+      <apex:commandButton value="Search" action="{!WeeklyReportView}" rendered="{!AND(NOT(isEditMode),OR(teamThisWeekWRDView.size>0,teamNextWRDView.size>0))}" reRender="TeamTWNWReport" status="status"/>
+      <apex:commandButton value="Comment Edit" action="{!doEdit}" rendered="{!AND(NOT(isEditMode),OR(teamThisWeekWRDView.size>0,teamNextWRDView.size>0))}"/>
+      <apex:commandButton value="Update" action="{!DoUpdateComment}" rendered="{!isEditMode}" oncomplete="refreshParent()"/>
+      <apex:commandButton value="Cancel" action="{!DoCancelEdit}" rendered="{!isEditMode}"/>
+   </apex:Pageblockbuttons>
+   <apex:selectCheckboxes value="{!selectedGroup}" layout="lineDirection" rendered="{!!isEditMode}">
+      <apex:selectOptions value="{!UserGroupName}"/>
+   </apex:selectCheckboxes>
+   
+   <apex:actionstatus id="status">
+    <apex:facet name="start">
+      <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+    </apex:facet>
+</apex:actionstatus>
+ </apex:pageBlock>
+ <apex:pageblock rendered="{!AND(isManager,isManagerTaskAdded,NOT(isSalesRep),isEnableTeamComment)}" id="TeamTWNWReport">
+   <apex:pageBlockSection title="{!$Label.Weekly_Report_This_Week}" columns="1">
+        <apex:pageBlockTable value="{!teamThisWeekWRDView}" var="r" columns="8">
+            <apex:column headerValue="{!$Label.Weekly_Report_User_Alias}"> 
+                <!--  <apex:outputField value="{!r.Created_User__r.Alias}" /> -->
+                <apex:outputLink value="/{!r.Created_User__c}" target="__blank">{!r.Created_User__r.Alias}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_WorkDate}"> 
+                <apex:outputField value="{!r.Report_Date__c}" />
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Account}"> 
+                <!-- <apex:outputField value="{!r.Account__c}" /> -->
+                <apex:outputLink value="/{!r.Account__c}" target="__blank">{!r.Account__r.Name}</apex:outputLink>
+            </apex:column>
+            <!-- 
+            <apex:column headerValue="Contact"> 
+                <apex:outputField value="{!r.Contact__c}" />
+            </apex:column>
+            -->
+            <apex:column headerValue="{!$Label.Weekly_Report_Activity}"> 
+                <apex:outputlink value="/{!r.Activity_ID__c}" target="__blank">{!r.Task_Subject__c}</apex:outputlink>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Work_Information}"> 
+                <apex:outputField value="{!r.Work_Information__c}"  style="width:98%"/>
+            </apex:column>
+            
+            <apex:column headerValue="{!$Label.Weekly_Report_Work_Comment}"> 
+                <apex:repeat value="{!r.Weekly_Report_Comments__r}" var="rc">
+                    <apex:outputField value="{!rc.Comment_User__r.Name}" style="width:98%"/>
+                    (<apex:outputField value="{!rc.Comment_User__r.Title}" style="width:98%"/>)
+                    <br/>
+                    <apex:outputField value="{!rc.Work_Comment__c}" style="width:98%"/>
+                    <apex:outputText rendered="{!r.Weekly_Report_Comments__r.size > 1}">
+                        <br/>-----------------------------------------<br/>
+                    </apex:outputText>
+                </apex:repeat>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Manager_Comment}" rendered="{!isEditMode}"> 
+                <apex:inputField value="{!r.Manage_Comment__c}"  style="width:98%"/>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlockSection>
+    
+    <apex:pageBlockSection title="{!$Label.Weekly_Report_Next_Week}" columns="1">
+        <apex:pageBlockTable value="{!teamNextWRDView}" var="rn">
+            <apex:column headerValue="{!$Label.Weekly_Report_User_Alias}"> 
+                <!-- <apex:outputField value="{!rn.Created_User__r.Alias}" />  -->
+                <apex:outputLink value="/{!rn.Created_User__c}" target="__blank">{!rn.Created_User__r.Alias}</apex:outputLink>
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_WorkDate}"> 
+                <apex:outputField value="{!rn.Report_Date__c}" />
+            </apex:column>
+            <apex:column headerValue="{!$Label.Weekly_Report_Account}"> 
+                <!-- <apex:outputField value="{!rn.Account__c}" />  -->
+                <apex:outputLink value="/{!rn.Account__c}" target="__blank">{!rn.Account__r.Name}</apex:outputLink>
+            </apex:column>
+            <!-- 
+            <apex:column headerValue="Contact"> 
+                <apex:outputField value="{!rn.Contact__c}" />
+            </apex:column>
+             -->
+            <apex:column headerValue="{!$Label.Weekly_Report_Activity}"> 
+                <apex:outputlink value="/{!rn.Activity_ID__c}" target="__blank">{!rn.Task_Subject__c}</apex:outputlink>
+            </apex:column> 
+            <apex:column headerValue="{!$Label.Weekly_Report_Work_Information}"> 
+                <apex:outputField value="{!rn.Work_Information__c}"  style="width:98%"/>
+            </apex:column>
+            
+            <apex:column headerValue="{!$Label.Weekly_Report_Work_Comment}"> 
+                <apex:repeat value="{!rn.Weekly_Report_Comments__r}" var="rc">
+                    <apex:outputField value="{!rc.Comment_User__r.Name}" style="width:98%"/>
+                    (<apex:outputField value="{!rc.Comment_User__r.Title}" style="width:98%"/>)
+                    <br/>
+                    <apex:outputField value="{!rc.Work_Comment__c}" style="width:98%"/>
+                    <apex:outputText rendered="{!rn.Weekly_Report_Comments__r.size > 1}">
+                        <br/>-----------------------------------------<br/>
+                    </apex:outputText>
+                </apex:repeat>
+            </apex:column>
+            
+            <apex:column headerValue="{!$Label.Weekly_Report_Manager_Comment}" rendered="{!isEditMode}"> 
+                <apex:inputField value="{!rn.Manage_Comment__c}"  style="width:98%"/>
+            </apex:column>
+        </apex:pageBlockTable>
+ </apex:pageBlockSection>
+  </apex:pageblock>
+  <!-- @@@@@@@@@@@@ Edit Comment Code: ENDS @@@@@@@@@@@@ -->
+  </apex:form>
+</apex:page>

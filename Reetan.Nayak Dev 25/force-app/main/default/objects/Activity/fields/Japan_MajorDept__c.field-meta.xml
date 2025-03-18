@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Japan_MajorDept__c</fullName>
+    <label>Clinical Department (Large Item)</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>A_Internal Medicine</fullName>
+                <default>false</default>
+                <label>A_Internal Medicine</label>
+            </value>
+            <value>
+                <fullName>B_Surgical Department</fullName>
+                <default>false</default>
+                <label>B_Surgical Department</label>
+            </value>
+            <value>
+                <fullName>C_Orthopaedic Surgery</fullName>
+                <default>false</default>
+                <label>C_Orthopaedic Surgery</label>
+            </value>
+            <value>
+                <fullName>D_Neurosurgery</fullName>
+                <default>false</default>
+                <label>D_Neurosurgery</label>
+            </value>
+            <value>
+                <fullName>E_Radiology Department</fullName>
+                <default>false</default>
+                <label>E_Radiology Department</label>
+            </value>
+            <value>
+                <fullName>F_Anesthesia Department</fullName>
+                <default>false</default>
+                <label>F_Anesthesia Department</label>
+            </value>
+            <value>
+                <fullName>G_Surgery/Emergency</fullName>
+                <default>false</default>
+                <label>G_Surgery/Emergency</label>
+            </value>
+            <value>
+                <fullName>H_Obstetrics and Gynaecology</fullName>
+                <default>false</default>
+                <label>H_Obstetrics and Gynaecology</label>
+            </value>
+            <value>
+                <fullName>I_Dermatology</fullName>
+                <default>false</default>
+                <label>I_Dermatology</label>
+            </value>
+            <value>
+                <fullName>J_Plastic Surgery</fullName>
+                <default>false</default>
+                <label>J_Plastic Surgery</label>
+            </value>
+            <value>
+                <fullName>K_Urology</fullName>
+                <default>false</default>
+                <label>K_Urology</label>
+            </value>
+            <value>
+                <fullName>L_Pediatrics</fullName>
+                <default>false</default>
+                <label>L_Pediatrics</label>
+            </value>
+            <value>
+                <fullName>M_Ophthalmology</fullName>
+                <default>false</default>
+                <label>M_Ophthalmology</label>
+            </value>
+            <value>
+                <fullName>N_Otorhinolaryngology</fullName>
+                <default>false</default>
+                <label>N_Otorhinolaryngology</label>
+            </value>
+            <value>
+                <fullName>O_Department of Neurology and Psychiatry</fullName>
+                <default>false</default>
+                <label>O_Department of Neurology and Psychiatry</label>
+            </value>
+            <value>
+                <fullName>P_Dental Surgery</fullName>
+                <default>false</default>
+                <label>P_Dental Surgery</label>
+            </value>
+            <value>
+                <fullName>Q_Hygiene Inspection</fullName>
+                <default>false</default>
+                <label>Q_Hygiene Inspection</label>
+            </value>
+            <value>
+                <fullName>R_Other</fullName>
+                <default>false</default>
+                <label>R_Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

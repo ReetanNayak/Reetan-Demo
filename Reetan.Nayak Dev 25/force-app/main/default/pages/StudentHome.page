@@ -1,0 +1,252 @@
+<apex:page sidebar="false" id="studentpage" controller="StudentController" showHeader="true">
+<apex:form id="studentform">
+        <style type="text/css">
+         #header{
+             width: 100%;
+             height: 15%;
+             padding-bottom: 15px;
+         
+         }
+         #Navigation{
+             width: 100%;
+             height: 10%;
+             padding-bottom: 15px;
+         }
+         #body{
+              width: 100%;
+              height: 75%;
+         }
+         #left{
+              width: 30%;
+              height: 100%;
+              float:left;
+              padding-left:1%;
+         }
+         #middle{
+              width: 45%;
+              height: 100%;
+              float:left;
+              padding-left:1.5%;
+         }
+         #right{
+              padding-left:1.5%;
+              width: 20%;
+              height: 100%;
+              float:left;
+         }
+         #left1{
+            width: 100%;
+            height: 40%;
+            padding-bottom: 10px;
+         }
+         #left2{
+            width: 100%;
+            height: 40%;
+            padding-bottom: 10px;
+         }
+         #left3{
+            width: 100%;
+            height: 20%;
+         }
+         #middle1{
+            width: 100%;
+            height: 40%;
+            padding-bottom: 10px;
+         }
+         #middle2{
+            width: 100%;
+            height: 60%;
+         }
+         #right1{
+            width: 100%;
+            height: 40%;
+            padding-bottom: 10px;
+         }
+         #right2{
+            width: 100%;
+            height: 60%;
+         }
+         #imageleft{
+             float:left;
+             width:125px;
+         }
+         #imright{
+              float:left;
+         }
+        #top{
+          padding-left:15%;
+          padding-top:5%;
+           }
+        #pop{
+            padding-left:20%;
+            padding-top:10%;
+         }
+        .custPopup{
+            background-color: white;
+            border-width: 0px;
+            border-style: solid;
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+           
+            width: 500px;
+            margin-left: -250px;
+            top:10px;
+            height:170px;
+        }
+        .popupBackground{
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+        }
+         </style>
+        <div id="main">
+           <div id="header">
+                <apex:image url="{!URLFOR($Resource.images, 'image/header.png')}" width="100%" height="90px" /> 
+           </div>
+           <div id="Navigation">
+              <apex:toolbar id="navigation" itemSeparator="line" style="background: #2a6da9; background: -moz-linear-gradient(top, bottom, #55aaee, #003366);background: -webkit-gradient(linear, top, bottom, from(#55aaee), to(#003366));background-image:none; height:25px; broder-color:FF9966">
+                  <apex:toolbarGroup itemSeparator="line" >
+                      <apex:outputLink style="color:white; font-size:4">Home</apex:outputLink>
+                      <apex:commandLink action="{!doLogout}" value="Logout" style="color:white;"/>
+                  </apex:toolbarGroup>
+             </apex:toolbar>
+           </div>
+           <div id="body">
+            <div id="left"> 
+                  <div id="left1"> 
+                       <apex:pageBlock tabStyle="Program__c">
+                           <apex:pageBlockSection collapsible="true" title="My Settings" columns="2"> 
+                              <apex:pageBlockSectionItem >
+                                       <apex:image height="100px" width="100px"/>
+                                </apex:pageBlockSectionItem>
+                                 <table>
+                                   <tr>
+                                       <apex:pageBlockSectionItem >
+                                       <apex:outputLabel value="Welcome," for="name"/>
+                                       <b>{!Name[0].name} {!Name[0].Last_Name__c}</b>
+                                       </apex:pageBlockSectionItem>
+                               </tr>
+                                   <tr>
+                                       <apex:pageBlockSectionItem >
+                                          <apex:image url="{!URLFOR($Resource.images, 'image/gmail_M_icon.gif')}"/>
+                                          <apex:outputText >{!name[0].SEmail_Id__c}</apex:outputText>
+                                      </apex:pageBlockSectionItem>
+                                   </tr>
+                                     <tr><apex:pageBlockSectionItem >
+                                              <apex:image url="/img/msg_icons/info16.gif" />
+                                              <apex:outputText >{!name[0].St_Mob_No__c}</apex:outputText>
+                                         </apex:pageBlockSectionItem>
+                                       </tr>
+                                       <tr>
+                                           <apex:pageBlockSectionItem >
+                                               <apex:image url="/img/msg_icons/info16.gif" />
+                                               <apex:outputText >{!course[0].Course_Name__c}</apex:outputText>
+                                           </apex:pageBlockSectionItem>
+                                       </tr>
+                                  </table>
+                          </apex:pageBlockSection>
+                       </apex:pageBlock>
+                   </div>
+                <div id="left2">
+                       <apex:pageBlock tabStyle="Program__c" >
+                           <apex:pageBlockSection title="Assesment Exam">
+                               <apex:commandLink value="Devloper401Exam " action="{!doExam}" target="blank" style="color:blue"/>
+                           </apex:pageBlockSection>
+                       </apex:pageBlock>
+                   </div>
+                   <div id="left3">
+                       <apex:pageBlock tabStyle="Program__c">
+                           <apex:pageBlockSection title="FeedBack" columns="1">
+                                   <apex:pageblockSectionItem >
+                                        <apex:image url="/img/func_icons/util/checkmark16.gif"/>
+                                        <apex:commandLink value="Devloper Course Feedback Form" style="color:blue" />
+                                   </apex:pageblockSectionItem>
+                              </apex:pageBlockSection>
+                      </apex:pageBlock>
+                   </div>
+              </div>
+             <div id="middle">
+                 <div id="middle1">
+                       <apex:pageBlock title="Event">
+                       </apex:pageBlock>
+                  </div>
+                  <div id="middle2">
+                       <apex:pageBlock title="My Courses" >
+                            <div id="topicCovered">
+                               <apex:pageBlockTable value="{!Task}" var="st" columnsWidth="40%,30%">
+                                 <apex:column headerValue="Task Name" value="{!st.Session_Name__c}" style="color:{!IF(st.Status__c =='Completed', 'green', 'red')}"/>
+                                  <apex:column headerValue="Topic Status" value="{!st.Status__c}"/>
+                                  <apex:column headerValue="Covered By" value="{!st.Faculty__c}"/>
+                                 </apex:pageBlockTable>
+                             </div> <br/>
+                            <div id="TopicInProgress">
+                               <apex:pageBlockTable value="{!TopicInProgress}" var="st" columnsWidth="40%,30%">
+                                  <apex:column headerValue="Task Name" value="{!st.Session_Name__c}"  style="color:{!IF(st.Status__c =='Completed', 'green', 'red')}"/>
+                                  <apex:column headerValue="Topic Status" value="{!st.Status__c}"/>
+                                  <apex:column headerValue="Covered By" value="{!st.Faculty__c}"/>
+                                 </apex:pageBlockTable>
+                             </div><br/>
+                             <div id="TopicNotYetStarted">
+                               <apex:pageBlockTable value="{!TopicNotStarted}" var="st" columnsWidth="40%,30%">
+                                  <apex:column headerValue="Task Name" value="{!st.Session_Name__c}" style="color:{!IF(st.Status__c =='Completed', 'green', 'red')}"/>
+                                  <apex:column headerValue="Topic Status" value="{!st.Status__c}"/>
+                                  <apex:column headerValue="Covered By" value="{!st.Faculty__c}"/>
+                                 </apex:pageBlockTable>
+                             </div>
+                       </apex:pageBlock>
+                  </div>
+               </div>
+              <div id="right">
+                   <div id="right1">
+                       <apex:pageBlock tabStyle="Program__c">
+                           <apex:pageBlockSection columns="1" title="Updates" id="right1pbs">
+                               <apex:pageblockSectionItem >
+                                   <apex:image url="/img/msg_icons/error16.png"/> 
+                                   <apex:commandLink value="{!test[0].TestPendingStatus__c}" action="{!showPopup}"/>
+                               </apex:pageblockSectionItem>
+                                <apex:pageblockSectionItem >
+                                   <apex:image url="/img/msg_icons/error16.png"/> 
+                                   <apex:outputText value="1 Payment pending" />
+                               </apex:pageblockSectionItem>
+                           </apex:pageBlockSection>
+                      </apex:pageBlock>
+                        <apex:outputPanel id="resultpopup">
+                              <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/>
+                              <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!displayPopUp}">
+                                         <div id="top">
+                                         <apex:outputText >By Clicking Start Test Your Time will Start</apex:outputText><br/>
+                                         </div>
+                                         <div id="pop">
+                                         <apex:commandButton value="Start Test" action="{!doTest}"/>
+                                         <apex:commandButton action="{!closePopup}" value="Close"/>
+                                         </div>
+                            </apex:outputPanel>
+                         </apex:outputPanel> 
+                     </div>
+                   <div id="right2">
+                      <apex:pageBlock tabStyle="Program__c">
+                          <apex:pageBlockSection columns="1" title="Reference Material">
+                                    <apex:pageBlockSectionItem > 
+                                         <apex:image url="{!URLFOR($Resource.ctpimage, 'ctpimage/help.png')}"/> 
+                                         <apex:commandLink value="Visualforce page pdf" style="color:blue" />
+                                    </apex:pageBlockSectionItem>
+                                    <apex:pageBlockSectionItem > 
+                                         <apex:image url="{!URLFOR($Resource.ctpimage, 'ctpimage/help.png')}" /> 
+                                         <apex:commandLink value="Apex Code pdf"  style="color:blue" action="http://www.salesforce.com/us/developer/docs/apexcode/salesforce_apex_language_reference.pdf"/>
+                                    </apex:pageBlockSectionItem>
+                               </apex:pageBlockSection>
+                         </apex:pageBlock>
+                   </div>
+                </div>
+           </div>
+         </div>
+      </apex:form>
+</apex:page>

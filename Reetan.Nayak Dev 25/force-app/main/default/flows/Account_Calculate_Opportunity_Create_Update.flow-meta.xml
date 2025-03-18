@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>&gt; Sum of All Oppty Amount for selected Account.
+&gt; Assign into Selected Account (Total_Opportunity_Amount__c).</description>
+        <name>Add_Sum_of_Amount</name>
+        <label>Add Sum of Amount</label>
+        <locationX>138</locationX>
+        <locationY>815</locationY>
+        <assignmentItems>
+            <assignToReference>Var_SumOf_Oppty_Amount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_All_Opptys.Amount</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Sum of All Oppty Amount for New Account.
+&gt; Assign into NEW Account (Total_Opportunity_Amount__c).</description>
+        <name>Add_Sum_of_Amount_New_Acc_1</name>
+        <label>Add Sum of Amount (New Acc) 1</label>
+        <locationX>490</locationX>
+        <locationY>815</locationY>
+        <assignmentItems>
+            <assignToReference>Var_SumOf_Oppty_Amount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_All_Opptys_New_Acc_1.Amount</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys_New_Acc_1</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Sum of All Oppty Amount for NEW Account.
+&gt; Assign into NEW Account (Total_Opportunity_Amount__c).</description>
+        <name>Add_Sum_of_Amount_New_Acc_2</name>
+        <label>Add Sum of Amount (New Acc) 2</label>
+        <locationX>842</locationX>
+        <locationY>815</locationY>
+        <assignmentItems>
+            <assignToReference>Var_SumOf_Oppty_Amount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_All_Opptys_New_Acc_2.Amount</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys_New_Acc_2</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Sum of All Oppty Amount for Prior Account.
+&gt; Assign into Prior Account (Total_Opportunity_Amount__c).</description>
+        <name>Add_Sum_of_Amount_Prior_Acc_2</name>
+        <label>Add Sum of Amount (Prior Acc) 2</label>
+        <locationX>1194</locationX>
+        <locationY>815</locationY>
+        <assignmentItems>
+            <assignToReference>Var_SumOf_Oppty_Amount</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_All_Opptys_Prior_Acc_2.Amount</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys_Prior_Acc_2</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Remove this Oppty Amount for Prior Account.
+&gt; Assign into Prior Account (Total_Opportunity_Amount__c).</description>
+        <name>Copy_1_of_Add_Sum_of_Amount_New_Acc_1</name>
+        <label>Deduct Sum of Amount (Prior Acc) 1</label>
+        <locationX>490</locationX>
+        <locationY>1511</locationY>
+        <assignmentItems>
+            <assignToReference>Var_MinusOf_Oppty_Amount</assignToReference>
+            <operator>Subtract</operator>
+            <value>
+                <elementReference>Loop_All_Opptys_Prior_Acc_1.Amount</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys_Prior_Acc_1</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Count Total Oppty records for selected Account.
+&gt; Assign into Selected Account (Total_Opportunity_Count__c).</description>
+        <name>Count_Total_Oppty</name>
+        <label>Count Total Oppty</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <assignmentItems>
+            <assignToReference>Var_Oppty_Count</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Var_GetAllOppty_NoChange</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Count Total Oppty records for New Account.
+&gt; Assign into New Account (Total_Opportunity_Count__c).</description>
+        <name>Count_Total_Oppty_New_Acc_1</name>
+        <label>Count Total Oppty (New Acc) 1</label>
+        <locationX>402</locationX>
+        <locationY>575</locationY>
+        <assignmentItems>
+            <assignToReference>Var_Oppty_Count</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Var_GetAllOppty_New</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys_New_Acc_1</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Count Total Oppty records for NEW Account.
+&gt; Assign into New Account (Total_Opportunity_Count__c).</description>
+        <name>Count_Total_Oppty_New_Acc_2</name>
+        <label>Count Total Oppty (New Acc) 2</label>
+        <locationX>754</locationX>
+        <locationY>575</locationY>
+        <assignmentItems>
+            <assignToReference>Var_Oppty_Count</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Var_GetAllOppty_New</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys_New_Acc_2</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Count Total Oppty records for Prior Account.
+&gt; Assign into Prior Account (Total_Opportunity_Count__c).</description>
+        <name>Count_Total_Oppty_Prior_Acc_1</name>
+        <label>Count Total Oppty (Prior Acc) 1</label>
+        <locationX>402</locationX>
+        <locationY>1271</locationY>
+        <assignmentItems>
+            <assignToReference>Var_Oppty_Count</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Var_GetAllOppty_Prior</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys_Prior_Acc_1</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>&gt; Count Total Oppty records for Prior Account.
+&gt; Assign into Prior Account (Total_Opportunity_Count__c).</description>
+        <name>Count_Total_Oppty_Prior_Acc_2</name>
+        <label>Count Total Oppty (Prior Acc) 2</label>
+        <locationX>1106</locationX>
+        <locationY>575</locationY>
+        <assignmentItems>
+            <assignToReference>Var_Oppty_Count</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Var_GetAllOppty_Prior</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_All_Opptys_Prior_Acc_2</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>1. Oppty &quot;Account&quot; = NOT Changed
+2. Oppty &quot;Account&quot; = Changed (Old Account to New Account)
+3. Oppty &quot;Account&quot; = Changed (NULL to New Account)
+4. Oppty &quot;Account&quot; = Changed (Old Account to NULL)</description>
+        <name>Oppty_Account_IsChange</name>
+        <label>Oppty&apos;s Account (IsChange)</label>
+        <locationX>710</locationX>
+        <locationY>335</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Opp_Account_NO_Change</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_All_Oppty</targetReference>
+            </connector>
+            <label>Opp Acc (NO Change)</label>
+        </rules>
+        <rules>
+            <name>Opp_Account_Old_to_New</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_All_Oppty_New_Acc_1</targetReference>
+            </connector>
+            <label>Opp Acc (Old to New)</label>
+        </rules>
+        <rules>
+            <name>Opp_Account_Null_to_New</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_All_Oppty_New_Acc_2</targetReference>
+            </connector>
+            <label>Opp Acc (Null to New)</label>
+        </rules>
+        <rules>
+            <name>Opp_Account_Old_to_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_All_Oppty_Prior_Acc_2</targetReference>
+            </connector>
+            <label>Opp Acc (Old to Null)</label>
+        </rules>
+    </decisions>
+    <description>1. Calculate Oppty records on Account, once the Oppty is CREATE/UPDATE.
+2. To Count the Total Oppty records on Account --&gt; Update in Account &quot;Total_Opportunity_Count__c&quot;.
+3. To Calculate the Sum of Opportunity Amount on Account --&gt; Update in Account &quot;Total_Opportunity_Amount__c&quot;.
+
+&gt; Oppty &quot;Account&quot; = NOT Changed
+&gt; Oppty &quot;Account&quot; = Changed (Old Account to New Account)
+&gt; Oppty &quot;Account&quot; = Changed (NULL to New Account)
+&gt; Oppty &quot;Account&quot; = Changed (Old Account to NULL)</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>FF_MinusOf_Oppty_Amount</name>
+        <dataType>Currency</dataType>
+        <expression>-{!Var_MinusOf_Oppty_Amount}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Account - Calculate Opportunity - Create/Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - Calculate Opportunity - Create/Update</label>
+    <loops>
+        <description>Looping thru All Oppty&apos;s Individually.</description>
+        <name>Loop_All_Opptys</name>
+        <label>Loop All Oppty&apos;s</label>
+        <locationX>50</locationX>
+        <locationY>695</locationY>
+        <collectionReference>Var_GetAllOppty_NoChange</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Sum_of_Amount</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Oppty_Count_and_Amount_on_Account</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Looping thru All Oppty&apos;s for New Account Individually.</description>
+        <name>Loop_All_Opptys_New_Acc_1</name>
+        <label>Loop All Oppty&apos;s (New Acc) 1</label>
+        <locationX>402</locationX>
+        <locationY>695</locationY>
+        <collectionReference>Var_GetAllOppty_New</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Sum_of_Amount_New_Acc_1</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Oppty_Count_and_Amount_New_Acc_1</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Looping thru All Oppty&apos;s for New Account Individually.</description>
+        <name>Loop_All_Opptys_New_Acc_2</name>
+        <label>Loop All Oppty&apos;s (New Acc) 2</label>
+        <locationX>754</locationX>
+        <locationY>695</locationY>
+        <collectionReference>Var_GetAllOppty_New</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Sum_of_Amount_New_Acc_2</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Oppty_Count_and_Amount_New_Acc_2</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Looping thru All Oppty&apos;s for Prior Account Individually.</description>
+        <name>Loop_All_Opptys_Prior_Acc_1</name>
+        <label>Loop All Oppty&apos;s (Prior Acc) 1</label>
+        <locationX>402</locationX>
+        <locationY>1391</locationY>
+        <collectionReference>Var_GetAllOppty_Prior</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Copy_1_of_Add_Sum_of_Amount_New_Acc_1</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Oppty_Count_and_Amount_Prior_Acc_1</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Looping thru All Oppty&apos;s for Prior Account Individually.</description>
+        <name>Loop_All_Opptys_Prior_Acc_2</name>
+        <label>Loop All Oppty&apos;s (Prior Acc) 2</label>
+        <locationX>1106</locationX>
+        <locationY>695</locationY>
+        <collectionReference>Var_GetAllOppty_Prior</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Add_Sum_of_Amount_Prior_Acc_2</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Oppty_Count_and_Amount_Prior_Acc_2</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get All Oppty records for Account</description>
+        <name>Get_All_Oppty</name>
+        <label>Get All Oppty</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Count_Total_Oppty</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <outputReference>Var_GetAllOppty_NoChange</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Amount</queriedFields>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+    </recordLookups>
+    <recordLookups>
+        <description>Get All Oppty records for New Account</description>
+        <name>Get_All_Oppty_New_Acc_1</name>
+        <label>Get All Oppty (New Acc) 1</label>
+        <locationX>402</locationX>
+        <locationY>455</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Count_Total_Oppty_New_Acc_1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <outputReference>Var_GetAllOppty_New</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Amount</queriedFields>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+    </recordLookups>
+    <recordLookups>
+        <description>Get All Oppty records for New Account</description>
+        <name>Get_All_Oppty_New_Acc_2</name>
+        <label>Get All Oppty (New Acc) 2</label>
+        <locationX>754</locationX>
+        <locationY>455</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Count_Total_Oppty_New_Acc_2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <outputReference>Var_GetAllOppty_New</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Amount</queriedFields>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+    </recordLookups>
+    <recordLookups>
+        <description>Get All Oppty records for Prior Account</description>
+        <name>Get_All_Oppty_Prior_Acc_1</name>
+        <label>Get All Oppty (Prior Acc) 1</label>
+        <locationX>402</locationX>
+        <locationY>1151</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Count_Total_Oppty_Prior_Acc_1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record__Prior.AccountId</elementReference>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <outputReference>Var_GetAllOppty_Prior</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Amount</queriedFields>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+    </recordLookups>
+    <recordLookups>
+        <description>Get All Oppty records for Prior Account.</description>
+        <name>Get_All_Oppty_Prior_Acc_2</name>
+        <label>Get All Oppty (Prior Acc) 2</label>
+        <locationX>1106</locationX>
+        <locationY>455</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Count_Total_Oppty_Prior_Acc_2</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record__Prior.AccountId</elementReference>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <outputReference>Var_GetAllOppty_Prior</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Amount</queriedFields>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+    </recordLookups>
+    <recordUpdates>
+        <description>&gt; Update Total Oppty Count on New Account (Total_Opportunity_Count__c)
+&gt; Update Sum of All Oppty Amount on New Account (Total_Opportunity_Amount__c)</description>
+        <name>Update_Oppty_Count_and_Amount_New_Acc_1</name>
+        <label>Update Oppty Count and Amount (New Acc) 1</label>
+        <locationX>402</locationX>
+        <locationY>1031</locationY>
+        <connector>
+            <targetReference>Get_All_Oppty_Prior_Acc_1</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Total_Opportunity_Amount__c</field>
+            <value>
+                <elementReference>Var_SumOf_Oppty_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Total_Opportunity_Count__c</field>
+            <value>
+                <elementReference>Var_Oppty_Count</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>&gt; Update Total Oppty Count on NEW Account (Total_Opportunity_Count__c)
+&gt; Update Sum of All Oppty Amount on NEW Account (Total_Opportunity_Amount__c)</description>
+        <name>Update_Oppty_Count_and_Amount_New_Acc_2</name>
+        <label>Update Oppty Count and Amount (New Acc) 2</label>
+        <locationX>754</locationX>
+        <locationY>1031</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Total_Opportunity_Amount__c</field>
+            <value>
+                <elementReference>Var_SumOf_Oppty_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Total_Opportunity_Count__c</field>
+            <value>
+                <elementReference>Var_Oppty_Count</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>&gt; Update Total Oppty Count on Account (Total_Opportunity_Count__c)
+&gt; Update Sum of All Oppty Amount on Account (Total_Opportunity_Amount__c)</description>
+        <name>Update_Oppty_Count_and_Amount_on_Account</name>
+        <label>Update Oppty Count and Amount on Account</label>
+        <locationX>50</locationX>
+        <locationY>1031</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Total_Opportunity_Amount__c</field>
+            <value>
+                <elementReference>Var_SumOf_Oppty_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Total_Opportunity_Count__c</field>
+            <value>
+                <elementReference>Var_Oppty_Count</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>&gt; Update Total Oppty Count on Prior Account (Total_Opportunity_Count__c)
+&gt; Update Sum of All Oppty Amount on Prior Account (Total_Opportunity_Amount__c)</description>
+        <name>Update_Oppty_Count_and_Amount_Prior_Acc_1</name>
+        <label>Update Oppty Count and Amount (Prior Acc) 1</label>
+        <locationX>402</locationX>
+        <locationY>1727</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record__Prior.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Total_Opportunity_Amount__c</field>
+            <value>
+                <elementReference>FF_MinusOf_Oppty_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Total_Opportunity_Count__c</field>
+            <value>
+                <elementReference>Var_Oppty_Count</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>&gt; Update Total Oppty Count on Prior Account (Total_Opportunity_Count__c).
+&gt; Update Sum of All Oppty Amount on Prior Account (Total_Opportunity_Amount__c).</description>
+        <name>Update_Oppty_Count_and_Amount_Prior_Acc_2</name>
+        <label>Update Oppty Count and Amount (Prior Acc) 2</label>
+        <locationX>1106</locationX>
+        <locationY>1031</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record__Prior.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Total_Opportunity_Amount__c</field>
+            <value>
+                <elementReference>Var_SumOf_Oppty_Amount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Total_Opportunity_Count__c</field>
+            <value>
+                <elementReference>Var_Oppty_Count</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <start>
+        <locationX>584</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Oppty_Account_IsChange</targetReference>
+        </connector>
+        <object>Opportunity</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Var_GetAllOppty_New</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>Var_GetAllOppty_NoChange</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>Var_GetAllOppty_Prior</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>Var_MinusOf_Oppty_Amount</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+    <variables>
+        <name>Var_Oppty_Count</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>Var_SumOf_Oppty_Amount</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
+    </variables>
+</Flow>

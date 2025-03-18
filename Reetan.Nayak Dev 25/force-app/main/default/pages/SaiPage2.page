@@ -1,0 +1,73 @@
+<apex:page controller="SaiPage2_CLS" sidebar="false" >
+<apex:form >
+ 
+<style type="text/css">
+    #maindiv {
+        width:100%;
+        height:100%;
+        padding-left:1%;
+        float:left;
+        }
+    
+    #leftPanel {
+        padding-left:8%;
+        font-size:18px;
+        font-weight:bold;
+        font-family:GE inspira;
+        color:#33CCFF;
+     //   text-decoration:none;
+    }
+</style>
+        
+    <div id="maindiv" >
+           <!--
+            <table width="100%" border="0" >
+                <tr>
+                    <td width="25%"><apex:image value="{!$Resource.close}" width="110" height="120" /></td>
+                    <td valign="center" ><b><font face="GE inspira" size="10" color="#33CCFF">Salesforce</font></b></td>
+                </tr>
+            </table>    <br/>    -->
+            
+        <apex:pageBlock id="pb" >
+            <table width="100%" border="0" >
+                <tr>
+                    <td width="25%" valign="top" >
+                    <div id="leftPanel">
+                        <br/>
+                        <apex:commandLink value="ABCD" action="{!ABCD}" style="text-decoration:none; color:#33CCFF;" reRender="pb" /><br/>
+                        <apex:commandLink value="PQRS" action="{!PQRS}" style="text-decoration:none; color:#33CCFF;" reRender="pb" /><br/><br/>
+                    <!--
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" >aaa</apex:outputLink><br/><br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" target="_blank" >bbb Mfg</apex:outputLink><br/><br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" value="/apex/Sai1" >ccc</apex:outputLink><br/><br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" target="_blank" >ddd</apex:outputLink><br/><br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" target="_blank" >eee</apex:outputLink><br/><br/>
+                        <apex:outputLink style="text-decoration:none; color:#33CCFF;" target="_blank" >fff</apex:outputLink><br/><br/>
+                    -->
+                    </div>
+                    </td>
+                    
+                    <td align="left" valign="top" ><br/>
+                    <apex:pageBlock rendered="{!pb1}" >
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                    </apex:pageBlock>
+                    
+                    <apex:pageBlock rendered="{!pb2}" >
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                        <apex:outputLink ><apex:image value="{!$Resource.close}" width="110" height="120" /></apex:outputLink>&nbsp;&nbsp;&nbsp;
+                    </apex:pageBlock>                    
+                    </td>
+                </tr>
+            </table>            
+        </apex:pageBlock>
+    </div>    
+</apex:form>
+</apex:page>

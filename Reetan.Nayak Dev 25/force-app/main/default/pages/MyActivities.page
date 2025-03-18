@@ -1,0 +1,19 @@
+<!-- 
+/**
+* @author Original: Robby Angeles (502068424) Cloud Sherpas/GEHC
+* @date Original: 20 Nov 2012 
+* @description page that redirects the user to the personal daily calendar view
+*/
+-->
+<apex:page >
+    <script type="text/javascript">
+        //redirect to personal calendar daily view of current user
+        top.location.href = '/00U/c?md0=' + new Date().getFullYear() + '&md3=' + dayOfYear();
+        //function to return the day of year
+        function dayOfYear(){
+            var startDt = new Date();
+            //86400000 is the precalculated time for any year
+            return Math.ceil((startDt - new Date(startDt.getFullYear(),0,1)) / 86400000);
+        }
+    </script>
+</apex:page>

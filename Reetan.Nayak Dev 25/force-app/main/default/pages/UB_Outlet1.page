@@ -1,0 +1,28 @@
+<apex:page controller="UB_Outlet_CTRL" sidebar="false" >
+<apex:form >
+
+    <apex:pageBlock tabStyle="UB_Coupon__c"  >
+        <apex:pageBlockSection title="Outlet Details" columns="1">
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel >Owner Name :</apex:outputLabel>
+                <apex:outputText value="{!OwnerName.Name}" ></apex:outputText>            
+            </apex:pageBlockSectionItem>
+            
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel >Key Account Metrics</apex:outputLabel>    
+                <apex:selectList value="{!SelectOutlet}" size="1" >
+                    <apex:selectOptions value="{!OutletName}" ></apex:selectOptions>                
+                </apex:selectList>        
+            </apex:pageBlockSectionItem>
+            
+        <apex:pageBlockTable value="{!OutletTable}" var="outlet"  >
+            <apex:column value="{!outlet.Total_Number_Of_Orders__c}" />
+            <apex:column headerValue="Target" />            
+            <apex:column headerValue="Achieved" />              
+        </apex:pageBlockTable>
+                
+        </apex:pageBlockSection>    
+    </apex:pageBlock>
+
+</apex:form>
+</apex:page>

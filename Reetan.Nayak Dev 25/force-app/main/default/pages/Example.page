@@ -1,0 +1,22 @@
+<apex:page controller="Example_CTRL">
+    <apex:form >
+        <apex:outputPanel id="pan">
+        <apex:dataTable value="{!ct}" var="k">
+        
+        <apex:column value="{!k.name}"/>
+        
+        <apex:column value="{!k.email}"/>
+        </apex:dataTable>
+        </apex:outputPanel>
+        <apex:commandButton action="{!condata}" reRender="pan"/>
+        <apex:outputpanel id="counter">
+            <apex:outputText value="Click Me!: {!count}"/>
+            <apex:actionSupport event="onclick" 
+                                action="{!incrementCounter}" 
+                                rerender="counter" status="counterStatus"/>
+        </apex:outputpanel>
+        <apex:actionStatus id="counterStatus" 
+                           startText=" (incrementing...)" 
+                           stopText=" (done)"/>
+    </apex:form>
+</apex:page>

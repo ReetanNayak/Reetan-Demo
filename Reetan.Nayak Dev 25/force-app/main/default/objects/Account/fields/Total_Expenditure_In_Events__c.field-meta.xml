@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Expenditure_In_Events__c</fullName>
+    <label>Total Expenditure In Events</label>
+    <summarizedField>UB_Event__c.UB_ActualEventCost__c</summarizedField>
+    <summaryForeignKey>UB_Event__c.Outlet__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

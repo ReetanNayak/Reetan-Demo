@@ -1,0 +1,2875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Japan_Dept__c</fullName>
+    <label>Clinical Department</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Japan_MajorDept__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>A01_Internal Medicine - General</fullName>
+                <default>false</default>
+                <label>A01_Internal Medicine - General</label>
+            </value>
+            <value>
+                <fullName>A02_Internal Medicine - Oncology</fullName>
+                <default>false</default>
+                <label>A02_Internal Medicine - Oncology</label>
+            </value>
+            <value>
+                <fullName>A03_Internal Medicine - Oncology</fullName>
+                <default>false</default>
+                <label>A03_Internal Medicine - Oncology</label>
+            </value>
+            <value>
+                <fullName>A04_Internal Medicine - Oncology (Pain Relief)</fullName>
+                <default>false</default>
+                <label>A04_Internal Medicine - Oncology (Pain Relief)</label>
+            </value>
+            <value>
+                <fullName>A05_Internal Medicine - Hematology/Oncology</fullName>
+                <default>false</default>
+                <label>A05_Internal Medicine - Hematology/Oncology</label>
+            </value>
+            <value>
+                <fullName>A06_Internal Medicine - Internal Medicine  (Circulatory)</fullName>
+                <default>false</default>
+                <label>A06_Internal Medicine - Internal Medicine  (Circulatory)</label>
+            </value>
+            <value>
+                <fullName>A07_Internal Medicine - Internal Medicine  (Pharmacotherapy)</fullName>
+                <default>false</default>
+                <label>A07_Internal Medicine - Internal Medicine  (Pharmacotherapy)</label>
+            </value>
+            <value>
+                <fullName>A08_Internal Medicine - Internal Medicine  (Infectious Diseases)</fullName>
+                <default>false</default>
+                <label>A08_Internal Medicine - Internal Medicine  (Infectious Diseases)</label>
+            </value>
+            <value>
+                <fullName>A09_Internal Medicine - Internal Medicine  (Bone Marrow Transplantation)</fullName>
+                <default>false</default>
+                <label>A09_Internal Medicine - Internal Medicine  (Bone Marrow Transplantation)</label>
+            </value>
+            <value>
+                <fullName>A10_Internal Medicine - Internal Medicine  (Pain Clinic)</fullName>
+                <default>false</default>
+                <label>A10_Internal Medicine - Internal Medicine  (Pain Clinic)</label>
+            </value>
+            <value>
+                <fullName>A11_Internal Medicine - Cardiology</fullName>
+                <default>false</default>
+                <label>A11_Internal Medicine - Cardiology</label>
+            </value>
+            <value>
+                <fullName>A12_Internal Medicine - Cardiovascular</fullName>
+                <default>false</default>
+                <label>A12_Internal Medicine - Cardiovascular</label>
+            </value>
+            <value>
+                <fullName>A13_Internal Medicine - Cardiac</fullName>
+                <default>false</default>
+                <label>A13_Internal Medicine - Cardiac</label>
+            </value>
+            <value>
+                <fullName>A14_Internal Medicine - Adult Diseases</fullName>
+                <default>false</default>
+                <label>A14_Internal Medicine - Adult Diseases</label>
+            </value>
+            <value>
+                <fullName>A15_Internal Medicine - Cardiovascular</fullName>
+                <default>false</default>
+                <label>A15_Internal Medicine - Cardiovascular</label>
+            </value>
+            <value>
+                <fullName>A16_Internal Medicine - Vascular</fullName>
+                <default>false</default>
+                <label>A16_Internal Medicine - Vascular</label>
+            </value>
+            <value>
+                <fullName>A21_Internal Medicine - Gastroenterology</fullName>
+                <default>false</default>
+                <label>A21_Internal Medicine - Gastroenterology</label>
+            </value>
+            <value>
+                <fullName>A22_Internal Medicine - Digestive</fullName>
+                <default>false</default>
+                <label>A22_Internal Medicine - Digestive</label>
+            </value>
+            <value>
+                <fullName>A23_Internal Medicine - Gastroenterology</fullName>
+                <default>false</default>
+                <label>A23_Internal Medicine - Gastroenterology</label>
+            </value>
+            <value>
+                <fullName>A24_Internal Medicine - Endoscopy</fullName>
+                <default>false</default>
+                <label>A24_Internal Medicine - Endoscopy</label>
+            </value>
+            <value>
+                <fullName>A25_Internal Medicine - Gastrointestinal</fullName>
+                <default>false</default>
+                <label>A25_Internal Medicine - Gastrointestinal</label>
+            </value>
+            <value>
+                <fullName>A26_Internal Medicine - Endoscopy</fullName>
+                <default>false</default>
+                <label>A26_Internal Medicine - Endoscopy</label>
+            </value>
+            <value>
+                <fullName>A27_Internal Medicine - Digestive  (Endoscopy)</fullName>
+                <default>false</default>
+                <label>A27_Internal Medicine - Digestive  (Endoscopy)</label>
+            </value>
+            <value>
+                <fullName>A28_Internal Medicine - Proctology</fullName>
+                <default>false</default>
+                <label>A28_Internal Medicine - Proctology</label>
+            </value>
+            <value>
+                <fullName>A29_Internal Medicine - Large Intestine</fullName>
+                <default>false</default>
+                <label>A29_Internal Medicine - Large Intestine</label>
+            </value>
+            <value>
+                <fullName>A31_Internal Medicine - Respiratory</fullName>
+                <default>false</default>
+                <label>A31_Internal Medicine - Respiratory</label>
+            </value>
+            <value>
+                <fullName>A32_Internal Medicine - Tuberculosis</fullName>
+                <default>false</default>
+                <label>A32_Internal Medicine - Tuberculosis</label>
+            </value>
+            <value>
+                <fullName>A33_Internal Medicine - Pulmonary</fullName>
+                <default>false</default>
+                <label>A33_Internal Medicine - Pulmonary</label>
+            </value>
+            <value>
+                <fullName>A34_Internal Medicine - Respirology</fullName>
+                <default>false</default>
+                <label>A34_Internal Medicine - Respirology</label>
+            </value>
+            <value>
+                <fullName>A35_Internal Medicine - Infectious Disease</fullName>
+                <default>false</default>
+                <label>A35_Internal Medicine - Infectious Disease</label>
+            </value>
+            <value>
+                <fullName>A36_Internal Medicine - Gallbladder</fullName>
+                <default>false</default>
+                <label>A36_Internal Medicine - Gallbladder</label>
+            </value>
+            <value>
+                <fullName>A37_Internal Medicine - Pancreatic</fullName>
+                <default>false</default>
+                <label>A37_Internal Medicine - Pancreatic</label>
+            </value>
+            <value>
+                <fullName>A41_Internal Medicine - Hematology</fullName>
+                <default>false</default>
+                <label>A41_Internal Medicine - Hematology</label>
+            </value>
+            <value>
+                <fullName>A42_Internal Medicine - Infectious Disease</fullName>
+                <default>false</default>
+                <label>A42_Internal Medicine - Infectious Disease</label>
+            </value>
+            <value>
+                <fullName>A43_Internal Medicine - Transfusion</fullName>
+                <default>false</default>
+                <label>A43_Internal Medicine - Transfusion</label>
+            </value>
+            <value>
+                <fullName>A44_Internal Medicine - Chemotherapy</fullName>
+                <default>false</default>
+                <label>A44_Internal Medicine - Chemotherapy</label>
+            </value>
+            <value>
+                <fullName>A45_Internal Medicine - Infectious Diseases</fullName>
+                <default>false</default>
+                <label>A45_Internal Medicine - Infectious Diseases</label>
+            </value>
+            <value>
+                <fullName>A46_Internal Medicine - Chemotherapy</fullName>
+                <default>false</default>
+                <label>A46_Internal Medicine - Chemotherapy</label>
+            </value>
+            <value>
+                <fullName>A47_Internal Medicine - Mammary Gland</fullName>
+                <default>false</default>
+                <label>A47_Internal Medicine - Mammary Gland</label>
+            </value>
+            <value>
+                <fullName>A48_Internal Medicine - Cancer Medicine</fullName>
+                <default>false</default>
+                <label>A48_Internal Medicine - Cancer Medicine</label>
+            </value>
+            <value>
+                <fullName>A49_Internal Medicine - Head and Neck</fullName>
+                <default>false</default>
+                <label>A49_Internal Medicine - Head and Neck</label>
+            </value>
+            <value>
+                <fullName>A51_Internal Medicine - Endocrinology</fullName>
+                <default>false</default>
+                <label>A51_Internal Medicine - Endocrinology</label>
+            </value>
+            <value>
+                <fullName>A52_Internal Medicine - Diabetic Tract</fullName>
+                <default>false</default>
+                <label>A52_Internal Medicine - Diabetic Tract</label>
+            </value>
+            <value>
+                <fullName>A53_Internal Medicine - Collagen Disease</fullName>
+                <default>false</default>
+                <label>A53_Internal Medicine - Collagen Disease</label>
+            </value>
+            <value>
+                <fullName>A54_Internal Medicine - Thyroid Disease</fullName>
+                <default>false</default>
+                <label>A54_Internal Medicine - Thyroid Disease</label>
+            </value>
+            <value>
+                <fullName>A55_Internal Medicine - Immunology</fullName>
+                <default>false</default>
+                <label>A55_Internal Medicine - Immunology</label>
+            </value>
+            <value>
+                <fullName>A56_Internal Medicine - Hepatology</fullName>
+                <default>false</default>
+                <label>A56_Internal Medicine - Hepatology</label>
+            </value>
+            <value>
+                <fullName>A57_Internal Medicine - Allergology</fullName>
+                <default>false</default>
+                <label>A57_Internal Medicine - Allergology</label>
+            </value>
+            <value>
+                <fullName>A58_Internal Medicine - Diabetic Tract</fullName>
+                <default>false</default>
+                <label>A58_Internal Medicine - Diabetic Tract</label>
+            </value>
+            <value>
+                <fullName>A59_Internal Medicine - Diabetes &amp; Metabolic</fullName>
+                <default>false</default>
+                <label>A59_Internal Medicine - Diabetes &amp; Metabolic</label>
+            </value>
+            <value>
+                <fullName>A60_Internal Medicine - Allergic Disease</fullName>
+                <default>false</default>
+                <label>A60_Internal Medicine - Allergic Disease</label>
+            </value>
+            <value>
+                <fullName>A61_Internal Medicine - Nephrology</fullName>
+                <default>false</default>
+                <label>A61_Internal Medicine - Nephrology</label>
+            </value>
+            <value>
+                <fullName>A62_Internal Medicine - Dialysis</fullName>
+                <default>false</default>
+                <label>A62_Internal Medicine - Dialysis</label>
+            </value>
+            <value>
+                <fullName>A63_Internal Medicine - Nephrology (Artificial Dialysis)</fullName>
+                <default>false</default>
+                <label>A63_Internal Medicine - Nephrology (Artificial Dialysis)</label>
+            </value>
+            <value>
+                <fullName>A64_Internal Medicine - Artificial Dialysis</fullName>
+                <default>false</default>
+                <label>A64_Internal Medicine - Artificial Dialysis</label>
+            </value>
+            <value>
+                <fullName>A65_Internal Medicine - Dialysis</fullName>
+                <default>false</default>
+                <label>A65_Internal Medicine - Dialysis</label>
+            </value>
+            <value>
+                <fullName>A66_Internal Medicine - Chinese Allergology</fullName>
+                <default>false</default>
+                <label>A66_Internal Medicine - Chinese Allergology</label>
+            </value>
+            <value>
+                <fullName>A71_Internal Medicine - Geriatrics</fullName>
+                <default>false</default>
+                <label>A71_Internal Medicine - Geriatrics</label>
+            </value>
+            <value>
+                <fullName>A72_Internal Medicine - Geriatrics</fullName>
+                <default>false</default>
+                <label>A72_Internal Medicine - Geriatrics</label>
+            </value>
+            <value>
+                <fullName>A73_Internal Medicine - Psychosomatic Geriatric</fullName>
+                <default>false</default>
+                <label>A73_Internal Medicine - Psychosomatic Geriatric</label>
+            </value>
+            <value>
+                <fullName>A74_Internal Medicine - Geriatric Respirology</fullName>
+                <default>false</default>
+                <label>A74_Internal Medicine - Geriatric Respirology</label>
+            </value>
+            <value>
+                <fullName>A75_Internal Medicine - Elderly Medicine</fullName>
+                <default>false</default>
+                <label>A75_Internal Medicine - Elderly Medicine</label>
+            </value>
+            <value>
+                <fullName>A81_Internal Medicine - Neurology</fullName>
+                <default>false</default>
+                <label>A81_Internal Medicine - Neurology</label>
+            </value>
+            <value>
+                <fullName>A82_Internal Medicine - Psychosomatic</fullName>
+                <default>false</default>
+                <label>A82_Internal Medicine - Psychosomatic</label>
+            </value>
+            <value>
+                <fullName>A83_Internal Medicine - Physical Therapy</fullName>
+                <default>false</default>
+                <label>A83_Internal Medicine - Physical Therapy</label>
+            </value>
+            <value>
+                <fullName>A84_Internal Medicine - Metabolic</fullName>
+                <default>false</default>
+                <label>A84_Internal Medicine - Metabolic</label>
+            </value>
+            <value>
+                <fullName>A85_Internal Medicine - Lipid Metabolic</fullName>
+                <default>false</default>
+                <label>A85_Internal Medicine - Lipid Metabolic</label>
+            </value>
+            <value>
+                <fullName>A86_Internal Medicine - Chinese Medicine</fullName>
+                <default>false</default>
+                <label>A86_Internal Medicine - Chinese Medicine</label>
+            </value>
+            <value>
+                <fullName>A87_Internal Medicine - Women&apos;s Health Care</fullName>
+                <default>false</default>
+                <label>A87_Internal Medicine - Women&apos;s Health Care</label>
+            </value>
+            <value>
+                <fullName>A88_Internal Medicine - Men&apos;s Health Care</fullName>
+                <default>false</default>
+                <label>A88_Internal Medicine - Men&apos;s Health Care</label>
+            </value>
+            <value>
+                <fullName>A89_Internal Medicine - Neurology</fullName>
+                <default>false</default>
+                <label>A89_Internal Medicine - Neurology</label>
+            </value>
+            <value>
+                <fullName>A90_Internal Medicine - Adolescent Medicine</fullName>
+                <default>false</default>
+                <label>A90_Internal Medicine - Adolescent Medicine</label>
+            </value>
+            <value>
+                <fullName>A91_Internal Medicine - Brain</fullName>
+                <default>false</default>
+                <label>A91_Internal Medicine - Brain</label>
+            </value>
+            <value>
+                <fullName>A92_Internal Medicine - Tracheal</fullName>
+                <default>false</default>
+                <label>A92_Internal Medicine - Tracheal</label>
+            </value>
+            <value>
+                <fullName>A93_Internal Medicine - Esophageal</fullName>
+                <default>false</default>
+                <label>A93_Internal Medicine - Esophageal</label>
+            </value>
+            <value>
+                <fullName>A94_Internal Medicine - Tracheoesophageal</fullName>
+                <default>false</default>
+                <label>A94_Internal Medicine - Tracheoesophageal</label>
+            </value>
+            <value>
+                <fullName>A95_Internal Medicine - Perinatal</fullName>
+                <default>false</default>
+                <label>A95_Internal Medicine - Perinatal</label>
+            </value>
+            <value>
+                <fullName>A97_Internal Medicine - Abdominal Examination Room</fullName>
+                <default>false</default>
+                <label>A97_Internal Medicine - Abdominal Examination Room</label>
+            </value>
+            <value>
+                <fullName>A98_Internal Medicine - Circulatory Organ Examination Room</fullName>
+                <default>false</default>
+                <label>A98_Internal Medicine - Circulatory Organ Examination Room</label>
+            </value>
+            <value>
+                <fullName>A99_Internal Medicine - Endocrinology</fullName>
+                <default>false</default>
+                <label>A99_Internal Medicine - Endocrinology</label>
+            </value>
+            <value>
+                <fullName>B01_Surgical Department - General</fullName>
+                <default>false</default>
+                <label>B01_Surgical Department - General</label>
+            </value>
+            <value>
+                <fullName>B02_Surgical Department - Thyroid</fullName>
+                <default>false</default>
+                <label>B02_Surgical Department - Thyroid</label>
+            </value>
+            <value>
+                <fullName>B03_Surgical Department - Oncology</fullName>
+                <default>false</default>
+                <label>B03_Surgical Department - Oncology</label>
+            </value>
+            <value>
+                <fullName>B04_Surgical Department - Mammary Gland</fullName>
+                <default>false</default>
+                <label>B04_Surgical Department - Mammary Gland</label>
+            </value>
+            <value>
+                <fullName>B05_Surgical Department - Mammary Gland</fullName>
+                <default>false</default>
+                <label>B05_Surgical Department - Mammary Gland</label>
+            </value>
+            <value>
+                <fullName>B06_Surgical Department - Surgical Department (Endoscope)</fullName>
+                <default>false</default>
+                <label>B06_Surgical Department - Surgical Department (Endoscope)</label>
+            </value>
+            <value>
+                <fullName>B07_Surgical Department - Surgical Department (Cancer)</fullName>
+                <default>false</default>
+                <label>B07_Surgical Department - Surgical Department (Cancer)</label>
+            </value>
+            <value>
+                <fullName>B08_Surgical Department - Chemotherapy</fullName>
+                <default>false</default>
+                <label>B08_Surgical Department - Chemotherapy</label>
+            </value>
+            <value>
+                <fullName>B09_Surgical Department - Neck</fullName>
+                <default>false</default>
+                <label>B09_Surgical Department - Neck</label>
+            </value>
+            <value>
+                <fullName>B10_Surgical Department - Kidney</fullName>
+                <default>false</default>
+                <label>B10_Surgical Department - Kidney</label>
+            </value>
+            <value>
+                <fullName>B11_Surgical Department - Cardiovascular</fullName>
+                <default>false</default>
+                <label>B11_Surgical Department - Cardiovascular</label>
+            </value>
+            <value>
+                <fullName>B12_Surgical Department - Circulatory</fullName>
+                <default>false</default>
+                <label>B12_Surgical Department - Circulatory</label>
+            </value>
+            <value>
+                <fullName>B13_Surgical Department - Vascular</fullName>
+                <default>false</default>
+                <label>B13_Surgical Department - Vascular</label>
+            </value>
+            <value>
+                <fullName>B14_Surgical Department - Cardiac</fullName>
+                <default>false</default>
+                <label>B14_Surgical Department - Cardiac</label>
+            </value>
+            <value>
+                <fullName>B15_Surgical Department - Liver, Gallbladder, Pancreas</fullName>
+                <default>false</default>
+                <label>B15_Surgical Department - Liver, Gallbladder, Pancreas</label>
+            </value>
+            <value>
+                <fullName>B16_Surgical Department - Liver</fullName>
+                <default>false</default>
+                <label>B16_Surgical Department - Liver</label>
+            </value>
+            <value>
+                <fullName>B17_Surgical Department - Pancreas</fullName>
+                <default>false</default>
+                <label>B17_Surgical Department - Pancreas</label>
+            </value>
+            <value>
+                <fullName>B18_Surgical Department - Gallbladder</fullName>
+                <default>false</default>
+                <label>B18_Surgical Department - Gallbladder</label>
+            </value>
+            <value>
+                <fullName>B19_Surgical Department - Gastrointestinal</fullName>
+                <default>false</default>
+                <label>B19_Surgical Department - Gastrointestinal</label>
+            </value>
+            <value>
+                <fullName>B20_Surgical Department - Colon &amp; Rectal</fullName>
+                <default>false</default>
+                <label>B20_Surgical Department - Colon &amp; Rectal</label>
+            </value>
+            <value>
+                <fullName>B21_Surgical Department - Abdominal</fullName>
+                <default>false</default>
+                <label>B21_Surgical Department - Abdominal</label>
+            </value>
+            <value>
+                <fullName>B22_Surgical Department - Gastroenterological</fullName>
+                <default>false</default>
+                <label>B22_Surgical Department - Gastroenterological</label>
+            </value>
+            <value>
+                <fullName>B23_Surgical Department - Broncho-Esophagological</fullName>
+                <default>false</default>
+                <label>B23_Surgical Department - Broncho-Esophagological</label>
+            </value>
+            <value>
+                <fullName>B24_Surgical Department - Proctology</fullName>
+                <default>false</default>
+                <label>B24_Surgical Department - Proctology</label>
+            </value>
+            <value>
+                <fullName>B25_Surgical Department - Proctology Surgery</fullName>
+                <default>false</default>
+                <label>B25_Surgical Department - Proctology Surgery</label>
+            </value>
+            <value>
+                <fullName>B26_Surgical Department - Colorectal Surgery</fullName>
+                <default>false</default>
+                <label>B26_Surgical Department - Colorectal Surgery</label>
+            </value>
+            <value>
+                <fullName>B27_Surgical Department - Esophageal</fullName>
+                <default>false</default>
+                <label>B27_Surgical Department - Esophageal</label>
+            </value>
+            <value>
+                <fullName>B28_Surgical Department - Trachea Esophagus Surgery</fullName>
+                <default>false</default>
+                <label>B28_Surgical Department - Trachea Esophagus Surgery</label>
+            </value>
+            <value>
+                <fullName>B29_Surgical Department - Endoscopic Surgery</fullName>
+                <default>false</default>
+                <label>B29_Surgical Department - Endoscopic Surgery</label>
+            </value>
+            <value>
+                <fullName>B30_Surgical Department - Head and Neck Surgery</fullName>
+                <default>false</default>
+                <label>B30_Surgical Department - Head and Neck Surgery</label>
+            </value>
+            <value>
+                <fullName>B31_Surgical Department - Chest Surgery</fullName>
+                <default>false</default>
+                <label>B31_Surgical Department - Chest Surgery</label>
+            </value>
+            <value>
+                <fullName>B32_Surgical Department - Thoracic Surgery</fullName>
+                <default>false</default>
+                <label>B32_Surgical Department - Thoracic Surgery</label>
+            </value>
+            <value>
+                <fullName>B33_Surgical Department - Lung Surgery</fullName>
+                <default>false</default>
+                <label>B33_Surgical Department - Lung Surgery</label>
+            </value>
+            <value>
+                <fullName>B34_Surgical Department - Transplant Surgery</fullName>
+                <default>false</default>
+                <label>B34_Surgical Department - Transplant Surgery</label>
+            </value>
+            <value>
+                <fullName>B35_Surgical Department - Transplantation and Endoscopic Surgery</fullName>
+                <default>false</default>
+                <label>B35_Surgical Department - Transplantation and Endoscopic Surgery</label>
+            </value>
+            <value>
+                <fullName>B36_Surgical Department - Digestive Surgery and Transplantation</fullName>
+                <default>false</default>
+                <label>B36_Surgical Department - Digestive Surgery and Transplantation</label>
+            </value>
+            <value>
+                <fullName>B37_Surgical Department - Kidney Surgery (Kidney Transplant)</fullName>
+                <default>false</default>
+                <label>B37_Surgical Department - Kidney Surgery (Kidney Transplant)</label>
+            </value>
+            <value>
+                <fullName>B38_Surgical Department - Endocrine Surgery</fullName>
+                <default>false</default>
+                <label>B38_Surgical Department - Endocrine Surgery</label>
+            </value>
+            <value>
+                <fullName>B39_Surgical Department - Artificial Dialysis Surgery</fullName>
+                <default>false</default>
+                <label>B39_Surgical Department - Artificial Dialysis Surgery</label>
+            </value>
+            <value>
+                <fullName>B40_Surgical Department - Organ and Transplant Surgery</fullName>
+                <default>false</default>
+                <label>B40_Surgical Department - Organ and Transplant Surgery</label>
+            </value>
+            <value>
+                <fullName>B41_Surgical Department - Reproductive Surgery</fullName>
+                <default>false</default>
+                <label>B41_Surgical Department - Reproductive Surgery</label>
+            </value>
+            <value>
+                <fullName>B42_Surgical Department - Geriatric Surgery</fullName>
+                <default>false</default>
+                <label>B42_Surgical Department - Geriatric Surgery</label>
+            </value>
+            <value>
+                <fullName>B43_Surgical Department - Hematology and Oncology</fullName>
+                <default>false</default>
+                <label>B43_Surgical Department - Hematology and Oncology</label>
+            </value>
+            <value>
+                <fullName>B98_Surgical Department - Cardiovascular Surgery</fullName>
+                <default>false</default>
+                <label>B98_Surgical Department - Cardiovascular Surgery</label>
+            </value>
+            <value>
+                <fullName>B99_Surgical Department - Breast Surgery</fullName>
+                <default>false</default>
+                <label>B99_Surgical Department - Breast Surgery</label>
+            </value>
+            <value>
+                <fullName>C01_Orthopaedic Surgery - Orthopaedic Surgery</fullName>
+                <default>false</default>
+                <label>C01_Orthopaedic Surgery - Orthopaedic Surgery</label>
+            </value>
+            <value>
+                <fullName>C02_Orthopaedic Surgery - Physioclinic Department</fullName>
+                <default>false</default>
+                <label>C02_Orthopaedic Surgery - Physioclinic Department</label>
+            </value>
+            <value>
+                <fullName>C03_Orthopaedic Surgery - Physiotherapy</fullName>
+                <default>false</default>
+                <label>C03_Orthopaedic Surgery - Physiotherapy</label>
+            </value>
+            <value>
+                <fullName>C04_Orthopaedic Surgery - Rehabilitation</fullName>
+                <default>false</default>
+                <label>C04_Orthopaedic Surgery - Rehabilitation</label>
+            </value>
+            <value>
+                <fullName>C05_Orthopaedic Surgery - Rheumatology</fullName>
+                <default>false</default>
+                <label>C05_Orthopaedic Surgery - Rheumatology</label>
+            </value>
+            <value>
+                <fullName>C06_Orthopaedic Surgery - Sports Medicine</fullName>
+                <default>false</default>
+                <label>C06_Orthopaedic Surgery - Sports Medicine</label>
+            </value>
+            <value>
+                <fullName>C07_Orthopaedic Surgery - Physical Therapy</fullName>
+                <default>false</default>
+                <label>C07_Orthopaedic Surgery - Physical Therapy</label>
+            </value>
+            <value>
+                <fullName>C08_Orthopaedic Surgery - Ultrasound</fullName>
+                <default>false</default>
+                <label>C08_Orthopaedic Surgery - Ultrasound</label>
+            </value>
+            <value>
+                <fullName>C09_Orthopaedic Surgery - Cardiac Rehabilitation</fullName>
+                <default>false</default>
+                <label>C09_Orthopaedic Surgery - Cardiac Rehabilitation</label>
+            </value>
+            <value>
+                <fullName>C10_Orthopaedic Surgery - Mammary Gland Rehabilitation</fullName>
+                <default>false</default>
+                <label>C10_Orthopaedic Surgery - Mammary Gland Rehabilitation</label>
+            </value>
+            <value>
+                <fullName>C11_Orthopaedic Surgery - Traditional Chinese Rheumatology</fullName>
+                <default>false</default>
+                <label>C11_Orthopaedic Surgery - Traditional Chinese Rheumatology</label>
+            </value>
+            <value>
+                <fullName>C12_Orthopaedic Surgery - Tumor Orthopaedic Surgery</fullName>
+                <default>false</default>
+                <label>C12_Orthopaedic Surgery - Tumor Orthopaedic Surgery</label>
+            </value>
+            <value>
+                <fullName>C99_Orthopaedic Surgery - Rheumatology and Allergology</fullName>
+                <default>false</default>
+                <label>C99_Orthopaedic Surgery - Rheumatology and Allergology</label>
+            </value>
+            <value>
+                <fullName>D01_Neurosurgery - Neurosurgery</fullName>
+                <default>false</default>
+                <label>D01_Neurosurgery - Neurosurgery</label>
+            </value>
+            <value>
+                <fullName>D02_Neurosurgery - Neurological Surgery</fullName>
+                <default>false</default>
+                <label>D02_Neurosurgery - Neurological Surgery</label>
+            </value>
+            <value>
+                <fullName>D03_Neurosurgery - Neurovascular</fullName>
+                <default>false</default>
+                <label>D03_Neurosurgery - Neurovascular</label>
+            </value>
+            <value>
+                <fullName>E01_Radiology Department - Neuroradiology</fullName>
+                <default>false</default>
+                <label>E01_Radiology Department - Neuroradiology</label>
+            </value>
+            <value>
+                <fullName>E02_Radiology Department - Radiology</fullName>
+                <default>false</default>
+                <label>E02_Radiology Department - Radiology</label>
+            </value>
+            <value>
+                <fullName>E03_Radiology Department - Nuclear Medicine</fullName>
+                <default>false</default>
+                <label>E03_Radiology Department - Nuclear Medicine</label>
+            </value>
+            <value>
+                <fullName>E04_Radiology Department - Medical Radiography</fullName>
+                <default>false</default>
+                <label>E04_Radiology Department - Medical Radiography</label>
+            </value>
+            <value>
+                <fullName>E05_Radiology Department - Radiotherapy</fullName>
+                <default>false</default>
+                <label>E05_Radiology Department - Radiotherapy</label>
+            </value>
+            <value>
+                <fullName>E06_Radiology Department - Tumor Radiology</fullName>
+                <default>false</default>
+                <label>E06_Radiology Department - Tumor Radiology</label>
+            </value>
+            <value>
+                <fullName>F01_Anesthesia Department - Anesthesia Department</fullName>
+                <default>false</default>
+                <label>F01_Anesthesia Department - Anesthesia Department</label>
+            </value>
+            <value>
+                <fullName>F02_Anesthesia Department - Pain Management Clinic</fullName>
+                <default>false</default>
+                <label>F02_Anesthesia Department - Pain Management Clinic</label>
+            </value>
+            <value>
+                <fullName>F03_Anesthesia Department - Pain Relief Internal Medicine</fullName>
+                <default>false</default>
+                <label>F03_Anesthesia Department - Pain Relief Internal Medicine</label>
+            </value>
+            <value>
+                <fullName>F04_Anesthesia Department - Pain Management Internal Medicine</fullName>
+                <default>false</default>
+                <label>F04_Anesthesia Department - Pain Management Internal Medicine</label>
+            </value>
+            <value>
+                <fullName>F05_Anesthesia Department - Pain Management Clinic Surgery</fullName>
+                <default>false</default>
+                <label>F05_Anesthesia Department - Pain Management Clinic Surgery</label>
+            </value>
+            <value>
+                <fullName>F06_Anesthesia Department - Pain Management Clinic Orthopaedic Surgery</fullName>
+                <default>false</default>
+                <label>F06_Anesthesia Department - Pain Management Clinic Orthopaedic Surgery</label>
+            </value>
+            <value>
+                <fullName>F07_Anesthesia Department - Pain Relief Surgery</fullName>
+                <default>false</default>
+                <label>F07_Anesthesia Department - Pain Relief Surgery</label>
+            </value>
+            <value>
+                <fullName>F08_Anesthesia Department - Palliative Care Internal Medicine</fullName>
+                <default>false</default>
+                <label>F08_Anesthesia Department - Palliative Care Internal Medicine</label>
+            </value>
+            <value>
+                <fullName>F09_Anesthesia Department - Palliative Care Surgery</fullName>
+                <default>false</default>
+                <label>F09_Anesthesia Department - Palliative Care Surgery</label>
+            </value>
+            <value>
+                <fullName>F98_Anesthesia Department - Anesthesia Department (CARD)</fullName>
+                <default>false</default>
+                <label>F98_Anesthesia Department - Anesthesia Department (CARD)</label>
+            </value>
+            <value>
+                <fullName>F99_Anesthesia Department - Anesthesia Department (POC)</fullName>
+                <default>false</default>
+                <label>F99_Anesthesia Department - Anesthesia Department (POC)</label>
+            </value>
+            <value>
+                <fullName>G01_Surgery/Emergency - Emergency Medicine</fullName>
+                <default>false</default>
+                <label>G01_Surgery/Emergency - Emergency Medicine</label>
+            </value>
+            <value>
+                <fullName>G02_Surgery/Emergency - Intensive Care/ICU</fullName>
+                <default>false</default>
+                <label>G02_Surgery/Emergency - Intensive Care/ICU</label>
+            </value>
+            <value>
+                <fullName>G03_Surgery/Emergency - Surgery</fullName>
+                <default>false</default>
+                <label>G03_Surgery/Emergency - Surgery</label>
+            </value>
+            <value>
+                <fullName>G04_Surgery/Emergency - Organ Transplant</fullName>
+                <default>false</default>
+                <label>G04_Surgery/Emergency - Organ Transplant</label>
+            </value>
+            <value>
+                <fullName>G05_Surgery/Emergency - Trauma</fullName>
+                <default>false</default>
+                <label>G05_Surgery/Emergency - Trauma</label>
+            </value>
+            <value>
+                <fullName>G06_Surgery/Emergency - Emergency</fullName>
+                <default>false</default>
+                <label>G06_Surgery/Emergency - Emergency</label>
+            </value>
+            <value>
+                <fullName>G83_Surgery/Emergency - Delivery Room</fullName>
+                <default>false</default>
+                <label>G83_Surgery/Emergency - Delivery Room</label>
+            </value>
+            <value>
+                <fullName>G84_Surgery/Emergency - Perinatal Center</fullName>
+                <default>false</default>
+                <label>G84_Surgery/Emergency - Perinatal Center</label>
+            </value>
+            <value>
+                <fullName>G85_Surgery/Emergency - Emergency Medicine Department</fullName>
+                <default>false</default>
+                <label>G85_Surgery/Emergency - Emergency Medicine Department</label>
+            </value>
+            <value>
+                <fullName>G86_Surgery/Emergency - Other High Care Unit</fullName>
+                <default>false</default>
+                <label>G86_Surgery/Emergency - Other High Care Unit</label>
+            </value>
+            <value>
+                <fullName>G87_Surgery/Emergency - Intensive Care Unit for Thermal Burns</fullName>
+                <default>false</default>
+                <label>G87_Surgery/Emergency - Intensive Care Unit for Thermal Burns</label>
+            </value>
+            <value>
+                <fullName>G88_Surgery/Emergency - NICU</fullName>
+                <default>false</default>
+                <label>G88_Surgery/Emergency - NICU</label>
+            </value>
+            <value>
+                <fullName>G89_Surgery/Emergency - CCU</fullName>
+                <default>false</default>
+                <label>G89_Surgery/Emergency - CCU</label>
+            </value>
+            <value>
+                <fullName>G90_Surgery/Emergency - ICU</fullName>
+                <default>false</default>
+                <label>G90_Surgery/Emergency - ICU</label>
+            </value>
+            <value>
+                <fullName>G91_Surgery/Emergency - Intraoperative MRI Operating Room</fullName>
+                <default>false</default>
+                <label>G91_Surgery/Emergency - Intraoperative MRI Operating Room</label>
+            </value>
+            <value>
+                <fullName>G92_Surgery/Emergency - Hybrid Operating Room</fullName>
+                <default>false</default>
+                <label>G92_Surgery/Emergency - Hybrid Operating Room</label>
+            </value>
+            <value>
+                <fullName>G93_Surgery/Emergency - Operating Room</fullName>
+                <default>false</default>
+                <label>G93_Surgery/Emergency - Operating Room</label>
+            </value>
+            <value>
+                <fullName>G94_Surgery/Emergency - Operating Room (POC)</fullName>
+                <default>false</default>
+                <label>G94_Surgery/Emergency - Operating Room (POC)</label>
+            </value>
+            <value>
+                <fullName>G95_Surgery/Emergency - Operating Room (CARD)</fullName>
+                <default>false</default>
+                <label>G95_Surgery/Emergency - Operating Room (CARD)</label>
+            </value>
+            <value>
+                <fullName>G96_Surgery/Emergency - CCU (Coronary Care Unit)</fullName>
+                <default>false</default>
+                <label>G96_Surgery/Emergency - CCU (Coronary Care Unit)</label>
+            </value>
+            <value>
+                <fullName>G97_Surgery/Emergency - Neonatal Intensive Care Unit (NICU)</fullName>
+                <default>false</default>
+                <label>G97_Surgery/Emergency - Neonatal Intensive Care Unit (NICU)</label>
+            </value>
+            <value>
+                <fullName>G98_Surgery/Emergency - Emergency Medical</fullName>
+                <default>false</default>
+                <label>G98_Surgery/Emergency - Emergency Medical</label>
+            </value>
+            <value>
+                <fullName>G99_Surgery/Emergency - Intensive Care</fullName>
+                <default>false</default>
+                <label>G99_Surgery/Emergency - Intensive Care</label>
+            </value>
+            <value>
+                <fullName>H01_Obstetrics and Gynaecology - Obstetrics</fullName>
+                <default>false</default>
+                <label>H01_Obstetrics and Gynaecology - Obstetrics</label>
+            </value>
+            <value>
+                <fullName>H02_Obstetrics and Gynaecology - Gynaecology</fullName>
+                <default>false</default>
+                <label>H02_Obstetrics and Gynaecology - Gynaecology</label>
+            </value>
+            <value>
+                <fullName>H03_Obstetrics and Gynaecology - Obstetrics and Gynaecology</fullName>
+                <default>false</default>
+                <label>H03_Obstetrics and Gynaecology - Obstetrics and Gynaecology</label>
+            </value>
+            <value>
+                <fullName>H04_Obstetrics and Gynaecology - Obstetrics and Gynaecology (Reproductive Medicine)</fullName>
+                <default>false</default>
+                <label>H04_Obstetrics and Gynaecology - Obstetrics and Gynaecology (Reproductive Medicine)</label>
+            </value>
+            <value>
+                <fullName>H05_Obstetrics and Gynaecology - Traditional Chinese Obstetrics and Gynaecology</fullName>
+                <default>false</default>
+                <label>H05_Obstetrics and Gynaecology - Traditional Chinese Obstetrics and Gynaecology</label>
+            </value>
+            <value>
+                <fullName>H06_Obstetrics and Gynaecology - Traditional Chinese Gynaecology</fullName>
+                <default>false</default>
+                <label>H06_Obstetrics and Gynaecology - Traditional Chinese Gynaecology</label>
+            </value>
+            <value>
+                <fullName>H07_Obstetrics and Gynaecology - Reproductive Medicine Gynaecology</fullName>
+                <default>false</default>
+                <label>H07_Obstetrics and Gynaecology - Reproductive Medicine Gynaecology</label>
+            </value>
+            <value>
+                <fullName>H08_Obstetrics and Gynaecology - Gynaecology (Endoscopy)</fullName>
+                <default>false</default>
+                <label>H08_Obstetrics and Gynaecology - Gynaecology (Endoscopy)</label>
+            </value>
+            <value>
+                <fullName>I01_Dermatology - Dermatology</fullName>
+                <default>false</default>
+                <label>I01_Dermatology - Dermatology</label>
+            </value>
+            <value>
+                <fullName>I02_Dermatology - Traditional Chinese Dermatology</fullName>
+                <default>false</default>
+                <label>I02_Dermatology - Traditional Chinese Dermatology</label>
+            </value>
+            <value>
+                <fullName>I03_Dermatology - Skin Oncology</fullName>
+                <default>false</default>
+                <label>I03_Dermatology - Skin Oncology</label>
+            </value>
+            <value>
+                <fullName>J01_Plastic Surgery - Plastic Surgery</fullName>
+                <default>false</default>
+                <label>J01_Plastic Surgery - Plastic Surgery</label>
+            </value>
+            <value>
+                <fullName>J02_Plastic Surgery - Cosmetic Surgery</fullName>
+                <default>false</default>
+                <label>J02_Plastic Surgery - Cosmetic Surgery</label>
+            </value>
+            <value>
+                <fullName>J03_Plastic Surgery - Aesthetic Dermatology</fullName>
+                <default>false</default>
+                <label>J03_Plastic Surgery - Aesthetic Dermatology</label>
+            </value>
+            <value>
+                <fullName>J04_Plastic Surgery - Aesthetic Dermatology (Traditional Chinese)</fullName>
+                <default>false</default>
+                <label>J04_Plastic Surgery - Aesthetic Dermatology (Traditional Chinese)</label>
+            </value>
+            <value>
+                <fullName>J05_Plastic Surgery - Aesthetic Internal Medicine</fullName>
+                <default>false</default>
+                <label>J05_Plastic Surgery - Aesthetic Internal Medicine</label>
+            </value>
+            <value>
+                <fullName>J99_Plastic Surgery - Aesthetic Plastic Surgery</fullName>
+                <default>false</default>
+                <label>J99_Plastic Surgery - Aesthetic Plastic Surgery</label>
+            </value>
+            <value>
+                <fullName>K02_Urology - Venereology</fullName>
+                <default>false</default>
+                <label>K02_Urology - Venereology</label>
+            </value>
+            <value>
+                <fullName>K03_Urology - Urology (Infertility Treatment)</fullName>
+                <default>false</default>
+                <label>K03_Urology - Urology (Infertility Treatment)</label>
+            </value>
+            <value>
+                <fullName>K04_Urology - Urology (Dialysis)</fullName>
+                <default>false</default>
+                <label>K04_Urology - Urology (Dialysis)</label>
+            </value>
+            <value>
+                <fullName>K05_Urology - Sexually Transmitted Disease Internal Medicine</fullName>
+                <default>false</default>
+                <label>K05_Urology - Sexually Transmitted Disease Internal Medicine</label>
+            </value>
+            <value>
+                <fullName>K06_Urology - Male Urology</fullName>
+                <default>false</default>
+                <label>K06_Urology - Male Urology</label>
+            </value>
+            <value>
+                <fullName>K07_Urology - Neurourology</fullName>
+                <default>false</default>
+                <label>K07_Urology - Neurourology</label>
+            </value>
+            <value>
+                <fullName>K08_Urology - Women&apos;s Urology</fullName>
+                <default>false</default>
+                <label>K08_Urology - Women&apos;s Urology</label>
+            </value>
+            <value>
+                <fullName>K09_Urology - Kidney Urology</fullName>
+                <default>false</default>
+                <label>K09_Urology - Kidney Urology</label>
+            </value>
+            <value>
+                <fullName>K10_Urology - Sexually Transmitted Disease Urology</fullName>
+                <default>false</default>
+                <label>K10_Urology - Sexually Transmitted Disease Urology</label>
+            </value>
+            <value>
+                <fullName>K01_Urology - Urology</fullName>
+                <default>false</default>
+                <label>K01_Urology - Urology</label>
+            </value>
+            <value>
+                <fullName>L01_Pediatrics - Pediatrics</fullName>
+                <default>false</default>
+                <label>L01_Pediatrics - Pediatrics</label>
+            </value>
+            <value>
+                <fullName>L02_Pediatrics - Pediatric Internal Medicine</fullName>
+                <default>false</default>
+                <label>L02_Pediatrics - Pediatric Internal Medicine</label>
+            </value>
+            <value>
+                <fullName>L03_Pediatrics - Pediatric Surgery</fullName>
+                <default>false</default>
+                <label>L03_Pediatrics - Pediatric Surgery</label>
+            </value>
+            <value>
+                <fullName>L04_Pediatrics - Pediatric Cardiology</fullName>
+                <default>false</default>
+                <label>L04_Pediatrics - Pediatric Cardiology</label>
+            </value>
+            <value>
+                <fullName>L05_Pediatrics - Pediatric Neurology</fullName>
+                <default>false</default>
+                <label>L05_Pediatrics - Pediatric Neurology</label>
+            </value>
+            <value>
+                <fullName>L06_Pediatrics - Child Psychiatry</fullName>
+                <default>false</default>
+                <label>L06_Pediatrics - Child Psychiatry</label>
+            </value>
+            <value>
+                <fullName>L07_Pediatrics - Neonatology</fullName>
+                <default>false</default>
+                <label>L07_Pediatrics - Neonatology</label>
+            </value>
+            <value>
+                <fullName>L08_Pediatrics - Premature Medicine</fullName>
+                <default>false</default>
+                <label>L08_Pediatrics - Premature Medicine</label>
+            </value>
+            <value>
+                <fullName>L09_Pediatrics - Juvenile Psychiatry</fullName>
+                <default>false</default>
+                <label>L09_Pediatrics - Juvenile Psychiatry</label>
+            </value>
+            <value>
+                <fullName>L10_Pediatrics - Neonatal Internal Medicine</fullName>
+                <default>false</default>
+                <label>L10_Pediatrics - Neonatal Internal Medicine</label>
+            </value>
+            <value>
+                <fullName>L11_Pediatrics - Pediatric Ophthalmology</fullName>
+                <default>false</default>
+                <label>L11_Pediatrics - Pediatric Ophthalmology</label>
+            </value>
+            <value>
+                <fullName>L12_Pediatrics - Pediatric Otorhinolaryngology</fullName>
+                <default>false</default>
+                <label>L12_Pediatrics - Pediatric Otorhinolaryngology</label>
+            </value>
+            <value>
+                <fullName>L13_Pediatrics - Pediatric Dermatology</fullName>
+                <default>false</default>
+                <label>L13_Pediatrics - Pediatric Dermatology</label>
+            </value>
+            <value>
+                <fullName>L14_Pediatrics - Pediatrics (Neonate)</fullName>
+                <default>false</default>
+                <label>L14_Pediatrics - Pediatrics (Neonate)</label>
+            </value>
+            <value>
+                <fullName>L15_Pediatrics - Pedatric Urology</fullName>
+                <default>false</default>
+                <label>L15_Pediatrics - Pedatric Urology</label>
+            </value>
+            <value>
+                <fullName>L16_Pediatrics - Pedatric Tumor Surgery</fullName>
+                <default>false</default>
+                <label>L16_Pediatrics - Pedatric Tumor Surgery</label>
+            </value>
+            <value>
+                <fullName>L17_Pediatrics - Pediatric Cardiac Surgery</fullName>
+                <default>false</default>
+                <label>L17_Pediatrics - Pediatric Cardiac Surgery</label>
+            </value>
+            <value>
+                <fullName>L18_Pediatrics - Pediatric Orthopedic Surgery</fullName>
+                <default>false</default>
+                <label>L18_Pediatrics - Pediatric Orthopedic Surgery</label>
+            </value>
+            <value>
+                <fullName>L19_Pediatrics - Pediatric Neurosurgery</fullName>
+                <default>false</default>
+                <label>L19_Pediatrics - Pediatric Neurosurgery</label>
+            </value>
+            <value>
+                <fullName>L20_Pediatrics - Pediatric Cardiology</fullName>
+                <default>false</default>
+                <label>L20_Pediatrics - Pediatric Cardiology</label>
+            </value>
+            <value>
+                <fullName>L21_Pediatrics - Pediatric Allergology</fullName>
+                <default>false</default>
+                <label>L21_Pediatrics - Pediatric Allergology</label>
+            </value>
+            <value>
+                <fullName>L22_Pediatrics - Pediatric Rehabilitation</fullName>
+                <default>false</default>
+                <label>L22_Pediatrics - Pediatric Rehabilitation</label>
+            </value>
+            <value>
+                <fullName>L23_Pediatrics - Pediatric Infectious Disease</fullName>
+                <default>false</default>
+                <label>L23_Pediatrics - Pediatric Infectious Disease</label>
+            </value>
+            <value>
+                <fullName>L24_Pediatrics - Traditional Chinese Pediatric Medicine</fullName>
+                <default>false</default>
+                <label>L24_Pediatrics - Traditional Chinese Pediatric Medicine</label>
+            </value>
+            <value>
+                <fullName>L25_Pediatrics - Pediatric Oncology</fullName>
+                <default>false</default>
+                <label>L25_Pediatrics - Pediatric Oncology</label>
+            </value>
+            <value>
+                <fullName>L26_Pediatrics - Pediatric Psychosomatic Medicine</fullName>
+                <default>false</default>
+                <label>L26_Pediatrics - Pediatric Psychosomatic Medicine</label>
+            </value>
+            <value>
+                <fullName>L27_Pediatrics - Pediatric Neurology</fullName>
+                <default>false</default>
+                <label>L27_Pediatrics - Pediatric Neurology</label>
+            </value>
+            <value>
+                <fullName>L28_Pediatrics - Pediatric Nephrology</fullName>
+                <default>false</default>
+                <label>L28_Pediatrics - Pediatric Nephrology</label>
+            </value>
+            <value>
+                <fullName>L29_Pediatrics - Pediatric Endocrinology</fullName>
+                <default>false</default>
+                <label>L29_Pediatrics - Pediatric Endocrinology</label>
+            </value>
+            <value>
+                <fullName>L30_Pediatrics - Pediatric Metabolic Medicine</fullName>
+                <default>false</default>
+                <label>L30_Pediatrics - Pediatric Metabolic Medicine</label>
+            </value>
+            <value>
+                <fullName>L31_Pediatrics - Pediatric Hematology</fullName>
+                <default>false</default>
+                <label>L31_Pediatrics - Pediatric Hematology</label>
+            </value>
+            <value>
+                <fullName>L32_Pediatrics - Pediatric Emergency Department</fullName>
+                <default>false</default>
+                <label>L32_Pediatrics - Pediatric Emergency Department</label>
+            </value>
+            <value>
+                <fullName>L33_Pediatrics - Cardiovascular Pediatrics</fullName>
+                <default>false</default>
+                <label>L33_Pediatrics - Cardiovascular Pediatrics</label>
+            </value>
+            <value>
+                <fullName>L34_Pediatrics - Cardiac Pediatrics</fullName>
+                <default>false</default>
+                <label>L34_Pediatrics - Cardiac Pediatrics</label>
+            </value>
+            <value>
+                <fullName>L35_Pediatrics - Traditional Chinese Pediatrics</fullName>
+                <default>false</default>
+                <label>L35_Pediatrics - Traditional Chinese Pediatrics</label>
+            </value>
+            <value>
+                <fullName>L36_Pediatrics - Neuropediatrics</fullName>
+                <default>false</default>
+                <label>L36_Pediatrics - Neuropediatrics</label>
+            </value>
+            <value>
+                <fullName>L37_Pediatrics - Pediatric Nephrology</fullName>
+                <default>false</default>
+                <label>L37_Pediatrics - Pediatric Nephrology</label>
+            </value>
+            <value>
+                <fullName>L38_Pediatrics - Neonatal Surgery</fullName>
+                <default>false</default>
+                <label>L38_Pediatrics - Neonatal Surgery</label>
+            </value>
+            <value>
+                <fullName>L39_Pediatrics - Neonatal Pediatrics</fullName>
+                <default>false</default>
+                <label>L39_Pediatrics - Neonatal Pediatrics</label>
+            </value>
+            <value>
+                <fullName>L40_Pediatrics - Pediatrics (Neonatal Cardiac)</fullName>
+                <default>false</default>
+                <label>L40_Pediatrics - Pediatrics (Neonatal Cardiac)</label>
+            </value>
+            <value>
+                <fullName>M01_Ophthalmology - Ophthalmology</fullName>
+                <default>false</default>
+                <label>M01_Ophthalmology - Ophthalmology</label>
+            </value>
+            <value>
+                <fullName>M02_Ophthalmology - Traditional Chinese Ophthalmology</fullName>
+                <default>false</default>
+                <label>M02_Ophthalmology - Traditional Chinese Ophthalmology</label>
+            </value>
+            <value>
+                <fullName>M03_Ophthalmology - Diabetic Ophthalmology</fullName>
+                <default>false</default>
+                <label>M03_Ophthalmology - Diabetic Ophthalmology</label>
+            </value>
+            <value>
+                <fullName>N01_Otorhinolaryngology - Otolaryngology</fullName>
+                <default>false</default>
+                <label>N01_Otorhinolaryngology - Otolaryngology</label>
+            </value>
+            <value>
+                <fullName>N02_Otorhinolaryngology - Throat</fullName>
+                <default>false</default>
+                <label>N02_Otorhinolaryngology - Throat</label>
+            </value>
+            <value>
+                <fullName>N03_Otorhinolaryngology - Otorhinolaryngology</fullName>
+                <default>false</default>
+                <label>N03_Otorhinolaryngology - Otorhinolaryngology</label>
+            </value>
+            <value>
+                <fullName>N04_Otorhinolaryngology - Tracheoesophageal and Otorhinolaryngology</fullName>
+                <default>false</default>
+                <label>N04_Otorhinolaryngology - Tracheoesophageal and Otorhinolaryngology</label>
+            </value>
+            <value>
+                <fullName>N05_Otorhinolaryngology - Head and Neck and Otorhinolaryngology</fullName>
+                <default>false</default>
+                <label>N05_Otorhinolaryngology - Head and Neck and Otorhinolaryngology</label>
+            </value>
+            <value>
+                <fullName>O01_Department of Neurology and Psychiatry - Psychiatry</fullName>
+                <default>false</default>
+                <label>O01_Department of Neurology and Psychiatry - Psychiatry</label>
+            </value>
+            <value>
+                <fullName>O02_Department of Neurology and Psychiatry - Neurology</fullName>
+                <default>false</default>
+                <label>O02_Department of Neurology and Psychiatry - Neurology</label>
+            </value>
+            <value>
+                <fullName>O03_Department of Neurology and Psychiatry - Mental Health</fullName>
+                <default>false</default>
+                <label>O03_Department of Neurology and Psychiatry - Mental Health</label>
+            </value>
+            <value>
+                <fullName>O04_Department of Neurology and Psychiatry - Geriatric Psychiatry</fullName>
+                <default>false</default>
+                <label>O04_Department of Neurology and Psychiatry - Geriatric Psychiatry</label>
+            </value>
+            <value>
+                <fullName>O05_Department of Neurology and Psychiatry - Neuropsychiatry</fullName>
+                <default>false</default>
+                <label>O05_Department of Neurology and Psychiatry - Neuropsychiatry</label>
+            </value>
+            <value>
+                <fullName>O06_Department of Neurology and Psychiatry - Traditional Chinese Psychiatry</fullName>
+                <default>false</default>
+                <label>O06_Department of Neurology and Psychiatry - Traditional Chinese Psychiatry</label>
+            </value>
+            <value>
+                <fullName>O07_Department of Neurology and Psychiatry - Adolescent Psychiatry</fullName>
+                <default>false</default>
+                <label>O07_Department of Neurology and Psychiatry - Adolescent Psychiatry</label>
+            </value>
+            <value>
+                <fullName>O08_Department of Neurology and Psychiatry - Psycho-Oncology</fullName>
+                <default>false</default>
+                <label>O08_Department of Neurology and Psychiatry - Psycho-Oncology</label>
+            </value>
+            <value>
+                <fullName>P01_Dental Surgery - Oral Surgery</fullName>
+                <default>false</default>
+                <label>P01_Dental Surgery - Oral Surgery</label>
+            </value>
+            <value>
+                <fullName>P02_Dental Surgery - Dentistry</fullName>
+                <default>false</default>
+                <label>P02_Dental Surgery - Dentistry</label>
+            </value>
+            <value>
+                <fullName>P03_Dental Surgery - Oral and Maxillofacial Surgery</fullName>
+                <default>false</default>
+                <label>P03_Dental Surgery - Oral and Maxillofacial Surgery</label>
+            </value>
+            <value>
+                <fullName>P04_Dental Surgery - Orthodontic</fullName>
+                <default>false</default>
+                <label>P04_Dental Surgery - Orthodontic</label>
+            </value>
+            <value>
+                <fullName>P05_Dental Surgery - Pediatric Dentistry</fullName>
+                <default>false</default>
+                <label>P05_Dental Surgery - Pediatric Dentistry</label>
+            </value>
+            <value>
+                <fullName>P06_Dental Surgery - Orthodontic Specialty</fullName>
+                <default>false</default>
+                <label>P06_Dental Surgery - Orthodontic Specialty</label>
+            </value>
+            <value>
+                <fullName>P07_Dental Surgery - Pediatric Dentistry Specialist</fullName>
+                <default>false</default>
+                <label>P07_Dental Surgery - Pediatric Dentistry Specialist</label>
+            </value>
+            <value>
+                <fullName>P08_Dental Surgery - Pediatric Orthodontic</fullName>
+                <default>false</default>
+                <label>P08_Dental Surgery - Pediatric Orthodontic</label>
+            </value>
+            <value>
+                <fullName>Q01_Hygiene Inspection - Inspection</fullName>
+                <default>false</default>
+                <label>Q01_Hygiene Inspection - Inspection</label>
+            </value>
+            <value>
+                <fullName>Q02_Hygiene Inspection - Mass Screening</fullName>
+                <default>false</default>
+                <label>Q02_Hygiene Inspection - Mass Screening</label>
+            </value>
+            <value>
+                <fullName>Q03_Hygiene Inspection - Physical Examination</fullName>
+                <default>false</default>
+                <label>Q03_Hygiene Inspection - Physical Examination</label>
+            </value>
+            <value>
+                <fullName>Q11_Hygiene Inspection - Health Management</fullName>
+                <default>false</default>
+                <label>Q11_Hygiene Inspection - Health Management</label>
+            </value>
+            <value>
+                <fullName>Q12_Hygiene Inspection - Preventive Medicine</fullName>
+                <default>false</default>
+                <label>Q12_Hygiene Inspection - Preventive Medicine</label>
+            </value>
+            <value>
+                <fullName>Q13_Hygiene Inspection - Environmental Health</fullName>
+                <default>false</default>
+                <label>Q13_Hygiene Inspection - Environmental Health</label>
+            </value>
+            <value>
+                <fullName>Q14_Hygiene Inspection - Clinical Pathology/Polyclinical</fullName>
+                <default>false</default>
+                <label>Q14_Hygiene Inspection - Clinical Pathology/Polyclinical</label>
+            </value>
+            <value>
+                <fullName>Q15_Hygiene Inspection - Hospice</fullName>
+                <default>false</default>
+                <label>Q15_Hygiene Inspection - Hospice</label>
+            </value>
+            <value>
+                <fullName>Q16_Hygiene Inspection - Clinical Laboratory Department</fullName>
+                <default>false</default>
+                <label>Q16_Hygiene Inspection - Clinical Laboratory Department</label>
+            </value>
+            <value>
+                <fullName>Q17_Hygiene Inspection - Women&apos;s Clinical Laboratory Department</fullName>
+                <default>false</default>
+                <label>Q17_Hygiene Inspection - Women&apos;s Clinical Laboratory Department</label>
+            </value>
+            <value>
+                <fullName>Q21_Hygiene Inspection - Dissection</fullName>
+                <default>false</default>
+                <label>Q21_Hygiene Inspection - Dissection</label>
+            </value>
+            <value>
+                <fullName>Q22_Hygiene Inspection - Physiology</fullName>
+                <default>false</default>
+                <label>Q22_Hygiene Inspection - Physiology</label>
+            </value>
+            <value>
+                <fullName>Q23_Hygiene Inspection - Biochemicals</fullName>
+                <default>false</default>
+                <label>Q23_Hygiene Inspection - Biochemicals</label>
+            </value>
+            <value>
+                <fullName>Q24_Hygiene Inspection - Pharmacology</fullName>
+                <default>false</default>
+                <label>Q24_Hygiene Inspection - Pharmacology</label>
+            </value>
+            <value>
+                <fullName>Q25_Hygiene Inspection - Pathology</fullName>
+                <default>false</default>
+                <label>Q25_Hygiene Inspection - Pathology</label>
+            </value>
+            <value>
+                <fullName>Q26_Hygiene Inspection - Bacteria</fullName>
+                <default>false</default>
+                <label>Q26_Hygiene Inspection - Bacteria</label>
+            </value>
+            <value>
+                <fullName>Q27_Hygiene Inspection - Hygiene</fullName>
+                <default>false</default>
+                <label>Q27_Hygiene Inspection - Hygiene</label>
+            </value>
+            <value>
+                <fullName>Q28_Hygiene Inspection - Public Health</fullName>
+                <default>false</default>
+                <label>Q28_Hygiene Inspection - Public Health</label>
+            </value>
+            <value>
+                <fullName>Q29_Hygiene Inspection - Forensic Medicine</fullName>
+                <default>false</default>
+                <label>Q29_Hygiene Inspection - Forensic Medicine</label>
+            </value>
+            <value>
+                <fullName>Q30_Hygiene Inspection - Diagnostic Pathology</fullName>
+                <default>false</default>
+                <label>Q30_Hygiene Inspection - Diagnostic Pathology</label>
+            </value>
+            <value>
+                <fullName>Q95_Hygiene Inspection - Angiography</fullName>
+                <default>false</default>
+                <label>Q95_Hygiene Inspection - Angiography</label>
+            </value>
+            <value>
+                <fullName>Q96_Hygiene Inspection - Physiological Laboratory</fullName>
+                <default>false</default>
+                <label>Q96_Hygiene Inspection - Physiological Laboratory</label>
+            </value>
+            <value>
+                <fullName>Q97_Hygiene Inspection - Polygraph Examination</fullName>
+                <default>false</default>
+                <label>Q97_Hygiene Inspection - Polygraph Examination</label>
+            </value>
+            <value>
+                <fullName>Q98_Hygiene Inspection - Medical Examination</fullName>
+                <default>false</default>
+                <label>Q98_Hygiene Inspection - Medical Examination</label>
+            </value>
+            <value>
+                <fullName>Q99_Hygiene Inspection - Clinical Pathology/Polyclinic</fullName>
+                <default>false</default>
+                <label>Q99_Hygiene Inspection - Clinical Pathology/Polyclinic</label>
+            </value>
+            <value>
+                <fullName>R01_Genetics</fullName>
+                <default>false</default>
+                <label>R01_Genetics</label>
+            </value>
+            <value>
+                <fullName>R02_Occupational Disease</fullName>
+                <default>false</default>
+                <label>R02_Occupational Disease</label>
+            </value>
+            <value>
+                <fullName>R03_Oriental Medicine</fullName>
+                <default>false</default>
+                <label>R03_Oriental Medicine</label>
+            </value>
+            <value>
+                <fullName>R04_Aviation Medicine</fullName>
+                <default>false</default>
+                <label>R04_Aviation Medicine</label>
+            </value>
+            <value>
+                <fullName>R05_Space Medicine</fullName>
+                <default>false</default>
+                <label>R05_Space Medicine</label>
+            </value>
+            <value>
+                <fullName>R06_Hyperbaric Medicine</fullName>
+                <default>false</default>
+                <label>R06_Hyperbaric Medicine</label>
+            </value>
+            <value>
+                <fullName>R07_All Subjects</fullName>
+                <default>false</default>
+                <label>R07_All Subjects</label>
+            </value>
+            <value>
+                <fullName>R89_Fire Fighting</fullName>
+                <default>false</default>
+                <label>R89_Fire Fighting</label>
+            </value>
+            <value>
+                <fullName>R90_ME Room</fullName>
+                <default>false</default>
+                <label>R90_ME Room</label>
+            </value>
+            <value>
+                <fullName>R91_Hospital Ward</fullName>
+                <default>false</default>
+                <label>R91_Hospital Ward</label>
+            </value>
+            <value>
+                <fullName>R92_Other</fullName>
+                <default>false</default>
+                <label>R92_Other</label>
+            </value>
+            <value>
+                <fullName>R93_Home</fullName>
+                <default>false</default>
+                <label>R93_Home</label>
+            </value>
+            <value>
+                <fullName>R94_Nursing</fullName>
+                <default>false</default>
+                <label>R94_Nursing</label>
+            </value>
+            <value>
+                <fullName>R95_Veterinary</fullName>
+                <default>false</default>
+                <label>R95_Veterinary</label>
+            </value>
+            <value>
+                <fullName>R96_Research Institute</fullName>
+                <default>false</default>
+                <label>R96_Research Institute</label>
+            </value>
+            <value>
+                <fullName>R97_Pharmaceutical Company</fullName>
+                <default>false</default>
+                <label>R97_Pharmaceutical Company</label>
+            </value>
+            <value>
+                <fullName>R98_Dealer Sale</fullName>
+                <default>false</default>
+                <label>R98_Dealer Sale</label>
+            </value>
+            <value>
+                <fullName>R99_Omron</fullName>
+                <default>false</default>
+                <label>R99_Omron</label>
+            </value>
+            <value>
+                <fullName>R86_Clerical/Supplies Department</fullName>
+                <default>false</default>
+                <label>R86_Clerical/Supplies Department</label>
+            </value>
+            <value>
+                <fullName>R87_Facilities Division</fullName>
+                <default>false</default>
+                <label>R87_Facilities Division</label>
+            </value>
+            <value>
+                <fullName>R88_Medical Information Division</fullName>
+                <default>false</default>
+                <label>R88_Medical Information Division</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K02_Urology - Venereology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K03_Urology - Urology (Infertility Treatment)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K04_Urology - Urology (Dialysis)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K05_Urology - Sexually Transmitted Disease Internal Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K06_Urology - Male Urology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K07_Urology - Neurourology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K08_Urology - Women&apos;s Urology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K09_Urology - Kidney Urology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K10_Urology - Sexually Transmitted Disease Urology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>K_Urology</controllingFieldValue>
+            <valueName>K01_Urology - Urology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L01_Pediatrics - Pediatrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L02_Pediatrics - Pediatric Internal Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L03_Pediatrics - Pediatric Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L04_Pediatrics - Pediatric Cardiology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L05_Pediatrics - Pediatric Neurology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L06_Pediatrics - Child Psychiatry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L07_Pediatrics - Neonatology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L08_Pediatrics - Premature Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L09_Pediatrics - Juvenile Psychiatry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L10_Pediatrics - Neonatal Internal Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L11_Pediatrics - Pediatric Ophthalmology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L12_Pediatrics - Pediatric Otorhinolaryngology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L13_Pediatrics - Pediatric Dermatology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L14_Pediatrics - Pediatrics (Neonate)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L15_Pediatrics - Pedatric Urology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L16_Pediatrics - Pedatric Tumor Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L17_Pediatrics - Pediatric Cardiac Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L18_Pediatrics - Pediatric Orthopedic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L19_Pediatrics - Pediatric Neurosurgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L20_Pediatrics - Pediatric Cardiology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L21_Pediatrics - Pediatric Allergology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L22_Pediatrics - Pediatric Rehabilitation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L23_Pediatrics - Pediatric Infectious Disease</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L24_Pediatrics - Traditional Chinese Pediatric Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L25_Pediatrics - Pediatric Oncology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L26_Pediatrics - Pediatric Psychosomatic Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L27_Pediatrics - Pediatric Neurology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L28_Pediatrics - Pediatric Nephrology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L29_Pediatrics - Pediatric Endocrinology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L30_Pediatrics - Pediatric Metabolic Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L31_Pediatrics - Pediatric Hematology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L32_Pediatrics - Pediatric Emergency Department</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L33_Pediatrics - Cardiovascular Pediatrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L34_Pediatrics - Cardiac Pediatrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L35_Pediatrics - Traditional Chinese Pediatrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L36_Pediatrics - Neuropediatrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L37_Pediatrics - Pediatric Nephrology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L38_Pediatrics - Neonatal Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L39_Pediatrics - Neonatal Pediatrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>L_Pediatrics</controllingFieldValue>
+            <valueName>L40_Pediatrics - Pediatrics (Neonatal Cardiac)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>M_Ophthalmology</controllingFieldValue>
+            <valueName>M01_Ophthalmology - Ophthalmology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>M_Ophthalmology</controllingFieldValue>
+            <valueName>M02_Ophthalmology - Traditional Chinese Ophthalmology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>M_Ophthalmology</controllingFieldValue>
+            <valueName>M03_Ophthalmology - Diabetic Ophthalmology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>N_Otorhinolaryngology</controllingFieldValue>
+            <valueName>N01_Otorhinolaryngology - Otolaryngology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>N_Otorhinolaryngology</controllingFieldValue>
+            <valueName>N02_Otorhinolaryngology - Throat</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>N_Otorhinolaryngology</controllingFieldValue>
+            <valueName>N03_Otorhinolaryngology - Otorhinolaryngology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>N_Otorhinolaryngology</controllingFieldValue>
+            <valueName>N04_Otorhinolaryngology - Tracheoesophageal and Otorhinolaryngology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>N_Otorhinolaryngology</controllingFieldValue>
+            <valueName>N05_Otorhinolaryngology - Head and Neck and Otorhinolaryngology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>O_Department of Neurology and Psychiatry</controllingFieldValue>
+            <valueName>O01_Department of Neurology and Psychiatry - Psychiatry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>O_Department of Neurology and Psychiatry</controllingFieldValue>
+            <valueName>O02_Department of Neurology and Psychiatry - Neurology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>O_Department of Neurology and Psychiatry</controllingFieldValue>
+            <valueName>O03_Department of Neurology and Psychiatry - Mental Health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>O_Department of Neurology and Psychiatry</controllingFieldValue>
+            <valueName>O04_Department of Neurology and Psychiatry - Geriatric Psychiatry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>O_Department of Neurology and Psychiatry</controllingFieldValue>
+            <valueName>O05_Department of Neurology and Psychiatry - Neuropsychiatry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>O_Department of Neurology and Psychiatry</controllingFieldValue>
+            <valueName>O06_Department of Neurology and Psychiatry - Traditional Chinese Psychiatry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>O_Department of Neurology and Psychiatry</controllingFieldValue>
+            <valueName>O07_Department of Neurology and Psychiatry - Adolescent Psychiatry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>O_Department of Neurology and Psychiatry</controllingFieldValue>
+            <valueName>O08_Department of Neurology and Psychiatry - Psycho-Oncology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>P_Dental Surgery</controllingFieldValue>
+            <valueName>P01_Dental Surgery - Oral Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>P_Dental Surgery</controllingFieldValue>
+            <valueName>P02_Dental Surgery - Dentistry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>P_Dental Surgery</controllingFieldValue>
+            <valueName>P03_Dental Surgery - Oral and Maxillofacial Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>P_Dental Surgery</controllingFieldValue>
+            <valueName>P04_Dental Surgery - Orthodontic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>P_Dental Surgery</controllingFieldValue>
+            <valueName>P05_Dental Surgery - Pediatric Dentistry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>P_Dental Surgery</controllingFieldValue>
+            <valueName>P06_Dental Surgery - Orthodontic Specialty</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>P_Dental Surgery</controllingFieldValue>
+            <valueName>P07_Dental Surgery - Pediatric Dentistry Specialist</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>P_Dental Surgery</controllingFieldValue>
+            <valueName>P08_Dental Surgery - Pediatric Orthodontic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q01_Hygiene Inspection - Inspection</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q02_Hygiene Inspection - Mass Screening</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q03_Hygiene Inspection - Physical Examination</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q11_Hygiene Inspection - Health Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q12_Hygiene Inspection - Preventive Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q13_Hygiene Inspection - Environmental Health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q14_Hygiene Inspection - Clinical Pathology/Polyclinical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q15_Hygiene Inspection - Hospice</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q16_Hygiene Inspection - Clinical Laboratory Department</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q17_Hygiene Inspection - Women&apos;s Clinical Laboratory Department</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q21_Hygiene Inspection - Dissection</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q22_Hygiene Inspection - Physiology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q23_Hygiene Inspection - Biochemicals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q24_Hygiene Inspection - Pharmacology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q25_Hygiene Inspection - Pathology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q26_Hygiene Inspection - Bacteria</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q27_Hygiene Inspection - Hygiene</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q28_Hygiene Inspection - Public Health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q29_Hygiene Inspection - Forensic Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q30_Hygiene Inspection - Diagnostic Pathology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q95_Hygiene Inspection - Angiography</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q96_Hygiene Inspection - Physiological Laboratory</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q97_Hygiene Inspection - Polygraph Examination</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q98_Hygiene Inspection - Medical Examination</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Q_Hygiene Inspection</controllingFieldValue>
+            <valueName>Q99_Hygiene Inspection - Clinical Pathology/Polyclinic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R01_Genetics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R02_Occupational Disease</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R03_Oriental Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R04_Aviation Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R05_Space Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R06_Hyperbaric Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R07_All Subjects</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R89_Fire Fighting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R90_ME Room</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R91_Hospital Ward</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R92_Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R93_Home</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R94_Nursing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R95_Veterinary</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R96_Research Institute</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R97_Pharmaceutical Company</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R98_Dealer Sale</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R99_Omron</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R86_Clerical/Supplies Department</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R87_Facilities Division</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>R_Other</controllingFieldValue>
+            <valueName>R88_Medical Information Division</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A01_Internal Medicine - General</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A02_Internal Medicine - Oncology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A03_Internal Medicine - Oncology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A04_Internal Medicine - Oncology (Pain Relief)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A05_Internal Medicine - Hematology/Oncology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A06_Internal Medicine - Internal Medicine  (Circulatory)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A07_Internal Medicine - Internal Medicine  (Pharmacotherapy)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A08_Internal Medicine - Internal Medicine  (Infectious Diseases)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A09_Internal Medicine - Internal Medicine  (Bone Marrow Transplantation)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A10_Internal Medicine - Internal Medicine  (Pain Clinic)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A11_Internal Medicine - Cardiology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A12_Internal Medicine - Cardiovascular</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A13_Internal Medicine - Cardiac</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A14_Internal Medicine - Adult Diseases</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A15_Internal Medicine - Cardiovascular</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A16_Internal Medicine - Vascular</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A21_Internal Medicine - Gastroenterology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A22_Internal Medicine - Digestive</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A23_Internal Medicine - Gastroenterology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A24_Internal Medicine - Endoscopy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A25_Internal Medicine - Gastrointestinal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A26_Internal Medicine - Endoscopy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A27_Internal Medicine - Digestive  (Endoscopy)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A28_Internal Medicine - Proctology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A29_Internal Medicine - Large Intestine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A31_Internal Medicine - Respiratory</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A32_Internal Medicine - Tuberculosis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A33_Internal Medicine - Pulmonary</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A34_Internal Medicine - Respirology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A35_Internal Medicine - Infectious Disease</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A36_Internal Medicine - Gallbladder</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A37_Internal Medicine - Pancreatic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A41_Internal Medicine - Hematology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A42_Internal Medicine - Infectious Disease</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A43_Internal Medicine - Transfusion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A44_Internal Medicine - Chemotherapy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A45_Internal Medicine - Infectious Diseases</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A46_Internal Medicine - Chemotherapy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A47_Internal Medicine - Mammary Gland</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A48_Internal Medicine - Cancer Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A49_Internal Medicine - Head and Neck</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A51_Internal Medicine - Endocrinology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A52_Internal Medicine - Diabetic Tract</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A53_Internal Medicine - Collagen Disease</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A54_Internal Medicine - Thyroid Disease</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A55_Internal Medicine - Immunology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A56_Internal Medicine - Hepatology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A57_Internal Medicine - Allergology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A58_Internal Medicine - Diabetic Tract</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A59_Internal Medicine - Diabetes &amp; Metabolic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A60_Internal Medicine - Allergic Disease</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A61_Internal Medicine - Nephrology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A62_Internal Medicine - Dialysis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A63_Internal Medicine - Nephrology (Artificial Dialysis)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A64_Internal Medicine - Artificial Dialysis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A65_Internal Medicine - Dialysis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A66_Internal Medicine - Chinese Allergology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A71_Internal Medicine - Geriatrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A72_Internal Medicine - Geriatrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A73_Internal Medicine - Psychosomatic Geriatric</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A74_Internal Medicine - Geriatric Respirology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A75_Internal Medicine - Elderly Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A81_Internal Medicine - Neurology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A82_Internal Medicine - Psychosomatic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A83_Internal Medicine - Physical Therapy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A84_Internal Medicine - Metabolic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A85_Internal Medicine - Lipid Metabolic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A86_Internal Medicine - Chinese Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A87_Internal Medicine - Women&apos;s Health Care</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A88_Internal Medicine - Men&apos;s Health Care</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A89_Internal Medicine - Neurology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A90_Internal Medicine - Adolescent Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A91_Internal Medicine - Brain</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A92_Internal Medicine - Tracheal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A93_Internal Medicine - Esophageal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A94_Internal Medicine - Tracheoesophageal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A95_Internal Medicine - Perinatal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A97_Internal Medicine - Abdominal Examination Room</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A98_Internal Medicine - Circulatory Organ Examination Room</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>A_Internal Medicine</controllingFieldValue>
+            <valueName>A99_Internal Medicine - Endocrinology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B01_Surgical Department - General</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B02_Surgical Department - Thyroid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B03_Surgical Department - Oncology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B04_Surgical Department - Mammary Gland</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B05_Surgical Department - Mammary Gland</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B06_Surgical Department - Surgical Department (Endoscope)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B07_Surgical Department - Surgical Department (Cancer)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B08_Surgical Department - Chemotherapy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B09_Surgical Department - Neck</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B10_Surgical Department - Kidney</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B11_Surgical Department - Cardiovascular</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B12_Surgical Department - Circulatory</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B13_Surgical Department - Vascular</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B14_Surgical Department - Cardiac</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B15_Surgical Department - Liver, Gallbladder, Pancreas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B16_Surgical Department - Liver</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B17_Surgical Department - Pancreas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B18_Surgical Department - Gallbladder</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B19_Surgical Department - Gastrointestinal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B20_Surgical Department - Colon &amp; Rectal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B21_Surgical Department - Abdominal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B22_Surgical Department - Gastroenterological</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B23_Surgical Department - Broncho-Esophagological</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B24_Surgical Department - Proctology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B25_Surgical Department - Proctology Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B26_Surgical Department - Colorectal Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B27_Surgical Department - Esophageal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B28_Surgical Department - Trachea Esophagus Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B29_Surgical Department - Endoscopic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B30_Surgical Department - Head and Neck Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B31_Surgical Department - Chest Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B32_Surgical Department - Thoracic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B33_Surgical Department - Lung Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B34_Surgical Department - Transplant Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B35_Surgical Department - Transplantation and Endoscopic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B36_Surgical Department - Digestive Surgery and Transplantation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B37_Surgical Department - Kidney Surgery (Kidney Transplant)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B38_Surgical Department - Endocrine Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B39_Surgical Department - Artificial Dialysis Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B40_Surgical Department - Organ and Transplant Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B41_Surgical Department - Reproductive Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B42_Surgical Department - Geriatric Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B43_Surgical Department - Hematology and Oncology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B98_Surgical Department - Cardiovascular Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>B_Surgical Department</controllingFieldValue>
+            <valueName>B99_Surgical Department - Breast Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C01_Orthopaedic Surgery - Orthopaedic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C02_Orthopaedic Surgery - Physioclinic Department</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C03_Orthopaedic Surgery - Physiotherapy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C04_Orthopaedic Surgery - Rehabilitation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C05_Orthopaedic Surgery - Rheumatology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C06_Orthopaedic Surgery - Sports Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C07_Orthopaedic Surgery - Physical Therapy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C08_Orthopaedic Surgery - Ultrasound</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C09_Orthopaedic Surgery - Cardiac Rehabilitation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C10_Orthopaedic Surgery - Mammary Gland Rehabilitation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C11_Orthopaedic Surgery - Traditional Chinese Rheumatology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C12_Orthopaedic Surgery - Tumor Orthopaedic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C_Orthopaedic Surgery</controllingFieldValue>
+            <valueName>C99_Orthopaedic Surgery - Rheumatology and Allergology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>D_Neurosurgery</controllingFieldValue>
+            <valueName>D01_Neurosurgery - Neurosurgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>D_Neurosurgery</controllingFieldValue>
+            <valueName>D02_Neurosurgery - Neurological Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>D_Neurosurgery</controllingFieldValue>
+            <valueName>D03_Neurosurgery - Neurovascular</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E_Radiology Department</controllingFieldValue>
+            <valueName>E01_Radiology Department - Neuroradiology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E_Radiology Department</controllingFieldValue>
+            <valueName>E02_Radiology Department - Radiology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E_Radiology Department</controllingFieldValue>
+            <valueName>E03_Radiology Department - Nuclear Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E_Radiology Department</controllingFieldValue>
+            <valueName>E04_Radiology Department - Medical Radiography</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E_Radiology Department</controllingFieldValue>
+            <valueName>E05_Radiology Department - Radiotherapy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E_Radiology Department</controllingFieldValue>
+            <valueName>E06_Radiology Department - Tumor Radiology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F01_Anesthesia Department - Anesthesia Department</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F02_Anesthesia Department - Pain Management Clinic</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F03_Anesthesia Department - Pain Relief Internal Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F04_Anesthesia Department - Pain Management Internal Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F05_Anesthesia Department - Pain Management Clinic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F06_Anesthesia Department - Pain Management Clinic Orthopaedic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F07_Anesthesia Department - Pain Relief Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F08_Anesthesia Department - Palliative Care Internal Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F09_Anesthesia Department - Palliative Care Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F98_Anesthesia Department - Anesthesia Department (CARD)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>F_Anesthesia Department</controllingFieldValue>
+            <valueName>F99_Anesthesia Department - Anesthesia Department (POC)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G01_Surgery/Emergency - Emergency Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G02_Surgery/Emergency - Intensive Care/ICU</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G03_Surgery/Emergency - Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G04_Surgery/Emergency - Organ Transplant</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G05_Surgery/Emergency - Trauma</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G06_Surgery/Emergency - Emergency</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G83_Surgery/Emergency - Delivery Room</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G84_Surgery/Emergency - Perinatal Center</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G85_Surgery/Emergency - Emergency Medicine Department</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G86_Surgery/Emergency - Other High Care Unit</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G87_Surgery/Emergency - Intensive Care Unit for Thermal Burns</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G88_Surgery/Emergency - NICU</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G89_Surgery/Emergency - CCU</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G90_Surgery/Emergency - ICU</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G91_Surgery/Emergency - Intraoperative MRI Operating Room</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G92_Surgery/Emergency - Hybrid Operating Room</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G93_Surgery/Emergency - Operating Room</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G94_Surgery/Emergency - Operating Room (POC)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G95_Surgery/Emergency - Operating Room (CARD)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G96_Surgery/Emergency - CCU (Coronary Care Unit)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G97_Surgery/Emergency - Neonatal Intensive Care Unit (NICU)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G98_Surgery/Emergency - Emergency Medical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>G_Surgery/Emergency</controllingFieldValue>
+            <valueName>G99_Surgery/Emergency - Intensive Care</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>H_Obstetrics and Gynaecology</controllingFieldValue>
+            <valueName>H01_Obstetrics and Gynaecology - Obstetrics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>H_Obstetrics and Gynaecology</controllingFieldValue>
+            <valueName>H02_Obstetrics and Gynaecology - Gynaecology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>H_Obstetrics and Gynaecology</controllingFieldValue>
+            <valueName>H03_Obstetrics and Gynaecology - Obstetrics and Gynaecology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>H_Obstetrics and Gynaecology</controllingFieldValue>
+            <valueName>H04_Obstetrics and Gynaecology - Obstetrics and Gynaecology (Reproductive Medicine)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>H_Obstetrics and Gynaecology</controllingFieldValue>
+            <valueName>H05_Obstetrics and Gynaecology - Traditional Chinese Obstetrics and Gynaecology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>H_Obstetrics and Gynaecology</controllingFieldValue>
+            <valueName>H06_Obstetrics and Gynaecology - Traditional Chinese Gynaecology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>H_Obstetrics and Gynaecology</controllingFieldValue>
+            <valueName>H07_Obstetrics and Gynaecology - Reproductive Medicine Gynaecology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>H_Obstetrics and Gynaecology</controllingFieldValue>
+            <valueName>H08_Obstetrics and Gynaecology - Gynaecology (Endoscopy)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>I_Dermatology</controllingFieldValue>
+            <valueName>I01_Dermatology - Dermatology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>I_Dermatology</controllingFieldValue>
+            <valueName>I02_Dermatology - Traditional Chinese Dermatology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>I_Dermatology</controllingFieldValue>
+            <valueName>I03_Dermatology - Skin Oncology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>J_Plastic Surgery</controllingFieldValue>
+            <valueName>J01_Plastic Surgery - Plastic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>J_Plastic Surgery</controllingFieldValue>
+            <valueName>J02_Plastic Surgery - Cosmetic Surgery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>J_Plastic Surgery</controllingFieldValue>
+            <valueName>J03_Plastic Surgery - Aesthetic Dermatology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>J_Plastic Surgery</controllingFieldValue>
+            <valueName>J04_Plastic Surgery - Aesthetic Dermatology (Traditional Chinese)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>J_Plastic Surgery</controllingFieldValue>
+            <valueName>J05_Plastic Surgery - Aesthetic Internal Medicine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>J_Plastic Surgery</controllingFieldValue>
+            <valueName>J99_Plastic Surgery - Aesthetic Plastic Surgery</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

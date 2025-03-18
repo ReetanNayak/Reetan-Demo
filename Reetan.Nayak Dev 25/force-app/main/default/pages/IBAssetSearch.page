@@ -1,0 +1,233 @@
+<apex:page StandardController="IB_Asset__c" extensions="IBAssetSearchController" >
+<apex:form >
+
+<script type="text/javascript">
+    function setFocusOnLoad() { }
+</script>
+
+    <apex:panelGrid width="100%">
+        <apex:PageBlock title="IB Assets Search">
+            <apex:pageBlockButtons >
+                <strong><apex:actionStatus startText="Searching..." stopText="" id="searchStatus"/></strong>
+                <apex:commandButton value="Search" action="{!doSearch}" status="searchStatus"/>
+                <apex:commandButton value="Reset" action="{!doReset}" rerender="searchPanel"/>
+            </apex:pageBlockButtons>    
+
+            <apex:outputPanel id="searchPanel" layout="block" styleClass="container">
+                <apex:pageBlockSection title="Search IB Assets" columns="2" collapsible="true">
+                    <apex:PageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_From_Install_Date}"/>
+                        <apex:inputField value="{!objAsset.Install_Date__c}"/>
+                    </apex:PageBlockSectionItem>
+                    <apex:PageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_To_Install_Date}"/>
+                        <apex:inputField value="{!objAsset2.Install_Date__c}"/>
+                    </apex:PageBlockSectionItem>
+                        
+                    <apex:PageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_From_Renewal_Date}"/>
+                        <apex:inputField value="{!objAsset.Renewal_Date__c}"/>
+                    </apex:PageBlockSectionItem>
+                    <apex:PageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_To_Renewal_Date}"/>
+                        <apex:inputField value="{!objAsset2.Renewal_Date__c}"/>
+                    </apex:PageBlockSectionItem>
+                        
+                    <apex:PageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Account}"/>
+                        <apex:inputField value="{!relatedAccount.ParentId}"/>
+                    </apex:PageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Country}"/>
+                        <apex:selectList id="SCountry" value="{!countries}" size="1">
+                            <apex:selectOptions value="{!country}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>     
+                        
+                    <apex:inputField value="{!objAsset.Care_Area__c}"/>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Tier_1}"/>
+                        <apex:selectList id="Tier1" value="{!tierOne}" size="1">
+                            <apex:selectOptions value="{!Tier1}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>       
+                        
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Manufacturer_Type}"/>
+                        <apex:selectList id="Manufacturer" value="{!manufacturer}" size="1">
+                            <apex:selectOptions value="{!ManufacturerType}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Tier_2}"/>
+                        <apex:selectList id="Tire2" value="{!tierTwo}" size="1">
+                            <apex:selectOptions value="{!Tier2}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Product_Segment}" />
+                        <apex:selectList id="Prdseg" value="{!prodSeg}" size="1">
+                            <apex:selectOptions value="{!productSegment}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Tier_3}"/>
+                        <apex:selectList id="Tier3" value="{!tierThree}" size="1">
+                            <apex:selectOptions value="{!Tier3}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Phase}" />
+                        <apex:selectList id="Phase" value="{!phases}" size="1">
+                            <apex:selectOptions value="{!Phase}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                    <apex:inputField value="{!objProdCountry.Tier_4_P_L__c}" id="txtTier4"/>
+
+                    <apex:inputField value="{!objAsset.Status__c}" required="false"/>
+                    <apex:inputField value="{!objProdCountry.Tier_5_P_L__c}" id="txtcntry"/>
+
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_From_Age_years}"/>
+                        <apex:inputText value="{!fromAge}" onkeypress="run(this)"/> 
+                    </apex:PageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_To_Age_years}"/>
+                        <apex:inputText value="{!toAge}" onkeypress="run(this)"/>
+                    </apex:PageBlockSectionItem>
+                       
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Global_Region}" />
+                        <apex:selectList id="Gregion" value="{!globalRegions}" size="1">
+                            <apex:selectOptions value="{!GlobalRegion}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$Label.IB_Asset_Search_Filter_Sub_Region}"/>
+                        <apex:selectList id="Sregion" value="{!subRegions}" size="1">
+                            <apex:selectOptions value="{!SubRegion}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem> 
+                        
+                    <apex:inputField value="{!objAsset.EquipmentSalesOwner__c}" id="EqpOwner"/>
+                    <apex:inputField value="{!objAsset.ServiceSalesOwner__c}" id="SalesOwner"/>
+                        
+                    <apex:inputText value="{!objAsset.Account_Zone__c}" id="AccZone"/>
+                    <apex:inputText value="{!objAsset.Account_Region__c}" id="AccRegion"/>
+
+                    <apex:inputField value="{!objAsset.City__c}" id="InstallationCity"/>
+                    <apex:inputField value="{!objAsset.Installation_Zip_Postal_Code__c}" id="InstallationZIP"/>
+                        
+                    <apex:inputField value="{!objAsset.Installation_State_Province__c}" id="InstallationState"/>    
+                    <apex:inputField value="{!IBProd.Name}"/>
+                        
+                    <apex:inputField value="{!IBProd.Competitor__c}"/>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Product Type "/>
+                        <apex:selectList id="ProdType" value="{!prodType}" size="1">
+                            <apex:selectOptions value="{!ProductType}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                        
+                </apex:pageBlockSection>
+            </apex:outputPanel>    
+            
+        </apex:PageBlock>            
+    </apex:panelGrid>
+    
+    <apex:pageBlock title="IB Assets - Page #{!pageNumber}" rendered="{!showIBAssets}" >
+         <apex:outputPanel layout="block" styleClass="pSearchShowMore" id="otpNav1">
+            Total Records Found:  <apex:outputText rendered="{!IF(Con.resultSize==10000,true,false)}"> more than 10,000. Displaying first 10,000  </apex:outputText>
+                                  <apex:outputText rendered="{!IF(Con.resultSize < 10000,true,false)}">{!Con.resultSize}</apex:outputText>
+            <apex:commandLink action="{!First}"> First </apex:commandlink>&nbsp;&nbsp;
+            
+            <apex:image url="/img/search_prevarrow_disabled.gif" styleClass="prevArrow" rendered="{!NOT(Con.HasPrevious)}"/>  
+            <apex:image url="/img/search_prevarrow.gif" title="Previous Page" styleClass="prevArrow" rendered="{!Con.HasPrevious}"/>
+            <apex:commandLink action="{!Previous}" rendered="{!Con.hasPrevious}"  >Previous </apex:commandlink>
+            <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasPrevious)}"> Previous </apex:outputPanel>&nbsp;         
+            
+            <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasNext)}"> Next </apex:outputPanel>
+            <apex:commandLink action="{!Next}" rendered="{!Con.hasNext}" > Next </apex:commandlink>
+            <apex:image url="/img/search_nextarrow.gif" title="Next Page" styleClass="nextArrow" rendered="{!Con.HasNext}"/>  
+            <apex:image url="/img/search_nextarrow_disabled.gif" rendered="{!NOT(Con.HasNext)}"/> &nbsp;
+            
+            <apex:commandLink action="{!Last}"> Last </apex:commandlink>
+         </apex:outputPanel>    
+
+         <apex:pageBlockSection >
+            <apex:pageBlockTable value="{!lstAsset}" var="item">
+                <apex:column headerValue="{!$Label.IB_Asset_Search_IB_Name}">
+                    <a href="/{!item.id}">{!item.Name}</a>
+                </apex:column>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Filter_Commercial_Product_Name}"  value="{!item.Commercial_Product_Name__c}"/>   
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Filter_Account}" value="{!item.Account__c}"/>     
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Install_Date}" value="{!item.Install_Date__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Renewal_Date}" value="{!item.Renewal_Date__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Equipment_Sales_Owner}" value="{!item.Equipment_Sales_Owner__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Service_Sales_Owner}" value="{!item.Service_Sales_Owner__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Warranty_End_Date}" value="{!item.Warranty_End_Date__c}" width="100px"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Filter_Phase}" value="{!item.Phase__c}"/>    
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Age_in_Years}" value="{!item.Age_Years__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Status}" value="{!item.Status__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Filter_Country}" value="{!item.Country__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Manufacturer}" value="{!item.IB_Asset_Owner__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Filter_Product_Segment}" value="{!item.IB_Products_Country_Attributes__r.IB_Product__r.Product_Segment__c }"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Filter_Tier_1}" value="{!item.Tier_1_P_L__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Filter_Tier_2}" value="{!item.Tier_2_P_L__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Filter_Tier_3}" value="{!item.Tier_3_P_L__c}"/>
+                <apex:column headerValue="Tier4" value="{!item.Tier_4__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Tier_5}" value="{!item.Tier_5__c}"/>
+<!--                <apex:column headerValue="{!$Label.IB_Asset_Search_Source}" value="{!item.Source__c}"/>                    
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Site_Name}" value="{!item.Sitename__c}"/>
+                <apex:column headerValue="{!$Label.IB_Asset_Search_Site_Id}" value="{!item.SiteID__c}"/>    -->
+           
+            </apex:pageBlockTable>
+       </apex:pageBlockSection> 
+
+       <apex:outputPanel layout="block" styleClass="pSearchShowMore" id="otpNav2">
+            Total Records Found:  <apex:outputText rendered="{!IF(Con.resultSize==10000,true,false)}"> more than 10,000. Displaying first 10,000  </apex:outputText>
+                                  <apex:outputText rendered="{!IF(Con.resultSize < 10000,true,false)}">{!Con.resultSize}</apex:outputText>
+            <apex:commandLink action="{!First}"> First </apex:commandlink>&nbsp;&nbsp;
+            
+            <apex:image url="/img/search_prevarrow_disabled.gif" styleClass="prevArrow" rendered="{!NOT(Con.HasPrevious)}"/>  
+            <apex:image url="/img/search_prevarrow.gif" title="Previous Page" styleClass="prevArrow" rendered="{!Con.HasPrevious}"/>
+            <apex:commandLink action="{!Previous}" rendered="{!Con.hasPrevious}"  >Previous </apex:commandlink>
+            <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasPrevious)}"> Previous </apex:outputPanel>&nbsp;         
+            
+            <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasNext)}"> Next </apex:outputPanel>
+            <apex:commandLink action="{!Next}" rendered="{!Con.hasNext}" > Next </apex:commandlink>
+            <apex:image url="/img/search_nextarrow.gif" title="Next Page" styleClass="nextArrow" rendered="{!Con.HasNext}"/>  
+            <apex:image url="/img/search_nextarrow_disabled.gif" rendered="{!NOT(Con.HasNext)}"/> &nbsp;
+            
+            <apex:commandLink action="{!Last}"> Last </apex:commandlink>
+         </apex:outputPanel> 
+    
+    </apex:pageBlock>
+    
+    <script>
+        function AllowNumeric(e){
+            var a = e.charCode;
+            return ((a >= 48 && a <= 57)||a== 0 ||  a== 8 || a == 13 );
+        }
+        
+        {
+        function isNumberKey(evt){
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+            return true;
+        }
+        function run(field) {
+            setTimeout(function() {
+                var regex = /^-?\d*\.?\d?\d?/g;
+                field.value = regex.exec(field.value);
+            }, 0);
+        }
+        }
+    </script>        
+    
+</apex:form>        
+</apex:page>

@@ -1,0 +1,3 @@
+<apex:page standardController="Account" extensions="EnhancedList_CTRL" >
+    <apex:enhancedList type="Account" height="350" rowsPerPage="10" />
+</apex:page>

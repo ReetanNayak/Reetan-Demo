@@ -1,0 +1,18 @@
+<apex:page standardController="Candidatewe__c" sidebar="false">
+<apex:form >
+<div width="100%">
+    <table width="100%" border="1" rules="all">
+        <tr>
+            <td height="50px" width="60%" id="col1">
+                <apex:inputField id="te" value="{!Candidatewe__c.Demo__c}" />
+            </td>    
+            <td height="50px"></td>
+      </tr>
+    </table>  
+</div>
+
+<Script>
+    window.onload=function setup(){document.getElementById("col1").style.height="200px";}
+</Script>
+</apex:form>    
+</apex:page>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>dca_cnvrt_note__Share_Private_Notes__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Deprecated since version 1.3. Do not use.</description>
+    <inlineHelpText>Deprecated since version 1.3. Do not use.</inlineHelpText>
+    <label>Share Private Notes? (deprecated)</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

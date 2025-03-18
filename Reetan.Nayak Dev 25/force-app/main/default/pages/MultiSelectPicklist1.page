@@ -1,0 +1,190 @@
+<apex:page controller="MultiSelectPicklist1_CLS" sidebar="false" >
+<apex:form id="fm">
+    <apex:commandButton value="Select Field" onclick="return doSelectField()" reRender="fm" /> <br/> <br/>
+    
+    
+    <apex:pageBlock id="pb" >
+        <apex:panelGrid columns="6" >
+            <select id="accListLeft" multiple="multiple" onclick="return selIndex(this);" style="width:250px;" size="10" />
+            
+            <apex:panelGroup >
+                <a href="" onclick="return doAdd()" > <img class="rightArrowIcon" title="Add" alt="Add" src="/s.gif" />  </a>    <br/><br/>       
+                <a href="" onclick="return doRemove()" > <img class="leftArrowIcon" title="Remove" alt="Remove" src="/s.gif" />  </a>            
+            
+              <!--  <apex:commandButton value="Add" onclick="return doAdd()" reRender="pb" />    <br/><br/>   
+                <apex:commandButton value="Remove" onclick="return doRemove()" reRender="pb" />    -->
+            </apex:panelGroup>
+            
+            <select id="accListRight" multiple="multiple" onclick="return selIndex(this);" style="width:250px" size="10"  />
+            
+            <apex:panelgroup >
+                <a href="" onclick="return doTop()" > <img class="doubleArrowUp" title="Top" alt="Top" src="/s.gif" />  </a> <br/><br/>
+                <a href="" onclick="return doUp()" > <img class="upArrowIcon" title="Up" alt="Up" src="/s.gif" />  </a> <br/>
+                <a href="" onclick="return doDown()" > <img class="downArrowIcon" title="Down" alt="Down" src="/s.gif" />  </a> <br/><br/>
+                <a href="" onclick="return doBottom()" > <img class="doubleArrowDwn" title="Bottom" alt="Bottom" src="/s.gif" />  </a>                                                             
+            
+             <!--   <apex:commandButton value="Top" onclick="return doTop()" reRender="pb" /><br/><br/>
+                <apex:commandButton value="Up" onclick="return doUp()" reRender="pb" /><br/>
+                <apex:commandButton value="Down" onclick="return doDown()" reRender="pb" /><br/><br/>
+                <apex:commandButton value="Bottom" onclick="return doBottom()" reRender="pb" /><br/>    -->
+            </apex:panelgroup>
+        </apex:panelGrid>
+    </apex:pageBlock>
+    
+<script type="text/javascript">
+    var selectLeft;
+    var selectRight;
+    var indexVal;
+    var indexNo;
+    
+    function doSelectField() {
+        selectLeft = document.getElementById("accListLeft");
+        selectLeft.options.lenght = 0;
+        
+        var myArray = "{!accField}";
+        var accListd = myArray.split(",");
+        
+        for(i=0; i<accListd.length; i++) {
+            if(i == 0)
+                selectLeft.options[selectLeft.options.length] = new Option(accListd[i].substring(1,accListd[i].length), accListd[i].substring(1,accListd[i].length) );
+                
+            else if(i == accListd.length-1 )
+                selectLeft.options[selectLeft.options.length] = new Option(accListd[i].substring(0,accListd[i].length-1), accListd[i].substring(0,accListd[i].length-1) );
+                
+            else    
+                selectLeft.options[selectLeft.options.length] = new Option(accListd[i], accListd[i]);
+        }
+        return false;
+    }
+    
+    function selIndex(ind) {
+        indexVal = ind;
+        indexNo = ind.selectedIndex;
+    }
+    
+    function doAdd() {
+        selectRight = document.getElementById("accListRight");
+        var arSelectLeft = new Array();
+        
+        while(indexVal.selectedIndex != -1 ) {
+            if(indexVal.selectedIndex != -1 ) {
+                arSelectLeft.push(indexVal.options[indexVal.selectedIndex].value);
+                selectLeft.remove(indexVal.selectedIndex);
+            }
+        }
+        
+        for(i=0; i<arSelectLeft.length; i++){
+            selectRight.options[selectRight.options.length] = new Option(arSelectLeft[i], arSelectLeft[i]);
+        }
+        
+        return false;
+    }
+    
+    
+    function doRemove() {
+        selectRight = document.getElementById("accListRight");
+        var arSelectRight = new Array();
+        
+        while(indexVal.selectedIndex != -1 ) {
+            if(indexVal.selectedIndex != -1) {
+                arSelectRight.push(indexVal.options[indexVal.selectedIndex].value);
+                selectRight.remove(indexVal.selectedIndex);
+            }
+        }
+        
+        for(i=0; i<arSelectRight.length; i++){
+            selectLeft.options[selectLeft.options.length] = new Option(arSelectRight[i], arSelectRight[i]);
+        }        
+        return false;
+    }
+    
+    
+    function doUp() {
+        selIndex(indexVal);
+      //  while(indexNo > 0) {
+            if(indexNo > 0) {
+                var temp1 = selectRight.options[indexNo-1].value;
+                var temp2 = selectRight.options[indexNo].value;
+                
+                selectRight.options[indexNo-1].value = temp2;
+                selectRight.options[indexNo-1].text = temp2;
+                
+                selectRight.options[indexNo].value = temp1;
+                selectRight.options[indexNo].text = temp1;
+                
+                selectRight.options[indexNo-1].selected = true;
+                selectRight.options[indexNo].selected = false;   
+                
+                temp1 = '';
+                temp2 = '';
+                indexNo = indexNo-1;
+            }
+    //    }
+        return false;
+    }
+    
+    function doDown() {
+        selIndex(indexVal);
+        if(indexNo < selectRight.options.length-1 ) {
+            var temp3 = selectRight.options[indexNo+1].value;
+            var temp4 = selectRight.options[indexNo].value;  
+            
+            selectRight.options[indexNo+1].value = temp4;
+            selectRight.options[indexNo+1].text = temp4;     
+            
+            selectRight.options[indexNo].value = temp3;
+            selectRight.options[indexNo].text = temp3;
+
+            selectRight.options[indexNo+1].selected = true;
+            selectRight.options[indexNo].selected = false;   
+            
+            temp3 = '';
+            temp4 = '';
+            indexNo = indexNo+1;            
+        }
+        return false;
+    }    
+    
+    
+    function doTop() {
+        selIndex(indexVal);
+        var temp5 = selectRight.options[indexNo].value;
+        for(i=indexNo; i>=0; i--) {
+            if(i==0) {
+                selectRight.options[0].value = temp5;
+                selectRight.options[0].text = temp5;
+                selectRight.options[0].selected = true;
+            }           
+            else {
+                selectRight.options[i].value = selectRight.options[i-1].value;
+                selectRight.options[i].text = selectRight.options[i-1].text;
+                selectRight.options[i].selected = false;            
+            }
+        }
+        temp5 = '';
+        return false;
+    } 
+    
+    function doBottom() {
+        selIndex(indexVal);
+        var temp6 = selectRight.options[indexNo].value;
+        for(i=indexNo; i<selectRight.options.length; i++) {
+            if(i == selectRight.options.length-1 ){
+                selectRight.options[selectRight.options.length-1].value = temp6;
+                selectRight.options[selectRight.options.length-1].text = temp6;
+                selectRight.options[selectRight.options.length-1].selected = true;
+            }
+            else {
+                selectRight.options[i].value = selectRight.options[i+1].value;
+                selectRight.options[i].text = selectRight.options[i+1].text;
+                selectRight.options[i].selected = false;  
+            }
+        }
+        temp6 = '';
+        return false;
+    }   
+    
+</script>
+    
+</apex:form>
+</apex:page>

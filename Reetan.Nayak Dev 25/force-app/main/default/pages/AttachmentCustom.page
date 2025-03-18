@@ -1,0 +1,13 @@
+<apex:page standardController="Account" extensions="AttachmentCustom_Class">
+
+<apex:form >
+  <apex:sectionHeader title="Upload a Attachment into Salesforce"/>
+  <apex:pageblock >
+      <apex:pageblocksection columns="1">
+          <apex:inputFile value="{!myfile.body}" filename="{!myfile.Name}" />
+          <apex:commandbutton value="Save" action="{!Savedoc}"/>
+      </apex:pageblocksection>
+  </apex:pageblock>   
+</apex:form> 
+
+</apex:page>

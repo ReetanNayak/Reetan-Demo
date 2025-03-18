@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SalesAsset</fullName>
+    <active>true</active>
+    <label>Sales Asset</label>
+    <picklistValues>
+        <picklist>Document_Type__c</picklist>
+        <values>
+            <fullName>Case study</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitive analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product collateral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales presentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>White paper</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_of_consultant__c</fullName>
+    <label>Type of consultant</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Junior Business Consultant</fullName>
+                <default>true</default>
+                <label>Junior Business Consultant</label>
+            </value>
+            <value>
+                <fullName>Medior Business Consultant</fullName>
+                <default>false</default>
+                <label>Medior Business Consultant</label>
+            </value>
+            <value>
+                <fullName>Senior Business Consultant</fullName>
+                <default>false</default>
+                <label>Senior Business Consultant</label>
+            </value>
+            <value>
+                <fullName>Salesforce Consultant</fullName>
+                <default>false</default>
+                <label>Salesforce Consultant</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

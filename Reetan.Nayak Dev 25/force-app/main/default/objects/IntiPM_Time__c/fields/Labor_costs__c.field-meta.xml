@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Labor_costs__c</fullName>
+    <formula>CASE( Type_of_consultant__c, &apos;Junior Business Consultant&apos;, (Hours__c * 999), &apos;Medior Business Consultant&apos;, (Hours__c * 999), &apos;Senior Business Consultant&apos;, (Hours__c * 999), &apos;Salesforce Consultant&apos;, (Hours__c * 999),0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Labor costs</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

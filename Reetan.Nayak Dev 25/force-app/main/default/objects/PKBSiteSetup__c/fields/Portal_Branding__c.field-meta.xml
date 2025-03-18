@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Portal_Branding__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(
+ ISPICKVAL(Portal_Branding_Source__c ,&quot;Customer Portal&quot;) , TRIM(RIGHT( Customer_Portal_Login_Link__c , 15)) ,
+   if(
+    ISPICKVAL(Portal_Branding_Source__c ,&quot;Partner Portal&quot;) , TRIM(RIGHT(  Partner_Portal_Login_URL__c  , 15)) , &quot;none&quot;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Portal Branding</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

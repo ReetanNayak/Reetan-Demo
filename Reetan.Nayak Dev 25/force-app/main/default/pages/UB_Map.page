@@ -1,0 +1,18 @@
+<apex:page sidebar="false" > <br/>
+<apex:form >   
+
+<script type="text/javascript">
+    function showImage() {
+        document.getElementById("LoadingImage").style.visibility="visible";
+    }
+</script>
+
+  <!--  <apex:commandButton value="Show Map"   onclick="showImage()"/> <br/><br/>    --> 
+    <input type="button" value="Show Map" onclick="showImage();"/> <br/><br/> 
+
+    <img src="{!$Resource.UBMap}" height="400" width="500" id="LoadingImage" style="visibility:hidden" />    
+    
+
+    
+</apex:form>
+</apex:page>

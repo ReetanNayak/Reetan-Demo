@@ -1,0 +1,41 @@
+<apex:page controller="FacultyHomeController" sidebar="false" showHeader="true" id="pg" >
+<apex:form id="fm" >
+
+<style>
+   .activeTab {background-color:#D3E0F0; color:black; background-image:none}
+   .inactiveTab { background-color:#4D9DEC; color:white; background-image:none}
+</style>
+
+    <div> 
+        <apex:image value="{!URLFOR($Resource.CTPImages, 'Imz/MainHeader.png')}" width="100%" height="90"/>
+    </div>
+
+     <div id="log">
+       <apex:commandLink value="Sign Out" action="{!doSignOut}" style="color:red"  />
+     </div>  
+</apex:form>  
+  
+ <apex:tabPanel switchType="client" selectedTab="tabdetails" tabClass="activeTab" inactiveTabClass="inactiveTab" id="tbp" >
+     <apex:tab label="Home" name="Home" id="tabhom">
+        <c:FactHomePageHomeTabComp id="homtab" >
+        </c:FactHomePageHomeTabComp>
+     </apex:tab>
+
+     <apex:tab label="Course Builder" name="Course Builder" id="tabcorb">
+        <c:FactHomePageCourseBuiderTabComp id="cortab">
+        </c:FactHomePageCourseBuiderTabComp>  
+     </apex:tab>
+     
+     <apex:tab label="Time Sheet" name="Time Sheet" id="tsheet">
+        <c:FacTimeSheetEntryComp id="TStab" >
+        </c:FacTimeSheetEntryComp>
+     </apex:tab>
+
+     <apex:tab label="New Session Entry" name="New Session Entry" id="tabses" >
+        <c:FacultyHomeTabNewSessionEntry >
+        </c:FacultyHomeTabNewSessionEntry>
+     </apex:tab>
+ </apex:tabPanel>     
+  
+<!--    </apex:form>    -->
+</apex:page>

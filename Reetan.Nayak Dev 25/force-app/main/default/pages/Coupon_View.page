@@ -1,0 +1,93 @@
+<apex:page controller="Coupon_View_CLS" sidebar="false" showHeader="false">
+<apex:form >
+ <script type="text/javascript">
+function printpage() {
+  window.print()
+  }
+</script>
+
+<style type="text/css">
+table.CoupenDetailspage{
+    border-width: thick;
+    border-spacing: 4px;
+    border-style: outset;
+    border-color: Blue;
+    border-collapse: collapse;
+    background-color: white;
+}
+</style>
+
+
+<br/>
+<div ><center>
+<table width="720px"  class='CoupenDetailspage' border="0" >
+    <tr>
+        <td width="20%"> </td>
+        <td width="40%">
+            <table width="100%" border="0" > <br/>
+                <div align="center" > <apex:image value="{!$Resource.UnitedSpirit}" width="250" height="100" /> </div> <br/><br/> 
+                <div align="center" > <apex:outputlink value="{!Coupon.QR_Image_URL__c}"  /> </div> <br/><br/> 
+                <div align="center" > <b><font size="4" color="#1D128A" >Coupon Details  </font></b> </div>
+                <tr height="10px"></tr>
+                
+                <tr>
+                    <td width="20%" align="right" ><font size="2" color="#1D128A">Coupon Number :</font> </td>
+                    <td width="20%" ><b> <apex:outputLabel value="{!Coupon.UB_Coupon_Number__c}" onmouseout="" /></b></td>
+                </tr>   
+                <tr height="1px"></tr>
+                
+                <tr>
+                    <td width="48%" align="right"><font size="2" color="#1D128A">Name :</font></td>
+                    <td width="50%"><b><apex:outputLabel value="{!Coupon.UB_CampaignMember__r.Name}" /> </b></td>
+                </tr>
+                <tr height="1px"></tr>
+                
+                <tr>
+                    <td width="20%" align="right"><font size="2" color="#1D128A">Brand :</font></td>
+                    <td width="20%"><b><apex:outputLabel value="{!Coupon.UB_Brand__c}" /></b></td>
+                </tr>
+                <tr height="1px"></tr>
+                
+                <tr>
+                    <td width="20%" align="right"><font size="2" color="#1D128A">Product :</font></td>
+                    <td width="20%"> <b><apex:outputLabel value="{!Coupon.UB_Product__r.name}" /></b></td>
+                </tr>
+                <tr height="1px"></tr>
+                
+                <tr>
+                    <td width="20%" align="right"><font size="2" color="#1D128A">Outlet :</font></td>
+                    <td width="20%" > <b><apex:outputLabel value="{!Coupon.UB_Outlet__r.name}" /></b></td>
+                </tr>
+                <tr height="1px"></tr>                
+                
+                <tr>
+                    <td width = "20%" align="right"><font size="2" color="#1D128A">Location :</font></td>
+                    <td width="20%" ><b><apex:outputLabel value="{!Coupon.UB_Location__c}" /></b></td>
+                </tr>
+                <tr height="1px"></tr> 
+
+                <tr>
+                    <td width = "20%" align="right"><font size="2" color="#1D128A">Valid From :</font></td>
+                    <td width="20%" ><b><apex:outputField value="{!Coupon.UB_Valid_From__c}" /></b></td>    
+                 <!--   <td width="20%" ><b><apex:outputLabel value="{!Coupon.UB_Valid_From__c}" /></b></td>    -->                
+                </tr>
+                <tr height="1px"></tr> 
+                
+                <tr>
+                    <td width = "20%" align="right"><font size="2" color="#1D128A">Valid To :</font></td>
+                    <td width="20%" ><b><apex:outputField value="{!Coupon.UB_Valid_To__c}" /></b></td>    
+              <!--      <td width="20%" ><b><apex:outputLabel value="{!Coupon.UB_Valid_To__c}" /></b></td>     -->               
+                </tr>
+                <tr height="10px"></tr>  
+                
+            </table>
+        </td>
+        <td width="20%"></td>
+    </tr>
+ </table>
+</center></div> <br/>
+ 
+        <div align="center" ><input type="button" class="btn"  value="Print this Page" onclick="printpage()" /> </div>   <br/>   
+</apex:form>         
+ 
+</apex:page>

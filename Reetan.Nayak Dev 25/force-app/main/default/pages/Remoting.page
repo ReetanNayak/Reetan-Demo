@@ -1,0 +1,37 @@
+<apex:page StandardController="Account" extensions="Remoting" recordSetVar="rk" sidebar="false">
+<apex:form >
+<apex:pageBlock helpTitle="Display Account"   helpUrl="abc" >
+<apex:pageBlockSection columns="2" >
+    <apex:pageBlockSectionItem >
+        <apex:outputPanel layout="block" >
+        <apex:pageBlock >
+        <apex:pageBlockButtons styleClass="false"><center><apex:commandButton action="{!save}"  value="Search"/></center></apex:pageBlockButtons>
+    
+
+<table colspan="2" cellspacing="10" >
+<tr>
+
+<td> <label>
+    name
+    </label></td><td>
+    <apex:inputtext /> </td>
+</tr>
+    <tr>
+     <td><label>
+    city
+    </label></td>
+    <td>
+    <apex:inputtext /></td>
+ </tr>
+</table>
+</apex:pageBlock>
+</apex:outputPanel>
+    <apex:pageblockTable value="{!rk}" var="t"  width="200px">
+    <apex:column breakBefore="false"><apex:selectCheckboxes value="{!t.Id}"></apex:selectCheckboxes></apex:column> 
+    <apex:column value="{!t.name}"/>
+    <apex:column value="{!t.phone}"/>
+    </apex:pageblockTable>
+    </apex:pageBlockSectionItem>
+</apex:pageBlockSection>
+</apex:pageBlock></apex:form>
+</apex:page>

@@ -1,0 +1,44 @@
+<apex:page standardController="Opportunity" extensions="ActionChaining_CTRL" >
+  <apex:form >
+    <apex:outputPanel >
+      <apex:outputPanel id="detail">
+    <apex:detail subject="{!$CurrentPage.parameters.Id}" relatedList="false" />
+      </apex:outputPanel>
+    
+      <!-- This is the first step, initiate the action chain by activating the user -->
+      <apex:outputPanel id="step0" >
+    <apex:commandButton rendered="{!step = 0}" 
+             action="{!activateUser}" 
+             value="Update this Oppty" 
+             rerender="step1" />
+      </apex:outputPanel>
+    
+      <!-- This is the second step, update the oppty -->
+      <apex:outputPanel id="step1" >
+    <apex:actionFunction name="updateOppty" 
+             action="{!updateOppty}" 
+             rerender="step2" />
+    <apex:outputPanel rendered="{!step = 1}">
+      Step 1<br/>
+      <script>
+        updateOppty();
+      </script>
+    </apex:outputPanel>
+      </apex:outputPanel>
+            
+      <!-- This is the final step, reset the user's state -->
+      <apex:outputPanel id="step2" >
+    <apex:actionFunction name="deActivateUser" 
+             action="{!deActivateUser}" 
+             rerender="step2,detail" />
+    <apex:outputPanel rendered="{!step = 2}">
+      Step 2<br />
+      <script>
+        deActivateUser();
+      </script>
+    </apex:outputPanel>
+      </apex:outputPanel>
+
+    </apex:outputPanel>
+  </apex:form>
+</apex:page>

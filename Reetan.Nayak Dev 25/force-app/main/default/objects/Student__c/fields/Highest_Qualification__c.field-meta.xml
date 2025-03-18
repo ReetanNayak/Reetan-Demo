@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Highest_Qualification__c</fullName>
+    <label>Highest Qualification</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>MCA</fullName>
+                <default>false</default>
+                <label>MCA</label>
+            </value>
+            <value>
+                <fullName>BE(CS/IT)</fullName>
+                <default>false</default>
+                <label>BE(CS/IT)</label>
+            </value>
+            <value>
+                <fullName>BTech(CS/IT)</fullName>
+                <default>false</default>
+                <label>BTech(CS/IT)</label>
+            </value>
+            <value>
+                <fullName>MSc(CS/IT)</fullName>
+                <default>false</default>
+                <label>MSc(CS/IT)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

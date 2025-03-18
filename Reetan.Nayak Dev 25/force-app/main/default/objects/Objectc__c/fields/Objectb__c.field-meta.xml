@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Objectb__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Objectb</label>
+    <referenceTo>Objectb__c</referenceTo>
+    <relationshipLabel>Objectc</relationshipLabel>
+    <relationshipName>Objectc</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

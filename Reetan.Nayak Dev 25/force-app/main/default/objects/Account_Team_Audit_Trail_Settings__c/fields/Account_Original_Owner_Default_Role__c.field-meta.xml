@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Original_Owner_Default_Role__c</fullName>
+    <description>Role to be assigned on the account team member created for the original owner of the account</description>
+    <externalId>false</externalId>
+    <label>Account Original Owner Default Role</label>
+    <length>30</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

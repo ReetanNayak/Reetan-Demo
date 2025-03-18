@@ -1,0 +1,183 @@
+<apex:page sidebar="false" >
+<apex:form >
+
+<!-- <apex:stylesheet value="{!URLFOR($Resource.GEImg, 'GE/css/Style1.css')}"/>  -->
+
+
+<style type="text/css">
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed, 
+    figure, figcaption, footer, header, hgroup, 
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+        display: block;
+    }
+
+    body {
+        line-height: 1;
+    }
+
+    ol, ul {
+        list-style: none;
+    }
+
+    blockquote, q {
+        quotes: none;
+    }
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: '';
+        content: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    body{font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;font-size:13px;line-height:18px;color:#555;}
+
+    html {
+        width: 100%;
+    }
+
+    a, a:link {
+        text-decoration: none;
+        color: #08a5e1;
+    }
+
+    ul.navigation li {
+        margin-bottom: 3px;
+    }
+
+    ul.navigation li.active a {
+        color: #333;
+    }
+
+    ul.mainitems li {
+        float: left;
+      //  margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    ul.mainitems li a {
+        font-size: 12px;
+        display: table-cell;
+        vertical-align: middle;
+        position: relative;
+        text-align: center;
+        width: 110px;
+        height: 120px;
+        padding: 5px;
+        border: 1px solid #e4e4e4;
+        border-radius: 5px;
+    }
+
+    ul.mainitems li a:hover {
+        border-color: #08a5e1;
+    }
+
+    ul.mainitems li:nth-child(6) {
+        margin-right: 0px;
+    }
+
+    ul.mainitems li a span {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        color: #fff;
+        background: rgb(8, 165, 225); /* The Fallback */
+        background: rgba(8, 165, 225, 0.75); 
+        border-radius:5px;
+    }
+
+    ul.mainitems li.all a  {
+        background-color: #08a5e1;
+    }
+
+    ul.mainitems li.all a span  {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 60px;
+        font-size: 26px;
+        color: #fff;
+        background-color: #08a5e1;
+        opacity: 1;
+        border-radius:5px;
+    }
+
+    .container {
+        width: 100%;
+        margin: 30px auto;
+    }
+
+    #nav {
+        float: left;
+        // width: 150px;
+        width: 18%;
+    }
+
+    #content {
+        float: left;
+        margin-left: 25px;
+       // width: 785px;
+        width: 75%;
+        /* background-color: #f1f1f1; */
+    }
+</style>
+
+
+    <div class="container">
+        <div id="nav">
+            <ul class="navigation">
+                <li><a href="index.html"><span>Airframer</span></a></li>
+                <li><a href="#"><span>Engine Mfg</span></a></li>
+                <li class="active"><a href="index-engine.html"><span>GE Engines</span></a></li>
+                <li><a href="#"><span>Aircraft Purpose</span></a></li>
+                <li><a href="#"><span>Regions</span></a></li>
+                <li><a href="#"><span>Large Aircraft</span></a></li>
+                <li><a href="#"><span>Services</span></a></li>
+                <li><a href="#"><span>Service Providers</span></a></li>
+                <li><a href="#"><span>Technology Environment</span></a></li>
+            </ul>
+        </div>
+    
+        <div id="content" >
+            <ul class="mainitems">
+                <li class="all"><a href="#"><span>All</span></a></li>
+                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-cf6.jpg')}" alt="" /><span>CF34</span></a></li>
+                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-cf34.jpg')}" alt="" /><span>CFM</span></a></li>
+                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-cfm.jpg')}" alt="" /><span>CF6</span></a></li>
+                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-ct7.jpg')}" alt="" /><span>CT7</span></a></li>
+                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-ge90.jpg')}" alt="" /><span>GE90</span></a></li>
+                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-genx.jpg')}" alt="" /><span>GEnx</span></a></li>
+                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-gp7000.jpg')}" alt="" /><span>GP7000</span></a></li>
+                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-hf120.jpg')}" alt="" /><span>HF120</span></a></li>
+                <li><a href="#"><img src="{!URLFOR($Resource.GEImg, 'GE/Image1/engine-leapx.jpg')}" alt="" /><span>Leap-X</span></a></li>
+            </ul>
+        </div>
+    
+    </div>    
+    
+</apex:form>
+</apex:page>

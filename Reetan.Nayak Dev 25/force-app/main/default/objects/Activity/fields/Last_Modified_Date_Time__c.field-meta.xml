@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Modified_Date_Time__c</fullName>
+    <description>formula field called &quot;Last Modified Date/Time&quot; (date/time data type) in Activity Custom fields that simply returns the standard LastModifiedDate field</description>
+    <formula>LastModifiedDate</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Last Modified Date/Time</label>
+    <required>false</required>
+    <type>DateTime</type>
+</CustomField>

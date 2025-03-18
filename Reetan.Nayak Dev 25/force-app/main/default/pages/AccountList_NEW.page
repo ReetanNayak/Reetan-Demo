@@ -1,0 +1,419 @@
+<apex:page standardController="Account" recordSetVar="Accounts" extensions="AccountList_CLS"  sidebar="true" standardStylesheets="true">
+
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/reset.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/jquery-ui.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/jquery.weekcalendar.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/demo.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/calendarExtend.css')}"/>
+    <apex:includescript value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/jquery.min.js')}"/>
+    <apex:includescript value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/jquery-ui.min.js')}"/>
+    <apex:includescript value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/jquery.weekcalendar.js')}"/>
+    <apex:includescript value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/jquery.layout.js')}"/>
+    <apex:includescript value="{!URLFOR($Resource.jQueryCalendarRes5, 'JQueryCalendarV_1.6/demo.js')}"/>
+
+    <!-- 4 Files includerd for scrollbar-->
+    <apex:stylesheet value="{!URLFOR($Resource.iPadScrollbar,'Scrollbar/jscrollpanecss.css')}"/>
+    <script type="text/javascript" src="{!URLFOR($Resource.iPadScrollbar,'Scrollbar/Jquery171.js')}"/>
+    <script type="text/javascript" src="{!URLFOR($Resource.iPadScrollbar,'Scrollbar/jqueryjscrollpane.js')}"/>
+    <script type="text/javascript" src="{!URLFOR($Resource.iPadScrollbar,'Scrollbar/jQueryMousewheel.js')}"/>
+    <script type="text/javascript">
+
+     function checkAll(cb){
+        var inputElem = document.getElementsByTagName("input");
+        for(var i=0; i<inputElem.length; i++) {
+            if(inputElem[i].id.indexOf("checkedone")!=-1)
+            inputElem[i].checked = cb.checked;
+        }
+    }
+    /*JQuery  for scroll pane */
+    var $j = jQuery.noConflict(); 
+    $j(document).ready(function(){$j('.scroll-pane').jScrollPane();});
+    </script>
+    
+    <style type="text/css">
+    /**
+     *  Basic Layout Theme
+     * 
+     *  This theme uses the default layout class-names for all classes
+     *  Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+     */
+
+    .ui-layout-pane { /* all 'panes' */ 
+        background: #FFF; 
+        border: 1px solid #BBB; 
+        padding: 10px; 
+        overflow: auto;
+    } 
+
+    .ui-layout-resizer { /* all 'resizer-bars' */ 
+        background: #DDD; 
+        
+        background-image: url("images/white-top-bottom.gif");
+        background-repeat: repeat-x;
+        border: 1px solid #99BBE8;
+        color: #15428B;
+         padding: 0px 0px 0px 0px;
+         line-height: 15px;
+        /*border: 1px solid #99BBE8;
+        
+        line-height: 15px;
+        padding: 5px 3px 18px 5px;*/
+    } 
+
+    .ui-layout-toggler { /* all 'toggler-buttons' */ 
+       /* background: #FF0000; */
+    } 
+    
+     #container-wrapper {
+      position:relative;
+      width:auto;
+      height:490px;
+     }
+     
+     #container {
+        overflow: hidden;
+        background: #fff;
+        position: absolute;
+        top:        20px;   /* margins in pixels */
+        bottom:     0px;   /* could also use a percent */
+        left:0px;
+        right: 0px;
+        }
+    
+    #footer-panel {
+        position:   relative;
+        bottom:     0px;   
+        left:       0px;
+        right:      20px;
+    }
+    
+    #listview-panel {
+        margin: 0;
+        overflow-y:auto;
+        position:   absolute;
+         width:100%;
+    }
+    #calendar-panel {
+        margin: 0;
+        overflow:hidden;
+        /*min-height: 250px;*/
+    }
+     A.onmouseover{ 
+                    text-decoration: None;color: #015BA7;font-weight:normal;
+                    font-size:91%;white-space: nowrap;font-family: Arial,Helvetica,sans-serif;
+        }
+    .custPopup{
+                background-color: white;
+                border-width: 0px;
+                border-style: solid;
+                left: 40%;
+                top:30%;
+                align:center;
+                padding:10px;
+                position: absolute;
+                width: 350px;
+             /* margin-left: -250px;
+                fixedCenter: true;*/
+                z-index: 9999;  
+                
+    }
+
+    .popupBackground{
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 20);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+    }    
+
+    .popUpDiv{
+        overflow: auto;
+        height: 250px;
+    }
+    .scroll-pane{
+                width: 100%;
+                height: 200px;
+                overflow: auto;
+                              
+    }
+   .horizontal-only{
+                    height: auto;
+    }
+    
+    
+    </style>
+
+<div  id="container-wrapper" >
+
+<div id="container" class="ui-layout-container" style="">
+                <div id="listview-panel" class="ui-layout-center 
+                x-panel-noborder x-border-panel" style=" left: 0px; top: 0px">
+                    <div id="listview">
+                    <!---Custom Account List-->
+                        <apex:form >
+                            <apex:outputPanel id="tstpopup">
+                                    <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!blDisplayPopUp}"/>
+                                    <apex:outputPanel styleClass="custPopup" layout="block" rendered="{!blDisplayPopUp}">
+                                            <apex:pageBlock >
+                                                    <div class="popUpDiv">
+                                                       <apex:pageBlockTable value="{!AccFields}" var="acc1">
+                                                               <apex:column style="height:20px">
+                                                                   <apex:inputCheckbox value="{!acc1.valChecked}" selected="{!acc1.valChecked}" id="ids" />&nbsp;&nbsp;&nbsp;
+                                                                   <apex:outputText value="{!acc1.strFieldValue}"></apex:outputText>
+                                                                </apex:column>
+                                                            </apex:pageBlockTable> 
+                                                    </div>
+                                                    <apex:pageBlockButtons >
+                                                        <apex:commandButton value="Save" action="{!saveFields}"  reRender="AccountList,tstpopup"/>
+                                                        <apex:commandButton value="Cancel" action="{!closePopUp}"/>
+                                                   </apex:pageBlockButtons>                    
+                                           </apex:pageBlock>
+                                   </apex:outputPanel>
+                            </apex:outputPanel>
+                          
+                                <table width="100%" border="0" >
+                                    <tr>
+                                        <td width="2%" ><apex:sectionHeader /></td>
+                                        <td><br/>
+                                            <!-- select a  particular list view from dropdown--> 
+                                            
+                                            <apex:selectList value="{!strSelectedFilterId}" size="1" style="font-weight:bold;" >
+                                                <apex:actionSupport event="onchange" rerender="AccountList,test" />
+                                                <apex:selectOptions value="{!lstIpadListViewOptions}"/>
+                                            </apex:selectList>
+                                        
+                                            &nbsp;&nbsp;
+                                            
+                                            <!-- edit a particular list view--> 
+                                            <apex:outputPanel id="test"> 
+                                                <apex:outputLink style="color:rgb(58,91,197); text-decoration:none" value="/ui/list/FilterEditPage?id={!strSelectedFilterId}&retURL={!$CurrentPage.URL}" id="editlink" >Edit</apex:outputLink>&nbsp;| 
+                                            </apex:outputPanel>
+                                            <!-- delete a particular list view--> 
+                                            <a href="javascript:if (window.confirm('Are you sure?')) DeleteView('{!strSelectedFilterId}');" style="color:#015BA7; text-decoration:none">Delete</a>&nbsp;|&nbsp;
+                                            <apex:outputLink style="color:#015BA7; text-decoration:none" value="/ui/list/FilterEditPage?ftype=a&retURL=/apex/{!$CurrentPage.Name}">
+                                                Create New View
+                                            </apex:outputLink>                    
+                                        </td>
+                                        <td align="right" ><br/>
+                                            <!-- Click to show popup--> 
+                                            <apex:commandButton action="{!openPopUp}" value="Select Fields" reRender="tstpopup"/>&nbsp;&nbsp;                   
+                                            <!--  <apex:commandButton action="{!showPopup}" value="Click" rerender="tstpopup"/>    -->
+                                            <!-- Click to show Print--> 
+                                            <apex:image value="{!$Resource.Print}" /> &nbsp;
+                                            <!-- Click to show Help--> 
+                                            <apex:image value="{!$Resource.Help}" height="18" />
+                                        </td>
+                                    </tr> 
+                                </table> 
+                                
+                               
+                                <!-- List Of Accounts--> 
+                                <apex:pageBlock id="pb">
+                                    <table width="100%" border="0" >
+                                      <tr>
+                                         <td width="40%">
+                                                <!-- Click to create new account--> 
+                                                <apex:commandButton value="New Account & Contact"/>&nbsp;|&nbsp;
+                                                <!-- Click to open a vf page--> 
+                                                <apex:commandButton value="Open Mass Calendar Update" />&nbsp;|&nbsp;
+                                                <!-- Click to refresh the list--> 
+                                                <apex:commandButton status="fetchStatus" reRender="pb" value="Refresh" action="{!refresh}" title="Refresh Page"/>
+
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td align="center" width="50%"  >
+                                          <!-- to sort the list alphabetically--> 
+                                            <apex:commandLink styleClass="onmouseover" value="A"></apex:commandLink>&nbsp;|&nbsp;
+                                            <apex:commandLink styleClass="onmouseover" value="B"></apex:commandLink>&nbsp;|&nbsp;        
+                                            <apex:commandLink styleClass="onmouseover" value="C"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="D"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="E"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="F"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="G"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="H"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="I"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="J"></apex:commandLink>&nbsp;|&nbsp;     
+                                            <apex:commandLink styleClass="onmouseover" value="K"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="L"></apex:commandLink>&nbsp;|&nbsp;     
+                                            <apex:commandLink styleClass="onmouseover" value="M"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="N"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="O"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="P"></apex:commandLink>&nbsp;|&nbsp;   
+                                            <apex:commandLink styleClass="onmouseover" value="Q"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="R"></apex:commandLink>&nbsp;|&nbsp;    
+                                            <apex:commandLink styleClass="onmouseover" value="S"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="T"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="U"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="V"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="W"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="X"></apex:commandLink>&nbsp;|&nbsp;   
+                                            <apex:commandLink styleClass="onmouseover" value="Y"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="Z"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="Other"></apex:commandLink>&nbsp;|&nbsp;  
+                                            <apex:commandLink styleClass="onmouseover" value="ALL"></apex:commandLink> 
+                                          </td>
+                                       </tr>
+                                    </table>
+                                    <apex:outputPanel id="AccountList">
+                                    <!-- Scroll Bar will start from here-->
+                                    <div class="scroll-pane" id="scroll-pane">
+                                        <apex:pageBlockTable value="{!AccountsWrp}" var="a" style="width:100%">
+                                              <apex:column width="1%">
+                                                   <apex:facet name="header">
+                                                      <apex:inputCheckbox onclick="checkAll(this)"/>
+                                                   </apex:facet>
+                                                   <apex:inputCheckbox id="checkedone" value="{!a.checked}"/>
+                                               </apex:column> 
+                                               <apex:column headerValue="Action" width="8%">
+                                                    <!-- edit a particular record--> 
+                                                    <apex:outputLink title="" value="/{!a.acc.id}/e?retURL=/apex/{!$CurrentPage.Name}" style="color:#015BA7; text-decoration:none">Edit</apex:outputLink>&nbsp;|&nbsp;                    
+                                                    <!-- delete a particular record--> 
+                                                    <a href="javascript:if (window.confirm('Are you sure?')) ''" style="color:#015BA7; text-decoration:none">Del</a>&nbsp;
+                                                </apex:column>
+                                                            <!--<apex:column value="{!a.acc.Name}"/>
+                                                                <apex:column value="{!a.acc.Type}"/>
+                                                                <apex:column value="{!a.acc.BillingCity}"/>
+                                                                <apex:column value="{!a.acc.BillingState}"/>
+                                                                <apex:column value="{!a.acc.BillingCountry}"/>
+                                                            -->
+                                                 <apex:repeat value="{!lstAccountFields}" var="str">
+                                                            <!--<apex:column headerValue="{!str.strFieldValue}" width="10%" rendered="{!if(str.strFieldName!='Id',true,false)}">
+                                                                        <apex:outputLabel >{!a[str.strFieldName]}</apex:outputLabel>
+                                                                
+                                                                        <apex:outputLabel >{!a.acc[str.strFieldName]}</apex:outputLabel>
+                                                                </apex:column>-->
+                                                    <apex:column rendered="{!if(str.strFieldName!='Id',true,false)}">
+                                                    <apex:facet name="header">{!str.strFieldValue}</apex:facet>
+                                                    <apex:outputLabel >{!a.acc[str.strFieldName]}</apex:outputLabel>
+                                                    </apex:column>
+                                                </apex:repeat>
+                                        </apex:pageBlockTable>
+                                    </div>
+                                    <!-- Scroll Bar will end here-->
+                                    <!--Page Summary footer-->
+                                    <table width="100%" border="0"  >
+                                        <tr>
+                                            <td width="30%">
+                                                <!--<apex:outputLabel value="{!nextRecord}"/>&nbsp;-&nbsp;<apex:outputLabel value="{!lastRecord}" />&nbsp;of&nbsp;<apex:outputLabel value="{!totalRecords}" />-->
+                                                {!nextRecord}&nbsp;-&nbsp;{!lastRecord}&nbsp;of&nbsp;{!totalRecords}
+                                            </td>
+                                            <td align="center"  width="30%">
+                                                <apex:commandButton status="fetchStatus" reRender="pb" value="|<" action="{!first}" disabled="{!!hasPrevious}" title="First Page"/>
+                                                <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!previous}" disabled="{!!hasPrevious}" title="Previous Page"/>
+                                                <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!next}" disabled="{!!hasNext}" title="Next Page"/>
+                                                <apex:commandButton status="fetchStatus" reRender="pb" value=">|" action="{!last}" disabled="{!!hasNext}" title="Last Page"/>
+                                                    
+                                                                <!--
+                                                                <apex:commandButton status="fetchStatus" reRender="pb" value="{!$Resource.iFirst}" action="{!first}" disabled="{!!hasPrevious}" title="First Page">
+                                                                    <apex:image value="{!$Resource.iFirst}" height="10" width="10" />
+                                                                </apex:commandButton>
+                                                                <apex:commandButton status="fetchStatus" reRender="pb" action="{!previous}" disabled="{!!hasPrevious}" title="Previous Page">
+                                                                    <apex:image value="{!$Resource.iPrevious}" height="10" width="5" />
+                                                                </apex:commandButton>
+                                                                <apex:commandButton status="fetchStatus" reRender="pb" action="{!next}" disabled="{!!hasNext}" title="Next Page">
+                                                                    <apex:image value="{!$Resource.iNext}" height="10" width="5" />
+                                                                </apex:commandButton>
+                                                                <apex:commandButton status="fetchStatus" reRender="pb" action="{!last}" disabled="{!!hasNext}" title="Next Page">
+                                                                    <apex:image value="{!$Resource.iLast}" height="10" width="5" />
+                                                                </apex:commandButton>
+                                                                -->
+                                            </td>
+                                            <td align="right" width="30%">
+                                                <apex:outputPanel style="color:#4AA02C">
+                                                    <apex:actionStatus id="fetchStatus" startText="Processing..." stopText=""/>
+                                                </apex:outputPanel>
+                                                &nbsp;&nbsp;
+                                                Page {!pageNumber} of {!totalPageNumber}
+                                            </td>
+                                        </tr>
+                                    </table>  
+                                    <!--End of Page Summary footer-->
+                                  </apex:outputPanel>
+                                </apex:pageBlock>
+                            </apex:form>
+                </div>
+                </div>
+                <div id="calendar-panel" class="ui-layout-south x-panel calendarPanel x-panel-noborder x-border-panel" style=" left: 0px;">
+                <!--<div class="x-panel-header x-panel-header-noborder" id="ext-gen11" >
+                <div class="x-tool x-tool-toggle x-tool-collapse-south x-tool-toggle-over x-tool-collapse-south-over" id="ext-gen14">&nbsp;</div>
+                <span class="x-panel-header-text">
+                </span>
+                </div>-->
+                <div class="x-panel-bwrap" id="ext-gen10">
+                    <div class="x-panel-body x-panel-body-noborder" id="ext-gen11" >
+                        <div class="calendarHeaderBG calendarHeader">
+                            <span class="userText">
+                            <span>Calendar for Laxmana Lenka</span> 
+                            <a href="javascript:openPopupFocus('/_ui/common/data/LookupPage?lkfm=f&lknm=cal&lktp=023',%20'_blank',%20670,%20400,%20'width=670,height=400,resizable=yes,toolbar=no,status=no,scrollbars=no,menubar=no,directories=no,location=no,dependant=yes',%20true,%20true);" onclick="setLastMousePosition(event)" title="[Change] (New Window)">[Change]</a> 
+                            </span> 
+                            <span class="dateText">&nbsp;12/03/2012 - 16/03/2012</span> 
+                            <span class="arrowIcons">
+                            <a href="#" id="prev" name="prev" title="Previous Week"><img src=""  title="Previous Week" class="prevCalArrow"/></a>
+                            <a href="#" id="next" name="next" title="Next Week"><img src="" title="Next Week" class="nextCalArrow"/></a>
+                            </span> 
+                            <span class="dateLinks">
+                            <span id="j_id30"><input id="datePickerValue" type="text" name="datePickerValue" value="12/03/2012" onchange="pickedDateActionFunction()" style="display:none"/> <img  class="datePickerIcon" onclick="" src="" title="Pick A Date"/>
+                            </span>
+                            <a href="#" id="thisRange" name="thisRange">This Week</a>
+                            </span> 
+                            <span class="wEndCheckBox"><input id="shWkendsCheckbox" type="checkbox" name="shWkendsCheckbox"/> <label class="checkboxLabel" for="shWkendsCheckbox">Show Weekends</label></span> 
+                           <!-- <div class="legend"><img id="inlineCalendarX" src="images/cal_closex_mouseOut.gif" onclick="closeCalendar();" onmouseout="mouseOut()" onmouseover="mouseOver()"/>
+                            </div> -->
+                            <div class="legend">
+                            <div class="busy">&nbsp;</div><span>Busy</span> 
+                            <div class="outOfOffice">&nbsp;</div><span>Out of Office</span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    <div id='calendar'></div>
+                    </div>
+                </div>
+                </div>  
+              
+</div>  
+</div>
+
+<div id="footer-panel">
+                    <div class="inlineSchedulerFooter toggleCalFooterLeft" id="footer">
+                        <div class="toggleCalFooterRight">
+                            <div class="toggleCalFooterMiddle">
+                                <div class="toggleCalendarClose" id="toggleCalDiv">
+                                    <a href="#" id="toggleCal"><img id="toggleImg" src="images/inline_sched_cal.gif"/>
+                                        <span id="toggleText">Toggle Calendar</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</div>
+
+<div id="event_edit_container">
+        <form>
+            <input type="hidden" />
+            <ul>
+                <li>
+                    <span>Date: </span><span class="date_holder"></span> 
+                </li>
+                <li>
+                    <label for="start">Start Time: </label><select name="start"><option value="">Select Start Time</option></select>
+                </li>
+                <li>
+                    <label for="end">End Time: </label><select name="end"><option value="">Select End Time</option></select>
+                </li>
+                <li>
+                    <label for="title">Title: </label><input type="text" name="title" />
+                </li>
+                <li>
+                    <label for="body">Body: </label><textarea name="body"></textarea>
+                </li>
+            </ul>
+        </form>
+        
+</div>   
+
+</apex:page>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conga_Composer_IB_Asset_Voucher</fullName>
+    <availability>online</availability>
+    <description>Originally created by Conga Solution Manager. Date of last use of Update Button from Conga Solution record: https://reetan-dev-ed--apxtconga4.ap15.visual.force.com/a2P2v000008ViJAEA0
+09-Nov-2020 11:31:47 PM</description>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>false</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>660</height>
+    <isResizable>false</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>IB Asset Voucher</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/APXTConga4__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_370}
+&amp;Id={!Account.Id}
+
+&amp;QueryId=[IBAssetQuery]0Q_000EAW648209%3Fpv0%3D{!Account.Id}
+
+&amp;TemplateId=0T_000EAW324826
+
+&amp;DS7=1
+&amp;DefaultPDF=1
+&amp;APDF=1
+&amp;SC0=1
+&amp;SC1=SalesforceFile
+&amp;AttachmentParentId={!Account.Id}
+&amp;OFN={!Account.Id}+-+{Template.Label}</url>
+    <width>900</width>
+</WebLink>

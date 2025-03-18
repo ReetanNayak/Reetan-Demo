@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zone__c</fullName>
+    <description>High level geographic alignment of sales teams; comprised of regions.</description>
+    <inlineHelpText>Grouping of geographic sales territory regions.</inlineHelpText>
+    <label>Zone</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ASEAN - ID</fullName>
+                <default>false</default>
+                <label>ASEAN - ID</label>
+            </value>
+            <value>
+                <fullName>ASEAN - PH</fullName>
+                <default>false</default>
+                <label>ASEAN - PH</label>
+            </value>
+            <value>
+                <fullName>ASEAN - SG,MY,BN,KH</fullName>
+                <default>false</default>
+                <label>ASEAN - SG,MY,BN,KH</label>
+            </value>
+            <value>
+                <fullName>ASEAN - TH,MM,LA</fullName>
+                <default>false</default>
+                <label>ASEAN - TH,MM,LA</label>
+            </value>
+            <value>
+                <fullName>ASEAN - VN</fullName>
+                <default>false</default>
+                <label>ASEAN - VN</label>
+            </value>
+            <value>
+                <fullName>AU - Australia</fullName>
+                <default>false</default>
+                <label>AU - Australia</label>
+            </value>
+            <value>
+                <fullName>AU - NSW-ACT</fullName>
+                <default>false</default>
+                <label>AU - NSW-ACT</label>
+            </value>
+            <value>
+                <fullName>AU - QLD</fullName>
+                <default>false</default>
+                <label>AU - QLD</label>
+            </value>
+            <value>
+                <fullName>AU - SA-NT</fullName>
+                <default>false</default>
+                <label>AU - SA-NT</label>
+            </value>
+            <value>
+                <fullName>AU - VIC-TAS</fullName>
+                <default>false</default>
+                <label>AU - VIC-TAS</label>
+            </value>
+            <value>
+                <fullName>AU - WA</fullName>
+                <default>false</default>
+                <label>AU - WA</label>
+            </value>
+            <value>
+                <fullName>BN - Brunei Darussalam</fullName>
+                <default>false</default>
+                <label>BN - Brunei Darussalam</label>
+            </value>
+            <value>
+                <fullName>BT-Bhutan</fullName>
+                <default>false</default>
+                <label>BT-Bhutan</label>
+            </value>
+            <value>
+                <fullName>CA - Central</fullName>
+                <default>false</default>
+                <label>CA - Central</label>
+            </value>
+            <value>
+                <fullName>CA - East</fullName>
+                <default>false</default>
+                <label>CA - East</label>
+            </value>
+            <value>
+                <fullName>CA - West</fullName>
+                <default>false</default>
+                <label>CA - West</label>
+            </value>
+            <value>
+                <fullName>CE_Austria</fullName>
+                <default>false</default>
+                <label>CE_Austria</label>
+            </value>
+            <value>
+                <fullName>CE_Central_Zone</fullName>
+                <default>false</default>
+                <label>CE_Central_Zone</label>
+            </value>
+            <value>
+                <fullName>CE_North_Zone</fullName>
+                <default>false</default>
+                <label>CE_North_Zone</label>
+            </value>
+            <value>
+                <fullName>CE_South_Zone</fullName>
+                <default>false</default>
+                <label>CE_South_Zone</label>
+            </value>
+            <value>
+                <fullName>CE_Switzerland</fullName>
+                <default>false</default>
+                <label>CE_Switzerland</label>
+            </value>
+            <value>
+                <fullName>Central &amp; East</fullName>
+                <default>false</default>
+                <label>Central &amp; East</label>
+            </value>
+            <value>
+                <fullName>France_DOM_TOM</fullName>
+                <default>false</default>
+                <label>France_DOM_TOM</label>
+            </value>
+            <value>
+                <fullName>France_East</fullName>
+                <default>false</default>
+                <label>France_East</label>
+            </value>
+            <value>
+                <fullName>France_IDF_North</fullName>
+                <default>false</default>
+                <label>France_IDF_North</label>
+            </value>
+            <value>
+                <fullName>France_South</fullName>
+                <default>false</default>
+                <label>France_South</label>
+            </value>
+            <value>
+                <fullName>France_West</fullName>
+                <default>false</default>
+                <label>France_West</label>
+            </value>
+            <value>
+                <fullName>Germany_Central</fullName>
+                <default>false</default>
+                <label>Germany_Central</label>
+            </value>
+            <value>
+                <fullName>Germany_East</fullName>
+                <default>false</default>
+                <label>Germany_East</label>
+            </value>
+            <value>
+                <fullName>Germany_North</fullName>
+                <default>false</default>
+                <label>Germany_North</label>
+            </value>
+            <value>
+                <fullName>Germany_South</fullName>
+                <default>false</default>
+                <label>Germany_South</label>
+            </value>
+            <value>
+                <fullName>Germany_SouthWest</fullName>
+                <default>false</default>
+                <label>Germany_SouthWest</label>
+            </value>
+            <value>
+                <fullName>Germany_West</fullName>
+                <default>false</default>
+                <label>Germany_West</label>
+            </value>
+            <value>
+                <fullName>Gulf 1</fullName>
+                <default>false</default>
+                <label>Gulf 1</label>
+            </value>
+            <value>
+                <fullName>Gulf 2</fullName>
+                <default>false</default>
+                <label>Gulf 2</label>
+            </value>
+            <value>
+                <fullName>ID - Indonesia</fullName>
+                <default>false</default>
+                <label>ID - Indonesia</label>
+            </value>
+            <value>
+                <fullName>IN - Bangladesh</fullName>
+                <default>false</default>
+                <label>IN - Bangladesh</label>
+            </value>
+            <value>
+                <fullName>IN - East</fullName>
+                <default>false</default>
+                <label>IN - East</label>
+            </value>
+            <value>
+                <fullName>IN - North</fullName>
+                <default>false</default>
+                <label>IN - North</label>
+            </value>
+            <value>
+                <fullName>IN - South</fullName>
+                <default>false</default>
+                <label>IN - South</label>
+            </value>
+            <value>
+                <fullName>IN - Sri Lanka</fullName>
+                <default>false</default>
+                <label>IN - Sri Lanka</label>
+            </value>
+            <value>
+                <fullName>IN - West</fullName>
+                <default>false</default>
+                <label>IN - West</label>
+            </value>
+            <value>
+                <fullName>Iraq</fullName>
+                <default>false</default>
+                <label>Iraq</label>
+            </value>
+            <value>
+                <fullName>KH - Cambodia</fullName>
+                <default>false</default>
+                <label>KH - Cambodia</label>
+            </value>
+            <value>
+                <fullName>KR - Channel</fullName>
+                <default>false</default>
+                <label>KR - Channel</label>
+            </value>
+            <value>
+                <fullName>KR - KAM</fullName>
+                <default>false</default>
+                <label>KR - KAM</label>
+            </value>
+            <value>
+                <fullName>KR - MDx</fullName>
+                <default>false</default>
+                <label>KR - MDx</label>
+            </value>
+            <value>
+                <fullName>KR - ZONE</fullName>
+                <default>false</default>
+                <label>KR - ZONE</label>
+            </value>
+            <value>
+                <fullName>LA - Laos</fullName>
+                <default>false</default>
+                <label>LA - Laos</label>
+            </value>
+            <value>
+                <fullName>Levant</fullName>
+                <default>false</default>
+                <label>Levant</label>
+            </value>
+            <value>
+                <fullName>LSJ - ZONE0</fullName>
+                <default>false</default>
+                <label>LSJ - ZONE0</label>
+            </value>
+            <value>
+                <fullName>LSJ - ZONE1</fullName>
+                <default>false</default>
+                <label>LSJ - ZONE1</label>
+            </value>
+            <value>
+                <fullName>LSJ - ZONE2</fullName>
+                <default>false</default>
+                <label>LSJ - ZONE2</label>
+            </value>
+            <value>
+                <fullName>LSJ - ZONE3</fullName>
+                <default>false</default>
+                <label>LSJ - ZONE3</label>
+            </value>
+            <value>
+                <fullName>LSJ - ZONE4</fullName>
+                <default>false</default>
+                <label>LSJ - ZONE4</label>
+            </value>
+            <value>
+                <fullName>LSJ - ZONE5</fullName>
+                <default>false</default>
+                <label>LSJ - ZONE5</label>
+            </value>
+            <value>
+                <fullName>LSJ - ZONE6</fullName>
+                <default>false</default>
+                <label>LSJ - ZONE6</label>
+            </value>
+            <value>
+                <fullName>MM - Myanmar</fullName>
+                <default>false</default>
+                <label>MM - Myanmar</label>
+            </value>
+            <value>
+                <fullName>MV-Maldives</fullName>
+                <default>false</default>
+                <label>MV-Maldives</label>
+            </value>
+            <value>
+                <fullName>MY - Malaysia</fullName>
+                <default>false</default>
+                <label>MY - Malaysia</label>
+            </value>
+            <value>
+                <fullName>NE_Belgium_Luxembourg</fullName>
+                <default>false</default>
+                <label>NE_Belgium_Luxembourg</label>
+            </value>
+            <value>
+                <fullName>NE_Denmark</fullName>
+                <default>false</default>
+                <label>NE_Denmark</label>
+            </value>
+            <value>
+                <fullName>NE_Finland_Estonia</fullName>
+                <default>false</default>
+                <label>NE_Finland_Estonia</label>
+            </value>
+            <value>
+                <fullName>NE_Netherlands</fullName>
+                <default>false</default>
+                <label>NE_Netherlands</label>
+            </value>
+            <value>
+                <fullName>NE_Norway_Iceland</fullName>
+                <default>false</default>
+                <label>NE_Norway_Iceland</label>
+            </value>
+            <value>
+                <fullName>NE_Sweden</fullName>
+                <default>false</default>
+                <label>NE_Sweden</label>
+            </value>
+            <value>
+                <fullName>NZ - CK</fullName>
+                <default>false</default>
+                <label>NZ - CK</label>
+            </value>
+            <value>
+                <fullName>NZ - FJ</fullName>
+                <default>false</default>
+                <label>NZ - FJ</label>
+            </value>
+            <value>
+                <fullName>NZ - New Zealand</fullName>
+                <default>false</default>
+                <label>NZ - New Zealand</label>
+            </value>
+            <value>
+                <fullName>NZ - Samoa</fullName>
+                <default>false</default>
+                <label>NZ - Samoa</label>
+            </value>
+            <value>
+                <fullName>NZ - TO</fullName>
+                <default>false</default>
+                <label>NZ - TO</label>
+            </value>
+            <value>
+                <fullName>NZ - VU</fullName>
+                <default>false</default>
+                <label>NZ - VU</label>
+            </value>
+            <value>
+                <fullName>NZ - WS</fullName>
+                <default>false</default>
+                <label>NZ - WS</label>
+            </value>
+            <value>
+                <fullName>Pakistan</fullName>
+                <default>false</default>
+                <label>Pakistan</label>
+            </value>
+            <value>
+                <fullName>PH - Philippines</fullName>
+                <default>false</default>
+                <label>PH - Philippines</label>
+            </value>
+            <value>
+                <fullName>RCIS - Central Russia</fullName>
+                <default>false</default>
+                <label>RCIS - Central Russia</label>
+            </value>
+            <value>
+                <fullName>RCIS - East Russia</fullName>
+                <default>false</default>
+                <label>RCIS - East Russia</label>
+            </value>
+            <value>
+                <fullName>RCIS - Kazakhstan</fullName>
+                <default>false</default>
+                <label>RCIS - Kazakhstan</label>
+            </value>
+            <value>
+                <fullName>RCIS - Ukraine/Belarus</fullName>
+                <default>false</default>
+                <label>RCIS - Ukraine/Belarus</label>
+            </value>
+            <value>
+                <fullName>RCIS - West Russia</fullName>
+                <default>false</default>
+                <label>RCIS - West Russia</label>
+            </value>
+            <value>
+                <fullName>SE_Iberia_Norte</fullName>
+                <default>false</default>
+                <label>SE_Iberia_Norte</label>
+            </value>
+            <value>
+                <fullName>SE_Iberia_Portugal</fullName>
+                <default>false</default>
+                <label>SE_Iberia_Portugal</label>
+            </value>
+            <value>
+                <fullName>SE_Iberia_Sur</fullName>
+                <default>false</default>
+                <label>SE_Iberia_Sur</label>
+            </value>
+            <value>
+                <fullName>SE_IMI_Centro</fullName>
+                <default>false</default>
+                <label>SE_IMI_Centro</label>
+            </value>
+            <value>
+                <fullName>SE_IMI_Israel</fullName>
+                <default>false</default>
+                <label>SE_IMI_Israel</label>
+            </value>
+            <value>
+                <fullName>SE_IMI_Nord</fullName>
+                <default>false</default>
+                <label>SE_IMI_Nord</label>
+            </value>
+            <value>
+                <fullName>SE_IMI_Sud</fullName>
+                <default>false</default>
+                <label>SE_IMI_Sud</label>
+            </value>
+            <value>
+                <fullName>SG - Singapore</fullName>
+                <default>false</default>
+                <label>SG - Singapore</label>
+            </value>
+            <value>
+                <fullName>TH - Thailand</fullName>
+                <default>false</default>
+                <label>TH - Thailand</label>
+            </value>
+            <value>
+                <fullName>UAE</fullName>
+                <default>false</default>
+                <label>UAE</label>
+            </value>
+            <value>
+                <fullName>UKI_Central</fullName>
+                <default>false</default>
+                <label>UKI_Central</label>
+            </value>
+            <value>
+                <fullName>UKI_Ireland</fullName>
+                <default>false</default>
+                <label>UKI_Ireland</label>
+            </value>
+            <value>
+                <fullName>UKI_Scotland</fullName>
+                <default>false</default>
+                <label>UKI_Scotland</label>
+            </value>
+            <value>
+                <fullName>UKI_South</fullName>
+                <default>false</default>
+                <label>UKI_South</label>
+            </value>
+            <value>
+                <fullName>US - Central</fullName>
+                <default>false</default>
+                <label>US - Central</label>
+            </value>
+            <value>
+                <fullName>US - East</fullName>
+                <default>false</default>
+                <label>US - East</label>
+            </value>
+            <value>
+                <fullName>US - West</fullName>
+                <default>false</default>
+                <label>US - West</label>
+            </value>
+            <value>
+                <fullName>VN - Vietnam</fullName>
+                <default>false</default>
+                <label>VN - Vietnam</label>
+            </value>
+            <value>
+                <fullName>Western &amp; South</fullName>
+                <default>false</default>
+                <label>Western &amp; South</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

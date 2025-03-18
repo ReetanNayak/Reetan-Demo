@@ -1,0 +1,21 @@
+<!-- 
+/**
+* @author Last Modified: Jesfer Baculod (502068421) Cloud Sherpas/GEHC
+* @date Last Modified: 17 Oct 2012 
+* @description page that displays different account record related report links  
+*/
+-->
+<apex:page standardController="Account">
+<!--    <apex:stylesheet value="{!URLFOR($Resource.acctReportsResources, 'acctReports.css')}"/>    -->
+    <div id="acctReportsList">
+        <!--  LINK TO OPEN OPPORTUNITIES -->
+        <p><img src="/img/analytics/home/listReport.png" width="16" height="16" border="0" />&nbsp;<a href="/00O30000006XMWW?pc19=072300000038lhH&pn19=eq&pv19={!LEFT(Account.ID,15)}" target="_blank">{!$Label.acctReports_OpenOppsFYName}</a>&nbsp;&nbsp;<span class="reportDescription">{!$Label.acctReports_OpenOppsFYDescr}</span></p>
+        <!--  LINK TO WON OPPORTUNITIES -->
+        <p><img src="/img/analytics/home/listReport.png" width="16" height="16" border="0" />&nbsp;<a href="/00O30000006XMXA?pc19=072300000038lhH&pn19=eq&pv19={!LEFT(Account.ID,15)}" target="_blank">{!$Label.acctReports_WonOppsFYName}</a>&nbsp;&nbsp;<span class="reportDescription">{!$Label.acctReports_WonOppsFYDescr}</span></p>   
+        <!--  LINK TO LOST OPPORTUNITIES -->
+        <p><img src="/img/analytics/home/listReport.png" width="16" height="16" border="0" />&nbsp;<a href="/00O30000006XMXP?pc19=072300000038lhH&pn19=eq&pv19={!LEFT(Account.ID,15)}" target="_blank">{!$Label.acctReports_LostOppsFYName}</a>&nbsp;&nbsp;<span class="reportDescription">{!$Label.acctReports_LostOppsFYDescr}</span></p>
+        <!--  LINK TO ULTIMATE PARENT OPEN OPPORTUNITIES (FY) -->
+       
+    </div>
+     
+</apex:page>

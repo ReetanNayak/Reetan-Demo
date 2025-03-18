@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Entitelemt_Indicator__c</fullName>
+    <externalId>false</externalId>
+    <formula>IMAGE( &quot;/servlet/servlet.FileDownload?file=&quot; &amp;CASE( Entitlement_Status__c, &quot;Expired&quot;, &quot;01530000002FPJo&quot;, &quot;Active&quot;, &quot;01530000002FPJp&quot;, &quot;30 Day Warning&quot;, &quot;01530000002FPJq&quot;,&quot;&quot;),&quot;Active Contract?&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Entitlement Indicator</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

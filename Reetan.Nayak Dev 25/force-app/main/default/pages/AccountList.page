@@ -1,0 +1,69 @@
+<apex:page StandardController="Account" recordSetVar="accounts">
+<apex:form >
+    <apex:pageBlock title="Account List" id="PBID">
+        
+        <apex:repeat value="{!Accounts}" var="a">
+            <li>
+                <apex:outputLink value="/{!a.Id}">{!a.Name} </apex:outputLink>
+            </li>
+        </apex:repeat>
+        <br/><br/>
+        
+        <b>Account List View:</b> &nbsp;&nbsp;
+        <apex:selectList value="{!filterId}" size="1" >
+            <apex:selectOptions value="{!listViewOptions}" />
+            <apex:actionSupport event="onchange" reRender="PBID"/>
+        </apex:selectList>
+        <br/><br/>
+    
+        <apex:pageBlockTable value="{!accounts}" var="acc">
+            <apex:column headerValue="Account Name" >
+                <apex:outputLink value="/{!acc.Id}">{!acc.Name}</apex:outputLink>
+            </apex:column>
+            <apex:column value="{!acc.Phone}"/>
+            <apex:column value="{!acc.Type}"/>
+            <apex:column value="{!acc.Owner.Name}"/>            
+            <apex:column value="{!acc.Website}"/>
+            <apex:column value="{!acc.AnnualRevenue}"/>                                            
+        </apex:pageBlockTable>
+        <br/> <br/>
+        
+        <!-- PAGINATION -->
+        <table width="100%" border="0">
+            <tr>
+                <td align="left">  
+                    <!-- Page X of Y --> 
+                    Page: <apex:outputText value=" {!PageNumber} of {! CEILING(ResultSize / PageSize) }"/>                
+                </td>
+                
+                <td align="center"> 
+                    <!-- Previous page -->
+                    <apex:commandLink action="{!Previous}" value="« Previous" rendered="{!HasPrevious}"/>
+                    <!-- inactive (no earlier pages) -->
+                    <apex:outputText style="color: #ccc;" value="« Previous" rendered="{!NOT(HasPrevious) }"/>
+                    &nbsp;&nbsp;         
+                                
+                    <!-- Next page -->    
+                    <apex:commandLink action="{!Next}" value="« Next" rendered="{!HasNext }"/>
+                    <!-- inactive (no earlier pages) -->
+                    <apex:outputText style="color: #ccc;" value="Next »" rendered="{! NOT(HasNext) }"/>
+                    &nbsp;&nbsp;            
+                </td>
+                
+                <td align="right">
+                    <!-- Records per page -->
+                    Records per Page: &nbsp;
+                    <apex:selectList value="{!PageSize}" size="1">
+                        <apex:selectOption itemValue="25" itemLabel="25"/>
+                        <apex:selectOption itemValue="100" itemLabel="100"/>
+                        <apex:actionSupport event="onchange" reRender="PBID"/>
+                    </apex:selectList>                    
+                            
+                </td>
+            </tr>
+        </table>
+    
+    </apex:pageBlock>
+    
+</apex:form>        
+</apex:page>

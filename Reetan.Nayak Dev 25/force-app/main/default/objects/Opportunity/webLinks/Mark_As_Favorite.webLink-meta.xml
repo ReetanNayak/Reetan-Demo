@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mark_As_Favorite</fullName>
+    <availability>online</availability>
+    <description>Calls the apex class that will create a Favorite record referencing the opportunity record that has been marked as a Favorite.</description>
+    <displayType>button</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Mark As Favorite</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/15.0/apex.js&quot;)}
+
+var oppId=&quot;{!Opportunity.Id}&quot;;
+
+var res = sforce.apex.execute(&quot;MarkFavorites&quot;,&quot;markRecordAsFavorite&quot;,{recId:oppId, objType:&apos;Opportunity&apos;});
+
+if(res == &apos;success&apos;){
+alert(&apos;{!$Label.MarkedAsFavorite_success_msg}&apos;);
+top.location.href = &apos;/&apos; + oppId;
+}
+else if(res == &apos;exists&apos;){
+alert(&apos;{!$Label.MarkedAsFavorite_exists_msg}&apos;);
+}
+else{
+alert(res);
+}</url>
+</WebLink>

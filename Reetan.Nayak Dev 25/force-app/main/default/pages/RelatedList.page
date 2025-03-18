@@ -1,0 +1,44 @@
+<apex:page standardController="Contact" extensions="RelatedList_CLS" > 
+<style>
+.fewerMore { display: none;}
+</style>
+<apex:form >
+    <apex:pageMessages />
+    <apex:detail relatedList="true"></apex:detail>
+    <apex:pageblock id="CustomList" title="Related Opportunities"  >
+        <apex:pageBlockTable value="{!oppz}" var="o" rendered="{!NOT(ISNULL(oppz))}">
+            <apex:column value="{!o.Name}"/>
+            <apex:column value="{!o.Account.Name}"/>
+            <apex:column value="{!o.Type}"/>
+            <apex:column value="{!o.Amount}"></apex:column>
+            <apex:column value="{!o.CloseDate}"/>
+        </apex:pageBlockTable>
+        
+        <apex:outputLabel value="No records to display" rendered="{!(ISNULL(oppz))}" styleClass="noRowsHeader"></apex:outputLabel>
+    </apex:pageblock>
+</apex:form>
+
+
+
+
+<!--
+<style>
+.fewerMore { display: none;}
+</style>
+<apex:form >
+    <apex:pageMessages />
+    <apex:detail relatedList="true" />
+    <apex:pageBlock title="Related List" >
+        <apex:pageBlockTable value="{!oppty2}" var="opp" rendered="{!NOT(ISNULL(oppty2))}" >
+            <apex:column value="{!opp.Name}" />
+            <apex:column value="{!opp.Account.Name}" />
+            <apex:column value="{!opp.Type}" />
+            <apex:column value="{!opp.CloseDate}" />
+            <apex:column value="{!opp.Amount}" />
+        </apex:pageBlockTable>    
+        
+        <apex:outputLabel value="No Record Found" rendered="{!(ISNULL(oppty2))}" styleClass="noRowsHeader" ></apex:outputLabel>
+    </apex:pageBlock>
+    
+</apex:form>       -->
+</apex:page>

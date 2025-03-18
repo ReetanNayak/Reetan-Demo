@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Editable__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>A SFDC  user  needs the ability to see the source of one&apos;s  IB Asset so that one  can maintain proper data governance with data coming from multiple sources.</description>
+    <label>Editable</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

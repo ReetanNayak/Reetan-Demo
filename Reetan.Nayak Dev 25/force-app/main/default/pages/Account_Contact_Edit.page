@@ -1,0 +1,141 @@
+<apex:page standardController="Account" extensions="Account_Contact_Edit_CLS" tabStyle="Account" title="Prototype Account Edit">
+
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock mode="mainDetail">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!cancel}" value="Exit" />
+                <apex:commandButton action="{!save}" value="Save" />
+                <apex:commandButton action="{!newContact}" value="New Contact" rendered="{!NOT(ISBLANK(Account.id))}" onclick="showpopup(); return false;"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account Details" collapsible="true" id="mainRecord" columns="2" >         
+           <!-- <apex:repeat value="{!$ObjectType.Account.FieldSets.AccountsAndContactsEdit}" var="field">
+               <apex:inputField value="{!Account[id]}" />
+            </apex:repeat> -->
+                      <apex:inputField value="{!Account.Name}"/>
+                    <apex:inputField value="{!Account.Type}"/>
+                    <apex:inputField value="{!Account.BillingStreet}"/>
+                    <apex:inputField value="{!Account.ShippingStreet}"/>
+                    <apex:inputField value="{!Account.Industry}"/>
+                    <apex:inputField value="{!Account.Phone}"/>
+                                            </apex:pageBlockSection>
+           <apex:outputPanel id="contactList">
+                <apex:repeat value="{!contacts}" var="contact" >
+                    <apex:pageBlockSection columns="1"  title="Contact {!contact.Name}" collapsible="true">
+                        <!--<apex:pageBlockSectionItem >-->
+                                        
+              <!-- <apex:repeat value="{!$ObjectType.Contact.FieldSets.AccountsAndContactsEdit}" var="field">
+                     <apex:inputField value="{!contact[field]}" />
+                    </apex:repeat> -->
+                               <apex:inputField value="{!contact.title}"/>
+                                <apex:inputField value="{!contact.phone}"/>
+                                <apex:inputField value="{!contact.FirstName}"/>
+                                <apex:inputField value="{!contact.LastName}"/>
+                                <apex:inputField value="{!contact.email}"/>
+                                          <!--  </apex:pageBlockSectionItem>-->
+                            </apex:pageBlockSection>
+                                         <div style="text-align:center">
+                           <apex:commandButton value="Delete This Contact" onclick="idToDelete='{!contact.id}'; showpopup('deletecontent'); return false;"/>
+                       </div>
+                </apex:repeat>
+            </apex:outputPanel>
+             
+       </apex:pageBlock>
+  <apex:outputPanel id="addPanel">
+  <apex:actionRegion id="popupRegion">
+   <div id="opaque"/>
+      <div id="popupcontent" class="popupcontent" style="width: 250px; height: 100px;">
+     Please enter the new contact details
+ 
+     <apex:outputLabel value="First Name: "/><apex:inputText id="newfirst" value="{!newContactFirstName}"/>
+ 
+    <apex:outputLabel value="Last Name: "/><apex:inputText id="newlast" value="{!newContactLastName}"/>
+     
+ 
+        <apex:commandButton id="cancelBtn" value="Cancel" onclick="hidepopup(); return false;"/>
+       <apex:commandButton id="confirmBtn" action="{!newContact}" value="Create" rerender="contactList, addPanel" onclick="hidepopup();" status="working"/>
+      </div>
+   </apex:actionRegion>
+   </apex:outputPanel>
+  <apex:actionRegion id="deleteRegion">
+      <div id="deletecontent" class="popupcontent" style="width: 250px; height: 100px;">
+     Are you sure you wish to delete contact?
+     
+ 
+        <apex:commandButton id="cancelDelBtn" value="Cancel" onclick="hidepopup('deletecontent'); return false;"/>
+       <apex:commandButton id="confirmDelBtn" value="Delete" rerender="contactList" onclick="hidepopup('deletecontent'); alert('Deleting contact ' + idToDelete); deleteContact(idToDelete); return false;" status="working"/>
+      </div>
+   </apex:actionRegion>
+      <apex:actionFunction name="deleteContact" action="{!deleteContact}" rerender="contactList" status="working">
+         <apex:param name="contactIdent" value="" assignTo="{!chosenContactId}"/>
+      </apex:actionFunction>
+    </apex:form>       
+   <div id="workingcontent" class="popupcontent" style="width:150px; height:50px; margin-top:-100px; marginleft:-100px">
+        <p align="center" style='{font-family:"Arial", Helvetica, sans-serif; font-size:20px;}'><apex:image value="/img/loading.gif"/>&nbsp;Please wait</p>
+   </div>
+ 
+  <apex:actionStatus id="working" onstart="showpopup('workingcontent');" onstop="hidepopup('workingcontent');" />
+  <script>
+   function showpopup(popupname)
+   {
+      var name="popupcontent";
+      if (popupname)
+      {
+         name=popupname;
+      }
+      var popUp = document.getElementById(name);
+      popUp.style.display = "block";
+      document.getElementById('opaque').style.display='block';
+   }
+    
+   function hidepopup(popupname)
+   {
+      var name="popupcontent";
+      if (popupname)
+      {
+         name=popupname;
+      }
+      var popUp = document.getElementById(name);
+      popUp.style.display = "none";
+      document.getElementById('opaque').style.display='none';
+   }
+    
+   var idToDelete;
+    
+  </script>
+  <style>
+  .popupcontent{
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   margin-top: -100px;
+   margin-left: -100px;
+   display: none;
+   overflow: auto;
+   border:1px solid #CCC;
+   background-color:white;
+   border:3px solid #333;
+   z-index:100;
+   padding:5px;
+   line-height:20px;
+   font-size: 14px;
+}
+#opaque {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+    background-color: gray;
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+    -moz-opacity:0.3;
+    -khtml-opacity:0.3
+}
+* html #opaque {
+    position: absolute;
+}
+  </style>
+</apex:page>

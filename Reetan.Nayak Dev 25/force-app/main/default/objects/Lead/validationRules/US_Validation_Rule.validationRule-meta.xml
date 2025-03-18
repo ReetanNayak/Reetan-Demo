@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>US_Validation_Rule</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+AND(LEN(State) &gt; 2, NOT(CONTAINS(&quot;AL:AK:AZ:AR:CA:CO:CT:DE:DC:FL:GA:HI:ID:IL:IN:IA:KS:KY:LA:ME:MD:MA:MI:MN:MS:MO:MT:NE:NV:NH:NJ:NM:NY:NC:ND:OH:OK:OR:PA:RI:SC:SD:TN:TX:UT:VT:VA:WA:WV:WI:WY&quot;, State )) ), 
+NOT(OR(Country =&quot;US&quot;,Country =&quot;USA&quot;,Country =&quot;United States&quot;, ISBLANK(Country) )) 
+)</errorConditionFormula>
+    <errorDisplayField>Country</errorDisplayField>
+    <errorMessage>You can’t create non USA located leads</errorMessage>
+</ValidationRule>

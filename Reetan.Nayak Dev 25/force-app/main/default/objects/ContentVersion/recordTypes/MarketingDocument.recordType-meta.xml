@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MarketingDocument</fullName>
+    <active>true</active>
+    <label>Marketing Document</label>
+    <picklistValues>
+        <picklist>Document_Type__c</picklist>
+        <values>
+            <fullName>Audio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Case study</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitive analysis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Image</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product collateral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public relations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales presentation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Video</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>White paper</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

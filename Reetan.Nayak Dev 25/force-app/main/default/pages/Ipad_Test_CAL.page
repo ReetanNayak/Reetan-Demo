@@ -1,0 +1,145 @@
+<apex:page controller="Ipad_TestCAL_CLS" sidebar="false" >
+
+<apex:styleSheet value="http://yui.yahooapis.com/2.6.0/build/assets/skins/sam/skin.css" />
+<apex:includeScript value="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js" />
+<apex:includeScript value="http://yui.yahooapis.com/2.6.0/build/container/container-min.js" />
+<apex:includeScript value="http://yui.yahooapis.com/2.6.0/build/animation/animation-min.js" />
+
+<script type="text/javascript" src="{!URLFOR($Resource.Jquery132)}"/>
+<script type="text/javascript" src="{!URLFOR($Resource.jquerymobile101)}"/>
+  
+<script type="text/javascript">
+
+    function Hide()
+    {
+    document.getElementById('calender').style.display = 'none';
+    document.getElementById('hide').style.display = 'none';
+    document.getElementById('show').style.display = 'block';
+    }
+    function Show()
+    {
+     document.getElementById('calender').style.display = 'block';
+     document.getElementById('show').style.display = 'none';
+     document.getElementById('hide').style.display = 'block';
+    }
+    function checkAll(cb){    
+         var inputElem = document.getElementsByTagName("input");    
+         for(var i=0; i<inputElem.length; i++){    
+             if(inputElem[i].id.indexOf("check")!=-1)    
+                inputElem[i].checked = cb.checked;    
+         }
+    }
+    
+  
+ $(function(){
+                 
+             $(".columnClass").bind('tap',function(event, ui){
+                    alert(event.target.id);
+              })      
+
+})
+
+     // Create a namespace for our custom functions
+        YAHOO.namespace("force.com");
+     
+        YAHOO.force.com.showMe = function() {
+            document.getElementById("myPanel").style.display = "block";
+        YAHOO.force.com.myDialog.show();
+        }
+        
+        YAHOO.force.com.hideMe = function() {
+            YAHOO.force.com.myDialog.hide();
+        }
+     
+        YAHOO.force.com.init = function() {
+            document.body.className = document.body.className + " yui-skin-sam";
+         
+       YAHOO.force.com.myDialog = new YAHOO.widget.Panel(
+                "myPanel",  // The id of our dialog container
+            {
+                   width           :   100,    // You can play with this until it's right
+                   height          :   500,
+                   visible         :   false,  // Should be invisible when rendered
+                  draggable        :  true,    // Make the dialog draggable
+                    close          :   true,   // include a close title button
+                   modal           :   true,   // Make it modal
+                   fixedCenter     :   true,   // Keep centered if window is scrolled
+                   zindex          :   40,     // Make sure it's on top of everything
+                     
+                  // This line adds the appear/vanish fade effect
+                   effect          :   {
+                                              effect:YAHOO.widget.ContainerEffect.FADE,
+                                              duration:0.35
+                                        } 
+            }
+         );
+             
+            // Render the dialog to the document.body level of the DOM
+            YAHOO.force.com.myDialog.render(document.body);
+        }
+         
+        // Add the init method to the window.load event
+        YAHOO.util.Event.addListener(window, "load", YAHOO.force.com.init);
+</script>
+<apex:form id="frm" >
+     
+  <apex:pageBlock title="Accounts" id="acc">               
+                                                                                                                                         
+          <apex:pageBlockTable value="{!account}" var="s"  rules="cols" id="pbtsub">
+                  
+                      <apex:column >
+                          <apex:facet name="header"><apex:inputCheckbox id="selectAll" onclick="checkAll(this)"/></apex:facet>
+                          <div class="columnClass" id="{!s.Id}">                                  
+                                  <apex:inputCheckbox id="check"/>
+                          </div> 
+                      </apex:column>
+
+                  <apex:column headerValue="Action" >                     
+                   <!-- <apex:commandLink value="Add To Calander" onclick="YAHOO.force.com.showMe();"> 
+                             <apex:param value="{!s.Id}" name="accId"/>
+                             <apex:param value="{!s.Name}" name="accName"/>
+                       </apex:commandLink>-->    
+                      <a href="#" onclick="YAHOO.force.com.showMe();"> Add To Calander </a>                   </apex:column>
+                  <apex:column headerValue="Name" >
+                      <apex:commandLink value="{!s.Name}" action="/{!s.Id}" style="font-weight:bold" target="_blank"/>             
+                 </apex:column>
+                 <apex:column headerValue="Billing City" value="{!s.BillingCity}"/>
+                 <apex:column headerValue="Billing State" value="{!s.BillingState}"/>
+                 <apex:column headerValue="Phone" value="{!s.Phone}"/>
+               
+          </apex:pageBlockTable>  
+          </apex:pageBlock>   
+          </apex:form>
+    <div id="myPanel" style="display: none;height:100px;width : 300px">
+      <div class="hd">
+        <apex:outputText value="Calender : New Event" />
+      </div>
+      <div class="bd">
+          <apex:form >
+           
+            <div style="text-align: right;" >
+             <table>
+            <tr><td align="right">Assigned To :</td><td><apex:inputText /></td></tr>
+            <tr><td align="right">Subject :</td><td><apex:inputText /></td></tr>
+            <tr><td align="right">Name :</td><td><apex:inputText /></td></tr>
+            <tr><td align="right">Related To :</td><td><apex:inputText /></td></tr>
+            <tr><td align="right">Start :</td><td><apex:inputText /></td></tr>
+            <tr><td align="right">End :</td><td><apex:inputText /></td></tr>
+            <tr><td></td><td></td></tr>
+            </table>
+             <apex:commandButton value="Save"/>
+             <apex:commandButton value="Cancel" immediate="true" 
+              oncomplete="YAHOO.force.com.hideMe();"/>
+            </div>
+          </apex:form>
+      </div>
+    </div>
+
+<div  align="right">
+<input type ="button" id="show" value ="Show Calender" onClick="Show();return false"/>
+<input type ="button" id="hide" value ="Hide calender" onClick="Hide();return false" style="display:none"/>
+</div>
+<div id="calender" style="display:none">
+<c:CalanderComponent3 ></c:CalanderComponent3>
+</div>
+</apex:page>

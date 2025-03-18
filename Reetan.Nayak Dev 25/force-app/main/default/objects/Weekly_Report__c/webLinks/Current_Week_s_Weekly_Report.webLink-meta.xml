@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Week_s_Weekly_Report</fullName>
+    <availability>online</availability>
+    <description>Auto populate the current week&apos;s date value in Report date field.</description>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>Current Week&apos;s Weekly Report</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>false</requireRowSelection>
+    <url>{!REQUIRESCRIPT(&quot;/soap/ajax/18.0/connection.js&quot;)}
+sforce.connection.sessionId = &quot;{!$Api.Session_ID}&quot;; 
+{!REQUIRESCRIPT(&quot;/soap/ajax/14.0/apex.js&quot;)}
+
+var dateFormat = sforce.apex.execute(&quot;WeeklyReportDateFormat&quot;,&quot;generateReportDateForThisWeek&quot;,{});
+
+window.location.href= dateFormat;</url>
+</WebLink>

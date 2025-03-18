@@ -1,0 +1,45 @@
+<apex:page standardController="Account" extensions="Test_CLS" >
+<apex:form >
+    <apex:pageBlock mode="edit" id="pb" >
+        <apex:pageBlockSection title="Hi Boss !!!!!" columns="2"  >    
+            <apex:outputLabel ><b>Program :</b>&nbsp;&nbsp;     
+                <apex:selectList value="{!selectProgram}" size="1">
+                    <apex:selectOptions value="{!programList}" />
+                    <apex:actionSupport event="onchange" status="fetchStatus" reRender="pb" />
+                </apex:selectList>
+                        
+                <apex:actionStatus id="fetchStatus" >
+                    <apex:facet name="start">
+                        <img src="/img/loading.gif" class="waitingImage" title="Please Wait..."/> 
+                    </apex:facet>
+                </apex:actionStatus> 
+            </apex:outputLabel>&nbsp;
+   <br/>
+
+                        
+            <apex:outputLabel ><b>Course :</b>&nbsp;     
+                <apex:selectList value="{!selectCourse}" size="1">
+                    <apex:selectOptions value="{!courseList}" />
+                    <apex:actionSupport event="onchange" action="{!actCors}" status="fetchStatus" reRender="pb" />
+                </apex:selectList>
+            </apex:outputLabel> <br/>
+            
+            <apex:outputLabel ><b>Check it :</b>&nbsp;
+                <apex:inputCheckbox selected="{!displayChkbox}"  >
+                    <apex:actionSupport event="onclick" action="{!actChk}" status="fetchStatus" reRender="pb" />
+                </apex:inputCheckbox>    
+             </apex:outputLabel> <br/>
+             
+                <apex:inputField value="{!account.Phone}" required="{!displayPhone}" />    <br/>
+                <apex:inputField value="{!account.Active__c}" required="{!displayActive}"  />
+                
+      <!--      <apex:outputLabel ><b>Batch :</b>&nbsp;&nbsp;     
+                <apex:selectList value="{!selectBatch}" size="1" required="true" >
+                    <apex:selectOptions value="{!batchList}" />
+                </apex:selectList>
+            </apex:outputLabel>    -->
+                
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

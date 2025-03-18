@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>All Leads</fullName>
+                <default>false</default>
+                <label>All Leads</label>
+            </value>
+            <value>
+                <fullName>Only Leads with a certain Rating</fullName>
+                <default>false</default>
+                <label>Only Leads with a certain Rating</label>
+            </value>
+            <value>
+                <fullName>Only Leads with a certain Status</fullName>
+                <default>false</default>
+                <label>Only Leads with a certain Status</label>
+            </value>
+            <value>
+                <fullName>Only Leads from a certain Lead Source</fullName>
+                <default>false</default>
+                <label>Only Leads from a certain Lead Source</label>
+            </value>
+            <value>
+                <fullName>Only Leads for a certain Industry</fullName>
+                <default>false</default>
+                <label>Only Leads for a certain Industry</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

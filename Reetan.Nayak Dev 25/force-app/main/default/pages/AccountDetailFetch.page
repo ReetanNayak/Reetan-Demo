@@ -1,0 +1,21 @@
+<apex:page controller="AccountDetailFetch_CLS" >
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Select Account" />
+                <apex:selectList value="{!SelectAccount}" size="5" >
+                    <apex:selectOptions value="{!AccountName}" />
+                    <apex:actionSupport event="onchange" reRender="CName"  />
+                </apex:selectList>    
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+
+                <apex:outputPanel id="CName">
+                    <apex:outputText value="{!ContactValue}" />
+                </apex:outputPanel>
+
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

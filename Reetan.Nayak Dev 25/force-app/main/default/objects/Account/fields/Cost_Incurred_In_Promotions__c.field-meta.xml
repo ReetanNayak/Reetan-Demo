@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cost_Incurred_In_Promotions__c</fullName>
+    <label>Cost Incurred In Promotions</label>
+    <summarizedField>UB_Promotion__c.UB_PromotionalCost__c</summarizedField>
+    <summaryForeignKey>UB_Promotion__c.UB_Outlet__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Shadow_Activity__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>related shadow activity record</description>
+    <label>Shadow Activity</label>
+    <referenceTo>Shadow_Activity__c</referenceTo>
+    <relationshipLabel>Contact Activities Detail</relationshipLabel>
+    <relationshipName>Contact_Activities_Detail</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

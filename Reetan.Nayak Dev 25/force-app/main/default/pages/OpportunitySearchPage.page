@@ -1,0 +1,200 @@
+<apex:page id="pgId" controller="OpportunitySearchPageController" sidebar="false" showHeader="true">
+<apex:form id="FormId">
+
+    <apex:includeScript value="{!URLFOR($Resource.jQuery, 'js/jquery-1.6.2.min.js')}"/> 
+    <apex:includeScript value="{!URLFOR($Resource.jqQueryTableSorter,'jquery.tablesorter.min.js')}"/> 
+    
+    <script>
+        $j = jQuery.noConflict();
+        $j(document).ready(function() { 
+            //enable sorting in pageblock tables using table sorter plugin
+            $j("[id$=xyz]").tablesorter(); 
+            $j('.headerRow').click(function(){
+                //on header click remove the styling
+                $j('.dataRow').removeClass('last');
+                
+            });
+                
+            $j("[id$=xyz]").bind("sortEnd",function(e) {
+                $j('.mySort').remove();
+                $j('.headerSortDown').children().append('<apex:image value="/s.gif" styleClass="sortDesc mySort"  alt="Sorted Descending" title="Sorted Descending" /> ');
+                $j('.headerSortUp').children().append('<apex:image value="/s.gif" styleClass="sortAsc mySort"  alt="Sorted Ascending" title="Sorted Ascending" />');
+            });
+        }); 
+    </script>
+    
+    <apex:pageBlock id="pgBId" title="Opportunity Search" tabStyle="Account" >
+        <div>
+        <table width="100%" border="0" style="background-color:#5FA0D8;">
+            <tr>
+                <td>
+                    <b> <apex:outputLabel value="My Opportunity" style="font-size:12px;color:white; padding:5px;"/> </b>
+                    <apex:inputCheckbox value="{!checkCurrentOwner}"/>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <b> <apex:outputLabel value="{!$ObjectType.Lead.Fields.Country.label}" style="font-size:12px;color:White; padding:5px;"/>  </b>
+                    <apex:selectList id="ifcountry" styleclass="std" size="1" value="{!countryString}" >
+                        <apex:selectOptions value="{!countriesSelectList}"/>
+                    </apex:selectList>
+                </td>
+
+                <td>
+                    <apex:actionRegion >
+                        <b><apex:outputLabel value="Region" style="font-size:12px; color:White;padding:5px;"/></b>
+                        <apex:selectList id="ifRegion" styleclass="std" size="1" value="{!RegionString}">
+                            <apex:selectOptions value="{!RegionSelectList}"/>
+                            <apex:actionSupport event="onchange" rerender="ifZone" status="status"/>
+                        </apex:selectList>
+                    </apex:actionRegion>                   
+                </td>
+
+                <td>
+                    <apex:actionRegion >
+                        <b><apex:outputLabel value="Zone" style="font-size:12px;color:White; padding:5px;"/></b>
+                        <apex:selectList id="ifZone" styleclass="std" size="1" value="{!ZoneString}" disabled="{!ISNULL(regionString)}">
+                            <apex:selectOptions value="{!ZoneSelectList}"/>
+                        </apex:selectList>
+                    </apex:actionRegion>                    
+                </td>               
+
+                <td>
+                    <b><apex:outputLabel value="Modality" style="font-size:12px; color:White;padding:5px;"/></b>
+                    <apex:selectList id="ifModality" styleclass="std" size="1" value="{!ModalityString}" >
+                        <apex:selectOptions value="{!ModalitySelectList}"/>
+                    </apex:selectList>
+                </td>                       
+
+                <td>
+                    <b><apex:outputLabel value="Portfolio" style="font-size:12px; color:White;padding:5px;"/></b>
+                    <apex:selectList id="ifportfolio" styleclass="std" size="1" value="{!portfolioString}" >
+                        <apex:selectOptions value="{!PortfolioSelectList}"/>
+                    </apex:selectList>
+                </td> 
+            
+                <td>
+                    <apex:commandButton value="Search"  style="padding:6px;font-size:12px;" action="{!dosearch}"/>
+                </td>
+            </tr>
+            
+            <tr>
+                <td> 
+                    <b><apex:outputLabel value="Order Status" style="font-size:12px;color:White; padding:5px;" /></b>              
+                    <!--<apex:inputField value="{!orderStatus}"/>-->
+                    <apex:selectList id="iforder" styleclass="std" size="1" value="{!orderStatus}" >
+                        <apex:selectOptions value="{!orderStatustList}"/>
+                    </apex:selectList>
+                </td>
+                
+                <td>
+                    <b><apex:outputLabel value="From Date" style="font-size:12px;color:White; padding:5px;" /></b>
+                    <apex:inputText styleClass="cssbody" value="{!FromDate}" size="10" id="fromId" onfocus="DatePicker.pickDate(false,'pgId:FormId:pgBId:fromId', false);" />
+                </td>
+                
+                <td>
+                    <b><apex:outputLabel value="To Date" style="font-size:12px;color:White; padding:5px;"/></b>
+                    <apex:inputText styleClass="cssbody" value="{!ToDate}" size="10" id="toId" onfocus="DatePicker.pickDate(false,'pgId:FormId:pgBId:toId', false);" />
+                </td>
+                
+                <td>
+                    <b><apex:outputLabel value="Range" style="font-size:12px;color:White; padding:5px;"/></b>
+                    <apex:selectList id="mgr" value="{!dateSearch}" size="1" title="Date">
+                        <apex:selectOptions value="{!DateFilter}"></apex:selectOptions>
+                    </apex:selectList>
+                    <!--    <apex:outputLabel value="{!$ObjectType.Opportunity.fields.Estimated_Sales_Date__c.label}" style="font-size:12px;color:White; padding:5px;" for="The"/>
+                    -->
+                </td>
+                
+                <td>
+                    <b><apex:outputLabel value="Selected Date" style="font-size:12px;color:White; padding:5px;"/></b>
+                    <apex:selectList id="mgs" value="{!dateFieldSearch}" size="1" title="Date">
+                        <apex:selectOptions value="{!DateField}"></apex:selectOptions>
+                    </apex:selectList>
+                </td>
+            </tr>
+        </table>
+        </div>
+                        
+        <apex:outputPanel rendered="true">  
+            <apex:pageBlockTable value="{!Opportunities}" var="varOpp" id="xyz">
+                <apex:column width="30px" headerValue="Opportunity Name">
+                    <apex:outputLink value="/{!varOpp.opp.Id}"> {!varOpp.opp.Name} </apex:outputLink>
+                </apex:column>
+                <apex:column headerValue=" Account Name" value="{!varOpp.opp.AccountId}"/>
+                <apex:column headerValue=" Region" value="{!varOpp.opp.Account.Region__c}"/>
+                <apex:column headerValue=" Zone" value="{!varOpp.opp.Account.Zone__c}"/>
+                <apex:column headerValue="Country" value="{!varOpp.opp.Account.Country_Name_2__c}"/>
+
+                <apex:column headerValue="Product Name">
+                    <apex:repeat value="{!varOpp.opp.OpportunityLineItems}" var="PrdLst" >
+                        <apex:outputText value="{!PrdLst.Product_Name__c}"/><br/>
+                    </apex:repeat>
+                </apex:column>
+            
+                <apex:column headerValue=" Modality">
+                    <apex:repeat value="{!varOpp.opp.OpportunityLineItems}" var="PrdLst" rendered="{!if(varOpp.opp.OpportunityLineItems.size>0 , true, false)}" >
+                        <apex:outputText value="{!PrdLst.Modality__c}"/><br/>
+                    </apex:repeat>
+                </apex:column>
+            
+                <apex:column headerValue="Quantity">
+                    <apex:repeat value="{!varOpp.opp.OpportunityLineItems}" var="PrdLst" rendered="{!if(varOpp.opp.OpportunityLineItems.size>0 , true, false)}" >
+                        <apex:outputText value="{0,Number}"> <apex:param value="{!PrdLst.Quantity}" /> </apex:outputText><br/>
+                    <!--    <apex:outputText value="{!PrdLst.Quantity}"/><br/> -->
+                    </apex:repeat>
+                </apex:column>
+
+                <apex:column headerValue="Total Price">
+                    <apex:repeat value="{!varOpp.opp.OpportunityLineItems}" var="PrdLst" rendered="{!if(varOpp.opp.OpportunityLineItems.size>0 , true, false)}" >
+                        <!--      <apex:outputField value="{!PrdLst.TotalPrice}"/><br/> -->
+                        <!--     <apex:param value="{!varOpp.convertPrice}"/> -->
+                        <apex:outputField value="{!PrdLst.TotalPrice}" style="font-size"/> <br/> 
+                        <apex:param value="{!varOpp.convertPrice}"/>
+                        <!--     </apex:outputText> -->
+                        <!-- <apex:outputText value="{!PrdLst.TotalPrice}"> <apex:param value="{!convertCurrencyWithApexCode}" /> </apex:outputText><br/> -->
+                        <!--<apex:outputText value="{!convertPrice}"/><br/>-->
+                    </apex:repeat>
+                </apex:column>
+                
+                <apex:column headerValue="Total Price(USD)">
+                    <apex:repeat value="{!varOpp.convertPrice}" var="PrdLst" rendered="{!if(varOpp.opp.OpportunityLineItems.size >0 , true, false)}"><br/>
+                        <apex:outputText value="{!PrdLst}"  rendered="{!if(varOpp.opp.OpportunityLineItems.size >0 , true, false)}" style="font-size" > <br/> 
+                            <apex:param value="{!PrdLst}"/><br/>
+                        </apex:outputText> 
+                    </apex:repeat> 
+                </apex:column>
+                
+                <!--    <apex:column headerValue="Total Price(USD)" value="{!varOpp.convertPrice}"/><br/> -->
+                <apex:column headerValue="Order Status" value="{!varOpp.opp.Order_Status__c}"/>
+                <apex:column headerValue="Order date" value="{!varOpp.opp.CloseDate}"/>
+                <apex:column headerValue="Risk" value="{!varOpp.opp.Order_at_Risk__c}"/>
+                <apex:column headerValue="Oppty Owner" value="{!varOpp.opp.Owner.Name}"/>
+            </apex:pageBlockTable>
+        </apex:outputPanel>
+            
+        <center>
+            <apex:outputPanel layout="block" styleClass="pSearchShowMore" id="otpNav2">
+                Total Records Found:  <apex:outputText rendered="{!IF(opportunityList.Size==10000,true,false)}"> more than 10,000. Displaying first 10,000  </apex:outputText>
+                <apex:outputText rendered="{!IF(opportunityList.Size < 10000,true,false)}">{!Con.resultSize}</apex:outputText>      
+                <apex:commandLink action="{!First}"> First </apex:commandlink>&nbsp;&nbsp;
+
+                <apex:image url="/img/search_prevarrow_disabled.gif" styleClass="prevArrow" rendered="{!NOT(Con.HasPrevious)}"/>  
+                <apex:image url="/img/search_prevarrow.gif" title="Previous Page" styleClass="prevArrow" rendered="{!Con.HasPrevious}"/>
+                <apex:commandLink action="{!Previous}" rendered="{!Con.hasPrevious}"  >Previous </apex:commandlink>
+                <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasPrevious)}"> Previous </apex:outputPanel>&nbsp;
+
+                <apex:outputPanel styleClass="pShowLess noLink" style="color:grey" rendered="{!NOT(Con.HasNext)}"> Next </apex:outputPanel>
+                <apex:commandLink action="{!Next}" rendered="{!Con.hasNext}" > Next </apex:commandlink>
+                
+                <apex:image url="/img/search_nextarrow.gif" title="Next Page" styleClass="nextArrow" rendered="{!Con.HasNext}"/>  
+                <apex:image url="/img/search_nextarrow_disabled.gif" rendered="{!NOT(Con.HasNext)}"/> &nbsp;
+
+                <apex:commandLink action="{!Last}"> Last </apex:commandlink>
+            </apex:outputPanel>                 
+        </center>
+    </apex:pageBlock>
+        
+</apex:form>    
+</apex:page>

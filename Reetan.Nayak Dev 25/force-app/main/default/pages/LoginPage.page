@@ -1,0 +1,57 @@
+<apex:page controller="LoginAuthenticate" id="pg" sidebar="false" showHeader="true"> 
+<apex:form id="fm">
+ 
+<style type="text/css">
+ #main {
+     padding-top:30px;
+     padding-left:36%;
+     padding-right:36%;
+ }
+</style>
+
+
+  <script type="text/javascript">
+         function jsValidate(theform){
+            var name=document.getElementById("{!$Component.pg:fm:pb:uid}").value;
+            var pwd=document.getElementById("{!$Component.pg:fm:pb:pwd}").value;
+            if(name=="" ){
+                alert('Please Enter Username');
+                return false;
+            }else if(pwd==""){
+                 alert('Please Enter Password');
+                 return false;
+            }
+         }
+    </script>
+    
+
+<div id="main" >
+     <apex:pageBlock title="CTP Login" id="pb">
+        <div id="pbs" align="center">
+             <table  align="center">
+                <tr> 
+                    <td align="right"><apex:outputLabel value="User ID" for="uid" /></td>
+                    <td><apex:inputText id="uid"  value="{!userid}" /></td>
+                    <td><apex:pageMessage severity="error" rendered="{!isError}"> <font color="red"> <b>{!errorMessage}</b></font></apex:pagemessage> </td>
+                </tr>
+                <tr>
+                    <td align="right"><apex:outputLabel value="Password" for="pwd"/></td>
+                    <td><apex:inputSecret id="pwd"/></td>
+                </tr> 
+                <tr>
+                    <td></td>
+                    <td><apex:commandButton value="Login" action="{!login}" onclick="jsValidate()"> 
+                          <apex:param name="msg" value="{!userid}" />
+                          </apex:commandButton>
+                          <apex:commandLink value="Forgot Your Password ?" action="{!forgotPassword}"  rendered="{!forgot}" /> 
+                          <apex:pageMessage severity="error" rendered="{!errMessage}"> <font color="red"> <b>{!emailMessage}</b></font></apex:pagemessage>
+                          
+                    </td>
+                 </tr>
+            </table>
+         </div>
+    </apex:pageBlock>
+ </div>
+    
+</apex:form>
+</apex:page>

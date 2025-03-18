@@ -1,0 +1,20 @@
+<apex:page >
+
+   <apex:listViews type="Account" />    
+ 
+    
+    <script type="text/javascript" >
+    
+    document.getElementsByClassName("bFilter")[0].style.display="none";
+    
+    //    document.getElementsByClassName("bFilterView")[0].style.display="none";
+        document.getElementsByClassName("bNext")[0].style.display="none";
+        document.getElementsByClassName("actionColumn")[0].style.display="none";  
+    //    document.getElementsByClassName("actionColumn")[1].style.display="none";   
+    //    document.getElementsByClassName("actionLink")[0].style.display="none";  
+     //   document.getElementsByClassName("actionLink")[1].style.display="none"; 
+        document.getElementsByClassName("chatterFollowUnfollowAction")[0].style.display="none";  
+     
+    </script>
+
+</apex:page>

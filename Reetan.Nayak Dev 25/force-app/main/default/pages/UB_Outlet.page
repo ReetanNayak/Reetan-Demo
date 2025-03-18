@@ -1,0 +1,91 @@
+<apex:page controller="UB_Outlet_CLS" sidebar="false" >
+<apex:form >
+
+<style type="text/css">
+    #header1{padding-left:25%; padding-right:25%;}
+    #table1{align:center}  
+    div.pbSubheader{font-size:15px;}
+   .color { color:#3A287C; }
+</style>
+
+    <div id="header1">
+    <apex:pageBlock tabStyle="UB_Coupon__c" >
+        <apex:pageblocksection title="Outlet Details" >
+        <table border="0" width="100%" >
+              <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                <tr>
+                    <td align="right" > <apex:outputLabel styleclass="color"  ><b> Outlets :</b></apex:outputLabel> </td>
+                    <td><apex:selectList value="{!KeyAccMetric_name}" multiselect="false" size="1">
+                        <apex:selectOptions value="{!items}"/>
+                        <apex:actionSupport event="onchange" reRender="UserDetails" status="LoadingStatus" / > 
+                    </apex:selectList> &nbsp;
+                    <apex:actionStatus stopText="" id="LoadingStatus" >
+                        <apex:facet name="start">
+                            <apex:image value="{!$Resource.Loading}" height="15" width="15" />
+                        </apex:facet>    
+                    </apex:actionStatus> </td>
+                </tr>       
+                </apex:outputPanel>           
+            </apex:pageBlockSectionItem>
+        </table>    
+        </apex:pageblocksection>    <br/>
+  <!--  </apex:pageblock>
+        
+        
+    <apex:pageblock id="UserDetails" >    -->
+        <apex:pageBlockSection title="Key Account Metrics" id="UserDetails"  >
+            <apex:repeat value="{!OutletDetails}" var="Outletdet" >
+                <html>
+                <body>
+                    <div id="table1" >
+                    <table  border="1" bordercolor="LightBlue" width="400" >
+                        <tr>
+                            <td></td>
+                            <th>Target</th>
+                            <th>Achieved</th>
+                        </tr>
+                        
+                        <tr>
+                            <th>Volume</th>
+                            <td>{!Outletdet.Volume_Sales_Target_for_Year__c}</td>
+                            <td>{!Outletdet.Total_Number_Of_Orders__c}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Event</th>
+                            <td>{!Outletdet.Current_Number_Of_Events__c}</td>
+                            <td>{!Outletdet.Yearly_Target_for_Branding_Activity__c}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Promotion</th>
+                            <td>{!Outletdet.Yearly_Target_for_Promotional_Event__c}</td>
+                            <td>{!Outletdet.Total_Number_Of_Promotions__c} </td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Budget</th>
+                            <td>{!Budget}</td>
+                            <td>{!Budget1}</td>
+                        </tr>
+                        
+                        <tr>
+                            <th>Activity</th>
+                            <td>{!Outletdet.Yearly_Activity_Target__c}</td>
+                            <td>{!HistoryCount}</td>
+                        </tr>
+                    </table>
+                    </div>
+                </body>
+                </html>
+
+            </apex:repeat>         
+        </apex:pageblocksection>
+        
+    </apex:pageblock>
+    </div>
+
+</apex:form>
+  <!--  <c:BigCalender ></c:BigCalender>    -->
+</apex:page>

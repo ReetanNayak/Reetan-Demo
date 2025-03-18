@@ -1,0 +1,250 @@
+<apex:page controller="UB_Sales_CLS" sidebar="false" >
+
+<style type="text/css">
+    #header_Outlet{padding-left:15%; padding-right:15%;}
+    #header1 {padding-left:15%; padding-right:15%;  }
+    #header2 {width:100%; background-color:red; border:1; text-align:center;}    
+    #table_Outlet{align:center}  
+    div.pbSubheader{font-size:15px;}
+   .color { color:#3A287C; }
+</style>
+
+
+<div id="header_Outlet">
+<apex:pageBlock tabStyle="UB_Coupon__c" >
+        <apex:form >
+        <apex:pageblocksection title="Outlet Details" >
+        <table border="0" width="100%" >
+            <apex:pageBlockSectionItem >
+                <apex:outputPanel >
+                <tr>
+                    <td align="right" > <apex:outputLabel styleclass="color"  ><b> Outlets :</b></apex:outputLabel> </td>
+                    <td><apex:selectList value="{!KeyAccMetric_name}" multiselect="false" size="1">
+                        <apex:selectOptions value="{!items}"/>
+                        <apex:actionSupport event="onchange" reRender="UserDetails" status="LoadingStatus"/ > 
+                    </apex:selectList> &nbsp;
+                    <apex:actionStatus stopText="" id="LoadingStatus" >
+                        <apex:facet name="start">
+                            <apex:image value="{!$Resource.Loading}" height="15" width="15" />
+                        </apex:facet>    
+                    </apex:actionStatus> </td>
+                </tr>       
+                </apex:outputPanel>           
+            </apex:pageBlockSectionItem>
+        </table>    
+        </apex:pageblocksection>    <br/>
+        </apex:form>                                                      
+    <apex:outputPanel id="UserDetails"> 
+        <apex:pageBlockSection title="Key Account Metrics" rendered="{!showKAM}" >
+            <apex:repeat value="{!OutletDetails}" var="Outletdet"  >
+               <!-- <html>
+                <body>  -->
+                    <div id="table_Outlet" >
+                    <table  border="1" bordercolor="LightBlue" width="700" >
+                        <tr>
+                            <td width="40%" ></td>
+                            <td width="30%" align="center"><font color="#3A287C"><b>Target </b></font> </td>
+                            <td width="30%" align="center"><font color="#3A287C"><b>Achieved</b></font></td>
+                        </tr>
+                        
+                        <tr>
+                            <th><font color="#3A287C"> Revenue </font></th>
+                            <td align="center">{!Outletdet.Yearly_Revenue_Target__c}</td>
+                            <td align="center">{!Outletdet.Current_Order_Amount__c}</td>
+                        </tr>                       
+                                                
+                        <tr>
+                            <th><font color="#3A287C"> Volume </font></th>
+                            <td align="center">{!Outletdet.Volume_Sales_Target_for_Year__c}</td>
+                          <!--  <td align="center">{!Outletdet.Total_Number_Of_Orders__c}</td>    -->
+                            <td align="center">{!totalUBSales}</td>                            
+                        </tr>
+
+                        <tr>
+                            <th><font color="#3A287C"> Event </font></th>
+                            <td align="center">{!FLOOR(Outletdet.Yearly_Target_for_Branding_Activity__c)}</td>
+                            <td align="center">{!FLOOR(Outletdet.Current_Number_Of_Events__c)}</td>
+                        </tr>
+
+
+                        <tr>
+                            <th><font color="#3A287C"> Promotion </font></th>
+                            <td align="center">{!FLOOR(Outletdet.Yearly_Target_for_Promotional_Event__c)}</td>
+                            <td align="center">{!FLOOR(Outletdet.Total_Number_Of_Promotions__c)} </td>
+                        </tr>
+                        
+                        <tr>
+                            <th><font color="#3A287C"> Budget </font></th>
+                            <td align="center">{!BudgetTarget}</td>
+                            <td align="center">{!BudgetAchieved}</td>
+                        </tr>
+
+                        <tr>
+                            <th><font color="#3A287C"> Budget for Events </font></th>
+                            <td align="center">{!Outletdet.Yearly_Target_for_Branding_Activity_Valu__c }</td>
+                            <td align="center">{!Outletdet.Total_Expenditure_In_Events__c} </td>
+                        </tr>
+
+                        <tr>
+                            <th><font color="#3A287C"> Budget for Promotions </font></th>
+                            <td align="center">{!Outletdet.Yearly_Target_Promotional_Event_Value__c}</td>
+                            <td align="center">{!Outletdet.Cost_Incurred_In_Promotions__c} </td>
+                        </tr>                       
+
+                        <tr>
+                            <th><font color="#3A287C"> Activity</font></th>
+                            <td align="center">{!FLOOR(Outletdet.Yearly_Activity_Target__c)}</td>
+                            <td align="center">{!HistoryCount}</td>
+                        </tr>
+                    </table>
+                    </div>
+               <!-- </body>
+                </html> -->
+
+            </apex:repeat>         
+        </apex:pageblocksection>  
+
+        <apex:pageBlockSection title="Brands" rendered="{!showKAM}">
+            <table border="0" width="700"  >
+                <tr>
+                  <td> 
+                     <table  border="1" bordercolor="LightBlue" width="100%" align="center">
+                        <tr>
+                            <td width="40%" ></td>
+                            <td width="30%" align="center"><font color="#3A287C"><b>Revenue</b></font></td>
+                            <td width="30%" align="center"><font color="#3A287C"><b>Volume</b></font></td>
+                        </tr>
+                        
+                        <tr>
+                            <th><font color="#3A287C"> POWER :</font></th>
+                            <td align="center"><b>6550</b></td>
+                            <td align="center"><b>1950</b></td>
+                        </tr>
+                        
+                        <tr>
+                            <td align = "center">Bagpiper Whiskey</td>
+                            <td align = "center">1200</td>
+                            <td align = "center">400</td>
+                        </tr>
+                        
+                        <tr>
+                            <td align = "center">McDowells Whiskey</td>
+                            <td align = "center">1500</td>
+                            <td align = "center">300</td>
+                            
+                        </tr>
+                        <tr>
+                            <td align = "center">McDowells Rum</td>
+                            <td align = "center">250</td>
+                            <td align = "center">550</td>
+                            
+                        </tr>
+                        <tr>
+                            <td align = "center">Romanov Vodka</td>
+                            <td align = "center">3000</td>
+                            <td align = "center">400</td>
+                            
+                        </tr>
+                       <tr>
+                            <td align = "center">White Mischief Vodka</td>
+                            <td align = "center">600</td>
+                            <td align = "center">300</td>
+                            
+                        </tr> 
+                    </table>                    
+                  </td>
+                </tr>
+                <tr><td> </td></tr>
+                <tr><td> </td></tr>                    
+                <tr>
+                    <td>
+                    <table  border="1" bordercolor="LightBlue" width="100%" align="center">
+                        <tr>
+                            <td width="40%"></td>
+                            <td width="30%" align="center"><font color="#3A287C"><b>Revenue</b></font></td>
+                            <td width="30%" align="center"><font color="#3A287C"><b>Volume</b></font></td>
+                        </tr>
+                        
+                        <tr>
+                            <th><font color="#3A287C">PREMIUM :</font></th>
+                            <td align="center"><b>2400</b></td>
+                            <td align="center"><b>6000</b></td>
+                        </tr>
+                        
+                        <tr>
+                            <td align = "center">Royal Challenge Whiskey</td>
+                            <td align = "center">600</td>
+                            <td align = "center">2500</td>
+                            
+                        </tr>
+                        <tr>
+                            <td align = "center">Antiquity</td>
+                            <td align = "center">600</td>
+                            <td align = "center">2100</td>
+                            
+                        </tr>
+                       <tr>
+                            <td align = "center">Signature Whiskey</td>
+                            <td align = "center">1200</td>
+                            <td align = "center">1400</td>
+                       </tr> 
+                    </table>                    
+                    </td>
+                </tr>
+                <tr><td> </td></tr>
+                <tr><td> </td></tr>                   
+                <tr>
+                    <td>
+                    <table  border="1" bordercolor="LightBlue" width="100%" align="center">
+                        <tr>
+                            <td width="40%"></td>
+                            <td width="30%" align="center"><font color="#3A287C"><b>Revenue</b></font></td>
+                            <td width="30%" align="center"><font color="#3A287C"><b>Volume</b></font></td>
+                        </tr>
+                        
+                        <tr>
+                            <th><font color="#3A287C">LUXURY :</font></th>
+                            <td align="center"><b>7000</b></td>
+                            <td align="center"><b>11000</b></td>
+                        </tr>
+                        
+                        <tr>
+                            <td align = "center">Black Dog Whiskey</td>
+                            <td align = "center">2000</td>
+                            <td align = "center">5000</td>
+                            
+                        </tr>
+                        <tr>
+                            <td align = "center">Vladivar Vodka</td>
+                            <td align = "center">3000</td>
+                            <td align = "center">5000</td>
+                            
+                        </tr>
+                       <tr>
+                            <td align = "center">Wine</td>
+                            <td align = "center">2000</td>
+                            <td align = "center">1000</td>
+                        </tr>
+                    </table>                    
+                    </td>
+                </tr>
+                
+            </table>
+        </apex:pageBlockSection>
+    
+        <apex:pageBlockSection title="Calendar and Map of Coming Events"  rendered="{!showKAM}">
+          <!-- <c:BigCalender ></c:BigCalender>    -->
+            <apex:outputLabel styleclass="color" ><font size="3"><b>Map of Coming Events</b> </font>
+                <div style="margin-top:10px">
+                    <apex:image value="{!$Resource.UBMap}"  width="300" height="330"  />
+                </div>
+            </apex:outputLabel>
+        </apex:pageBlockSection>
+ 
+    </apex:outputpanel>
+       
+</apex:pageBlock>
+</div>
+
+ 
+</apex:page>
