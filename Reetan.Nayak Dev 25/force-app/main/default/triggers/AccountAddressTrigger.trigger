@@ -18,5 +18,5 @@ trigger AccountAddressTrigger on Account (Before Insert, Before Update) {
             }
         }         
     //}
-
+        // system.debug('Check the Account Address')
 }
